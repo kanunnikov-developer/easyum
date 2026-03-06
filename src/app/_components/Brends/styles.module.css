@@ -1,0 +1,47 @@
+.brends {
+	margin-top: 150px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.brends__text {
+	max-width: 490px;
+	white-space: initial;
+}
+
+.brends__text h2 {
+	margin-bottom: 32px;
+}
+
+@media screen and (max-width: 430px) {
+	.brends {
+		margin-top: 100px;
+		flex-direction: column;
+		text-align: center;
+		gap: 20px;
+	}
+
+	.img {
+		width: 380px;
+		height: 200px;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.brends {
+		margin-top: 100px;
+		flex-direction: column;
+		text-align: center;
+		gap: 20px;
+	}
+
+	.brends__text {
+		white-space: pre-line;
+	}
+
+	.img {
+		width: 380px;
+		height: 200px;
+	}
+}

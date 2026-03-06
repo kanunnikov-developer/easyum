@@ -1,0 +1,33 @@
+.statistics {
+	margin-top: 150px;
+}
+
+.statistics__grid {
+	margin-top: 64px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 40px;
+}
+
+.statistics__item {
+	width: 100%;
+}
+
+.statistics__item img {
+	width: 100%; /* Картинка растягивается на всю ширину родителя */
+	height: auto; /* Сохраняем пропорции */
+	display: block; /* Убираем лишние отступы */
+}
+
+@media screen and (max-width: 430px) {
+	.statistics {
+		margin-top: 100px;
+		text-align: center;
+	}
+
+	.statistics__grid {
+		margin-top: 48px;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 15px;
+	}
+}

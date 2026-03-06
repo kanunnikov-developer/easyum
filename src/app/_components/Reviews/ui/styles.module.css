@@ -1,0 +1,96 @@
+.wrapper {
+	position: relative;
+}
+
+.prev,
+.next {
+	position: absolute;
+	top: 30%;
+	z-index: 10;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+/* Левая стрелка */
+.prev {
+	left: -80px;
+}
+
+/* Правая стрелка */
+.next {
+	right: -80px;
+}
+
+.prev img,
+.next img {
+	width: 40px;
+	height: 40px;
+}
+
+.reviews_card {
+	text-align: center;
+	height: 100%; /* Растягиваем на всю высоту слайда */
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+.reviews_card a {
+	display: block;
+	width: 100%;
+	border-radius: 15px;
+	overflow: hidden; /* Чтобы скругление работало */
+	aspect-ratio: 16 / 9; /* Соотношение сторон как у видео */
+}
+
+.reviews_card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* Чтобы изображение красиво заполняло контейнер */
+	border-radius: 15px;
+	transition: transform 0.3s ease;
+}
+
+.reviews_card a:hover img {
+	transform: scale(1.03); /* Легкое увеличение при наведении */
+}
+
+.description {
+	font-size: 16px;
+	line-height: 24px;
+	white-space: pre-line;
+}
+
+@media screen and (max-width: 430px) {
+	.prev,
+	.next {
+		top: 32%;
+	}
+
+	.prev img,
+	.next img {
+		width: 30px;
+		height: 30px;
+	}
+
+	.prev {
+		left: 0px;
+	}
+
+	.next {
+		right: 0px;
+	}
+
+	.reviews_card {
+		width: 75%;
+		margin: 0 auto;
+		gap: 15px;
+	}
+
+	.description {
+		font-size: 14px;
+		line-height: 20px;
+		white-space: pre-line;
+	}
+}

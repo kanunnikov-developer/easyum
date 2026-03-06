@@ -1,0 +1,82 @@
+.hero {
+	position: relative;
+}
+
+.image {
+	position: absolute;
+	top: 0;
+	right: -200px;
+}
+
+.hero__text {
+	padding-top: 60px;
+}
+
+.hero__description {
+	font-size: 32px;
+	font-weight: 700;
+	margin-top: 8px;
+}
+
+.promo {
+	margin-top: 48px;
+}
+
+.buttonBlock {
+	margin-top: 72px;
+}
+
+.button {
+	display: inline-block;
+	padding: 25px 100px;
+	font-size: 18px;
+	background: none;
+	color: var(--accent-color);
+	border: 1px solid var(--accent-color);
+	border-radius: 50px;
+	transition: all 0.2s ease;
+}
+
+.button:hover {
+	background: var(--accent-color);
+	color: var(--white-color);
+}
+
+@media screen and (max-width: 430px) {
+	.hero__text {
+		padding-top: 20px;
+	}
+
+	.hero__description {
+		max-width: 200px;
+		font-size: 24px;
+		margin-top: 16px;
+		margin-bottom: 32px;
+	}
+
+	.image {
+		position: relative;
+		left: -60px;
+		width: 100vh;
+	}
+
+	.img {
+		width: 580px;
+		height: 400px;
+	}
+
+	.promo {
+		margin-top: 24px;
+		text-align: center;
+	}
+
+	.buttonBlock {
+		margin-top: 32px;
+		text-align: center;
+	}
+
+	.button {
+		width: 100%;
+		padding: 20px;
+	}
+}

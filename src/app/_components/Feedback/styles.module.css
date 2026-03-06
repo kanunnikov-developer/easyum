@@ -1,0 +1,42 @@
+.feedback {
+	margin-top: 150px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.feedback__text {
+	position: relative;
+	max-width: 430px;
+	white-space: initial;
+}
+
+.feedback__text h2 {
+	margin-bottom: 32px;
+}
+
+.image {
+	position: absolute;
+	top: 0;
+	right: -250px;
+}
+
+@media screen and (max-width: 430px) {
+	.feedback {
+		margin-top: 100px;
+		flex-direction: column;
+		gap: 50px;
+	}
+
+	.feedback__text {
+		max-width: 280px;
+		white-space: pre-line;
+	}
+
+	.image {
+		position: absolute;
+		top: 0px;
+		right: -170px;
+		width: 240px;
+	}
+}
