@@ -1,0 +1,29 @@
+.page {
+	margin-bottom: 200px;
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+.tabsTest {
+	margin-top: 80px;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.header {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	.tabsTest {
+		margin-top: 30px;
+	}
+}

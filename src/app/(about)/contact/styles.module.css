@@ -1,0 +1,185 @@
+.page {
+	margin-bottom: 150px;
+}
+
+.contact {
+	display: flex;
+	justify-content: space-between;
+}
+
+.left {
+	max-width: 400px;
+}
+
+.left__text p {
+	margin-top: 45px;
+	margin-bottom: 15px;
+	font-size: 22px;
+}
+
+.left__text span {
+	font-size: 18px;
+	color: #4f4f4f;
+}
+
+.number {
+	margin-top: 55px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.numberone,
+.numbertwo,
+.email {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.contact a {
+	color: var(--text-color);
+	font-size: 18px;
+}
+
+.work {
+	margin-top: 35px;
+}
+
+.work h6 {
+	font-size: 25px;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+.work span {
+	color: #4e4e4e;
+	font-size: 20px;
+}
+
+.work p {
+	font-size: 20px;
+	margin-top: 15px;
+}
+
+.right {
+	width: 700px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.mapContainer {
+	width: 100%;
+	margin: 0 auto;
+	border-radius: 15px;
+	overflow: hidden; /* если нужно, чтобы карта не выходила за рамки */
+}
+
+.description {
+	width: 100%;
+	color: var(--white-color);
+	background: var(--accent-color);
+	padding: 30px;
+	border-radius: 100px;
+	text-align: center;
+	font-size: 22px;
+}
+
+.subscribe {
+	margin-top: 150px;
+	text-align: center;
+}
+
+.subscribe p {
+	margin-top: 30px;
+	margin-bottom: 50px;
+	font-size: 16px;
+}
+
+.grid {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 30px;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.contact {
+		flex-direction: column;
+		gap: 50px;
+	}
+
+	.left {
+		width: 100%;
+	}
+
+	.left__text p {
+		margin-top: 30px;
+		margin-bottom: 10px;
+		font-size: 20px;
+	}
+
+	.left__text span {
+		font-size: 16px;
+	}
+
+	.number {
+		margin-top: 30px;
+	}
+
+	.work {
+		margin-top: 30px;
+	}
+
+	.work h6 {
+		margin-bottom: 15px;
+	}
+
+	.work span {
+		font-size: 20px;
+	}
+
+	.work p {
+		font-size: 18px;
+		margin-top: 10px;
+	}
+
+	.right {
+		width: 100%;
+	}
+
+	.mapContainer {
+		width: 100%;
+	}
+
+	.description {
+		border-radius: 15px;
+		margin-top: 15px;
+		font-size: 18px;
+	}
+
+	.subscribe {
+		margin-top: 100px;
+	}
+
+	.subscribe p {
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+
+	.grid {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0px;
+	}
+
+	.grid img {
+		width: 200px;
+	}
+}

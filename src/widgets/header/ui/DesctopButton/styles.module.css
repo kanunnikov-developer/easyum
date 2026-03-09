@@ -1,0 +1,15 @@
+.button {
+	font-size: 14px;
+	padding: 10px 30px;
+	border: 1px solid var(--text-color);
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	background: none;
+	font-family: inherit;
+}
+
+.button:hover {
+	color: var(--accent-color);
+	border: 1px solid var(--accent-color);
+}

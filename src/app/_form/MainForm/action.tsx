@@ -33,6 +33,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 	const rawConsent = formData.get('pd_consent');
 	const rawSms = formData.get('sms_consent');
 	const rewNameForm = formData.get('nameForm');
+	const rawCity = formData.get('city');
 
 	const parsed = FormSchema.safeParse({
 		name: typeof rawName === 'string' ? rawName : '',
@@ -60,6 +61,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 		'Согласие на обработку персональных данных': rawConsent == null ? 'Нет' : 'Да',
 		'Согласие на рассылку': rawSms == null ? 'Нет' : 'Да',
 		'Имя формы': rewNameForm,
+		Город: rawCity,
 	};
 
 	console.log(data);

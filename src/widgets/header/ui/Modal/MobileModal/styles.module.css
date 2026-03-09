@@ -1,0 +1,212 @@
+/* MobileModal.module.css */
+
+.overlay {
+	position: fixed;
+	inset: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(4px);
+	z-index: 40;
+	animation: opacity 0.2s ease;
+}
+
+.menu {
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 80%;
+	max-width: 380px;
+	background-color: white;
+	z-index: 50;
+	transform: translateX(100%);
+	animation: fadeIn 0.2s ease;
+	box-shadow: -10px 0 25px rgba(0, 0, 0, 0.2);
+}
+
+.menuOpen {
+	transform: translateX(0);
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1.2rem;
+	border-bottom: 1px solid var(--light-accent-color);
+}
+
+.title {
+	font-size: 24px;
+	font-weight: 700;
+	color: var(--text-color);
+}
+
+.closeBtn {
+	border: none;
+	background: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	height: calc(100% - 64px); /* минус высота хедера ~64px */
+	overflow-y: auto;
+	font-family: inherit;
+}
+
+.nav {
+	flex: 1;
+	padding: 1rem 1rem;
+}
+
+.accordionItem {
+	border-bottom: 1px solid var(--light-accent-color);
+}
+
+.accordionItem:last-child {
+	border-bottom: none;
+}
+
+.accordionBtn {
+	font-size: 16px;
+	width: 100%;
+	display: flex;
+	font-family: var(--golos-text);
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 0.5rem;
+	text-align: left;
+	font-weight: 400;
+	background: none;
+	border: none;
+	cursor: pointer;
+	transition: color 0.2s;
+}
+
+.accordionBtn:hover {
+	color: #2563eb;
+}
+
+.arrow {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.3s ease;
+}
+
+.arrow img {
+	width: 24px;
+}
+
+.arrowOpen {
+	transform: rotate(180deg);
+}
+
+.accordionContent {
+	max-height: 0;
+	overflow: hidden;
+	opacity: 0;
+	transition:
+		max-height 0.3s ease,
+		opacity 0.3s ease;
+}
+
+.contentOpen {
+	max-height: 500px; /* большой запас, можно увеличить если нужно */
+	opacity: 1;
+}
+
+.submenu {
+	padding: 0rem 0 0.75rem 1rem;
+}
+
+.link {
+	font-size: 14px;
+	display: block;
+	padding: 0.5rem 0;
+	color: #374151;
+	text-decoration: none;
+	transition: color 0.2s;
+}
+
+.link:hover {
+	color: #2563eb;
+}
+
+.allCourses {
+	padding-top: 1rem;
+}
+
+.btnAll {
+	display: inline-block;
+	width: 100%;
+	padding: 0.75rem 1.5rem;
+	background-color: #2563eb;
+	color: white;
+	text-align: center;
+	border-radius: 0.5rem;
+	font-weight: 500;
+	text-decoration: none;
+	transition: background-color 0.2s;
+}
+
+.btnAll:hover {
+	background-color: #1d4ed8;
+}
+
+.footer {
+	border-top: 1px solid #e5e7eb;
+	padding: 1.5rem;
+	background-color: #f9fafb;
+	margin-top: auto;
+}
+
+.phone {
+	display: block;
+	font-size: 1.25rem;
+	font-weight: 600;
+	color: #2563eb;
+	text-align: center;
+	text-decoration: none;
+}
+
+.phone:hover {
+	text-decoration: underline;
+}
+
+.schedule {
+	margin-top: 0.25rem;
+	font-size: 0.875rem;
+	color: #6b7280;
+	text-align: center;
+}
+
+.socials {
+	display: flex;
+	justify-content: center;
+	gap: 1.5rem;
+	margin-top: 1.25rem;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateX(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes opacity {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

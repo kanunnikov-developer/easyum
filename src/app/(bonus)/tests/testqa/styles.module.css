@@ -1,0 +1,171 @@
+.page {
+	margin-bottom: 200px;
+}
+
+.form {
+	margin-top: 50px;
+}
+
+.description {
+	margin-top: 80px;
+	font-size: 16px;
+}
+
+.gallerry h2 {
+	margin-top: 80px;
+}
+
+.sertificate {
+	margin-top: 60px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.cards {
+	margin-top: 100px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.gridcard {
+	margin-top: 10px;
+	display: flex;
+	align-items: stretch;
+	justify-content: space-between;
+}
+
+.card {
+	padding: 30px;
+	background: var(--white-color);
+	border-radius: 15px;
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	width: calc((100% / 3) - 20px);
+}
+
+.cardtext {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.cardtext p {
+	font-size: 14px;
+	line-height: 22px;
+}
+
+.card2 {
+	position: relative;
+}
+
+.card2 h6 {
+	color: var(--light-accent-color);
+	font-size: 250px;
+	font-weight: 900;
+}
+
+.card2Text {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: 280px;
+	position: absolute;
+	top: 90px;
+	left: 100px;
+}
+
+.card2Text h6 {
+	color: var(--text-color);
+	font-size: 24px;
+	font-weight: 700;
+}
+
+.form {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.formLeft {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.form {
+		margin-top: 30px;
+	}
+
+	.description {
+		margin-top: 50px;
+	}
+
+	.gallerry h2 {
+		margin-top: 80px;
+	}
+
+	.sertificate {
+		margin-top: 50px;
+	}
+
+	.cards {
+		margin-top: 80px;
+		gap: 15px;
+	}
+
+	.gridcard {
+		margin-top: 10px;
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.card {
+		width: 100%;
+	}
+
+	.card2 {
+		position: relative;
+	}
+
+	.card2 h6 {
+		font-size: 150px;
+	}
+
+	.card2Text {
+		width: 80%;
+		position: absolute;
+		top: 50px;
+		left: 50px;
+	}
+
+	.card2Text h6 {
+		color: var(--text-color);
+		font-size: 24px;
+		font-weight: 700;
+	}
+
+	.form {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.form img {
+		display: none;
+	}
+
+	.formLeft {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
+}

@@ -1,0 +1,91 @@
+.page {
+	margin-bottom: 200px;
+}
+
+.discount__section {
+	margin-top: 80px;
+}
+
+.card_grid {
+	display: flex;
+	flex-direction: column;
+	gap: 100px;
+}
+
+.card_left,
+.card_right {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.info {
+	max-width: 700px;
+}
+
+.text p {
+	margin-top: 35px;
+	margin-bottom: 25px;
+	font-size: 25px;
+}
+
+.text span {
+	font-size: 16px;
+	color: #808080;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.discount__section {
+		margin-top: 50px;
+	}
+
+	.card_grid {
+		display: flex;
+		flex-direction: column;
+		gap: 100px;
+	}
+
+	.card_left,
+	.card_right {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+
+	.card_left img,
+	.card_right img {
+		margin-top: 20px;
+		width: 340px;
+	}
+
+	.image {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.card_left {
+		flex-direction: column-reverse;
+	}
+
+	.text h2 {
+		font-size: 24px;
+	}
+
+	.text p {
+		margin-top: 18px;
+		margin-bottom: 14px;
+		font-size: 18px;
+	}
+
+	.text span {
+		font-size: 14px;
+		color: #808080;
+	}
+}

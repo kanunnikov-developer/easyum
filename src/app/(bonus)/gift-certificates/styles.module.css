@@ -1,0 +1,176 @@
+.page {
+	margin-bottom: 200px;
+}
+
+.bg {
+	background-image: url('/bonus/certificates/headerBG.svg');
+	background-repeat: no-repeat;
+	position: absolute;
+	display: block;
+	left: 0;
+	top: 92px;
+	width: 100%;
+	height: 685px;
+	z-index: 0;
+}
+
+.header {
+	padding-top: 80px;
+	position: relative;
+	z-index: 2;
+	max-width: 600px;
+	color: var(--white-color);
+	margin-bottom: 300px;
+}
+
+.header p {
+	width: 450px;
+	font-size: 20px;
+	margin-top: 25px;
+	margin-bottom: 80px;
+}
+
+.header a {
+	display: inline-block;
+	padding: 30px 100px;
+	background: var(--red-color);
+	color: var(--white-color);
+	border-radius: 100px;
+}
+
+.gridDescription {
+	margin-top: 60px;
+	display: flex;
+	gap: 30px;
+}
+
+.cardDescription {
+	flex: 1; /* ВСЕ карточки одинаковой ширины */
+	background: var(--white-color);
+	border-radius: 15px;
+	padding: 30px 20px;
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	font-size: 15px;
+}
+
+.description h6 {
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+.certificate {
+	margin-top: 100px;
+}
+
+.gridCertificate {
+	margin-top: 30px;
+	display: flex;
+	gap: 30px;
+}
+
+.cardCertificate {
+	position: relative;
+	flex: 1;
+}
+
+.number {
+	font-size: 200px;
+	font-weight: 900;
+	z-index: 0;
+	color: var(--light-accent-color);
+}
+
+.text {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	font-size: 22px;
+	top: 45%;
+	left: 50px;
+}
+
+.feedback {
+	margin-top: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.left h2 {
+	max-width: 360px;
+	margin-bottom: 50px;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.bg {
+		top: 69px;
+		height: 400px;
+	}
+
+	.header {
+		padding-top: 40px;
+		width: 100%;
+		margin-bottom: 100px;
+	}
+
+	.header p {
+		width: 100%;
+		font-size: 18px;
+		margin-top: 18px;
+		margin-bottom: 48px;
+	}
+
+	.header a {
+		width: 100%;
+		text-align: center;
+		padding: 15px 50px;
+	}
+
+	.gridDescription {
+		margin-top: 60px;
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.certificate {
+		margin-top: 80px;
+	}
+
+	.gridCertificate {
+		margin-top: 15px;
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.number {
+		font-size: 150px;
+		line-height: 150px;
+	}
+
+	.text {
+		font-size: 19px;
+		top: 28%;
+		left: 50px;
+	}
+
+	.feedback {
+		margin-top: 100px;
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	.left h2 {
+		text-align: center;
+		margin: 0 auto;
+		max-width: 290px;
+		margin-bottom: 50px;
+	}
+}

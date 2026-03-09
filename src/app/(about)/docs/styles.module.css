@@ -1,0 +1,149 @@
+.page {
+	margin-bottom: 200px;
+}
+
+.content {
+	margin-top: 50px;
+	display: flex;
+}
+
+.left {
+	width: 350px;
+}
+
+.content h6 {
+	font-weight: 600;
+}
+
+.content p {
+	margin-top: 10px;
+	font-size: 14px;
+	color: #999999;
+}
+
+.oferta,
+.politico {
+	padding: 20px 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border-radius: 15px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	background: none;
+	min-height: 125px;
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+
+.accent {
+	background: var(--white-color);
+}
+
+/* ===== Правая часть ===== */
+
+.right {
+	padding: 50px;
+	min-height: 100vh;
+	background: var(--white-color);
+	width: calc(100% - 350px);
+	border-radius: 15px;
+	border-top-left-radius: 0px;
+	position: relative;
+	overflow: hidden;
+}
+
+/* Обёртка для анимации */
+.contentWrapper {
+	position: relative;
+}
+
+/* Общий стиль контента */
+.content__text {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	opacity: 0;
+	transform: translateY(15px);
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s ease;
+}
+
+/* Активный блок */
+.active {
+	position: relative;
+	opacity: 1;
+	transform: translateY(0);
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.content {
+		margin-top: 30px;
+		flex-direction: column;
+	}
+
+	.left {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.content h6 {
+		font-size: 18px;
+	}
+
+	.content p {
+		font-size: 16px;
+	}
+
+	.oferta,
+	.politico {
+		border: 1px solid var(--white-color);
+		padding: 30px 30px;
+		border-top-right-radius: 15px;
+		border-bottom-right-radius: 15px;
+		min-height: 80px;
+	}
+
+	.accent {
+		background: var(--white-color);
+		border: 1px solid var(--accent-color);
+	}
+
+	/* ===== Правая часть ===== */
+
+	.right {
+		margin-top: 30px;
+		padding: 30px;
+		width: 100%;
+		min-height: 500px;
+		border-top-left-radius: 15px;
+	}
+
+	/* Общий стиль контента */
+	.content__text {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		opacity: 0;
+		transform: translateY(15px);
+		transition:
+			opacity 0.3s ease,
+			transform 0.3s ease;
+	}
+
+	/* Активный блок */
+	.active {
+		position: relative;
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

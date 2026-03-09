@@ -1,0 +1,192 @@
+.page {
+	margin-bottom: 200px;
+}
+
+.header h1 {
+	margin-bottom: 50px;
+}
+
+.header p {
+	margin-bottom: 50px;
+}
+
+.cards {
+	margin-top: 80px;
+	display: flex;
+	flex-direction: column;
+	gap: 100px;
+}
+
+.card {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.info {
+	position: relative;
+	max-width: 600px;
+}
+
+.text p {
+	font-size: 20px;
+}
+
+.text {
+	width: 600px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	z-index: 2;
+}
+
+.numberLeft,
+.numberRigth {
+	font-size: 300px;
+	font-weight: 900;
+	line-height: 300px;
+	z-index: 1;
+	color: var(--light-accent-color);
+}
+
+.numberLeft {
+	position: absolute;
+	top: -30;
+	right: -80;
+}
+
+.numberRigth {
+	position: absolute;
+	top: -30;
+	left: -130;
+}
+
+.factors {
+	margin-top: 100px;
+}
+
+.cardGridFactors {
+	margin-top: 85px;
+	display: flex;
+	gap: 20px;
+	align-items: stretch; /* Все карточки растягиваются до высоты самой высокой */
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.card__factors {
+	position: relative;
+	padding: 30px 130px 65px 35px;
+	background: var(--white-color);
+	border-radius: 15px;
+	width: calc((100% / 2) - 10px);
+}
+
+.card__factors img {
+	position: absolute;
+	top: 120px;
+	right: 20px;
+}
+
+.card__factors .text {
+	max-width: 380px;
+	display: flex;
+	flex-direction: column;
+	gap: 35px;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.header h1 {
+		margin-bottom: 30px;
+	}
+
+	.header h2 {
+		font-size: 26px;
+	}
+
+	.header p {
+		margin-bottom: 50px;
+	}
+
+	.cards {
+		margin-top: 50px;
+		gap: 70px;
+	}
+
+	.card {
+		flex-direction: column;
+	}
+
+	.card img {
+		display: none;
+	}
+
+	.info {
+		max-width: 100%;
+	}
+
+	.text p {
+		font-size: 18px;
+	}
+
+	.text {
+		width: 100%;
+		gap: 15px;
+	}
+
+	.numberLeft,
+	.numberRigth {
+		font-size: 200px;
+	}
+
+	.numberLeft {
+		bottom: 0;
+		left: 0;
+	}
+
+	.numberRigth {
+		bottom: 0;
+		left: 0;
+	}
+
+	.factors {
+		margin-top: 100px;
+	}
+
+	.factors h2 {
+		width: 350px;
+	}
+
+	.cardGridFactors {
+		margin-top: 30px;
+		flex-direction: column;
+	}
+
+	.card__factors {
+		width: 100%;
+		padding: 30px;
+	}
+
+	.card__factors img {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		width: 64px;
+	}
+
+	.card__factors .text {
+		max-width: 380px;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.text h4 {
+		font-size: 18px;
+	}
+}

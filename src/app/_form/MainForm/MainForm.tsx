@@ -10,7 +10,11 @@ const initialState: State = {
 	success: false,
 };
 
-export default function MainForm() {
+interface Props {
+	city: string | undefined;
+}
+
+export default function MainForm({ city }: Props) {
 	const [pdConsent, setPdConsent] = useState(false);
 	const [smsConsent, setSmsConsent] = useState(false);
 	const [state, formAction] = useActionState(action, initialState);
@@ -45,6 +49,7 @@ export default function MainForm() {
 
 			<input type='text' name='comment' placeholder='Комментарий' />
 			<input type='hidden' name='nameForm' value='Форма главной странцы' />
+			<input type='hidden' name='city' value={city} />
 
 			<div className={styles.consent}>
 				<input

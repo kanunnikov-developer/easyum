@@ -18,15 +18,10 @@ export function proxy(request: NextRequest) {
 
 	const response = NextResponse.next();
 	response.headers.set('x-subdomain', subdomain);
-	// response.cookies.set('region_subdomain', subdomain, {
-	// 	path: '/',
-	// 	httpOnly: true,
-	// 	sameSite: 'lax',
-	// });
 
 	return response;
 }
 
 export const config = {
-	matcher: ['/', '/about', '/contact'],
+	matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
 };

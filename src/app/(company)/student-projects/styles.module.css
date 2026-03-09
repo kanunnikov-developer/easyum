@@ -1,0 +1,274 @@
+.page {
+	margin-bottom: 200px;
+}
+
+.bg {
+	background-image: url('/company/corporate/bg.svg');
+	background-repeat: no-repeat;
+	position: absolute;
+	display: block;
+	left: 0;
+	top: 92px;
+	width: 100%;
+	height: 685px;
+	z-index: 0;
+}
+
+.header {
+	margin-top: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: var(--white-color);
+}
+
+.header_left {
+	width: 600px;
+}
+
+.header_left p {
+	width: 500px;
+	margin-top: 25px;
+	margin-bottom: 80px;
+}
+
+.one {
+	margin-top: 150px;
+}
+
+.grid {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 50px;
+}
+
+.card {
+	position: relative;
+	border-radius: 15px;
+	background: var(--white-color);
+	padding: 25px;
+	width: calc((100% / 3) - 30px);
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	height: 230px;
+}
+
+.card h6 {
+	font-weight: 700;
+}
+
+.card p {
+	font-size: 15px;
+	max-width: 275px;
+}
+
+.img {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.howWork {
+	margin-top: 150px;
+	background: var(--accent-color);
+	border-radius: 25px;
+	padding: 40px 50px;
+	color: var(--white-color);
+}
+
+.how_grid {
+	position: relative;
+	margin-top: 50px;
+	display: flex;
+	align-items: start;
+	justify-content: space-between;
+}
+
+.how_item {
+	width: calc((100% / 4) - 20px);
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+}
+
+.number {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	width: 70px;
+	height: 70px;
+	padding: 10px;
+	font-size: 35px;
+	font-weight: 700;
+	align-items: center;
+	color: var(--accent-color);
+	background: var(--white-color);
+	border-radius: 100px;
+}
+
+.how_description {
+	font-size: 15px;
+}
+
+.border {
+	position: absolute;
+	width: 70%;
+	border: 1px dashed var(--white-color);
+	top: 25%;
+	left: 15%;
+	z-index: 0;
+}
+
+.postDescription {
+	font-size: 15px;
+	margin-top: 50px;
+}
+
+.section__form {
+	margin-top: 150px;
+	display: flex;
+	justify-content: space-between;
+	align-items: start;
+}
+
+.left h2 {
+	max-width: 470px;
+}
+
+.description {
+	max-width: 600px;
+	margin-top: 25px;
+	font-size: 25px;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.bg {
+		top: 69px;
+		height: 230px;
+	}
+
+	.header {
+		margin-top: 30px;
+		flex-direction: column;
+	}
+
+	.header_left {
+		width: 100%;
+	}
+
+	.header_left p {
+		width: 100%;
+		margin-top: 25px;
+		margin-bottom: 30px;
+	}
+
+	.header_right img {
+		display: none;
+	}
+
+	.one {
+		margin-top: 50px;
+	}
+
+	.one h2 {
+		margin: 0 auto;
+		width: 300px;
+		text-align: center;
+	}
+
+	.grid {
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.card {
+		width: 100%;
+		padding: 30px;
+		flex-direction: column;
+		gap: 15px;
+		height: 100%;
+	}
+
+	.card h6 {
+		font-size: 18px;
+	}
+
+	.card p {
+		max-width: 100%;
+	}
+
+	.img {
+		top: -35px;
+		width: 64px;
+	}
+
+	.howWork {
+		margin-top: 100px;
+		border-radius: 15px;
+		padding: 30px;
+	}
+
+	.how_grid {
+		margin-top: 30px;
+		flex-direction: column;
+		align-items: left;
+		justify-content: left;
+		gap: 30px;
+	}
+
+	.how_item {
+		width: 100%;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.number {
+		width: 60px;
+		height: 60px;
+		padding: 10px;
+		font-size: 28px;
+	}
+
+	.how_description {
+		font-size: 16px;
+	}
+
+	.border {
+		display: none;
+	}
+
+	.postDescription {
+		text-align: center;
+	}
+
+	.section__form {
+		margin-top: 100px;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.section__form .left {
+		text-align: center;
+	}
+
+	.left h2 {
+		max-width: 470px;
+	}
+
+	.description {
+		max-width: 100%;
+		margin-top: 15px;
+		font-size: 18px;
+		margin-bottom: 50px;
+	}
+}

@@ -1,0 +1,189 @@
+.page {
+	margin-bottom: 200px;
+}
+
+.cards {
+	margin-top: 100px;
+	display: flex;
+	flex-direction: column;
+	gap: 100px;
+}
+
+.card {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.info {
+	position: relative;
+	max-width: 540px;
+}
+
+.text h2 {
+	margin-bottom: 3px;
+}
+
+.text span {
+	font-size: 16px;
+	font-weight: 700;
+	color: var(--accent-color);
+}
+
+.text p {
+	margin-top: 30px;
+	max-width: 480px;
+	font-size: 18px;
+}
+
+.text {
+	position: relative;
+	z-index: 2;
+}
+
+.numberLeft,
+.numberRigth {
+	font-size: 300px;
+	font-weight: 900;
+	line-height: 300px;
+	z-index: 1;
+	color: var(--light-accent-color);
+}
+
+.numberLeft {
+	position: absolute;
+	top: -10;
+	right: -80;
+}
+
+.numberRigth {
+	position: absolute;
+	top: -70;
+	left: -140;
+}
+
+.refund {
+	margin-top: 100px;
+}
+
+.refund h2 {
+	margin-bottom: 50px;
+}
+
+.refund h3 {
+	margin-bottom: 30px;
+}
+
+.statement {
+	margin-top: 50px;
+	margin-bottom: 100px;
+	position: relative;
+	padding: 40px 60px 30px 60px;
+	background: var(--accent-color);
+	color: var(--white-color);
+	border-radius: 15px;
+}
+
+.statement p {
+	max-width: 65%;
+	margin-bottom: 35px;
+}
+
+.statement img {
+	position: absolute;
+	top: -70px;
+	right: 20px;
+}
+
+.button {
+	padding: 9px 40px;
+	font-size: 12px;
+	border: none;
+	background: var(--bg-color);
+	border-radius: 50px;
+	color: var(--text-color);
+}
+
+.start h3 {
+	margin-top: 65px;
+	margin-bottom: 20px;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.cards {
+		margin-top: 50px;
+		gap: 70px;
+	}
+
+	.card {
+		flex-direction: column;
+	}
+
+	.card img {
+		display: none;
+	}
+
+	.info {
+		max-width: 100%;
+	}
+
+	.text h2 {
+		margin-bottom: 3px;
+	}
+
+	.text span {
+		font-size: 16px;
+		font-weight: 700;
+		color: var(--accent-color);
+	}
+
+	.text p {
+		margin-top: 15px;
+		max-width: 100%;
+	}
+
+	.numberLeft,
+	.numberRigth {
+		font-size: 200px;
+	}
+
+	.numberLeft {
+		position: absolute;
+		top: -10%;
+		left: 0;
+	}
+
+	.numberRigth {
+		position: absolute;
+		top: -40%;
+		left: 0;
+	}
+
+	.refund h2 {
+		text-align: center;
+	}
+
+	.statement {
+		padding: 30px;
+		text-align: center;
+	}
+
+	.statement p {
+		text-align: center;
+		max-width: 100%;
+		margin-bottom: 35px;
+	}
+
+	.statement img {
+		display: none;
+	}
+
+	.start h3 {
+		margin-top: 30px;
+		margin-bottom: 25px;
+	}
+}

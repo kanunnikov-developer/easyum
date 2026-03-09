@@ -1,0 +1,92 @@
+.footer {
+	min-height: 510px;
+	background-image: url('../../../public/footer.svg');
+	padding-top: 70px;
+	color: var(--white-color);
+	font-size: 14px;
+}
+
+.content {
+	margin-top: 40px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.social {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.contact {
+	margin-top: 20px;
+}
+
+.contact a {
+	color: var(--white-color);
+	font-weight: 700;
+}
+
+.contact p {
+	margin-top: 5px;
+	font-size: 9px;
+	font-weight: 300;
+}
+
+.adress {
+	max-width: 165px;
+	margin-top: 20px;
+	line-height: 22px;
+}
+
+.politico {
+	font-size: 9px;
+	margin-top: 55px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.politico a {
+	color: var(--white-color);
+}
+
+.year {
+	font-weight: 700;
+}
+
+.title {
+	font-weight: 700;
+	line-height: 14px;
+}
+
+.navigation_popular {
+	display: flex;
+	gap: 40px;
+}
+
+.navigation {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.navigation a {
+	color: var(--white-color);
+}
+
+.Mobilefooter {
+	display: none;
+}
+
+@media screen and (max-width: 430px) {
+	.footer {
+		display: none;
+	}
+
+	.Mobilefooter {
+		display: block;
+	}
+}

@@ -1,0 +1,23 @@
+.item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 25px;
+	font-size: 16px;
+}
+
+@media screen and (max-width: 430px) {
+	.item {
+		display: flex;
+		flex-direction: row;
+		align-items: left;
+		text-align: left;
+		gap: 25px;
+		font-size: 18px;
+	}
+
+	.item img {
+		width: 90px;
+	}
+}

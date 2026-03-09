@@ -1,0 +1,78 @@
+/* Родитель для dropdown */
+.header__nav {
+	display: flex;
+	gap: 0px;
+}
+.header__nav__item {
+	font-size: 15px;
+	font-weight: 400;
+	padding: 20px;
+	color: var(--text-color);
+	transition: color 0.2s ease-in;
+}
+.header__nav__item:focus,
+.header__nav__item:active,
+.header__nav__item:visited {
+	color: var(--color-text);
+	text-decoration: none;
+	outline: none;
+}
+.header__nav__item:hover {
+	color: var(--accent-color);
+}
+
+.nav__item {
+	position: relative;
+	list-style: none;
+}
+
+/* Dropdown */
+.dropdown {
+	position: absolute;
+	top: 150%;
+	left: 0;
+	z-index: 900;
+
+	min-width: 230px;
+	padding: 10px 0;
+	margin: 0;
+
+	list-style: none;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(30px);
+	transition: all 0.2s ease;
+}
+
+/* Пункты внутри dropdown */
+.dropdown li {
+	padding: 8px 16px;
+	transition: all 0.2s ease;
+}
+
+.dropdown li a {
+	text-decoration: none;
+	color: var(--text-color);
+	font-size: 14px;
+	display: block;
+	transition: all 0.2s ease;
+}
+
+.dropdown li a:hover {
+	color: var(--accent-color);
+}
+
+.dropdown li:hover {
+	background: #f5f5f5;
+}
+
+/* Показываем меню */
+.nav__item:hover .dropdown {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}

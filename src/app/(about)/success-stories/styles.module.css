@@ -1,0 +1,118 @@
+.page {
+	margin-bottom: 200px;
+}
+
+.header p {
+	margin-top: 30px;
+}
+
+.grid {
+	margin-top: 100px;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	row-gap: 40px;
+	align-items: stretch;
+	gap: 40px;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	padding: 50px 25px 30px 25px;
+	border-radius: 15px;
+	background: var(--white-color);
+	width: calc((100% / 3) - 40px);
+	align-items: stretch;
+}
+
+.name {
+	margin-top: 20px;
+	text-align: center;
+	background: var(--white-color);
+}
+
+.name span {
+	font-size: 25px;
+	font-weight: 700;
+	color: var(--accent-color);
+}
+
+.name p {
+	margin-top: 6px;
+	font-size: 15px;
+}
+
+.description p {
+	margin-top: 25px;
+	margin-bottom: 40px;
+	text-align: left;
+	font-size: 15px;
+}
+
+.date p {
+	text-align: right;
+	font-size: 12px;
+}
+
+.date {
+	margin-top: auto;
+}
+
+.img {
+	position: relative;
+}
+
+.photo {
+	position: absolute;
+	top: 10px;
+	left: 30px;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.header p {
+		margin-top: 20px;
+	}
+
+	.grid {
+		margin-top: 50px;
+		flex-direction: column;
+		gap: 40px;
+	}
+
+	.card {
+		width: 100%;
+		padding: 30px;
+	}
+
+	.name {
+		margin-top: 10px;
+	}
+
+	.description p {
+		margin-bottom: 30px;
+		text-align: center;
+	}
+
+	.date p {
+		text-align: center;
+	}
+
+	.date {
+		margin-top: auto;
+	}
+
+	.img {
+		margin: 0 auto;
+		position: relative;
+	}
+
+	.photo {
+		top: 15px;
+	}
+}

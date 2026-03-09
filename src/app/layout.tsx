@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Golos_Text } from 'next/font/google';
 import './globals.css';
+import Header from '@/widgets/header/header';
+import Footer from '@/widgets/footer/footer';
 
 const GolosText = Golos_Text({
 	variable: '--golos-text',
@@ -21,7 +23,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={GolosText.variable}>{children}</body>
+			<body className={GolosText.variable}>
+				<Header />
+				{children}
+				<Footer />
+			</body>
 		</html>
 	);
 }

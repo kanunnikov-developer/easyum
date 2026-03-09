@@ -1,0 +1,58 @@
+.wrapper {
+	position: relative;
+	margin-top: 50px;
+}
+
+/* Общие стили стрелок */
+.prev,
+.next {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10;
+
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+}
+
+/* Левая стрелка */
+.prev {
+	left: -80px; /* регулируешь отступ */
+}
+
+/* Правая стрелка */
+.next {
+	right: -80px;
+}
+
+.prev img,
+.next img {
+	width: 40px;
+	height: 40px;
+}
+
+.reviews_card {
+	text-align: center;
+}
+
+.reviews_card img {
+	border-radius: 15px;
+}
+
+@media screen and (max-width: 430px) {
+	.wrapper {
+		margin-top: 30px;
+	}
+
+	/* Левая стрелка */
+	.prev {
+		left: -5px; /* регулируешь отступ */
+	}
+
+	/* Правая стрелка */
+	.next {
+		right: -5px;
+	}
+}

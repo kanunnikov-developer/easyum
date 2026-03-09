@@ -1,0 +1,33 @@
+.breadcrumbs {
+	margin-top: 48px;
+	margin-bottom: 24px;
+	font-size: 15px;
+	color: var(--text-color);
+}
+
+.link {
+	color: var(--accent-color);
+	text-decoration: none;
+	transition: all 0.2s ease-in;
+}
+
+.link:hover {
+	opacity: 70%;
+}
+
+.current {
+	color: #525252;
+	font-weight: 500;
+}
+
+.separator {
+	margin: 0 0.5rem;
+	color: #a8a8a8;
+}
+
+@media screen and (max-width: 430px) {
+	.breadcrumbs {
+		margin-top: 32px;
+		font-size: 12px;
+	}
+}

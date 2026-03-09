@@ -1,0 +1,147 @@
+.footer {
+	padding-top: 15px;
+	background-color: var(--accent-color);
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	overflow-y: auto;
+}
+
+.accordionItem {
+	border-bottom: 1px solid var(--light-accent-color);
+}
+
+.accordionBtn {
+	font-size: 20px;
+	width: 100%;
+	display: flex;
+	font-family: var(--golos-text);
+	justify-content: space-between;
+	align-items: center;
+	padding: 1.5rem 0;
+	text-align: left;
+	font-weight: 400;
+	background: none;
+	border: none;
+	cursor: pointer;
+	transition: color 0.2s;
+	color: var(--white-color);
+}
+
+.arrow {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.3s ease;
+}
+
+.arrow img {
+	width: 24px;
+}
+
+.arrowOpen {
+	transform: rotate(180deg);
+}
+
+.accordionContent {
+	max-height: 0;
+	overflow: hidden;
+	opacity: 0;
+	transition:
+		max-height 0.3s ease,
+		opacity 0.3s ease;
+}
+
+.contentOpen {
+	max-height: 500px; /* большой запас, можно увеличить если нужно */
+	opacity: 1;
+}
+
+.submenu {
+	padding: 0rem 0 0.75rem 1rem;
+}
+
+.link {
+	font-size: 14px;
+	display: block;
+	padding: 0.5rem 0;
+	color: var(--white-color);
+	text-decoration: none;
+	transition: color 0.2s;
+}
+
+.allCourses {
+	padding-top: 1rem;
+}
+
+.btnAll {
+	display: inline-block;
+	width: 100%;
+	padding: 0.75rem 1.5rem;
+	background-color: var(--white-color);
+	color: var(--accent-color);
+	text-align: center;
+	border-radius: 0.5rem;
+	font-weight: 500;
+	text-decoration: none;
+	transition: background-color 0.2s;
+}
+
+.footerMenu {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 50px;
+}
+
+.social {
+	margin-top: 15px;
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.social img {
+	width: 24px;
+}
+
+.contact {
+	margin-top: 15px;
+	color: var(--white-color);
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	font-size: 16px;
+}
+
+.contact a {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.footer__rigth {
+	width: 45%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	font-size: 14px;
+	margin-top: 10px;
+	color: var(--white-color);
+	text-align: right;
+}
+
+.politico {
+	margin-top: 20px;
+}
+
+.politico a {
+	display: inline-block;
+	font-size: 8px;
+}
+
+.year {
+	font-size: 10px;
+	font-weight: 700;
+}

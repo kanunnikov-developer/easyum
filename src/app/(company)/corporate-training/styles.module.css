@@ -1,0 +1,162 @@
+.page {
+	margin-bottom: 200px;
+}
+
+.bg {
+	background-image: url('/company/corporate/bg.svg');
+	background-repeat: no-repeat;
+	position: absolute;
+	display: block;
+	left: 0;
+	top: 92px;
+	width: 100%;
+	height: 685px;
+	z-index: 0;
+}
+
+.header {
+	margin-top: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: var(--white-color);
+}
+
+.header_left {
+	width: 600px;
+}
+
+.header_left p {
+	width: 500px;
+	margin-top: 25px;
+	margin-bottom: 80px;
+}
+
+.primeris {
+	margin-top: 150px;
+}
+
+.description {
+	margin-top: 120px;
+	position: relative;
+	z-index: 0;
+}
+.description h2 {
+	margin-bottom: 35px;
+}
+
+.description img {
+	margin-top: 120px;
+}
+
+.span {
+	position: absolute;
+	top: -130px;
+	left: 30px;
+	color: var(--light-accent-color);
+	font-weight: 900;
+	font-size: 350px;
+	z-index: -1;
+}
+
+.imageMobile {
+	display: none;
+}
+
+.form {
+	margin-top: 100px;
+}
+
+.section__row {
+	display: flex;
+	align-items: start;
+	justify-content: space-between;
+}
+
+.section__row .left {
+	width: 400px;
+	position: relative;
+}
+
+.section__row .left img {
+	position: absolute;
+	top: -20px;
+	right: -250px;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.bg {
+		top: 69px;
+		height: 250px;
+	}
+
+	.header {
+		margin-top: 30px;
+		flex-direction: column;
+	}
+
+	.header_left {
+		width: 100%;
+	}
+
+	.header_left p {
+		width: 100%;
+		margin-top: 25px;
+		margin-bottom: 30px;
+	}
+
+	.header_right img {
+		display: none;
+	}
+
+	.primeris {
+		margin-top: 50px;
+	}
+
+	.description {
+		margin-top: 30px;
+	}
+
+	.description h2 {
+		margin-bottom: 15px;
+	}
+
+	.description img {
+		width: 100%;
+		margin-top: 50px;
+	}
+
+	.span {
+		display: none;
+	}
+
+	.imageDesctop {
+		display: none;
+	}
+
+	.imageMobile {
+		display: block;
+	}
+
+	.form {
+		margin-top: 80px;
+	}
+
+	.section__row {
+		flex-direction: column;
+		gap: 60px;
+	}
+
+	.section__row .left {
+		width: 100%;
+		text-align: center;
+	}
+
+	.section__row .left img {
+		display: none;
+	}
+}
