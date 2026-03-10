@@ -3,6 +3,7 @@ import { Golos_Text } from 'next/font/google';
 import './globals.css';
 import Header from '@/widgets/header/header';
 import Footer from '@/widgets/footer/footer';
+import DiscountTimerBar from '@/widgets/discountBar/DiscountBar';
 
 const GolosText = Golos_Text({
 	variable: '--golos-text',
@@ -41,6 +42,8 @@ export default function RootLayout({
 				<Header />
 				{children}
 				<Footer />
+
+				<DiscountTimerBar />
 			</body>
 		</html>
 	);
