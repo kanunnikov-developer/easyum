@@ -44,7 +44,6 @@ export default function ModalDesctop({ isOpen, onClose }: Props) {
 							<p>С</p>
 							<div className={styles.cities}>
 								<a href={cities[3].href + `${pathname}`}>Санкт-Петербург</a>
-								{/* Комментарий */}
 							</div>
 						</div>
 					</div>
