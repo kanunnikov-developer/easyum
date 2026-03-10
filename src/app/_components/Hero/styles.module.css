@@ -2,6 +2,62 @@
 	position: relative;
 }
 
+.circle1 {
+	position: absolute;
+	top: -300px;
+	left: -700px;
+	width: 620px;
+	height: 620px;
+	border-radius: 100%;
+	background: #eef1f8;
+	z-index: -1;
+}
+.circle2 {
+	position: absolute;
+	top: 200px;
+	left: -350px;
+	width: 300px;
+	height: 300px;
+	border-radius: 100%;
+	border: 1px solid var(--accent-color);
+	opacity: 50%;
+	z-index: 0;
+}
+
+.circle3 {
+	position: absolute;
+	top: -300px;
+	right: -830px;
+	width: 700px;
+	height: 700px;
+	border-radius: 100%;
+	background: #eef1f8;
+	z-index: -1;
+}
+
+.circle4 {
+	position: absolute;
+	top: 520px;
+	right: 430px;
+	width: 200px;
+	height: 200px;
+	border-radius: 100%;
+	background: #eef1f8;
+	z-index: -1;
+}
+
+.circle5 {
+	position: absolute;
+	top: 650px;
+	right: 400px;
+	width: 100px;
+	height: 100px;
+	border-radius: 100%;
+	border: 1px solid var(--accent-color);
+	opacity: 50%;
+	z-index: 0;
+}
+
 .small {
 	font-size: 60px;
 	line-height: 65px;

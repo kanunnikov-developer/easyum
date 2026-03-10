@@ -8,6 +8,11 @@ import cn from 'classnames';
 export default function Hero() {
 	return (
 		<section className={styles.hero}>
+			<div className={styles.circle1}></div>
+			<div className={styles.circle2}></div>
+			<div className={styles.circle3}></div>
+			<div className={styles.circle4}></div>
+			<div className={styles.circle5}></div>
 			<div className={styles.hero__text}>
 				<Suspense fallback={<h1 className='accent'>{`Курсы \n it-профессий \n в Москве`}</h1>}>
 					<Wrapper />
