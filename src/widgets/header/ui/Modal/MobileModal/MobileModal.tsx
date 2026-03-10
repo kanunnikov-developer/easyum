@@ -67,7 +67,9 @@ export default function MobileModal({ isOpen, onClose }: MobileModalProps) {
 								<Link href={cities[2].href + `${pathname}`} className={styles.link}>
 									Краснодар
 								</Link>
-								{/* добавь остальные */}
+								<Link href={cities[3].href + `${pathname}`} className={styles.link}>
+									Санкт-Петербург
+								</Link>
 							</div>
 						</AccordionItem>
 
