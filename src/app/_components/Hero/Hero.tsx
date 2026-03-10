@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import styles from './styles.module.css';
 import Image from 'next/image';
-import getRegion, { Region } from '@/lib/getRegion';
+import getRegion from '@/lib/getRegion';
 import { Suspense } from 'react';
+import cn from 'classnames';
 
 export default function Hero() {
 	return (
@@ -37,7 +38,11 @@ export default function Hero() {
 async function Wrapper() {
 	const region = await getRegion();
 	return (
-		<h1 className='accent'>
+		<h1
+			className={cn('accent', {
+				[styles.small]: region?.subdomain === 'spb',
+			})}
+		>
 			{`Курсы \n it-профессий \n`} в {region?.preposutional}
 		</h1>
 	);

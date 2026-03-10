@@ -17,4 +17,9 @@ export const cities = [
 		name: 'Краснодар',
 		href: `${link}krasnodar.${site}`,
 	},
+	{
+		id: 4,
+		name: 'Санкт-Петербург',
+		href: `${link}spb.${site}`,
+	},
 ];
