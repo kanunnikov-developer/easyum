@@ -1,6 +1,5 @@
 import getRegion from '@/lib/getRegion';
 import styles from './styles.module.css';
-import cn from 'classnames';
 import CertificateForm from '@/app/_form/CertificateForm/CertificateForm';
 import { Suspense } from 'react';
 
@@ -15,7 +14,7 @@ export default function Page() {
 						Подарите близким, друзьям и коллегам шанс научиться новому! У нас более 24 курсов на выбор — интересный
 						найдётся для каждого.
 					</p>
-					<a href='#'>Купить</a>
+					<a href='#certificate-form'>Купить</a>
 				</section>
 
 				<section className={styles.gridDescription}>
@@ -75,7 +74,7 @@ export default function Page() {
 					</div>
 				</section>
 
-				<section className={styles.feedback}>
+				<section className={styles.feedback} id='certificate-form'>
 					<div className={styles.left}>
 						<h2>Оставьте заявку на сертификат</h2>
 						<Suspense fallback={<CertificateForm city='Москва' />}>

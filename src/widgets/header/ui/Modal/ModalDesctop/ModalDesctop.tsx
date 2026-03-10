@@ -1,3 +1,4 @@
+import { cities } from '@/lib/cities';
 import styles from './styles.module.css';
 import { usePathname } from 'next/navigation';
 
@@ -18,7 +19,7 @@ export default function ModalDesctop({ isOpen, onClose }: Props) {
 						<div className={styles.sumbolCity}>
 							<p>К</p>
 							<div className={styles.cities}>
-								<a href={`http://krasnodar.localhost:3000${pathname}`}>Краснодар</a>
+								<a href={cities[2].href + `${pathname}`}>Краснодар</a>
 							</div>
 						</div>
 					</div>
@@ -26,7 +27,7 @@ export default function ModalDesctop({ isOpen, onClose }: Props) {
 						<div className={styles.sumbolCity}>
 							<p>M</p>
 							<div className={styles.cities}>
-								<a href={`http://msc.localhost:3000${pathname}`}>Москва</a>
+								<a href={cities[0].href + `${pathname}`}>Москва</a>
 							</div>
 						</div>
 					</div>
@@ -34,7 +35,7 @@ export default function ModalDesctop({ isOpen, onClose }: Props) {
 						<div className={styles.sumbolCity}>
 							<p>Р</p>
 							<div className={styles.cities}>
-								<a href={`http://rostov.localhost:3000${pathname}`}>Ростов-на-Дону</a>
+								<a href={cities[1].href + `${pathname}`}>Ростов-на-Дону</a>
 							</div>
 						</div>
 					</div>

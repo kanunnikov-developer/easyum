@@ -6,9 +6,7 @@ export default function Navigation() {
 		<nav>
 			<ul className={styles.header__nav}>
 				<li className={styles.nav__item}>
-					<Link href='/' className={styles.header__nav__item}>
-						О нас
-					</Link>
+					<div className={styles.header__nav__item}>О нас</div>
 
 					<ul className={styles.dropdown}>
 						<li>
@@ -33,9 +31,7 @@ export default function Navigation() {
 				</li>
 
 				<li className={styles.nav__item}>
-					<Link href='/' className={styles.header__nav__item}>
-						Бонусы
-					</Link>
+					<div className={styles.header__nav__item}>Бонусы</div>
 
 					<ul className={styles.dropdown}>
 						<li>
@@ -54,9 +50,7 @@ export default function Navigation() {
 				</li>
 
 				<li className={styles.nav__item}>
-					<Link href='/' className={styles.header__nav__item}>
-						Компаниям
-					</Link>
+					<div className={styles.header__nav__item}>Компаниям</div>
 
 					<ul className={styles.dropdown}>
 						<li>

@@ -1,5 +1,5 @@
-const link = 'http://';
-const site = 'localhost:3000';
+const link = 'https://';
+const site = 'girakequuce.beget.app';
 
 export const cities = [
 	{

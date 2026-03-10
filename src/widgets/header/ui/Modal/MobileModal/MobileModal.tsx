@@ -58,13 +58,13 @@ export default function MobileModal({ isOpen, onClose }: MobileModalProps) {
 							onToggle={() => toggleAccordion('Города')}
 						>
 							<div className={styles.submenu}>
-								<Link href={cities[0].href + `/${pathname}`} className={styles.link}>
+								<Link href={cities[0].href + `${pathname}`} className={styles.link}>
 									Москва
 								</Link>
-								<Link href={cities[1].href + `/${pathname}`} className={styles.link}>
+								<Link href={cities[1].href + `${pathname}`} className={styles.link}>
 									Ростов-на-Дону
 								</Link>
-								<Link href={cities[2].href + `/${pathname}`} className={styles.link}>
+								<Link href={cities[2].href + `${pathname}`} className={styles.link}>
 									Краснодар
 								</Link>
 								{/* добавь остальные */}
