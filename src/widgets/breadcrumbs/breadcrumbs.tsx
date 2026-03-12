@@ -39,6 +39,41 @@ export default function Breadcrumbs() {
 			'mobile-development': 'Мобильная разработка',
 			'3d-modeling': '3D Моделирование',
 			other: 'Другие курсы',
+
+			'java-junior': 'Java Junior',
+			'java-pro': 'Java Разработчик',
+			'python-data-science': 'Python Аналитик',
+			'c-plus-plus': 'C++ Разработчик',
+			'python-web-development': 'Python Разработчик',
+			'java-middle-spring-hibernate': 'Java Middle',
+			'php-junior': 'PHP Junior',
+
+			'qa-pro': 'Тестирование ПО',
+			'testing-qa': 'Тестирование ПО',
+			'qa-avtomation': 'Тестирование Java',
+			'python-qa-avtomation': 'Тестирование Python',
+
+			'java-script-full-stack': 'JavaScript Full Stack',
+			'javascript-front-end': 'JavaScript Front-End',
+			'html-css-moskow': 'HTML/CSS Верстка',
+			'java-script-language': 'JavaScript',
+
+			'web-design-ui-ux': 'Web Design UI/UX',
+			'graphic-designer': 'Графический дизайнер',
+			'design-dlya-nachinayshih': 'Основы дизайнаы',
+
+			smm: 'SMM Продвижение',
+			'internet-marketing': 'Интернет-маркетинг',
+			'reklama-ppc': 'Контекстная реклама',
+			'reklama-vkontakte-telegram': 'Таргетированная реклама',
+
+			'java-android': 'Android Разработчик',
+			'mobiledev-ios': 'IOS Разработчик',
+
+			'3d-max': '3D Моделирование',
+
+			'pm-kurs': 'IT Project Manager',
+			'manager-marketplace': 'Менеджер маркетплейсов',
 		};
 
 		// Если сегмент — динамический id, можно показать "Курс Java" или что-то
