@@ -8,7 +8,7 @@ export const marketingCourses: CardCourses[] = [
 	{
 		id: '19',
 		img: '/courses/marketing/smm.png',
-		link: '/courses/smm',
+		link: '/courses/marketing/smm',
 	},
 	{
 		id: '20',

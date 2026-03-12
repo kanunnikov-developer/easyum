@@ -20,9 +20,4 @@ export const designCourses: CardCourses[] = [
 		img: '/courses/design/junior.png',
 		link: '/courses/design/design-dlya-nachinayshih',
 	},
-	{
-		id: '19',
-		img: '/courses/marketing/smm.png',
-		link: '/courses/smm',
-	},
 ];

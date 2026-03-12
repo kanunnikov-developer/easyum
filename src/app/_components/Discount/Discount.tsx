@@ -7,7 +7,7 @@ export default function Discount() {
 	return (
 		<section className={styles.discount}>
 			<div className={styles.image}>
-				<Image src='/main/discount.svg' alt='Картинка скидка' width={460} height={445} className={styles.img} />
+				<Image src='/main/discount_2.svg' alt='Картинка скидка' width={460} height={465} className={styles.img} />
 			</div>
 			<div className={styles.discount__text}>
 				<p className={styles.discount__title}>

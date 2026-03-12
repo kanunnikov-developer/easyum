@@ -20,10 +20,10 @@ export default function Hero() {
 				<p className={styles.hero__description}>Войди в it всего за 5-7 месяцев!</p>
 				<div className={styles.image}>
 					<Image
-						src='/main/main.png'
+						src='/main/main_2.svg' // Жертва LCP 2,4s против png в 0.80s
 						alt='Главная картинка'
-						width={848}
-						height={612}
+						width={875}
+						height={602}
 						className={styles.img}
 						fetchPriority='high'
 						loading='eager'
