@@ -1,0 +1,96 @@
+.teacherVideo {
+	position: relative;
+	margin-top: 150px;
+}
+
+.circle1 {
+	position: absolute;
+	top: 250px;
+	left: 300px;
+	width: 420px;
+	height: 420px;
+	border-radius: 100%;
+	background: #eef1f8;
+	z-index: -1;
+}
+.circle2 {
+	position: absolute;
+	top: 500px;
+	left: 250px;
+	width: 200px;
+	height: 200px;
+	border-radius: 100%;
+	border: 1px solid var(--accent-color);
+	opacity: 50%;
+	z-index: 0;
+}
+
+.circle5 {
+	position: absolute;
+	top: 450px;
+	right: -100px;
+	width: 250px;
+	height: 250px;
+	border-radius: 100%;
+	border: 1px solid var(--accent-color);
+	opacity: 50%;
+	z-index: 0;
+}
+
+.teacherVideo__content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 60px;
+	gap: 10px; /* расстояние между фото и видео — по вкусу */
+	flex-wrap: wrap; /* на узких экранах фото и видео встанут друг под друга */
+}
+
+.teacherVideo__video {
+	position: relative;
+	border-radius: 20px;
+	width: 100%;
+	height: 400px;
+	aspect-ratio: 16 / 9; /* подгони под реальное соотношение твоего видео */
+	overflow: hidden;
+	background: #000;
+	flex: 1; /* видео займёт оставшееся пространство */
+	min-width: 320px; /* минимальная ширина, чтобы не сжималось слишком */
+}
+
+.videoPlayer {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* cover — заполнит полностью, без пустых зон */
+	object-position: center;
+	display: block; /* убирает лишние отступы под видео */
+}
+
+@media screen and (max-width: 430px) {
+	.teacherVideo {
+		margin-top: 100px;
+	}
+
+	.circle1 {
+		display: none;
+	}
+	.circle2 {
+		display: none;
+	}
+
+	.circle5 {
+		display: none;
+	}
+
+	.teacherVideo__content {
+		margin-top: 30px;
+	}
+
+	.teacherVideo__image {
+		display: none;
+	}
+
+	.teacherVideo__video {
+		height: 250px;
+	}
+}

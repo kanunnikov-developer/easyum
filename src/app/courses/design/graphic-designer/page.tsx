@@ -2,6 +2,8 @@ import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs';
 import styles from './styles.module.css';
 import { dateStart } from '../../startCourses.info';
 import Hero from '../../_components/Hero/Hero';
+import GetLesson from '../../_components/GetLesson/GetLesson';
+import Description from '../../_components/Description/Description';
 
 const course = {
 	title: dateStart[16].course,
@@ -26,6 +28,15 @@ export default function Page() {
 					img={course.img}
 					date={course.date}
 					duration={course.duration}
+				/>
+
+				<GetLesson />
+
+				<Description
+					title={`Чем занимается \n`}
+					accent='графический дизайнер?'
+					description={`Графический дизайнер создает визуальное оформление бренда. \n\n Его задача сделать запоминающийся и уникальный дизайн, который полюбится покупателям и поможет продать продукт. \n\n Вы будете разрабатывать логотипы, создавать иллюстрации, придумывать упаковку, фирменный стиль бренда и делать множество других коммерческих задач.`}
+					img='/courses/design/graphic-designer/description.svg'
 				/>
 			</div>
 		</div>

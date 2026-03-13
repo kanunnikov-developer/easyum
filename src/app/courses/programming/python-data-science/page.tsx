@@ -2,6 +2,8 @@ import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs';
 import styles from './styles.module.css';
 import { dateStart } from '../../startCourses.info';
 import Hero from '../../_components/Hero/Hero';
+import GetLesson from '../../_components/GetLesson/GetLesson';
+import Description from '../../_components/Description/Description';
 
 const course = {
 	title: dateStart[2].course,
@@ -27,6 +29,15 @@ export default function Page() {
 					img={course.img}
 					date={course.date}
 					duration={course.duration}
+				/>
+
+				<GetLesson />
+
+				<Description
+					title={`Что же такое`}
+					accent='Data Science?'
+					description={`Data Science (или Аналитика данных) – наука по работе с большими объемами данных. Благодаря ей можно быстро решать задачи, требующие обработки огромных массивов данных. \n\n С помощью результа анализа данных, который предоставляет Python Data Science специалист (Data Scientist), бизнес может принимать обоснованные решения и предугадывать желания клиентов.`}
+					img='/courses/programming/python-data-science/description.svg'
 				/>
 			</div>
 		</div>

@@ -1,0 +1,161 @@
+.getLesson__buttons {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.button__image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.button {
+	padding: 10px 25px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: var(--white-color);
+	background: none;
+	font-size: 18px;
+	border-radius: 50px;
+	border: none;
+	transition: all 0.2s ease;
+	cursor: pointer;
+}
+
+.button__telegram {
+	border: 1px solid #56bff5;
+	background: #56bff5;
+}
+
+.button__whatsapp {
+	border: 1px solid #22d565;
+	background: #22d565;
+}
+
+.button__telegram:hover,
+.button__whatsapp:hover {
+	background: none;
+	border: 1px solid var(--white-color);
+}
+
+.overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+
+	animation: opacity 0.2s ease;
+}
+
+.modal {
+	background: #f5f7ff;
+	padding: 40px;
+	border-radius: 20px;
+	width: full-content;
+	color: var(--text-color);
+
+	animation: fadeIn 0.2s ease;
+}
+
+.modal__row {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.modal__text {
+	width: 500px;
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+.modal__text p {
+	width: 430px;
+	font-size: 18px;
+}
+
+.modal__form p {
+	font-weight: 700;
+}
+
+.form {
+	margin-top: 30px;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes opacity {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@media screen and (max-width: 430px) {
+	.getLesson__buttons {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.button {
+		width: 100%;
+		padding: 10px 25px;
+		justify-content: center;
+		font-size: 22px;
+	}
+
+	.button__image,
+	.button__image img {
+		width: 32px;
+		height: 32px;
+	}
+
+	.modal {
+		width: 90%;
+		padding: 30px;
+	}
+
+	.modal__row {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+
+	.modal__text {
+		width: 100%;
+		gap: 20px;
+	}
+
+	.modal__text p {
+		width: 100%;
+		margin-bottom: 0px;
+	}
+
+	.modal__form p {
+		display: none;
+	}
+
+	.form {
+		text-align: left;
+	}
+}

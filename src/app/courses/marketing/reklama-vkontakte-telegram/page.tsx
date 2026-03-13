@@ -2,6 +2,9 @@ import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs';
 import styles from './styles.module.css';
 import { dateStart } from '../../startCourses.info';
 import Hero from '../../_components/Hero/Hero';
+import TeacherVideo from '../../_components/TeacherVideo/TeacherVideo';
+import GetLesson from '../../_components/GetLesson/GetLesson';
+import Description from '../../_components/Description/Description';
 
 const course = {
 	title: dateStart[21].course,
@@ -26,6 +29,17 @@ export default function Page() {
 					img={course.img}
 					date={course.date}
 					duration={course.duration}
+				/>
+
+				<TeacherVideo />
+
+				<GetLesson />
+
+				<Description
+					title={`Кто такой`}
+					accent={`таргетолог?`}
+					description={`Таргетированная реклама это направление интернет-маркетинга, концентрирующееся на рекламе в социальных сетях и их партнерских площадках. Это важный канал развития бизнеса, ведь благодаря рекламе даже начинающий предприниматель может быстро найти свою аудиторию. \n\n Таргетолог анализирует целевую аудиторию проекта, и настраивает точечную рекламу, основываясь на демографии и интересах человека. Он должен не только хорошо разбираться в технической настройке рекламы, но и создавать цепляющий контент, тестировать гипотезы и анализировать результаты.`}
+					img='/courses/marketing/reklama-vkontakte-telegram/description.svg'
 				/>
 			</div>
 		</div>
