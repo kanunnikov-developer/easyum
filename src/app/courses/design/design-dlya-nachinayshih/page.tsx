@@ -2,6 +2,8 @@ import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs';
 import styles from './styles.module.css';
 import { dateStart } from '../../startCourses.info';
 import Hero from '../../_components/Hero/Hero';
+import GetLesson from '../../_components/GetLesson/GetLesson';
+import Description from '../../_components/Description/Description';
 
 const course = {
 	title: dateStart[17].course,
@@ -27,6 +29,15 @@ export default function Page() {
 					img={course.img}
 					date={course.date}
 					duration={course.duration}
+				/>
+
+				<GetLesson />
+
+				<Description
+					title={`Графические редакторы –`}
+					accent='главные инструменты дизайнера'
+					description={`Умение пользоваться графическими редакторами открывает много возможностей как для будущего дизайнера, так и для специалистов других профессий.`}
+					img='/courses/design/graphic-designer/description.svg'
 				/>
 			</div>
 		</div>

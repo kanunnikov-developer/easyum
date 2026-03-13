@@ -2,6 +2,8 @@ import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs';
 import styles from './styles.module.css';
 import { dateStart } from '../../startCourses.info';
 import Hero from '../../_components/Hero/Hero';
+import GetLesson from '../../_components/GetLesson/GetLesson';
+import Description from '../../_components/Description/Description';
 
 const course = {
 	title: dateStart[23].course,
@@ -26,6 +28,15 @@ export default function Page() {
 					img={course.img}
 					date={course.date}
 					duration={course.duration}
+				/>
+
+				<GetLesson />
+
+				<Description
+					title={`Чем занимается`}
+					accent={`мобильный разработчик на iOS?`}
+					description={`iOS-разработчик отвечает за все этапы создания приложения: разрабатывает архитектуру, проектирует интерфейс, тестирует код и выгружает готовый проект в App Store. \n\n Также программист поддерживает уже разработанное приложение. Он правит баги, пишет обновления, добавляет новые функции.`}
+					img='/courses/testing/qa-avtomation/description.svg'
 				/>
 			</div>
 		</div>

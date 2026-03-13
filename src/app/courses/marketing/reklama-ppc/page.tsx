@@ -2,6 +2,9 @@ import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs';
 import styles from './styles.module.css';
 import { dateStart } from '../../startCourses.info';
 import Hero from '../../_components/Hero/Hero';
+import TeacherVideo from '../../_components/TeacherVideo/TeacherVideo';
+import GetLesson from '../../_components/GetLesson/GetLesson';
+import Description from '../../_components/Description/Description';
 
 const course = {
 	title: dateStart[20].course,
@@ -26,6 +29,17 @@ export default function Page() {
 					img={course.img}
 					date={course.date}
 					duration={course.duration}
+				/>
+
+				<TeacherVideo />
+
+				<GetLesson />
+
+				<Description
+					title={`Контекстолог привлекает \n`}
+					accent={`новых клиентов`}
+					description={`Главная задача специалиста по контекстной рекламе – рекламировать бизнес в интернете и привлекать новых клиентов. \n\n Контекстолог подбирает ключевые слова, настраивает рекламные кампании, анализирует показатели каналов и креативов, ищет способы улучшить результаты и оптимизирует расходы.`}
+					img='/courses/testing/qa-avtomation/description.svg'
 				/>
 			</div>
 		</div>

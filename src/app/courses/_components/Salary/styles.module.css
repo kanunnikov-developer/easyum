@@ -1,0 +1,71 @@
+.salary {
+	padding: 30px 60px;
+	margin-top: 100px;
+	background-image: url(../../../../../public/courses/ui/sallary/sallary.svg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	border-radius: 20px;
+}
+
+.salary__row {
+	display: flex;
+	align-items: center;
+}
+
+.sallary__text {
+	min-width: 450px;
+}
+
+.title {
+	font-size: 32px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+.description {
+	font-size: 16px;
+	width: 300px;
+}
+
+.sallary__info {
+	width: 100%;
+}
+
+.salary__levels {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	opacity: 80%;
+	font-size: 18px;
+}
+
+@media screen and (max-width: 430px) {
+	.salary {
+		padding: 20px 30px;
+		margin-top: 50px;
+		background-image: none;
+		background: #e2ecff;
+		border: 1px solid var(--accent-color);
+		background-repeat: no-repeat;
+		background-size: 100%;
+		border-radius: 20px;
+	}
+
+	.salary__row {
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	.sallary__text {
+		text-align: center;
+		min-width: 100%;
+	}
+
+	.title {
+		font-size: 28px;
+	}
+
+	.salary__levels {
+		font-size: 14px;
+	}
+}

@@ -2,6 +2,9 @@ import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs';
 import styles from './styles.module.css';
 import { dateStart } from '../../startCourses.info';
 import Hero from '../../_components/Hero/Hero';
+import GetLesson from '../../_components/GetLesson/GetLesson';
+import Description from '../../_components/Description/Description';
+import Sallary from '../../_components/Salary/Salary';
 
 const course = {
 	title: dateStart[3].course,
@@ -27,6 +30,17 @@ export default function Page() {
 					date={course.date}
 					duration={course.duration}
 				/>
+
+				<GetLesson />
+
+				<Description
+					title={`С++ разработчик`}
+					accent='- это почетно!'
+					description={`Язык программирования С++ очень гибкий, быстрый и высокопроизводительный. За 40 лет нем было написано огромное количество важнейших для мировой экономики продуктов. Разработчики на С++ востребованы не останутся без работы в любых условиях. \n\n Современный программист Си Плюс Плюс может разрабатывать игры, графические движки, компоненты для операционных систем, сетевые и серверные приложения, драйверы устройств, базы данных и многое другое.`}
+					img='/courses/programming/c-plus-plus/description.svg'
+				/>
+
+				<Sallary min={50000} max={200000} />
 			</div>
 		</div>
 	);

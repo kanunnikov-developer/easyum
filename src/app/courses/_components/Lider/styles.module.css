@@ -1,0 +1,44 @@
+.lider {
+	margin-top: 100px;
+}
+.lider__row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 150px;
+}
+
+.lider__text {
+	text-align: center;
+	font-size: 60px;
+	line-height: 65px;
+	font-weight: 700;
+}
+
+@media screen and (max-width: 430px) {
+	.lider {
+		margin-top: 80px;
+	}
+	.lider__row {
+		flex-direction: column-reverse;
+		gap: 30px;
+	}
+
+	.lider__text {
+		text-align: center;
+		font-size: 32px;
+		line-height: 32px;
+	}
+
+	.lider__image,
+	.img {
+		width: 380px;
+		height: 250px;
+	}
+
+	.lider__image {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
