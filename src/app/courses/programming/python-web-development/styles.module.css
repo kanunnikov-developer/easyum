@@ -1,3 +1,73 @@
 .page {
 	margin-bottom: 200px;
 }
+
+.why {
+	margin-top: 150px;
+}
+
+.why__grid {
+	margin-top: 50px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 40px;
+}
+
+.why__card {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	text-align: center;
+	justify-content: center;
+}
+
+.why__text {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.why__text p {
+	font-weight: 700;
+}
+
+.why__text span {
+	font-size: 15px;
+}
+
+/* Секция Фото  */
+.photos {
+	margin-top: 150px;
+	white-space: initial;
+}
+
+.photos h2 {
+	margin-bottom: 50px;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.why {
+		text-align: center;
+		margin-top: 80px;
+	}
+
+	.why__grid {
+		margin-top: 50px;
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	/* Секция Фото  */
+	.photos {
+		margin-top: 80px;
+		white-space: pre-line;
+	}
+
+	.photos h2 {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+}

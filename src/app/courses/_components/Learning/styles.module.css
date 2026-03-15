@@ -1,0 +1,109 @@
+.learning {
+	margin-top: 150px;
+}
+
+.text {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	max-width: 800px;
+}
+
+.grid {
+	margin-top: 50px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px;
+	row-gap: 50px;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+}
+
+.card__image {
+	position: relative;
+}
+
+.card__image span {
+	position: absolute;
+	top: 15px;
+	left: -125px;
+	font-size: 120px;
+	color: var(--light-accent-color);
+	font-weight: 900;
+	z-index: -1;
+}
+
+.card__text {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 10px;
+}
+
+.card__text p {
+	min-height: 48px;
+	font-size: 20px;
+	font-weight: 700;
+
+	display: flex;
+	align-items: center;
+}
+
+.card__text span {
+	max-width: 300px;
+	font-size: 15px;
+}
+
+@media screen and (max-width: 430px) {
+	.grid {
+		margin-top: 50px;
+		grid-template-columns: 1fr; /* Одна колонка */
+		gap: 30px; /* Отступ между карточками */
+		row-gap: 20px;
+	}
+
+	.card {
+		flex-direction: row;
+		align-items: center; /* Выравнивание по левому краю */
+		gap: 20px; /* Уменьшаем отступ между элементами карточки */
+	}
+
+	.card__image {
+		width: 100px; /* Фиксированная ширина для контейнера изображения */
+		height: 100px; /* Фиксированная высота */
+	}
+
+	.card__image span {
+		display: none;
+	}
+
+	.card__img {
+		width: 100px !important; /* Принудительно устанавливаем размер */
+		height: 100px !important; /* Принудительно устанавливаем размер */
+		object-fit: cover; /* Чтобы изображение не искажалось */
+	}
+
+	.card__text {
+		align-items: flex-start; /* Текст по левому краю */
+		text-align: left; /* Выравнивание текста по левому краю */
+		width: 100%; /* На всю ширину */
+	}
+
+	.card__text p {
+		min-height: auto; /* Убираем минимальную высоту */
+		display: block; /* Убираем flex, так как теперь текст слева */
+		width: 100%;
+	}
+
+	.card__text span {
+		max-width: 100%; /* На всю ширину */
+		font-size: 14px; /* Уменьшаем шрифт описания */
+		width: 100%;
+	}
+}

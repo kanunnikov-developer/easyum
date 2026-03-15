@@ -1,0 +1,115 @@
+.instruments {
+	margin-top: 150px;
+}
+
+.grid {
+	margin-top: 70px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 40px;
+	row-gap: 50px;
+}
+
+/* Первые 6 элементов размещаем как обычно */
+.grid > :nth-child(-n + 6) {
+	grid-column: auto;
+}
+
+/* 7-й элемент во 2-й колонке */
+.grid > :nth-child(9) {
+	grid-column-start: 2;
+}
+
+/* 8-й элемент в 3-й колонке */
+.grid > :nth-child(10) {
+	grid-column-start: 3;
+}
+
+/* Если элементов больше 10, то отменяем специальные правила */
+.grid:has(> :nth-child(11)) > :nth-child(9),
+.grid:has(> :nth-child(11)) > :nth-child(10) {
+	grid-column: auto; /* или сбрасываем на стандартное поведение */
+}
+
+.item {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
+}
+
+.item__text {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.item img {
+	width: 100px;
+	height: 100px;
+}
+
+.item h3 {
+	font-size: 20px;
+}
+
+.item p {
+	width: 250px;
+	font-size: 15px;
+}
+
+@media screen and (max-width: 430px) {
+	.instruments {
+		margin-top: 80px;
+	}
+
+	.grid {
+		margin-top: 50px;
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		row-gap: 30px;
+	}
+
+	/* Первые 6 элементов размещаем как обычно */
+	.grid > :nth-child(-n + 6) {
+		grid-column: auto;
+	}
+
+	/* 7-й элемент во 2-й колонке */
+	.grid > :nth-child(9) {
+		grid-column: auto;
+	}
+
+	/* 8-й элемент в 3-й колонке */
+	.grid > :nth-child(10) {
+		grid-column: auto;
+	}
+
+	.item {
+		text-align: left;
+		flex-direction: row;
+		align-items: center;
+		gap: 20px;
+	}
+
+	.item__text {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.item img {
+		width: 80px;
+		height: 80px;
+	}
+
+	.item h3 {
+		font-size: 20px;
+	}
+
+	.item p {
+		width: 250px;
+		font-size: 15px;
+	}
+}

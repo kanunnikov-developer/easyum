@@ -1,0 +1,116 @@
+.wrapper {
+	position: relative;
+}
+
+.prev,
+.next {
+	position: absolute;
+	top: 36%;
+	z-index: 10;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+/* Левая стрелка */
+.prev {
+	left: -80px;
+}
+
+/* Правая стрелка */
+.next {
+	right: -80px;
+}
+
+.prev img,
+.next img {
+	width: 40px;
+	height: 40px;
+}
+
+.reviews_card {
+	text-align: center;
+	height: 100%; /* Растягиваем на всю высоту слайда */
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+.reviews_card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* Чтобы изображение красиво заполняло контейнер */
+	border-radius: 15px;
+	transition: transform 0.3s ease;
+}
+
+.reviews_card a:hover img {
+	transform: scale(1.03); /* Легкое увеличение при наведении */
+}
+
+.description__card {
+	margin-bottom: 0;
+	font-size: 16px;
+	line-height: 24px;
+	white-space: pre-line;
+}
+
+/* Секция свайпер проектов  */
+
+.swiper__projects {
+	white-space: initial;
+	margin-top: 150px;
+}
+
+.swiper__projects h2 {
+	margin-bottom: 30px;
+}
+
+.swiper__block {
+	margin-top: 80px;
+}
+
+@media screen and (max-width: 430px) {
+	.prev,
+	.next {
+		top: 35%;
+	}
+
+	.prev img,
+	.next img {
+		width: 30px;
+		height: 30px;
+	}
+
+	.prev {
+		left: 0px;
+	}
+
+	.next {
+		right: 0px;
+	}
+
+	.reviews_card {
+		width: 75%;
+		margin: 0 auto;
+		gap: 15px;
+	}
+
+	.description__card {
+		font-size: 14px;
+		line-height: 20px;
+		white-space: pre-line;
+		margin-bottom: 0;
+	}
+
+	/* Секция свайпер проектов  */
+
+	.swiper__projects {
+		white-space: pre-line;
+		margin-top: 80px;
+	}
+
+	.swiper__block {
+		margin-top: 50px;
+	}
+}

@@ -1,3 +1,70 @@
 .page {
 	margin-bottom: 200px;
 }
+
+.suitable {
+	margin-top: 150px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.suitable__text h2 {
+	margin-bottom: 30px;
+}
+
+.suitable__text p {
+	margin-bottom: 30px;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.suitable__text__description {
+	font-size: 15px;
+}
+
+.link {
+	color: var(--accent-color);
+}
+
+.link:hover {
+	border-bottom: 1px solid var(--accent-color);
+}
+
+/* Секция Фото  */
+.photos {
+	margin-top: 150px;
+	white-space: initial;
+}
+
+.photos h2 {
+	margin-bottom: 50px;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.suitable {
+		margin-top: 80px;
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	.suitable__text p {
+		margin-bottom: 15px;
+		font-size: 18px;
+	}
+
+	/* Секция Фото  */
+	.photos {
+		margin-top: 80px;
+		white-space: pre-line;
+	}
+
+	.photos h2 {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+}

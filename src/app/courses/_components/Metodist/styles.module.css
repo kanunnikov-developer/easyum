@@ -1,0 +1,44 @@
+.metodist {
+	margin-top: 150px;
+	display: flex;
+	align-items: center;
+	gap: 100px;
+}
+
+.text h2 {
+	margin-bottom: 30px;
+}
+
+.description {
+	margin-top: 15px;
+}
+
+.image_mobile {
+	display: none;
+}
+
+@media screen and (max-width: 430px) {
+	.metodist {
+		margin-top: 80px;
+		gap: 100px;
+		text-align: center;
+	}
+
+	.text h2 {
+		margin-bottom: 30px;
+	}
+
+	.description {
+		margin-top: 15px;
+		font-size: 15px;
+	}
+
+	.image {
+		display: none;
+	}
+
+	.image_mobile {
+		display: block;
+		margin-bottom: 30px;
+	}
+}

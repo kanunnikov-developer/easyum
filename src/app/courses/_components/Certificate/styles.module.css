@@ -1,0 +1,37 @@
+.cert {
+	margin-top: 150px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 100px;
+}
+
+.text {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+@media screen and (max-width: 430px) {
+	.cert {
+		margin-top: 80px;
+		flex-direction: column-reverse;
+		gap: 50px;
+	}
+
+	.text {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	.image {
+		width: 100%;
+	}
+
+	.img {
+		width: 100%;
+		height: auto;
+		object-fit: contain;
+	}
+}

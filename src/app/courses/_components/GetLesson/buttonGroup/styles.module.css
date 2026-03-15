@@ -36,8 +36,9 @@
 
 .button__telegram:hover,
 .button__whatsapp:hover {
-	background: none;
-	border: 1px solid var(--white-color);
+	opacity: 80%;
+	/* background: none;
+	border: 1px solid var(--white-color); */
 }
 
 .overlay {
