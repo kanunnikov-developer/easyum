@@ -2,6 +2,7 @@ import getRegion from '@/lib/getRegion';
 import styles from './styles.module.css';
 import { Suspense } from 'react';
 import SallaryNumber from './sallary/sallary';
+import cn from 'classnames';
 
 interface Props {
 	min: number;
@@ -34,5 +35,9 @@ export default function Sallary({ min, max }: Props) {
 
 async function Wrapper() {
 	const region = await getRegion();
-	return <p className={styles.title}>Зарплата в {region?.preposutional}</p>;
+	return (
+		<p className={cn(styles.title, region?.city === 'Ростов-на-Дону' && styles.title__small)}>
+			Зарплата в {region?.preposutional}
+		</p>
+	);
 }

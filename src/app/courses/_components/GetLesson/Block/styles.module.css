@@ -1,0 +1,45 @@
+.main {
+	margin-top: 150px;
+}
+
+.grid {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.text h2 {
+	margin-bottom: 30px;
+}
+
+.buttons {
+	margin-top: 50px;
+}
+
+@media screen and (max-width: 430px) {
+	.main {
+		margin-top: 80px;
+	}
+
+	.grid {
+		flex-direction: column;
+	}
+
+	.text h2 {
+		margin-bottom: 15px;
+	}
+
+	.buttons {
+		margin-top: 30px;
+	}
+
+	.image {
+		margin-top: 30px;
+		width: 100%;
+	}
+	.img {
+		width: 100%;
+		height: auto;
+		object-fit: contain;
+	}
+}

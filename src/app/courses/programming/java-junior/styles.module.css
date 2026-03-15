@@ -2,6 +2,8 @@
 	margin-bottom: 200px;
 }
 
+/* Секция Почему Java */
+
 .why,
 .top_ten {
 	margin-top: 150px;
@@ -29,12 +31,100 @@
 	gap: 15px;
 }
 
+/* Секция топ 10 */
+
 .top_ten__desctop_image {
 	margin-top: 50px;
 }
 
 .top_ten__dessctop_image {
 	display: none;
+}
+
+/* Секция популяроность  */
+
+.popular {
+	margin-top: 200px;
+}
+
+.popular__grid {
+	margin-top: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 30px;
+}
+
+.popular_item {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	font-size: 16px;
+}
+
+.popular_item span {
+	font-size: 100px;
+	font-weight: 900;
+	color: var(--light-accent-color);
+}
+
+/* Секция Что можно разрабатывать на Java  */
+.developer_java {
+	margin-top: 150px;
+}
+
+.developer_java__grid {
+	margin-top: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 50px;
+}
+
+.java__column,
+.java__column__left {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 50px;
+}
+
+.java__column__left {
+	align-items: flex-end;
+}
+
+.java__item_left {
+	display: flex;
+	align-items: center;
+	text-align: end;
+	gap: 15px;
+}
+
+.java__item__right {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	flex-direction: row-reverse;
+}
+
+.java__text p {
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 5px;
+}
+
+.java__text span {
+	font-size: 18px;
+}
+
+/* Секция Фото  */
+.photos {
+	margin-top: 150px;
+	white-space: initial;
+}
+
+.photos h2 {
+	margin-bottom: 50px;
 }
 
 @media screen and (max-width: 430px) {
@@ -86,5 +176,84 @@
 	.top_ten__dessctop_image {
 		margin-top: 30px;
 		display: block;
+	}
+
+	/* Секция популяроность  */
+
+	.popular {
+		margin-top: 80px;
+	}
+
+	.popular__grid {
+		margin-top: 30px;
+		flex-direction: column;
+		gap: 0px;
+	}
+
+	/* Секция Что можно разрабатывать на Java  */
+	.developer_java {
+		margin-top: 80px;
+	}
+
+	.developer_java h2 {
+		text-align: center;
+	}
+
+	.developer_java__grid {
+		margin-top: 30px;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 15px;
+	}
+
+	.java__column,
+	.java__column__left {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 15px;
+	}
+
+	.java__column__left {
+		align-items: flex-start;
+	}
+
+	.java__item_left {
+		flex-direction: row-reverse;
+		text-align: left;
+		gap: 15px;
+	}
+
+	.java__text p {
+		font-size: 18px;
+	}
+
+	.java__text span {
+		font-size: 14px;
+	}
+
+	.java__7 {
+		display: none;
+	}
+
+	.java__image {
+		width: 70px;
+	}
+
+	.java__img {
+		width: 100%;
+		height: auto;
+		object-fit: contain;
+	}
+
+	/* Секция Фото  */
+	.photos {
+		margin-top: 80px;
+		white-space: pre-line;
+	}
+
+	.photos h2 {
+		text-align: center;
+		margin-bottom: 30px;
 	}
 }

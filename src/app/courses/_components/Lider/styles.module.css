@@ -1,5 +1,5 @@
 .lider {
-	margin-top: 100px;
+	margin-top: 150px;
 }
 .lider__row {
 	display: flex;
@@ -15,9 +15,16 @@
 	font-weight: 700;
 }
 
+.small {
+	text-align: center;
+	font-size: 40px;
+	line-height: normal;
+	font-weight: 700;
+}
+
 @media screen and (max-width: 430px) {
 	.lider {
-		margin-top: 80px;
+		margin-top: 100px;
 	}
 	.lider__row {
 		flex-direction: column-reverse;
@@ -28,6 +35,12 @@
 		text-align: center;
 		font-size: 32px;
 		line-height: 32px;
+	}
+
+	.small {
+		text-align: center;
+		font-size: 24px;
+		margin-bottom: 20px;
 	}
 
 	.lider__image,

@@ -22,6 +22,10 @@
 	margin-bottom: 10px;
 }
 
+.title__small {
+	font-size: 26px;
+}
+
 .description {
 	font-size: 16px;
 	width: 300px;
@@ -63,6 +67,10 @@
 
 	.title {
 		font-size: 28px;
+	}
+
+	.title__small {
+		font-size: 20px;
 	}
 
 	.salary__levels {

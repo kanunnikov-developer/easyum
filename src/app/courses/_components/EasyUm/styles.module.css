@@ -1,0 +1,54 @@
+.easyum {
+	margin-top: 150px;
+	white-space: initial;
+}
+
+.grid {
+	margin-top: 50px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 40px;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	gap: 15px;
+}
+
+.text span {
+	font-size: 25px;
+	font-weight: 700;
+}
+
+.text p {
+	margin-top: 15px;
+	font-size: 15px;
+	line-height: 20px;
+}
+
+@media screen and (max-width: 430px) {
+	.easyum {
+		text-align: center;
+		margin-top: 100px;
+		white-space: pre-line;
+	}
+
+	.grid {
+		grid-template-columns: repeat(1, 1fr);
+		gap: 30px;
+	}
+
+	.text span {
+		font-size: 22px;
+		font-weight: 700;
+	}
+
+	.text p {
+		margin-top: 15px;
+		font-size: 15px;
+		line-height: 20px;
+	}
+}

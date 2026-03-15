@@ -1,3 +1,62 @@
 .page {
 	margin-bottom: 200px;
 }
+
+.writeCplus {
+	margin-top: 150px;
+}
+
+.writeCplus_grid {
+	margin-top: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+/* Секция Фото  */
+.photos {
+	margin-top: 150px;
+	white-space: initial;
+}
+
+.photos h2 {
+	margin-bottom: 50px;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.writeCplus {
+		margin-top: 100px;
+	}
+
+	.writeCplus_grid {
+		margin-top: 30px;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 15px;
+	}
+
+	.writeCplus__image {
+		width: 100%;
+	}
+
+	.writeCplus__img {
+		width: 100%;
+		height: auto;
+		object-fit: contain;
+	}
+
+	/* Секция Фото  */
+	.photos {
+		margin-top: 80px;
+		white-space: pre-line;
+	}
+
+	.photos h2 {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+}

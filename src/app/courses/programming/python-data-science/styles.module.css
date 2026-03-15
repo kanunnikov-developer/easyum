@@ -1,3 +1,75 @@
 .page {
 	margin-bottom: 200px;
 }
+
+.accent_block {
+	background-image: url(../../../../../public/courses/programming/python-data-science/accent_blockBG.svg);
+	min-height: 314px;
+	color: var(--white-color);
+	padding: 35px 0px;
+	margin-top: 200px;
+}
+
+.accent_block__row {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 30px;
+}
+
+.accent_block__row h2 {
+	width: 570px;
+}
+
+/* Секция Фото  */
+.photos {
+	margin-top: 150px;
+	white-space: initial;
+}
+
+.photos h2 {
+	margin-bottom: 50px;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.accent_block {
+		background-image: none;
+		min-height: none;
+		background: var(--accent-color);
+		padding: 30px 20px;
+		margin-top: 80px;
+		width: 100%;
+		border-radius: 20px;
+	}
+
+	.accent_block__row {
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.accent_block__row h2 {
+		text-align: center;
+		width: 100%;
+		font-size: 28px;
+	}
+
+	.accent_block__image,
+	.accent_block__img {
+		width: 330px;
+	}
+
+	/* Секция Фото  */
+	.photos {
+		margin-top: 80px;
+		white-space: pre-line;
+	}
+
+	.photos h2 {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+}
