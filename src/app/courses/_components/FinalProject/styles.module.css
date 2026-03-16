@@ -1,28 +1,40 @@
-.cert {
+.final_project {
 	margin-top: 150px;
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
 	gap: 100px;
 }
 
-.text {
+.title {
+	margin-top: 15px;
+	margin-bottom: 30px;
+	font-size: 25px;
+	font-weight: 700;
+}
+
+.description {
+	margin-bottom: 30px;
+}
+
+.list {
 	display: flex;
 	flex-direction: column;
-	gap: 30px;
+	gap: 5px;
+}
+
+.list li {
+	font-size: 20px;
+	margin-left: 20px;
 }
 
 @media screen and (max-width: 430px) {
-	.cert {
+	.final_project {
 		margin-top: 100px;
 		flex-direction: column-reverse;
-		gap: 50px;
+		gap: 30px;
 	}
 
-	.text {
-		display: flex;
-		flex-direction: column;
-		gap: 30px;
+	.list li {
+		font-size: 15px;
 	}
 
 	.image {

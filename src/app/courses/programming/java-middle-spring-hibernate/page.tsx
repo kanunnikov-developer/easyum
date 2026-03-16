@@ -18,6 +18,7 @@ import Metodist from '../../_components/Metodist/Metodist';
 import TeacherSwiper from '../../_components/TeacherSwiper/TeacherSwiper';
 import Reviews from '@/app/_components/Reviews/Reviews';
 import PhotosComponent from '@/components/photos/photosComponent';
+import FinalProject from '../../_components/FinalProject/FinalProject';
 
 const course = {
 	title: dateStart[5].course,
@@ -310,9 +311,18 @@ export default function Page() {
 					</div>
 				</section>
 
-				{/* ----------------------
-							Финальный проект
-				---------------------- */}
+				<FinalProject
+					img='/courses/programming/java-middle/final_project.svg'
+					title='Микросервис на основе Swagger Contract (OpenAPI)'
+					description='В процессе работы над курсом и проектом вы научитесь:'
+					list={[
+						'Создавать микросервисные приложения',
+						'Работать с Spring BOOT, Spring MVC и Docker',
+						'Настраивать реактивный сервер, работать с Spring Webflux',
+						'Работать с Hibernate, JPQL и Lombok',
+						'Тестировать созданные приложения: Unit тесты, PowerMock тесты, Mockito',
+					]}
+				/>
 
 				<Instruments instrument={instruments} />
 
