@@ -52,7 +52,7 @@
 
 	.why {
 		text-align: center;
-		margin-top: 80px;
+		margin-top: 100px;
 	}
 
 	.why__grid {
@@ -62,7 +62,7 @@
 
 	/* Секция Фото  */
 	.photos {
-		margin-top: 80px;
+		margin-top: 100px;
 		white-space: pre-line;
 	}
 

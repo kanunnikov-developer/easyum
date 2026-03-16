@@ -1,0 +1,53 @@
+.final_project {
+	margin-top: 150px;
+	display: flex;
+	gap: 100px;
+}
+
+.title {
+	margin-top: 15px;
+	margin-bottom: 30px;
+	font-size: 25px;
+	font-weight: 700;
+}
+
+.description {
+	margin-bottom: 30px;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.list li {
+	font-size: 20px;
+	margin-left: 20px;
+}
+
+.img {
+	border-radius: 20px;
+}
+
+@media screen and (max-width: 430px) {
+	.final_project {
+		margin-top: 100px;
+		flex-direction: column-reverse;
+		gap: 30px;
+	}
+
+	.list li {
+		font-size: 15px;
+	}
+
+	.image {
+		width: 100%;
+	}
+
+	.img {
+		width: 100%;
+		height: auto;
+		object-fit: contain;
+	}
+}

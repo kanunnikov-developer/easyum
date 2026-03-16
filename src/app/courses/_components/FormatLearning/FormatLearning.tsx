@@ -8,7 +8,7 @@ export default function FormatLearning() {
 		<section className={styles.format}>
 			<div className={styles.text}>
 				<h2>
-					Выберете <span className='accent'>удобный формат</span>
+					Выберете <span className='accent'>{`\n`}удобный формат</span>
 				</h2>
 				<p>
 					Вы можете обучаться в онлайн-группе, или пройти видео-курс с разборами домашних заданий, или обучаться очно в

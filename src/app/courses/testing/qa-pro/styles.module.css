@@ -42,7 +42,20 @@
 	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
+.photos {
+	margin-top: 150px;
+}
+
+.photos h2 {
+	margin-bottom: 50px;
+	white-space: initial;
+}
+
 @media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
 	.professions {
 		margin-top: 100px;
 	}
@@ -51,5 +64,14 @@
 		margin-top: 50px;
 		flex-direction: column;
 		gap: 50px;
+	}
+
+	.photos {
+		margin-top: 100px;
+	}
+
+	.photos h2 {
+		margin-bottom: 30px;
+		white-space: pre-line;
 	}
 }

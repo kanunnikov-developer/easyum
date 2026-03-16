@@ -1,3 +1,114 @@
 .page {
 	margin-bottom: 200px;
 }
+
+.why {
+	margin-top: 150px;
+}
+
+.why_grid {
+	margin-top: 50px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 40px;
+}
+
+.item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	gap: 15px;
+}
+
+.item p {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.item span {
+	font-size: 15px;
+}
+
+.ideal {
+	margin-top: 150px;
+	background-image: url('../../../../../public/courses/testing/testing-qa/bgideal.svg');
+	color: var(--white-color);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	display: flex;
+	align-items: center;
+	padding-left: 60px;
+}
+
+.ideal_text {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.ideal_text p {
+	font-size: 18px;
+}
+
+.photos {
+	margin-top: 150px;
+}
+
+.photos h2 {
+	margin-bottom: 50px;
+	white-space: initial;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.why {
+		white-space: initial;
+		margin-top: 100px;
+		text-align: center;
+	}
+
+	.why_grid {
+		margin-top: 50px;
+		grid-template-columns: repeat(1, 1fr);
+		gap: 30px;
+	}
+
+	.ideal {
+		margin-top: 100px;
+		background-image: none;
+		min-height: fit-content;
+		background: var(--accent-color);
+		border-radius: 20px;
+		padding: 30px;
+		flex-direction: column;
+		padding-left: 30px;
+		gap: 30px;
+	}
+
+	.ideal_img {
+		width: 100%;
+		height: auto;
+		object-fit: contain;
+	}
+
+	.ideal_text {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.photos {
+		margin-top: 100px;
+	}
+
+	.photos h2 {
+		text-align: center;
+		margin-bottom: 30px;
+		white-space: pre-line;
+	}
+}

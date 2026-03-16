@@ -46,7 +46,7 @@
 @media screen and (max-width: 430px) {
 	.salary {
 		padding: 20px 30px;
-		margin-top: 50px;
+		margin-top: 80px;
 		background-image: none;
 		background: #e2ecff;
 		border: 1px solid var(--accent-color);

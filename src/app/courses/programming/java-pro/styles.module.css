@@ -149,7 +149,7 @@
 
 	/* Секция Что можно разрабатывать на Java  */
 	.developer_java {
-		margin-top: 80px;
+		margin-top: 100px;
 	}
 
 	.developer_java h2 {
@@ -205,7 +205,7 @@
 
 	/* Секция Фото  */
 	.photos {
-		margin-top: 80px;
+		margin-top: 100px;
 		white-space: pre-line;
 	}
 

@@ -61,6 +61,10 @@
 }
 
 @media screen and (max-width: 430px) {
+	.learning {
+		margin-top: 100px;
+	}
+
 	.grid {
 		margin-top: 50px;
 		grid-template-columns: 1fr; /* Одна колонка */

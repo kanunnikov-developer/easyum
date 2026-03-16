@@ -1,3 +1,38 @@
 .page {
 	margin-bottom: 200px;
 }
+
+.developer {
+	margin-top: 150px;
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+}
+
+.photos {
+	margin-top: 150px;
+}
+
+.photos h2 {
+	margin-bottom: 50px;
+	white-space: initial;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.developer {
+		display: none;
+	}
+
+	.photos {
+		margin-top: 100px;
+	}
+
+	.photos h2 {
+		margin-bottom: 30px;
+		white-space: pre-line;
+	}
+}
