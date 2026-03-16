@@ -26,6 +26,10 @@
 	margin-left: 20px;
 }
 
+.img {
+	border-radius: 20px;
+}
+
 @media screen and (max-width: 430px) {
 	.final_project {
 		margin-top: 100px;
