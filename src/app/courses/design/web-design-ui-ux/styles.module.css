@@ -1,3 +1,23 @@
 .page {
 	margin-bottom: 200px;
 }
+
+.photos {
+	margin-top: 150px;
+}
+
+.photos h2 {
+	margin-bottom: 50px;
+	white-space: initial;
+}
+
+@media screen and (max-width: 430px) {
+	.photos {
+		margin-top: 100px;
+	}
+
+	.photos h2 {
+		margin-bottom: 30px;
+		white-space: pre-line;
+	}
+}
