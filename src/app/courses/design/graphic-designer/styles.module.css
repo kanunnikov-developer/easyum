@@ -1,3 +1,139 @@
 .page {
 	margin-bottom: 200px;
 }
+
+.every_day {
+	margin-top: 150px;
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+}
+
+.every_grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 40px;
+}
+
+.every_item {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	font-size: 18px;
+	text-align: center;
+}
+
+.ican {
+	margin-top: 150px;
+}
+
+.ican_text {
+	margin-bottom: 50px;
+}
+
+.ican_grid {
+	margin-top: 30px;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 40px;
+}
+
+.ican_item {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: space-between;
+	gap: 10px;
+	text-align: center;
+}
+
+.ican_title {
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+.ican_description {
+	font-size: 16px;
+}
+
+.span {
+	font-size: 14px;
+	color: var(--accent-color);
+}
+
+.photos {
+	margin-top: 150px;
+}
+
+.photos h2 {
+	margin-bottom: 50px;
+	white-space: initial;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.every_day {
+		margin-top: 100px;
+		gap: 30px;
+		white-space: initial;
+		text-align: center;
+	}
+
+	.every_grid {
+		grid-template-columns: repeat(1, 1fr);
+		gap: 30px;
+	}
+
+	.every_item {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		font-size: 15px;
+		text-align: center;
+	}
+
+	.ican {
+		margin-top: 100px;
+	}
+
+	.ican_text {
+		margin-bottom: 30px;
+	}
+
+	.ican_image {
+		display: none;
+	}
+
+	.ican_grid {
+		margin-top: 30px;
+		grid-template-columns: repeat(1, 1fr);
+		gap: 30px;
+	}
+
+	.ican_item {
+		text-align: left;
+	}
+
+	.ican_description {
+		font-size: 16px;
+		max-width: 300px;
+	}
+
+	.span {
+		font-size: 14px;
+		color: var(--accent-color);
+	}
+
+	.photos {
+		margin-top: 100px;
+	}
+
+	.photos h2 {
+		margin-bottom: 30px;
+		white-space: pre-line;
+	}
+}

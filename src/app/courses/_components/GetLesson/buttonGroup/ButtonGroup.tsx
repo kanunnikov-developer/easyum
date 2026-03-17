@@ -25,7 +25,7 @@ export default function ButtonGroup({ city }: Props) {
 				</button>
 				<button className={cn(styles.button, styles.button__whatsapp)} onClick={() => setIsOpenWhatsApp(true)}>
 					<div className={styles.button__image}>
-						<Image src='/courses/ui/getLesson/whatsapp.svg' alt='icon Whatsapp' width={27} height={27} />
+						<Image src='/courses/ui/getLesson/whats.svg' alt='icon Whatsapp' width={27} height={27} />
 					</div>
 					WhatsApp
 				</button>
