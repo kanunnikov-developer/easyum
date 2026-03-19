@@ -132,7 +132,7 @@
 
 	.modal {
 		width: 90%;
-		padding: 30px;
+		padding: 25px;
 	}
 
 	.modal__row {
@@ -144,11 +144,12 @@
 
 	.modal__text {
 		width: 100%;
-		gap: 20px;
+		gap: 0px;
 	}
 
 	.modal__text p {
 		width: 100%;
+		font-size: 15px;
 		margin-bottom: 0px;
 	}
 

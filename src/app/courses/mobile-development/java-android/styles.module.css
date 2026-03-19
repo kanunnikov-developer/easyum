@@ -1,3 +1,69 @@
 .page {
 	margin-bottom: 200px;
 }
+
+.android {
+	margin-top: 150px;
+}
+
+.android_text h2 {
+	margin-bottom: 30px;
+}
+
+.android_grid {
+	margin-top: 50px;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 30px;
+}
+
+.android_card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	gap: 15px;
+	font-size: 16px;
+	font-weight: 700;
+}
+
+/* Секция Фото  */
+.photos {
+	margin-top: 150px;
+	white-space: initial;
+}
+
+.photos h2 {
+	margin-bottom: 50px;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.android {
+		text-align: center;
+		margin-top: 100px;
+	}
+
+	.android_text h2 {
+		margin-bottom: 15px;
+	}
+
+	.android_grid {
+		margin-top: 30px;
+		grid-template-columns: repeat(1, 1fr);
+		gap: 30px;
+	}
+
+	.photos {
+		margin-top: 100px;
+		white-space: pre-line;
+	}
+
+	.photos h2 {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+}

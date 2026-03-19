@@ -20,6 +20,7 @@ import Metodist from '../../_components/Metodist/Metodist';
 import Reviews from '@/app/_components/Reviews/Reviews';
 import Duration from '../../_components/Duration/Duration';
 import PhotosComponent from '@/components/photos/photosComponent';
+import FinalProject from '../../_components/FinalProject/FinalProject';
 
 const course = {
 	title: dateStart[3].course,
@@ -255,9 +256,17 @@ export default function Page() {
 
 				<Suitable items={suitable} title='курс?' accent='Кому подойдет' />
 
-				{/* ------------------------------
-									Финальный проект
-				------------------------------ */}
+				<FinalProject
+					img='/courses/marketing/smm/finalProject.svg'
+					title='Приложение - многопользовательский чат'
+					description='В процессе работы над проектом вы научитесь:'
+					list={[
+						'Разрабатывать программы для операционных систем (Embedded-разработка).',
+						'Делать «вспомогательное» ПО любой сложности.',
+						'Понимать структуру и особенности языка программирования С++',
+						'Внедрять кросплатформенную разработку',
+					]}
+				/>
 
 				<Instruments instrument={instruments} />
 

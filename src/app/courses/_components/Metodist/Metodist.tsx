@@ -5,7 +5,7 @@ interface Props {
 	img: string;
 	course: string;
 	name: string;
-	description: string;
+	description?: string;
 }
 
 export default function Metodist({ img, course, name, description }: Props) {
