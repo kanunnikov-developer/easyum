@@ -1,3 +1,79 @@
 .page {
 	margin-bottom: 200px;
 }
+
+.learning {
+	margin-top: 150px;
+}
+
+.learning_text h2 {
+	margin-bottom: 30px;
+}
+
+.learning_grid {
+	margin-top: 50px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 40px;
+}
+
+.learning_card__text {
+	display: flex;
+	align-items: center;
+}
+
+.learning__number {
+	color: var(--light-accent-color);
+	font-weight: 900;
+	font-size: 120px;
+}
+
+.learning__title {
+	text-transform: uppercase;
+	margin-left: -30px;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.learning__description {
+	font-size: 15px;
+}
+
+.photos {
+	margin-top: 150px;
+}
+
+.photos h2 {
+	margin-bottom: 50px;
+	white-space: initial;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.learning {
+		margin-top: 100px;
+	}
+
+	.learning_text h2 {
+		margin-bottom: 15px;
+	}
+
+	.learning_grid {
+		margin-top: 30px;
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		gap: 15px;
+	}
+
+	.photos {
+		margin-top: 100px;
+	}
+
+	.photos h2 {
+		margin-bottom: 30px;
+		white-space: pre-line;
+	}
+}
