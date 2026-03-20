@@ -22,6 +22,7 @@ import Metodist from '../../_components/Metodist/Metodist';
 import getRegion from '@/lib/getRegion';
 import Tariffs from '../../_components/Tariffs/Tariffs';
 import { Suspense } from 'react';
+import FAQ from '../../_components/FAQ/FAQ';
 
 const course = {
 	title: dateStart[23].course,
@@ -357,6 +358,8 @@ export default function Page() {
 				>
 					<Wrapper />
 				</Suspense>
+
+				<FAQ />
 			</div>
 		</div>
 	);

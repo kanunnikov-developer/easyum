@@ -22,6 +22,7 @@ import PhotosComponent from '@/components/photos/photosComponent';
 import { Suspense } from 'react';
 import Tariffs from '../../_components/Tariffs/Tariffs';
 import getRegion from '@/lib/getRegion';
+import FAQ from '../../_components/FAQ/FAQ';
 
 const course = {
 	title: dateStart[17].course,
@@ -335,6 +336,8 @@ export default function Page() {
 				>
 					<Wrapper />
 				</Suspense>
+
+				<FAQ />
 			</div>
 		</div>
 	);
