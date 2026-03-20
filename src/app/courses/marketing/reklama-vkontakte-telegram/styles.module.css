@@ -1,3 +1,74 @@
 .page {
 	margin-bottom: 200px;
 }
+
+.smm {
+	margin-top: 150px;
+}
+
+.smm h2 {
+	margin-bottom: 50px;
+}
+
+.smm_grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 40px;
+}
+
+.smm_card {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: center;
+	gap: 15px;
+	font-size: 20px;
+}
+
+.photos {
+	margin-top: 150px;
+}
+
+.photos h2 {
+	margin-bottom: 50px;
+	white-space: initial;
+}
+
+@media screen and (max-width: 430px) {
+	.page {
+		margin-bottom: 100px;
+	}
+
+	.smm {
+		margin-top: 100px;
+		text-align: center;
+	}
+
+	.smm h2 {
+		margin-bottom: 50px;
+	}
+
+	.smm_grid {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		gap: 30px;
+	}
+
+	.smm_card {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		justify-content: center;
+		gap: 15px;
+		font-size: 20px;
+	}
+
+	.photos {
+		margin-top: 100px;
+	}
+
+	.photos h2 {
+		margin-bottom: 30px;
+		white-space: pre-line;
+	}
+}

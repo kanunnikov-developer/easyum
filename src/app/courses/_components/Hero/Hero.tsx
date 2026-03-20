@@ -43,8 +43,12 @@ export default function Hero({ title, description_one, description_two, img, dat
 
 				<div className={styles.hero__information}>
 					<div className={styles.hero__group_button}>
-						<button className={cn(styles.hero__button, styles.hero__accent)}>Выбрать тариф</button>
-						<button className={styles.hero__button}>Программа курса</button>
+						<a href='#tariffs' className={cn(styles.hero__button, styles.hero__accent)}>
+							Выбрать тариф
+						</a>
+						<a href='#program' className={styles.hero__button}>
+							Программа курса
+						</a>
 					</div>
 
 					<div className={styles.hero__information_text}>

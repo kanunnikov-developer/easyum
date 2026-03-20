@@ -1,0 +1,189 @@
+.form {
+	width: 490px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.input input {
+	width: 100%;
+}
+
+.form input {
+	padding: 15px 20px;
+	border: 1px solid var(--border-color);
+	border-radius: 100px;
+	font-size: 16px;
+	font-family: var(--golos-text);
+}
+
+.form input:focus {
+	border: 1px solid var(--accent-color);
+	outline: none;
+}
+
+.form input::placeholder {
+	color: var(--placeholder-color);
+}
+
+.consent,
+.sms {
+	font-size: 12px;
+}
+
+/* Скрываем нативный чекбокс,
+но оставляем кликабельным */
+.customCheckboxInput {
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+/* Контейнер label */
+.customCheckboxLabel {
+	position: relative;
+	display: inline-flex;
+	align-items: flex-start; /* начало текста по верхнему краю квадрата */
+	cursor: pointer;
+	line-height: 1.5;
+	color: var(--text-secondary);
+	padding-left: 32px; /* место для квадрата слева */
+}
+
+/* Квадрат чекбокса */
+.customCheckboxLabel::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 2px; /* небольшая корректировка по вертикали */
+	width: 15px;
+	height: 15px;
+	border: 1px solid var(--border-color);
+	border-radius: 3px;
+	transition: all 0.2s ease;
+}
+
+/* Наведение */
+.customCheckboxLabel:hover::before {
+	border-color: var(--accent-color);
+}
+
+/* Отмеченное состояние — фон и бордер */
+.customCheckboxInput:checked + .customCheckboxLabel::before {
+	background-color: var(--accent-color);
+	border-color: var(--accent-color);
+}
+
+/* Галочка (белая галка) */
+.customCheckboxInput:checked + .customCheckboxLabel::after {
+	content: '';
+	position: absolute;
+	left: 6px;
+	top: 5px;
+	width: 3px;
+	height: 7px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+
+/* Ссылка внутри текста — возвращаем нормальное поведение */
+.policyLink {
+	color: var(--accent-color);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+/* Фокус для клавиатуры (доступность) */
+.customCheckboxInput:focus-visible + .customCheckboxLabel::before {
+	outline: 3px solid var(--accent-color);
+	outline-offset: 2px;
+}
+
+.submitButton {
+	background: var(--red-color);
+	color: var(--white-color);
+	padding: 19px 80px;
+	cursor: pointer;
+	font-weight: 700;
+	border-radius: 50px;
+	border: 1px solid var(--red-color);
+	transition: all 0.2s ease;
+}
+
+.submitButton:hover {
+	color: var(--red-color);
+	background: none;
+}
+
+.submitButton:disabled {
+	opacity: 50%;
+	cursor: not-allowed;
+}
+
+.submitButton:disabled:hover {
+	background: var(--red-color);
+	color: var(--white-color);
+}
+
+.error {
+	margin-top: 5px;
+	padding-left: 10px;
+	font-size: 12px;
+	color: var(--red-color);
+}
+
+@media screen and (max-width: 430px) {
+	.form {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.form input {
+		padding: 14px 20px;
+		border: 1px solid var(--border-color);
+		font-size: 14px;
+	}
+
+	.consent,
+	.sms {
+		font-size: 8px;
+	}
+
+	/* Контейнер label */
+	.customCheckboxLabel {
+		padding-left: 20px; /* место для квадрата слева */
+	}
+
+	/* Квадрат чекбокса */
+	.customCheckboxLabel::before {
+		left: 0;
+		top: 2px; /* небольшая корректировка по вертикали */
+		width: 10px;
+		height: 10px;
+	}
+
+	/* Галочка (белая галка) */
+	.customCheckboxInput:checked + .customCheckboxLabel::after {
+		left: 5px;
+		top: 4px;
+		width: 2px;
+		height: 5px;
+		border-width: 0 1px 1px 0;
+	}
+
+	.submitButton {
+		margin-top: 10px;
+		background: var(--light-accent-color);
+		color: var(--accent-color);
+		padding: 19px 20px;
+		cursor: pointer;
+		font-weight: 700;
+		border-radius: 50px;
+		border: 1px solid var(--accent-color);
+		transition: all 0.2s ease;
+	}
+}

@@ -7,22 +7,22 @@ export interface CardCourses {
 export const webCourses: CardCourses[] = [
 	{
 		id: '12',
-		img: '/courses/web/full.png',
+		img: '/courses/web/full.svg',
 		link: '/courses/web-development/java-script-full-stack',
 	},
 	{
 		id: '13',
-		img: '/courses/web/front.png',
+		img: '/courses/web/front.svg',
 		link: '/courses/web-development/javascript-front-end',
 	},
 	{
 		id: '14',
-		img: '/courses/web/html.png',
+		img: '/courses/web/html.svg',
 		link: '/courses/web-development/html-css-moskow',
 	},
 	{
 		id: '15',
-		img: '/courses/web/javascript.png',
+		img: '/courses/web/javascript.svg',
 		link: '/courses/web-development/java-script-language',
 	},
 ];

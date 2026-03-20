@@ -38,24 +38,24 @@ export default function Footer() {
 							<h4 className={styles.title}>Популярные курсы</h4>
 							<div className={styles.navigation_popular}>
 								<div className={styles.navigation}>
-									<Link href='#'>Java разработчик PRO</Link>
-									<Link href='#'>Тестирование ПО</Link>
-									<Link href='#'>Full Stack разработчик</Link>
-									<Link href='#'>Графический дизайн</Link>
-									<Link href='#'>Веб дизайн</Link>
-									<Link href='#'>СММ специалист</Link>
-									<Link href='#'>Front end разработчик</Link>
-									<Link href='#'>3D-моделирование</Link>
+									<Link href='/courses/programming/java-pro'>Java разработчик PRO</Link>
+									<Link href='/courses/testing/testing-qa'>Тестирование ПО</Link>
+									<Link href='/courses/web-development/java-script-full-stack'>Full Stack разработчик</Link>
+									<Link href='/courses/design/graphic-designer'>Графический дизайн</Link>
+									<Link href='/courses/design/web-design-ui-ux'>Веб дизайн</Link>
+									<Link href='/courses/marketing/smm'>СММ специалист</Link>
+									<Link href='/courses/web-development/javascript-front-end'>Front end разработчик</Link>
+									<Link href='/courses/3d-modeling/3d-max'>3D-моделирование</Link>
 								</div>
 								<div className={styles.navigation}>
-									<Link href='#'>С++ разработчик</Link>
-									<Link href='#'>Интернет Маркетинг</Link>
-									<Link href='#'>Python разработчик</Link>
-									<Link href='#'>Python (веб-разработчик)</Link>
-									<Link href='#'>Android разработчик</Link>
-									<Link href='#'>IOS разработчик</Link>
-									<Link href='#'>Авто-тестирование на java</Link>
-									<Link href='#'>Java Middle (Spring)</Link>
+									<Link href='/courses/programming/c-plus-plus'>С++ разработчик</Link>
+									<Link href='/courses/marketing/internet-marketing'>Интернет Маркетинг</Link>
+									<Link href='/courses/programming/python-data-science'>Python разработчик</Link>
+									<Link href='/courses/programming/python-web-development'>Python (веб-разработчик)</Link>
+									<Link href='/courses/mobile-development/java-android'>Android разработчик</Link>
+									<Link href='/courses/mobile-development/mobiledev-ios'>IOS разработчик</Link>
+									<Link href='/courses/testing/qa-avtomation'>Авто-тестирование на java</Link>
+									<Link href='/courses/programming/java-middle-spring-hibernate'>Java Middle (Spring)</Link>
 								</div>
 							</div>
 						</div>

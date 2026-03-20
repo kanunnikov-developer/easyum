@@ -7,12 +7,12 @@ export interface CardCourses {
 export const mobileCourses: CardCourses[] = [
 	{
 		id: '23',
-		img: '/courses/mobile/android.png',
+		img: '/courses/mobile/android.svg',
 		link: '/courses/mobile-development/java-android',
 	},
 	{
 		id: '24',
-		img: '/courses/mobile/ios.png',
+		img: '/courses/mobile/ios.svg',
 		link: '/courses/mobile-development/mobiledev-ios',
 	},
 ];

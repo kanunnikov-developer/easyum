@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 interface Props {
 	img: string;
 	title: string;
-	description: string;
+	description?: string;
 	list: string[];
 }
 

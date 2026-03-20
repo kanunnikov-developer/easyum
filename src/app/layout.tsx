@@ -4,6 +4,8 @@ import './globals.css';
 import Header from '@/widgets/header/header';
 import Footer from '@/widgets/footer/footer';
 import DiscountTimerBar from '@/widgets/discountBar/DiscountBar';
+import getRegion from '@/lib/getRegion';
+import { Suspense } from 'react';
 
 const GolosText = Golos_Text({
 	variable: '--golos-text',
@@ -43,8 +45,15 @@ export default function RootLayout({
 				{children}
 				<Footer />
 
-				<DiscountTimerBar />
+				<Suspense>
+					<Wrapper />
+				</Suspense>
 			</body>
 		</html>
 	);
+}
+
+async function Wrapper() {
+	const region = await getRegion();
+	return <DiscountTimerBar city={region?.city} />;
 }

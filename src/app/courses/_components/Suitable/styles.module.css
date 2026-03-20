@@ -5,8 +5,17 @@
 .group {
 	margin-top: 50px;
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
 	gap: 30px;
+}
+
+/* Если всего 3 элемента */
+.group:has(> :nth-child(1):nth-last-child(3)) {
+	grid-template-columns: repeat(3, 1fr);
+}
+
+/* Если больше 3 элементов */
+.group:has(> :nth-child(4)) {
+	grid-template-columns: repeat(4, 1fr);
 }
 
 .item {
@@ -46,8 +55,17 @@
 	.group {
 		margin-top: 50px;
 		display: grid;
-		grid-template-columns: repeat(1, 1fr);
 		gap: 35px;
+	}
+
+	/* Если всего 3 элемента */
+	.group:has(> :nth-child(1):nth-last-child(3)) {
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	/* Если больше 3 элементов */
+	.group:has(> :nth-child(4)) {
+		grid-template-columns: repeat(1, 1fr);
 	}
 
 	.item {

@@ -1,0 +1,133 @@
+.rate {
+	border-radius: 20px;
+	background: var(--white-color);
+	padding: 15px 15px 30px 30px;
+}
+
+.title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.title p {
+	font-weight: 700;
+	font-size: 25px;
+}
+
+.lists {
+	margin-top: 15px;
+	margin-left: 20px;
+	font-size: 18px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.list_accent {
+	color: var(--accent-color);
+}
+
+.tinkoff {
+	margin-top: 30px;
+	color: var(--accent-color);
+}
+
+.tinkoff_price {
+	font-size: 25px;
+	font-weight: 700;
+}
+
+.tinkoff_description {
+	font-size: 14px;
+}
+
+.button_tinkoff {
+	cursor: pointer;
+	margin-top: 10px;
+	padding: 5px 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	font-family: inherit;
+	background: #ffdd2b;
+	border: 1px solid #ffdd2b;
+	border-radius: 5px;
+	transition: all 0.2s ease;
+}
+
+.button_tinkoff img {
+	width: 20px;
+	height: 20px;
+}
+
+.price {
+	margin-top: 30px;
+}
+
+.price__text {
+	display: flex;
+	align-items: flex-start;
+	gap: 15px;
+}
+
+.price__title {
+	font-size: 37px;
+	font-weight: 700;
+}
+
+.price__sale {
+	padding: 6px 15px;
+	background: #cffcb9;
+	color: #339900;
+	border-radius: 50px;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+.price__description {
+	margin-top: 5px;
+	font-size: 12px;
+}
+
+.buttons {
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.accent_button {
+	cursor: pointer;
+	width: 100%;
+	padding: 15px;
+	font-family: inherit;
+	color: var(--white-color);
+	background: var(--accent-color);
+	border: 1px solid var(--accent-color);
+	border-radius: 50px;
+	transition: all 0.2s ease;
+	font-size: 20px;
+}
+
+.accent_button:hover {
+	color: var(--accent-color);
+	background: none;
+}
+
+.button {
+	width: 100%;
+	padding: 15px;
+	font-family: inherit;
+	background: none;
+	border: 1px solid var(--text-color);
+	border-radius: 50px;
+	transition: all 0.2s ease;
+	font-size: 20px;
+}
+
+.button:hover {
+	color: var(--accent-color);
+	border: 1px solid var(--accent-color);
+}

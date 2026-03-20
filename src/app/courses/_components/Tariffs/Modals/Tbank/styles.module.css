@@ -1,0 +1,129 @@
+.overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+
+	animation: opacity 0.2s ease;
+}
+
+.modal {
+	background: var(--white-color);
+	padding: 40px;
+	border-radius: 20px;
+	width: 650px;
+
+	animation: fadeIn 0.2s ease;
+}
+
+.order {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	margin-top: 30px;
+	padding: 15px 0 15px 0;
+	border-top: 2px solid #cacaca;
+	border-bottom: 2px solid #cacaca;
+}
+
+.order__text {
+	flex: 1;
+}
+
+.order__image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.order_title {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.order_tariff {
+	margin-top: 5px;
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.price {
+	margin-top: 15px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+
+.price__description {
+	font-size: 12px;
+}
+
+.price__price {
+	font-size: 20px;
+	font-weight: 700;
+	color: var(--accent-color);
+}
+
+.form {
+	margin-top: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes opacity {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@media screen and (max-width: 430px) {
+	.modal {
+		padding: 30px;
+		width: 90%;
+	}
+
+	.order {
+		margin-top: 15px;
+		border-top: 1px solid #cacaca;
+		border-bottom: 1px solid #cacaca;
+	}
+
+	.order__text {
+		flex: 1;
+	}
+
+	.order__image {
+		display: none;
+	}
+
+	.price {
+		gap: 10px;
+		align-items: center;
+	}
+
+	.price__description {
+		flex: 1;
+	}
+
+	.form {
+		margin-top: 15px;
+	}
+}

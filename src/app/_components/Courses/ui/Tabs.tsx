@@ -4,6 +4,7 @@ import * as Tabs from '@radix-ui/react-tabs';
 import Link from 'next/link';
 import styles from './styles.module.css';
 import { courses } from '../lib/courses';
+import Image from 'next/image';
 
 const categories = [
 	'Программирование',
@@ -36,7 +37,7 @@ export default function CoursesTabs() {
 							.filter((content) => content.category === category)
 							.map((card) => (
 								<Link key={card.id} href={card.href} className={styles.card}>
-									<img src={card.image} alt={card.title} width={373} height={250} />
+									<Image src={card.image} alt={card.title} width={350} height={233} />
 								</Link>
 							))}
 					</div>

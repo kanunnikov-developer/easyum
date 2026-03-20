@@ -67,6 +67,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 		fieldErrors: {
 			name: '',
 			phone: '',
+			email: '',
 		},
 	};
 }

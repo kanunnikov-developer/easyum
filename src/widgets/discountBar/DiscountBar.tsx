@@ -4,9 +4,15 @@
 import { useState, useEffect } from 'react'; // если нет → заменить на <span>✕</span>
 import styles from './styles.module.css';
 import Image from 'next/image';
+import { sale } from '@/app/courses/startCourses.info';
+import Modal from './Modal/Modal';
 
-export default function DiscountTimerBar() {
-	const END_DATE = new Date('2026-03-20T23:59:59');
+interface Props {
+	city: string | undefined;
+}
+
+export default function DiscountTimerBar({ city }: Props) {
+	const END_DATE = new Date(sale.date);
 
 	const [timeLeft, setTimeLeft] = useState({
 		days: 0,
@@ -16,6 +22,7 @@ export default function DiscountTimerBar() {
 	});
 
 	const [isExpired, setIsExpired] = useState(false);
+	const [isOpenBron, setIsOpenBron] = useState(false);
 
 	useEffect(() => {
 		const calculateTimeLeft = () => {
@@ -78,8 +85,8 @@ export default function DiscountTimerBar() {
 						</div>
 
 						<div className={styles.slogan}>
-							<p>Ждем весну вместе с EasyUM!</p>
-							<span>Скидка 20% до 20 марта!</span>
+							<p>{sale.discountBarTitle}</p>
+							<span>{sale.discountBarDescription}</span>
 						</div>
 
 						<div className={styles.percent}>
@@ -87,7 +94,9 @@ export default function DiscountTimerBar() {
 						</div>
 
 						<div className={styles.button}>
-							<button className={styles.btn}>Бронь места</button>
+							<button className={styles.btn} onClick={() => setIsOpenBron(true)}>
+								Бронь места
+							</button>
 						</div>
 
 						<div className={styles.image}>
@@ -132,12 +141,15 @@ export default function DiscountTimerBar() {
 								</div>
 							</div>
 							<div className={styles.button}>
-								<button className={styles.btn}>Бронь</button>
+								<button className={styles.btn} onClick={() => setIsOpenBron(true)}>
+									Бронь
+								</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			{isOpenBron && <Modal onClose={() => setIsOpenBron(false)} city={city} />}
 		</>
 	);
 }
