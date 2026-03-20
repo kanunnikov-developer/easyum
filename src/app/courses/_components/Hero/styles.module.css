@@ -33,6 +33,7 @@
 }
 
 .hero__button {
+	cursor: pointer;
 	padding: 20px 60px;
 	color: var(--text-color);
 	background: none;
@@ -40,6 +41,9 @@
 	font-size: 20px;
 	border-radius: 100px;
 	transition: all 0.2s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .hero__button:hover {

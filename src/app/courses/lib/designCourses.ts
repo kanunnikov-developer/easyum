@@ -7,17 +7,17 @@ export interface CardCourses {
 export const designCourses: CardCourses[] = [
 	{
 		id: '16',
-		img: '/courses/design/ux.png',
+		img: '/courses/design/ux.svg',
 		link: '/courses/design/web-design-ui-ux',
 	},
 	{
 		id: '17',
-		img: '/courses/design/graph.png',
+		img: '/courses/design/graph.svg',
 		link: '/courses/design/graphic-designer',
 	},
 	{
 		id: '18',
-		img: '/courses/design/junior.png',
+		img: '/courses/design/junior.svg',
 		link: '/courses/design/design-dlya-nachinayshih',
 	},
 ];

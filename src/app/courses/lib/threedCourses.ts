@@ -7,7 +7,7 @@ export interface CardCourses {
 export const threedCourses: CardCourses[] = [
 	{
 		id: '25',
-		img: '/courses/threeD/3d.png',
+		img: '/courses/threeD/3d.svg',
 		link: '/courses/3d-modeling/3d-max',
 	},
 ];

@@ -12,7 +12,7 @@ interface Props {
 
 export default function Programm({ mounth, programs }: Props) {
 	return (
-		<section className={styles.programm}>
+		<section id='program' className={styles.programm}>
 			<div className={styles.text}>
 				<div className={styles.top}>
 					<h2>

@@ -1,6 +1,6 @@
 import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs';
 import styles from './styles.module.css';
-import { dateStart } from '../../startCourses.info';
+import { dateStart, sale } from '../../startCourses.info';
 import Hero from '../../_components/Hero/Hero';
 import GetLesson from '../../_components/GetLesson/GetLesson';
 import Description from '../../_components/Description/Description';
@@ -19,6 +19,9 @@ import Metodist from '../../_components/Metodist/Metodist';
 import Reviews from '@/app/_components/Reviews/Reviews';
 import Duration from '../../_components/Duration/Duration';
 import PhotosComponent from '@/components/photos/photosComponent';
+import getRegion from '@/lib/getRegion';
+import Tariffs from '../../_components/Tariffs/Tariffs';
+import { Suspense } from 'react';
 
 const course = {
 	title: dateStart[6].course,
@@ -29,6 +32,8 @@ const course = {
 	img: 'programming/php-junior/hero.svg',
 	date: dateStart[6].date,
 	duration: '4 месяца',
+	price: dateStart[6].price,
+	imgCourse: dateStart[6].imgCourse,
 };
 
 const suitable = [
@@ -313,7 +318,34 @@ export default function Page() {
 					</h2>
 					<PhotosComponent />
 				</section>
+
+				<Suspense
+					fallback={
+						<Tariffs
+							city='Москва'
+							price={course.price}
+							course={course.title}
+							sale={sale.tariffs}
+							imgCourse={course.imgCourse}
+						/>
+					}
+				>
+					<Wrapper />
+				</Suspense>
 			</div>
 		</div>
+	);
+}
+
+async function Wrapper() {
+	const region = await getRegion();
+	return (
+		<Tariffs
+			city={region?.city}
+			price={course.price}
+			course={course.title}
+			sale={sale.tariffs}
+			imgCourse={course.imgCourse}
+		/>
 	);
 }
