@@ -27,8 +27,30 @@
 	margin-bottom: 10px;
 }
 
-.modal img {
+.modalImage img {
 	width: 400px;
 	height: 400px;
 	padding-right: 70px;
+}
+
+@media (max-width: 430px) {
+
+	.modal {
+		width: 90%;
+		padding: 30px 60px;
+		border-radius: 25px;
+		text-align: center;
+	}
+
+	.modal p {
+		font-size: 52px;
+		text-transform: uppercase;
+		margin-bottom: 10px;
+	}
+
+	.modalImage img {
+		width: 200px;
+		height: 200px;
+		padding-right: 20px;
+	}
 }
