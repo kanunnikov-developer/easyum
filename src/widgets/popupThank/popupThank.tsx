@@ -15,7 +15,9 @@ export default function PopupThank({ isOpen, onClose }: PopupThankProps) {
 			<div className={styles.modal} onClick={(e) => e.stopPropagation()}>
 				<p>Спасибо!</p>
 				<span>За заявку, мы свяжемся с Вами в ближайшее время</span>
-				<img src='/thanksLike.svg' alt='Картинка спасибо' />
+				<div className={styles.modalImage}>
+					<img src='/thanksLike.svg' alt='Картинка спасибо' />
+				</div>
 			</div>
 		</div>
 	);
