@@ -1,7 +1,12 @@
 'use server';
 
 import { z } from 'zod';
-import { State } from '../MainForm/action';
+import nodemailer from 'nodemailer';
+
+export type ActionResult = {
+	fieldErrors?: { name?: string; phone?: string; email?: string };
+	success: boolean;
+};
 
 const FormSchema = z.object({
 	name: z
@@ -18,55 +23,71 @@ const FormSchema = z.object({
 			'Телефон должен соответствовать российскому формату',
 		)
 		.max(20, 'Телефон должен быть не длиннее 20 символов'),
-	email: z.email('Неверный формат email').optional().or(z.literal('')),
+	email: z.string().email('Неверный формат email').optional().or(z.literal('')),
 });
 
-export async function action(prevState: State, formData: FormData): Promise<State> {
+const transporter = nodemailer.createTransport({
+	host: process.env.SMTP_HOST,
+	port: Number(process.env.SMTP_PORT),
+	secure: true,
+	auth: {
+		user: process.env.SMTP_USER,
+		pass: process.env.SMTP_PASS,
+	},
+});
+
+export async function sendForm(formData: FormData): Promise<ActionResult> {
 	const rawName = formData.get('name');
 	const rawPhone = formData.get('phone');
 	const rawEmail = formData.get('email');
 	const rawComment = formData.get('comment');
 	const rawConsent = formData.get('pd_consent');
 	const rawSms = formData.get('sms_consent');
-	const rewNameForm = formData.get('nameForm');
+	const rawNameForm = formData.get('nameForm');
 	const rawCity = formData.get('city');
 
 	const parsed = FormSchema.safeParse({
 		name: typeof rawName === 'string' ? rawName : '',
 		phone: typeof rawPhone === 'string' ? rawPhone : '',
-		email: rawEmail,
+		email: typeof rawEmail === 'string' ? rawEmail : '',
 	});
 
 	if (!parsed.success) {
 		const fieldErrors = parsed.error.flatten().fieldErrors;
 		return {
+			success: false,
 			fieldErrors: {
 				name: fieldErrors.name?.[0],
 				phone: fieldErrors.phone?.[0],
 				email: fieldErrors.email?.[0],
 			},
-			success: false,
 		};
 	}
 
 	const data = {
 		'Название компании': parsed.data.name,
 		'Телефон представителя': parsed.data.phone,
-		'Email представителя': rawEmail,
-		'Перечень направлений': rawComment,
-		'Согласие на обработку персональных данных': rawConsent == null ? 'Нет' : 'Да',
-		'Согласие на рассылку': rawSms == null ? 'Нет' : 'Да',
-		'Имя формы': rewNameForm,
-		Город: rawCity,
+		'Email представителя': parsed.data.email,
+		'Перечень направлений': typeof rawComment === 'string' ? rawComment : '',
+		'Согласие на обработку ПД': rawConsent === 'on' ? 'Да' : 'Нет',
+		'Согласие на получение СМС': rawSms === 'on' ? 'Да' : 'Нет',
 	};
 
-	console.log(data);
+	const formattedText = Object.entries(data)
+		.map(([key, value]) => `${key}: ${value || 'Не указано'}`)
+		.join('\n');
 
-	return {
-		success: true,
-		fieldErrors: {
-			name: '',
-			phone: '',
-		},
-	};
+	try {
+		await transporter.sendMail({
+			from: `${rawNameForm} <${process.env.SMTP_USER}>`,
+			to: process.env.YOUR_EMAIL,
+			subject: `Новая заявка: ${rawCity}`,
+			text: formattedText,
+		});
+
+		return { success: true };
+	} catch (err: any) {
+		console.error('Ошибка отправки через Beget SMTP:', err.message || err);
+		return { success: false };
+	}
 }

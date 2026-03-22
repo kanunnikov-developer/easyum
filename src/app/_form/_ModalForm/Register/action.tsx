@@ -78,14 +78,17 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 		'Согласие на рассылку': rawSms == null ? 'Нет' : 'Да',
 	};
 
+	const formattedText = Object.entries(data)
+		.map(([key, value]) => `${key}: ${value || 'Не указано'}`)
+		.join('\n');
+
+
 	try {
 		await transporter.sendMail({
 			from: `${rewNameForm} <${process.env.SMTP_USER}>`,
 			to: process.env.YOUR_EMAIL,
 			subject: `Новая заявка: ${rawCity}`,
-			text: Object.entries(data)
-				.map(([key, val]) => `${key.padEnd(25)}: ${val}`)
-				.join('\n\n'),
+			text: formattedText
 		});
 
 		return {

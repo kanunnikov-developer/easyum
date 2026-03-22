@@ -1,6 +1,17 @@
 'use server';
 
 import { z } from 'zod';
+import nodemailer from 'nodemailer';
+
+const transporter = nodemailer.createTransport({
+	host: process.env.SMTP_HOST,
+	port: Number(process.env.SMTP_PORT),
+	secure: true,
+	auth: {
+		user: process.env.SMTP_USER,
+		pass: process.env.SMTP_PASS,
+	},
+});
 
 const finalStepSchema = z.object({
 	name: z
@@ -67,49 +78,28 @@ export async function submitTestForm(prevState: SubmitFormState, formData: FormD
 	// Здесь данные уже валидны
 	const { name, phone } = parseResult.data;
 
-	console.log('Тест пройден:', {
-		Имя: parseResult.data.name,
-		Телефон: parseResult.data.phone,
-		Тест: 'Какая IT-профессия мне подходит',
-	});
+	const message = `Новый результат теста: Какая IT-профессия мне подходит!
+		Имя: ${name}
+		Телефон: ${phone}
+		Ответы:
+		${Object.entries(answers)
+			.map(([qId, val]) => `Вопрос ${qId}: ${val}`)
+			.join('\n')}`;
 
-	// ── Дальше — бизнес-логика (сохранить, отправить, залогировать) ──
+	try {
+		await transporter.sendMail({
+			from: `Тест: IT Профессия <${process.env.SMTP_USER}>`,
+			to: process.env.YOUR_EMAIL,
+			subject: `Новый результат теста: ${name}`,
+			text: message,
+		});
 
-	// TODO: здесь обычно делают одно из:
-	// 1. Сохраняют в базу данных (prisma, drizzle, supabase, mongodb и т.д.)
-	// 2. Отправляют в CRM / Telegram-бота / email
-	// 3. Отправляют в Google Sheets через API
-	// 4. Вызывают внешний webhook
-
-	// Пример отправки в Telegram (если у тебя есть бот)
-	/*
-  try {
-    const message = `
-Новый лид из квиза IT-профессия!
-Имя: ${name}
-Телефон: ${phone}
-Ответы:
-${Object.entries(answers)
-  .map(([qId, val]) => `  Вопрос ${qId}: ${val}`)
-  .join('\n')}
-    `;
-    await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: process.env.TELEGRAM_CHAT_ID,
-        text: message,
-        parse_mode: 'Markdown',
-      }),
-    });
-  } catch (err) {
-    console.error('Ошибка отправки в Telegram:', err);
-    // Можно не падать, а просто залогировать
-  }
-  */
-
-	return {
-		success: true,
-		error: null,
-	};
+		return {
+			success: true,
+			error: null,
+		};
+	} catch (err: any) {
+		console.error('Ошибка отправки через Beget SMTP:', err.message || err);
+		return { success: false, error: 'Ошибка отправки результата на почту' };
+	}
 }

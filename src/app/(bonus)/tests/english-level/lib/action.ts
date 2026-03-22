@@ -2,7 +2,18 @@
 'use server';
 
 import { z } from 'zod';
+import nodemailer from 'nodemailer';
 import { getResult, questions } from '../lib/questions'; // ← твои вопросы
+
+const transporter = nodemailer.createTransport({
+	host: process.env.SMTP_HOST,
+	port: Number(process.env.SMTP_PORT),
+	secure: true,
+	auth: {
+		user: process.env.SMTP_USER,
+		pass: process.env.SMTP_PASS,
+	},
+});
 
 // Схема валидации только для финального шага
 const finalStepSchema = z.object({
@@ -76,18 +87,33 @@ export async function submitTestForm(prevState: TestFormState, formData: FormDat
 	// Результат (твоя функция)
 	const resultText = getResult(totalPoints);
 
-	// TODO: здесь можно сохранить в БД, отправить email/Telegram и т.д.
-	console.log('Тест пройден:', {
+	const data = {
 		Имя: parsed.data.name,
 		Телефон: parsed.data.phone,
-		Результат: totalPoints + ' баллов из 17',
+		Результат: totalPoints + ' баллов из ' + questions.length,
 		Тест: 'Определить уровень английского языка',
-	});
-
-	return {
-		error: null,
-		success: true,
-		score: totalPoints,
-		result: resultText,
 	};
+
+	const formattedText = Object.entries(data)
+		.map(([key, value]) => `${key}: ${value || 'Не указано'}`)
+		.join('\n');
+
+	try {
+		await transporter.sendMail({
+			from: `Тест по английскому <${process.env.SMTP_USER}>`,
+			to: process.env.YOUR_EMAIL,
+			subject: `Новый результат теста: ${parsed.data.name}`,
+			text: formattedText,
+		});
+
+		return {
+			error: null,
+			success: true,
+			score: totalPoints,
+			result: resultText,
+		};
+	} catch (err: any) {
+		console.error('Ошибка отправки через Beget SMTP:', err.message || err);
+		return { success: false, error: 'Ошибка отправки результата на почту' };
+	}
 }

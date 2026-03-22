@@ -2,23 +2,38 @@
 
 import styles from '../../styles.module.css';
 
-import { useActionState, useEffect, useState } from 'react';
-import { action } from './action';
-import { State } from '../../MainForm/action';
-
-const initialState: State = {
-	fieldErrors: { name: '', phone: '', email: '' },
-	success: false,
-};
+import { useRef, useState } from 'react';
+import { sendForm, ActionResult } from './action';
+import PopupThank from '@/widgets/popupThank/popupThank';
+import { SubmitButton } from '../../MainForm/SbmitButton';
 
 interface Props {
 	city: string | undefined;
 }
 
 export default function CorporateFormOne({ city }: Props) {
+	const formRef = useRef<HTMLFormElement>(null);
+
 	const [pdConsentOne, setPdConsentOne] = useState(false);
 	const [smsConsentOne, setSmsConsentOne] = useState(false);
-	const [stateOne, formActionOne] = useActionState(action, initialState);
+	const [isThankOpen, setIsThankOpen] = useState(false);
+	const [errors, setErrors] = useState<ActionResult['fieldErrors']>({});
+
+	const handleSubmit = async (formData: FormData) => {
+		const res = await sendForm(formData);
+
+		if (!res.success) {
+			setErrors(res.fieldErrors || {});
+			return;
+		}
+
+		setErrors({});
+		setIsThankOpen(true);
+
+		formRef.current?.reset();
+		setPdConsentOne(false);
+		setSmsConsentOne(false);
+	};
 
 	const handlePdChangeOne = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPdConsentOne(e.target.checked);
@@ -27,25 +42,22 @@ export default function CorporateFormOne({ city }: Props) {
 		setSmsConsentOne(e.target.checked);
 	};
 
-	useEffect(() => {
-		setPdConsentOne(false);
-	}, [stateOne]);
-
 	return (
-		<form action={formActionOne} className={styles.form}>
+		<>
+			<form action={handleSubmit} ref={formRef} className={styles.form}>
 			<div className={styles.input}>
 				<input type='text' name='course' placeholder='Курс' required />
-				{stateOne.fieldErrors?.name && <p className={styles.error}>{stateOne.fieldErrors.name}</p>}
+				{errors?.name && <p className={styles.error}>{errors.name}</p>}
 			</div>
 
 			<div className={styles.input}>
 				<input type='tel' name='phone' placeholder='Телефон представителя' required />
-				{stateOne.fieldErrors?.phone && <p className={styles.error}>{stateOne.fieldErrors.phone}</p>}
+				{errors?.phone && <p className={styles.error}>{errors.phone}</p>}
 			</div>
 
 			<div className={styles.input}>
 				<input type='email' name='email' placeholder='Email представителя' />
-				{stateOne.fieldErrors?.email && <p className={styles.error}>{stateOne.fieldErrors.email}</p>}
+				{errors?.email && <p className={styles.error}>{errors.email}</p>}
 			</div>
 
 			<input type='text' name='comment' placeholder='Комментарий' />
@@ -92,9 +104,13 @@ export default function CorporateFormOne({ city }: Props) {
 				</label>
 			</div>
 
-			<button className={styles.submitButton} disabled={!pdConsentOne}>
-				Отправить
-			</button>
-		</form>
+				<SubmitButton disabled={!pdConsentOne} />
+			</form>
+
+			<PopupThank
+				isOpen={isThankOpen}
+				onClose={() => setIsThankOpen(false)}
+			/>
+		</>
 	);
 }

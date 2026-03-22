@@ -199,7 +199,7 @@ export default function TestForm() {
 							{totalPoints} из {questions.length} баллов
 						</p>
 						{(() => {
-							const percent = (totalPoints / questions.length) * 100;
+							const percent = Math.round((totalPoints / questions.length) * 100);
 
 							if (percent <= 29) {
 								return (
@@ -482,8 +482,6 @@ export default function TestForm() {
 									</div>
 								);
 							}
-
-							return <p>Начальный уровень...</p>;
 						})()}
 
 						<button
