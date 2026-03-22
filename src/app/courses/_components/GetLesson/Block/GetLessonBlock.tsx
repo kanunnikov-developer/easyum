@@ -4,7 +4,11 @@ import ButtonGroup from '../buttonGroup/ButtonGroup';
 import getRegion from '@/lib/getRegion';
 import Image from 'next/image';
 
-export default function GetLessonBlock() {
+interface Props {
+	course: string;
+}
+
+export default function GetLessonBlock({ course }: Props) {
 	return (
 		<section className={styles.main}>
 			<div className={styles.grid}>
@@ -17,8 +21,8 @@ export default function GetLessonBlock() {
 						Telegram в течение 5 минут!
 					</p>
 					<div className={styles.buttons}>
-						<Suspense fallback={<ButtonGroup city='Москва' />}>
-							<Wrapper />
+						<Suspense fallback={<ButtonGroup city='Москва' course={course} />}>
+							<Wrapper course={course}/>
 						</Suspense>
 					</div>
 				</div>
@@ -36,7 +40,7 @@ export default function GetLessonBlock() {
 	);
 }
 
-async function Wrapper() {
+async function Wrapper({ course }: { course: string }) {
 	const region = await getRegion();
-	return <ButtonGroup city={region?.city} />;
+	return <ButtonGroup city={region?.city} course={course} />;
 }

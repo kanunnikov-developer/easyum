@@ -5,14 +5,18 @@ import styles from './styles.module.css';
 import cn from 'classnames';
 import { useState } from 'react';
 import ModalForm from '@/app/_form/_ModalForm/GetLesson/ModalForm';
+import PopupThank from '@/widgets/popupThank/popupThank';
 
 interface Props {
 	city: string | undefined;
+	course: string;
 }
 
-export default function ButtonGroup({ city }: Props) {
+export default function ButtonGroup({ city, course }: Props) {
 	const [isOpenTelegram, setIsOpenTelegram] = useState(false);
 	const [isOpenWhatsApp, setIsOpenWhatsApp] = useState(false);
+	const [isThankOpen, setIsThankOpen] = useState(false);
+
 
 	return (
 		<>
@@ -30,20 +34,25 @@ export default function ButtonGroup({ city }: Props) {
 					WhatsApp
 				</button>
 			</div>
-			{isOpenTelegram && <Modal onClose={() => setIsOpenTelegram(false)} form={'telegram'} city={city} />}
-			{isOpenWhatsApp && <Modal onClose={() => setIsOpenWhatsApp(false)} form={'whatsapp'} city={city} />}
+			{isOpenTelegram && <Modal onClose={() => setIsOpenTelegram(false)} form={'telegram'} city={city} onSuccess={() => setIsThankOpen(true)} course={course}/>}
+			{isOpenWhatsApp && <Modal onClose={() => setIsOpenWhatsApp(false)} form={'whatsapp'} city={city} onSuccess={() => setIsThankOpen(true)} course={course}/>}
+			{isThankOpen && <PopupThank onClose={() => setIsThankOpen(false)} isOpen={isThankOpen}/>}
 		</>
 	);
 }
 
 function Modal({
 	onClose,
+	onSuccess,
 	form,
 	city,
+	course,
 }: {
 	onClose: () => void;
+	onSuccess: () => void;
 	form: 'telegram' | 'whatsapp';
 	city: string | undefined;
+	course: string;
 }) {
 	return (
 		<div className={styles.overlay} onClick={onClose}>
@@ -62,9 +71,9 @@ function Modal({
 						<p>Заполните форму и мы направим видео</p>
 						<div className={styles.form}>
 							{form === 'telegram' ? (
-								<ModalForm city={city} messanger='telegram' />
+								<ModalForm city={city} messanger='Telegram' onClose={onClose} onSuccess={onSuccess} course={course}/>
 							) : (
-								<ModalForm city={city} messanger='WhatsApp' />
+								<ModalForm city={city} messanger='WhatsApp' onClose={onClose} onSuccess={onSuccess} course={course}/>
 							)}
 						</div>
 					</div>

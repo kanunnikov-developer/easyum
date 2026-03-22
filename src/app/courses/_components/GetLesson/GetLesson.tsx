@@ -5,7 +5,11 @@ import ButtonGroup from './buttonGroup/ButtonGroup';
 import getRegion from '@/lib/getRegion';
 import { Suspense } from 'react';
 
-export default function GetLesson() {
+interface Props {
+	course: string;
+}
+
+export default function GetLesson({ course }: Props) {
 	return (
 		<div className={cn('container', styles.getLesson)}>
 			<div className={styles.getLesson__row}>
@@ -26,15 +30,15 @@ export default function GetLesson() {
 						</div>
 					</div>
 				</div>
-				<Suspense fallback={<ButtonGroup city='Москва' />}>
-					<Wrapper />
+				<Suspense fallback={<ButtonGroup city='Москва' course={course} />}>
+					<Wrapper course={course} />
 				</Suspense>
 			</div>
 		</div>
 	);
 }
 
-async function Wrapper() {
+async function Wrapper({ course }: Props) {
 	const region = await getRegion();
-	return <ButtonGroup city={region?.city} />;
+	return <ButtonGroup city={region?.city} course={course} />;
 }

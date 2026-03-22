@@ -7,9 +7,10 @@ interface Props {
 	course: string;
 	tariff: string;
 	price: string | undefined;
+	onSuccess: () => void;
 }
 
-export function ModalRegister({ onClose, city, course, tariff, price }: Props) {
+export function ModalRegister({ onClose, city, course, tariff, price, onSuccess }: Props) {
 	return (
 		<div className={styles.overlay} onClick={onClose}>
 			<div className={styles.modal} onClick={(e) => e.stopPropagation()}>
@@ -20,7 +21,7 @@ export function ModalRegister({ onClose, city, course, tariff, price }: Props) {
 					<p>Формат: {tariff}</p>
 				</div>
 				<div className={styles.form}>
-					<RegisterForm city={city} course={course} tariff={tariff} price={price} />
+					<RegisterForm city={city} course={course} tariff={tariff} price={price} onSuccess={onSuccess} onClose={onClose} />
 				</div>
 			</div>
 		</div>

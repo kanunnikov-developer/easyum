@@ -1,9 +1,9 @@
 export const sale = {
-	date: '2026-03-21T23:59:59',
-	tariffs: `Ждем весну с EasyUM! Скидка 20% до 21 марта!`,
+	date: '2026-03-24T23:59:59',
+	tariffs: `Ждем весну с EasyUM! Скидка 20% до 24 марта!`,
 	discountBarTitle: 'Ждем весну вместе с EasyUM!',
-	discountBarDescription: 'Скидка 20% до 21 марта!',
-	bronText: 'До 21 марта дарим 20% на любой курс',
+	discountBarDescription: 'Скидка 20% до 24 марта!',
+	bronText: 'До 24 марта дарим 20% на любой курс',
 };
 
 export const dateStart = [

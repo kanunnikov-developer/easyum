@@ -1,6 +1,8 @@
 'use server';
 
 import { z } from 'zod';
+import nodemailer from 'nodemailer';
+
 
 export type State = {
 	fieldErrors?: { name?: string; phone?: string; email?: string };
@@ -25,6 +27,16 @@ const FormSchema = z.object({
 	email: z.email('Неверный формат email').optional().or(z.literal('')),
 });
 
+const transporter = nodemailer.createTransport({
+	host: process.env.SMTP_HOST,
+	port: Number(process.env.SMTP_PORT),
+	secure: true,
+	auth: {
+		user: process.env.SMTP_USER,
+		pass: process.env.SMTP_PASS,
+	},
+});
+
 export async function action(prevState: State, formData: FormData): Promise<State> {
 	const rawName = formData.get('name');
 	const rawPhone = formData.get('phone');
@@ -33,7 +45,6 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 	const rawSms = formData.get('sms_consent');
 	const rewNameForm = formData.get('nameForm');
 	const rawCity = formData.get('city');
-	const rawCourse = formData.get('course');
 	const rawTariff = formData.get('tariff');
 	const rawPrice = formData.get('price');
 
@@ -61,21 +72,30 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 		Email: rawEmail,
 		'Имя формы': rewNameForm,
 		Город: rawCity,
-		Курс: rawCourse,
 		Тариф: rawTariff,
 		Цена: rawPrice + ' руб.',
 		'Согласие на обработку персональных данных': rawConsent == null ? 'Нет' : 'Да',
 		'Согласие на рассылку': rawSms == null ? 'Нет' : 'Да',
 	};
 
-	console.log(data);
+	try {
+		await transporter.sendMail({
+			from: `${rewNameForm} <${process.env.SMTP_USER}>`,
+			to: process.env.YOUR_EMAIL,
+			subject: `Новая заявка: ${rawCity}`,
+			text: Object.entries(data)
+				.map(([key, val]) => `${key.padEnd(25)}: ${val}`)
+				.join('\n\n'),
+		});
 
-	return {
-		success: true,
-		fieldErrors: {
-			name: '',
-			phone: '',
-			email: '',
-		},
-	};
+		return {
+			success: true,
+			fieldErrors: { name: '', phone: '', email: '' },
+		};
+	} catch (err: any) {
+		console.error('Ошибка отправки через Beget SMTP:', err.message || err);
+		return {
+			success: false,
+		};
+	}
 }

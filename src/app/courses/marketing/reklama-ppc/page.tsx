@@ -181,7 +181,7 @@ export default function Page() {
 
 				<TeacherVideo />
 
-				<GetLesson />
+				<GetLesson course={course.title}/>
 
 				<Description
 					title={`Контекстолог привлекает \n`}
@@ -214,7 +214,7 @@ export default function Page() {
 
 				<Instruments instrument={instruments} />
 
-				<GetLessonBlock />
+				<GetLessonBlock course={course.title}/>
 
 				<Programm mounth={course.duration} programs={programs} />
 

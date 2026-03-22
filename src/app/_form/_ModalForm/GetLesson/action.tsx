@@ -1,6 +1,7 @@
 'use server';
 
 import { z } from 'zod';
+import nodemailer from 'nodemailer';
 
 export type State = {
 	fieldErrors?: { name?: string; phone?: string; email?: string };
@@ -24,14 +25,25 @@ const FormSchema = z.object({
 		.max(20, 'Телефон должен быть не длиннее 20 символов'),
 });
 
+const transporter = nodemailer.createTransport({
+	host: process.env.SMTP_HOST,
+	port: Number(process.env.SMTP_PORT),
+	secure: true,
+	auth: {
+		user: process.env.SMTP_USER,
+		pass: process.env.SMTP_PASS,
+	},
+});
+
 export async function action(prevState: State, formData: FormData): Promise<State> {
 	const rawName = formData.get('name');
 	const rawPhone = formData.get('phone');
 	const rawTelegram = formData.get('telegram_nickname');
 	const rawConsent = formData.get('pd_consent');
 	const rawSms = formData.get('sms_consent');
-	const rewNameForm = formData.get('nameForm');
+	const rawNameForm = formData.get('nameForm');
 	const rawCity = formData.get('city');
+	const rawCourse = formData.get('course');
 
 	const parsed = FormSchema.safeParse({
 		name: typeof rawName === 'string' ? rawName : '',
@@ -52,20 +64,31 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 	const data = {
 		Имя: parsed.data.name,
 		Телефон: parsed.data.phone,
-		'Согласие на обработку персональных данных': rawConsent == null ? 'Нет' : 'Да',
-		'Согласие на рассылку': rawSms == null ? 'Нет' : 'Да',
-		'Имя формы': rewNameForm,
+		'Имя формы': rawNameForm,
 		Telegram: rawTelegram,
 		Город: rawCity,
+		'Согласие на обработку персональных данных': rawConsent == null ? 'Нет' : 'Да',
+		'Согласие на рассылку': rawSms == null ? 'Нет' : 'Да',
 	};
 
-	console.log(data);
+	try {
+		await transporter.sendMail({
+			from: `${rawNameForm}: ${rawCourse} <${process.env.SMTP_USER}>`,
+			to: process.env.YOUR_EMAIL,
+			subject: `Новая заявка: ${rawCity}`,
+			text: Object.entries(data)
+				.map(([key, val]) => `${key.padEnd(25)}: ${val}`)
+				.join('\n\n'),
+		});
 
-	return {
-		success: true,
-		fieldErrors: {
-			name: '',
-			phone: '',
-		},
-	};
+		return {
+			success: true,
+			fieldErrors: { name: '', phone: ''},
+		};
+	} catch (err: any) {
+		console.error('Ошибка отправки через Beget SMTP:', err.message || err);
+		return {
+			success: false,
+		};
+	}
 }

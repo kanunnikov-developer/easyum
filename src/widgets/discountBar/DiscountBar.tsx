@@ -6,6 +6,7 @@ import styles from './styles.module.css';
 import Image from 'next/image';
 import { sale } from '@/app/courses/startCourses.info';
 import Modal from './Modal/Modal';
+import PopupThank from '../popupThank/popupThank';
 
 interface Props {
 	city: string | undefined;
@@ -23,6 +24,7 @@ export default function DiscountTimerBar({ city }: Props) {
 
 	const [isExpired, setIsExpired] = useState(false);
 	const [isOpenBron, setIsOpenBron] = useState(false);
+	const [isThankOpen, setIsThankOpen] = useState(false);
 
 	useEffect(() => {
 		const calculateTimeLeft = () => {
@@ -149,7 +151,8 @@ export default function DiscountTimerBar({ city }: Props) {
 					</div>
 				</div>
 			</div>
-			{isOpenBron && <Modal onClose={() => setIsOpenBron(false)} city={city} />}
+			{isOpenBron && <Modal onClose={() => setIsOpenBron(false)} city={city} onSuccess={() => setIsThankOpen(true)} />}
+			{isThankOpen && <PopupThank onClose={() => setIsThankOpen(false)} isOpen={isThankOpen}/>}
 		</>
 	);
 }
