@@ -39,6 +39,10 @@ export async function sendForm(formData: FormData): Promise<ActionResult> {
 	const rawName = formData.get('name');
 	const rawPhone = formData.get('phone');
 	const rawEmail = formData.get('email');
+	const rawComment = formData.get('comment');
+	const rawCity = formData.get('city');
+	const rawPdConsent = formData.get('pd_consent');
+	const rawSmsConsent = formData.get('sms_consent');
 
 	const parsed = FormSchema.safeParse({
 		name: typeof rawName === 'string' ? rawName : '',
@@ -59,12 +63,25 @@ export async function sendForm(formData: FormData): Promise<ActionResult> {
 		};
 	}
 
+	const data = {
+		Имя: parsed.data.name,
+		Телефон: parsed.data.phone,
+		Email: parsed.data.email,
+		Комментарий: typeof rawComment === 'string' ? rawComment : '',
+		'Согласие на обработку ПД': rawPdConsent === 'on' ? 'Да' : 'Нет',
+		'Согласие на получение СМС': rawSmsConsent === 'on' ? 'Да' : 'Нет',
+	}
+
+	const formattedText = Object.entries(data)
+	.map(([key, value]) => `${key}: ${value || 'Не указано'}`)
+	.join('\n');
+
 	try {
 		await transporter.sendMail({
-			from: `Главная страница <${process.env.SMTP_USER}>`,
+			from: `Главная страница ${rawCity} <${process.env.SMTP_USER}>`,
 			to: process.env.YOUR_EMAIL,
-			subject: `Новая заявка`,
-			text: `Имя: ${parsed.data.name}\nТелефон: ${parsed.data.phone}`,
+			subject: `Новая заявка ${rawCity}`,
+			text: formattedText
 		});
 
 		return { success: true };

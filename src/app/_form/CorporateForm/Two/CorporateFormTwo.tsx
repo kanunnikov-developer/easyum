@@ -2,23 +2,38 @@
 
 import styles from '../../styles.module.css';
 
-import { useActionState, useEffect, useState } from 'react';
-import { action } from './action';
-import { State } from '../../MainForm/action';
-
-const initialState: State = {
-	fieldErrors: { name: '', phone: '', email: '' },
-	success: false,
-};
+import { useRef, useState } from 'react';
+import { sendForm, ActionResult } from './action';
+import PopupThank from '@/widgets/popupThank/popupThank';
+import { SubmitButton } from '../../MainForm/SbmitButton';
 
 interface Props {
 	city: string | undefined;
 }
 
 export default function CorporateFormTwo({ city }: Props) {
+	const formRef = useRef<HTMLFormElement>(null);
+
 	const [pdConsent, setPdConsent] = useState(false);
 	const [smsConsent, setSmsConsent] = useState(false);
-	const [state, formAction] = useActionState(action, initialState);
+	const [isThankOpen, setIsThankOpen] = useState(false);
+	const [errors, setErrors] = useState<ActionResult['fieldErrors']>({});
+
+	const handleSubmit = async (formData: FormData) => {
+		const res = await sendForm(formData);
+
+		if (!res.success) {
+			setErrors(res.fieldErrors || {});
+			return;
+		}
+
+		setErrors({});
+		setIsThankOpen(true);
+
+		formRef.current?.reset();
+		setPdConsent(false);
+		setSmsConsent(false);
+	};
 
 	const handlePdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPdConsent(e.target.checked);
@@ -27,25 +42,22 @@ export default function CorporateFormTwo({ city }: Props) {
 		setSmsConsent(e.target.checked);
 	};
 
-	useEffect(() => {
-		setPdConsent(false);
-	}, [state]);
-
 	return (
-		<form action={formAction} className={styles.form}>
+		<>
+			<form action={handleSubmit} ref={formRef} className={styles.form}>
 			<div className={styles.input}>
 				<input type='text' name='name' placeholder='Ваше имя' required />
-				{state.fieldErrors?.name && <p className={styles.error}>{state.fieldErrors.name}</p>}
+				{errors?.name && <p className={styles.error}>{errors.name}</p>}
 			</div>
 
 			<div className={styles.input}>
 				<input type='tel' name='phone' placeholder='Ваш телефон' required />
-				{state.fieldErrors?.phone && <p className={styles.error}>{state.fieldErrors.phone}</p>}
+				{errors?.phone && <p className={styles.error}>{errors.phone}</p>}
 			</div>
 
 			<div className={styles.input}>
 				<input type='email' name='email' placeholder='Ваш email' />
-				{state.fieldErrors?.email && <p className={styles.error}>{state.fieldErrors.email}</p>}
+				{errors?.email && <p className={styles.error}>{errors.email}</p>}
 			</div>
 
 			<input type='text' name='comment' placeholder='Темы и пожелания по курсу' />
@@ -93,9 +105,13 @@ export default function CorporateFormTwo({ city }: Props) {
 				</label>
 			</div>
 
-			<button className={styles.submitButton} disabled={!pdConsent}>
-				Отправить
-			</button>
-		</form>
+				<SubmitButton disabled={!pdConsent} />
+			</form>
+
+			<PopupThank
+				isOpen={isThankOpen}
+				onClose={() => setIsThankOpen(false)}
+			/>
+		</>
 	);
 }

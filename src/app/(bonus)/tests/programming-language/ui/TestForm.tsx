@@ -64,7 +64,7 @@ export default function TestForm() {
 		}
 	};
 
-	const progress = ((step - 1) / (questions.length + 1)) * 100; // +1 чтобы учесть финальный шаг
+	const progress = Math.round(((step - 1) / (questions.length + 1)) * 100); // +1 чтобы учесть финальный шаг
 
 	return (
 		<div className={styles.wrapper}>

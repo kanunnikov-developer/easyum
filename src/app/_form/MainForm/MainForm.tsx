@@ -27,11 +27,9 @@ export default function MainForm({ city }: Props) {
 			return;
 		}
 
-		// ✅ успех
 		setErrors({});
 		setIsThankOpen(true);
 
-		// 💥 полный reset формы
 		formRef.current?.reset();
 		setPdConsent(false);
 		setSmsConsent(false);
@@ -69,7 +67,7 @@ export default function MainForm({ city }: Props) {
 					<input
 						type='checkbox'
 						id='pd-consent'
-					name='pd_consent'
+						name='pd_consent'
 						required
 						className={styles.customCheckboxInput}
 						checked={pdConsent}
