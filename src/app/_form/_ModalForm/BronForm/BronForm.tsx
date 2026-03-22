@@ -12,12 +12,14 @@ const initialState: State = {
 
 interface Props {
 	city: string | undefined;
+	onClose: () => void;
+	onSuccess: () => void;
 }
 
-export default function BronForm({ city }: Props) {
+export default function BronForm({ city, onClose, onSuccess }: Props) {
 	const [pdConsent_bron, setPdConsent_bron] = useState(false);
 	const [smsConsent_bron, setSmsConsent_bron] = useState(false);
-	const [state, formAction] = useActionState(action, initialState);
+	const [state, formAction, isPending] = useActionState(action, initialState);
 
 	const handlePdChange_bron = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPdConsent_bron(e.target.checked);
@@ -27,7 +29,15 @@ export default function BronForm({ city }: Props) {
 	};
 
 	useEffect(() => {
+		if (state.success) {
+			onClose();
+			onSuccess();
+		}
+	}, [state.success, onClose]);
+
+	useEffect(() => {
 		setPdConsent_bron(false);
+		setSmsConsent_bron(false);
 	}, [state]);
 
 	return (
@@ -85,8 +95,8 @@ export default function BronForm({ city }: Props) {
 				</label>
 			</div>
 
-			<button className={styles.submitButton} disabled={!pdConsent_bron}>
-				Забронировать место
+			<button className={styles.submitButton} disabled={!pdConsent_bron || isPending}>
+				{isPending ? 'Отправка...' : 'Забронировать место'}
 			</button>
 		</form>
 	);

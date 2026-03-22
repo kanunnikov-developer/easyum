@@ -1,6 +1,7 @@
 'use server';
 
 import { z } from 'zod';
+import nodemailer from 'nodemailer';
 
 export type State = {
 	fieldErrors?: { name?: string; phone?: string };
@@ -22,6 +23,16 @@ const FormSchema = z.object({
 			'Телефон должен соответствовать российскому формату',
 		)
 		.max(20, 'Телефон должен быть не длиннее 20 символов'),
+});
+
+const transporter = nodemailer.createTransport({
+	host: process.env.SMTP_HOST,
+	port: Number(process.env.SMTP_PORT),
+	secure: true,
+	auth: {
+		user: process.env.SMTP_USER,
+		pass: process.env.SMTP_PASS,
+	},
 });
 
 export async function action(prevState: State, formData: FormData): Promise<State> {
@@ -57,13 +68,24 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 		'Согласие на рассылку': rawSms == null ? 'Нет' : 'Да',
 	};
 
-	console.log(data);
+	try {
+		await transporter.sendMail({
+			from: `Бронирование скидки <${process.env.SMTP_USER}>`,
+			to: process.env.YOUR_EMAIL,
+			subject: `Новая заявка: ${rawCity}`,
+			text: Object.entries(data)
+				.map(([key, val]) => `${key.padEnd(25)}: ${val}`)
+				.join('\n\n'),
+		});
 
-	return {
-		success: true,
-		fieldErrors: {
-			name: '',
-			phone: '',
-		},
-	};
+		return {
+			success: true,
+			fieldErrors: { name: '', phone: '' },
+		};
+	} catch (err: any) {
+		console.error('Ошибка отправки через Beget SMTP:', err.message || err);
+		return {
+			success: false,
+		};
+	}
 }

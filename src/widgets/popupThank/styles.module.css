@@ -1,0 +1,34 @@
+.modalOverlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 3;
+}
+
+.modal {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: var(--white-color);
+	background: var(--accent-color);
+	padding: 60px 120px;
+	border-radius: 25px;
+	text-align: center;
+}
+
+.modal p {
+	font-size: 100px;
+	font-weight: 900;
+	text-transform: uppercase;
+	margin-bottom: 10px;
+}
+
+.modal img {
+	width: 400px;
+	height: 400px;
+	padding-right: 70px;
+}

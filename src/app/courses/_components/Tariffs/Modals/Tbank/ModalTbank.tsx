@@ -7,11 +7,12 @@ interface Props {
 	city: string | undefined;
 	course: string;
 	tariff: string;
-	price: string | undefined;
+	price: string | undefined;	
 	imgCourse: string | undefined;
+	onSuccess: () => void;
 }
 
-export function ModalTbank({ onClose, city, course, tariff, price, imgCourse }: Props) {
+export function ModalTbank({ onClose, city, course, tariff, price, imgCourse, onSuccess }: Props) {
 	return (
 		<div className={styles.overlay} onClick={onClose}>
 			<div className={styles.modal} onClick={(e) => e.stopPropagation()}>
@@ -30,7 +31,7 @@ export function ModalTbank({ onClose, city, course, tariff, price, imgCourse }: 
 					</div>
 				</div>
 				<div className={styles.form}>
-					<ModalFormTbank city={city} course={course} tariff={tariff} price={price} />
+					<ModalFormTbank city={city} course={course} tariff={tariff} price={price} onSuccess={onSuccess} onClose={onClose} />
 				</div>
 			</div>
 		</div>

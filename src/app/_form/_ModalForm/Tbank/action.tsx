@@ -1,11 +1,23 @@
 'use server';
 
 import { z } from 'zod';
+import nodemailer from 'nodemailer';
+
 
 export type State = {
 	fieldErrors?: { name?: string; phone?: string; email?: string };
 	success: boolean;
 };
+
+const transporter = nodemailer.createTransport({
+	host: process.env.SMTP_HOST,
+	port: Number(process.env.SMTP_PORT),
+	secure: true,
+	auth: {
+		user: process.env.SMTP_USER,
+		pass: process.env.SMTP_PASS,
+	},
+});
 
 const FormSchema = z.object({
 	name: z
@@ -72,14 +84,24 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 		'Согласие на рассылку': rawSms == null ? 'Нет' : 'Да',
 	};
 
-	console.log(data);
+	try {
+		await transporter.sendMail({
+			from: `${rewNameForm} <${process.env.SMTP_USER}>`,
+			to: process.env.YOUR_EMAIL,
+			subject: `Новая заявка: ${rawCity}`,
+			text: Object.entries(data)
+				.map(([key, val]) => `${key.padEnd(25)}: ${val}`)
+				.join('\n\n'),
+		});
 
-	return {
-		success: true,
-		fieldErrors: {
-			name: '',
-			phone: '',
-			email: '',
-		},
-	};
+		return {
+			success: true,
+			fieldErrors: { name: '', phone: '', email: '' },
+		};
+	} catch (err: any) {
+		console.error('Ошибка отправки через Beget SMTP:', err.message || err);
+		return {
+			success: false,
+		};
+	}
 }

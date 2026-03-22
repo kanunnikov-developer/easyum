@@ -5,10 +5,11 @@ import { sale } from '@/app/courses/startCourses.info';
 interface Props {
 	onClose: () => void;
 	city: string | undefined;
+	onSuccess: () => void;
 }
 
-export default function Modal({ onClose, city }: Props) {
-	return (
+export default function Modal({ onClose, city, onSuccess }: Props) {
+	return (	
 		<div className={styles.overlay} onClick={onClose}>
 			<div className={styles.modal} onClick={(e) => e.stopPropagation()}>
 				<div className={styles.text}>
@@ -21,8 +22,8 @@ export default function Modal({ onClose, city }: Props) {
 					</p>
 				</div>
 				<div className={styles.form}>
-					<p>Оставьте заявку, и мы закрепим за вами место</p>
-					<BronForm city={city} />
+					<p className={styles.modal__description}>Оставьте заявку, и мы закрепим за вами место</p>
+					<BronForm city={city} onClose={onClose} onSuccess={onSuccess} />
 				</div>
 			</div>
 		</div>

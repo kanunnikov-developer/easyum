@@ -298,7 +298,7 @@ export default function Page() {
 
 				<TeacherVideo />
 
-				<GetLesson />
+				<GetLesson course={course.title}/>
 
 				<Description
 					title={`Интернет-маркетолог – \n`}
@@ -381,7 +381,7 @@ export default function Page() {
 
 				<Learning items={learning} />
 
-				<GetLessonBlock />
+				<GetLessonBlock course={course.title}/>
 
 				<Programm mounth={course.duration} programs={programs} />
 

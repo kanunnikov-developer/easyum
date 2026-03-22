@@ -15,12 +15,14 @@ interface Props {
 	course: string;
 	tariff: string;
 	price: string | undefined;
+	onSuccess: () => void;	
+	onClose: () => void;
 }
 
-export default function RegisterForm({ city, course, tariff, price }: Props) {
+export default function RegisterForm({ city, course, tariff, price, onSuccess, onClose }: Props) {
 	const [pdConsent_register, setPdConsent_register] = useState(false);
 	const [smsConsent_register, setSmsConsent_register] = useState(false);
-	const [state, formAction] = useActionState(action, initialState);
+	const [state, formAction, isPending] = useActionState(action, initialState);
 
 	const handlePdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPdConsent_register(e.target.checked);
@@ -30,7 +32,15 @@ export default function RegisterForm({ city, course, tariff, price }: Props) {
 	};
 
 	useEffect(() => {
+		if (state.success) {
+			onClose();
+			onSuccess();
+		}
+	}, [state.success, onClose]);
+
+	useEffect(() => {
 		setPdConsent_register(false);
+		setSmsConsent_register(false);
 	}, [state]);
 
 	return (
@@ -51,8 +61,7 @@ export default function RegisterForm({ city, course, tariff, price }: Props) {
 			</div>
 
 			<input type='hidden' name='city' value={city} />
-			<input type='hidden' name='nameForm' value='Заявка на курс со страницы курса' />
-			<input type='hidden' name='course' value={course} />
+			<input type='hidden' name='nameForm' value={`Заявка на курс: ${course}`} />
 			<input type='hidden' name='tariff' value={tariff} />
 			<input type='hidden' name='price' value={price} />
 
@@ -96,8 +105,8 @@ export default function RegisterForm({ city, course, tariff, price }: Props) {
 				</label>
 			</div>
 
-			<button className={styles.submitButton} disabled={!pdConsent_register}>
-				Отправить
+			<button className={styles.submitButton} disabled={!pdConsent_register || isPending}>
+				{isPending ? 'Отправка...' : 'Отправить'}
 			</button>
 		</form>
 	);

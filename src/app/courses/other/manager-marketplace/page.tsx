@@ -67,7 +67,7 @@ export default function Page() {
 					duration={course.duration}
 				/>
 
-				<GetLesson />
+				<GetLesson course={course.title}/>
 
 				<Description
 					title={`Маркетплейсы -`}
@@ -204,7 +204,7 @@ export default function Page() {
 					]}
 				/>
 
-				<GetLessonBlock />
+				<GetLessonBlock course={course.title}/>
 
 				{/* =====================
 								Программа

@@ -15,12 +15,14 @@ interface Props {
 	course: string;
 	tariff: string;
 	price: string | undefined;
+	onSuccess: () => void;	
+	onClose: () => void;
 }
 
-export default function ModalFormTbank({ city, course, tariff, price }: Props) {
+export default function ModalFormTbank({ city, course, tariff, price, onSuccess, onClose }: Props) {
 	const [pdConsent_tBank, setPdConsent_tBank] = useState(false);
 	const [smsConsent_tBank, setSmsConsent_tBank] = useState(false);
-	const [state, formAction] = useActionState(action, initialState);
+	const [state, formAction, isPending] = useActionState(action, initialState);
 	const [months, setMonths] = useState(3); // начальное значение - 12 месяцев
 
 	const min = 3;
@@ -40,7 +42,15 @@ export default function ModalFormTbank({ city, course, tariff, price }: Props) {
 	};
 
 	useEffect(() => {
+		if (state.success) {
+			onClose();
+			onSuccess();
+		}
+	}, [state.success, onClose]);
+
+	useEffect(() => {
 		setPdConsent_tBank(false);
+		setSmsConsent_tBank(false);
 	}, [state]);
 
 	function tinkoff(price: string | undefined, mounth: number) {
@@ -162,8 +172,8 @@ export default function ModalFormTbank({ city, course, tariff, price }: Props) {
 				</label>
 			</div>
 
-			<button className={styles.submitButton} disabled={!pdConsent_tBank}>
-				Отправить заявку
+			<button className={styles.submitButton} disabled={!pdConsent_tBank || isPending}>
+				{isPending ? 'Отправка...' : 'Отправить'}
 			</button>
 		</form>
 	);

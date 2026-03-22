@@ -13,12 +13,15 @@ const initialState: State = {
 interface Props {
 	city: string | undefined;
 	messanger: string;
+	onClose: () => void;
+	onSuccess: () => void;
+	course: string;
 }
 
-export default function ModalForm({ city, messanger }: Props) {
+export default function ModalForm({ city, messanger, onClose, onSuccess, course }: Props) {
 	const [pdConsent, setPdConsent] = useState(false);
 	const [smsConsent, setSmsConsent] = useState(false);
-	const [state, formAction] = useActionState(action, initialState);
+	const [state, formAction, isPending] = useActionState(action, initialState);
 
 	const handlePdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPdConsent(e.target.checked);
@@ -28,10 +31,19 @@ export default function ModalForm({ city, messanger }: Props) {
 	};
 
 	useEffect(() => {
+		if (state.success) {
+			onClose();
+			onSuccess();
+		}
+	}, [state.success, onClose]);
+
+	useEffect(() => {
 		setPdConsent(false);
+		setSmsConsent(false);
 	}, [state]);
 
 	return (
+		<>
 		<form action={formAction} className={styles.form}>
 			<div className={styles.input}>
 				<input type='text' name='name' placeholder='Ваше имя' required />
@@ -45,13 +57,14 @@ export default function ModalForm({ city, messanger }: Props) {
 
 			{messanger === 'telegram' && (
 				<div className={styles.input}>
-					<input type='text' name='telegram_nickname' placeholder='@никнейм в Telegram' />
+					<input type='text' name='telegram_nickname' placeholder='@никнейм в Telegram' required />
 					{state.fieldErrors?.email && <p className={styles.error}>{state.fieldErrors.email}</p>}
 				</div>
 			)}
 
 			<input type='hidden' name='nameForm' value={`Запрос видео в ${messanger}`} />
 			<input type='hidden' name='city' value={city} />
+			<input type='hidden' name='course' value={course} />
 
 			<div className={styles.consent}>
 				<input
@@ -93,9 +106,11 @@ export default function ModalForm({ city, messanger }: Props) {
 				</label>
 			</div>
 
-			<button className={styles.submitButton} disabled={!pdConsent}>
-				Отправить
+			<button className={styles.submitButton} disabled={!pdConsent || isPending}>
+				{isPending ? 'Отправка...' : 'Отправить'}
 			</button>
 		</form>
+		</>
+		
 	);
 }
