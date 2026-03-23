@@ -2,7 +2,12 @@
 	margin-top: 150px;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
+	gap: 100px;
+}
+
+.image{
+	margin-left: 40px;
 }
 
 .discount__title {
@@ -46,6 +51,7 @@
 	.discount {
 		margin-top: 100px;
 		flex-direction: column-reverse;
+		gap: 0;
 	}
 
 	.discount__title {
