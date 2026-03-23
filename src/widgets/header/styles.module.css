@@ -4,7 +4,16 @@
 	border-bottom: 1px solid var(--light-accent-color);
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-between; 
+	
+}
+
+.header__bg {
+	background: var(--bg-color);
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 1000;
 }
 
 .header__left {
