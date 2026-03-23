@@ -245,7 +245,7 @@ export default function Page() {
 					duration={course.duration}
 				/>
 
-				<GetLesson course={course.title}/>
+				<GetLesson course={course.title} />
 				<Description
 					title={`Легендарная профессия\n`}
 					accent='Java разработчик'
@@ -348,7 +348,7 @@ export default function Page() {
 							<div className={styles.java__item_left}>
 								<div className={styles.java__text}>
 									<p>Банковские приложения</p>
-									<span>Сбербанк, Альфа Банк, ВТБ 24</span>
+									<span>Сбербанк, Альфа Банк, ВТБ</span>
 								</div>
 								<div className={styles.java__image}>
 									<Image
@@ -427,6 +427,12 @@ export default function Page() {
 							</div>
 						</div>
 					</div>
+					<div className={styles.java__footer_dsc}>
+						<p>
+							Миллиарды приложений, которыми мы пользуемся каждый день,{' '}
+							<span className='accent'>работают благодаря языку Java.</span>
+						</p>
+					</div>
 				</section>
 
 				<Suitable items={suitable} title='курс?' accent='Кому подойдет' />
@@ -442,7 +448,7 @@ export default function Page() {
 
 				<Learning items={learning} />
 
-				<GetLessonBlock course={course.title}/>
+				<GetLessonBlock course={course.title} />
 
 				<Programm mounth={course.duration} programs={programs} />
 

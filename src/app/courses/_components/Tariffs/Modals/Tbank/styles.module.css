@@ -11,12 +11,37 @@
 }
 
 .modal {
+	position: relative;
 	background: var(--white-color);
 	padding: 40px;
 	border-radius: 20px;
 	width: 650px;
 
 	animation: fadeIn 0.2s ease;
+}
+
+.exit {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.button_img {
+	cursor: pointer;
+	padding: 0;
+	margin: 0;
+	border: none;
+	background: none;
+}
+
+.button_img img {
+	transition: transform 0.2s ease;
+}
+
+.button_img:hover img {
+	transform: rotate(90deg);
 }
 
 .order {
@@ -125,5 +150,10 @@
 
 	.form {
 		margin-top: 15px;
+	}
+
+	.button_img img {
+		width: 24px;
+		height: 24px;
 	}
 }
