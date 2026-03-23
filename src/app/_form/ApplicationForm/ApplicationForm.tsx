@@ -19,11 +19,18 @@ export default function ApplicationForm({ city }: Props) {
 	const [isThankOpen, setIsThankOpen] = useState(false);
 	const [errors, setErrors] = useState<ActionResult['fieldErrors']>({});
 
+	const [name, setName] = useState('');
+	const [phone, setPhone] = useState('');
+	const [email, setEmail] = useState('');
+	const [comment, setComment] = useState('');
+
 	const handleSubmit = async (formData: FormData) => {
 		const res = await sendForm(formData);
 
 		if (!res.success) {
 			setErrors(res.fieldErrors || {});
+			setPdConsent(false);
+			setSmsConsent(false);
 			return;
 		}
 
@@ -31,6 +38,10 @@ export default function ApplicationForm({ city }: Props) {
 		setIsThankOpen(true);
 
 		formRef.current?.reset();
+		setName('');
+		setPhone('');
+		setEmail('');
+		setComment('');
 		setPdConsent(false);
 		setSmsConsent(false);
 	};
@@ -46,21 +57,47 @@ export default function ApplicationForm({ city }: Props) {
 		<>
 			<form action={handleSubmit} ref={formRef} className={styles.form}>
 			<div className={styles.input}>
-				<input type='text' name='name' placeholder='Название компании' required />
+				<input
+					type='text'
+					name='name'
+					placeholder='Название компании'
+					required
+					value={name}
+					onChange={(e) => setName(e.target.value)}
+				/>
 				{errors?.name && <p className={styles.error}>{errors.name}</p>}
 			</div>
 
 			<div className={styles.input}>
-				<input type='tel' name='phone' placeholder='Телефон представителя' required />
+				<input
+					type='tel'
+					name='phone'
+					placeholder='Телефон представителя'
+					required
+					value={phone}
+					onChange={(e) => setPhone(e.target.value)}
+				/>
 				{errors?.phone && <p className={styles.error}>{errors.phone}</p>}
 			</div>
 
 			<div className={styles.input}>
-				<input type='email' name='email' placeholder='Email пресдтавителя' />
+				<input
+					type='email'
+					name='email'
+					placeholder='Email пресдтавителя'
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
+				/>
 				{errors?.email && <p className={styles.error}>{errors.email}</p>}
 			</div>
 
-			<input type='text' name='comment' placeholder='Перечень it-направлений для получения резюме' />
+			<input
+				type='text'
+				name='comment'
+				placeholder='Перечень it-направлений для получения резюме'
+				value={comment}
+				onChange={(e) => setComment(e.target.value)}
+			/>
 			<input type='hidden' name='nameForm' value='Форма страницы: Заявки на выпускников' />
 			<input type='hidden' name='city' value={city} />
 

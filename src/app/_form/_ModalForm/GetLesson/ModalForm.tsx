@@ -23,6 +23,10 @@ export default function ModalForm({ city, messanger, onClose, onSuccess, course 
 	const [smsConsent, setSmsConsent] = useState(false);
 	const [state, formAction, isPending] = useActionState(action, initialState);
 
+	const [nameLesson, setNameLesson] = useState('');
+	const [phoneLesson, setPhoneLesson] = useState('');
+	const [tgLesson, setTgLesson] = useState('');
+
 	const handlePdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPdConsent(e.target.checked);
 	};
@@ -32,10 +36,13 @@ export default function ModalForm({ city, messanger, onClose, onSuccess, course 
 
 	useEffect(() => {
 		if (state.success) {
+			setNameLesson('');
+			setPhoneLesson('');
+			setTgLesson('');
 			onClose();
 			onSuccess();
 		}
-	}, [state.success, onClose]);
+	}, [state.success, onClose, onSuccess]);
 
 	useEffect(() => {
 		setPdConsent(false);
@@ -46,18 +53,39 @@ export default function ModalForm({ city, messanger, onClose, onSuccess, course 
 		<>
 		<form action={formAction} className={styles.form}>
 			<div className={styles.input}>
-				<input type='text' name='name' placeholder='Ваше имя' required />
+				<input
+					type='text'
+					name='name'
+					placeholder='Ваше имя'
+					required
+					value={nameLesson}
+					onChange={(e) => setNameLesson(e.target.value)}
+				/>
 				{state.fieldErrors?.name && <p className={styles.error}>{state.fieldErrors.name}</p>}
 			</div>
 
 			<div className={styles.input}>
-				<input type='tel' name='phone' placeholder='Ваш телефон' required />
+				<input
+					type='tel'
+					name='phone'
+					placeholder='Ваш телефон'
+					required
+					value={phoneLesson}
+					onChange={(e) => setPhoneLesson(e.target.value)}
+				/>
 				{state.fieldErrors?.phone && <p className={styles.error}>{state.fieldErrors.phone}</p>}
 			</div>
 
 			{messanger === 'telegram' && (
 				<div className={styles.input}>
-					<input type='text' name='telegram_nickname' placeholder='@никнейм в Telegram' required />
+					<input
+						type='text'
+						name='telegram_nickname'
+						placeholder='@никнейм в Telegram'
+						required
+						value={tgLesson}
+						onChange={(e) => setTgLesson(e.target.value)}
+					/>
 					{state.fieldErrors?.email && <p className={styles.error}>{state.fieldErrors.email}</p>}
 				</div>
 			)}

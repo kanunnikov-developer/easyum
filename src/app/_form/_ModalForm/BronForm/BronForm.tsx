@@ -21,6 +21,9 @@ export default function BronForm({ city, onClose, onSuccess }: Props) {
 	const [smsConsent_bron, setSmsConsent_bron] = useState(false);
 	const [state, formAction, isPending] = useActionState(action, initialState);
 
+	const [nameBron, setNameBron] = useState('');
+	const [phoneBron, setPhoneBron] = useState('');
+
 	const handlePdChange_bron = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPdConsent_bron(e.target.checked);
 	};
@@ -30,10 +33,12 @@ export default function BronForm({ city, onClose, onSuccess }: Props) {
 
 	useEffect(() => {
 		if (state.success) {
+			setNameBron('');
+			setPhoneBron('');
 			onClose();
 			onSuccess();
 		}
-	}, [state.success, onClose]);
+	}, [state.success, onClose, onSuccess]);
 
 	useEffect(() => {
 		setPdConsent_bron(false);
@@ -43,12 +48,26 @@ export default function BronForm({ city, onClose, onSuccess }: Props) {
 	return (
 		<form action={formAction} className={styles.form}>
 			<div className={styles.input}>
-				<input type='text' name='name' placeholder='Ваше имя' required />
+				<input
+					type='text'
+					name='name'
+					placeholder='Ваше имя'
+					required
+					value={nameBron}
+					onChange={(e) => setNameBron(e.target.value)}
+				/>
 				{state.fieldErrors?.name && <p className={styles.error}>{state.fieldErrors.name}</p>}
 			</div>
 
 			<div className={styles.input}>
-				<input type='tel' name='phone' placeholder='Ваш телефон' required />
+				<input
+					type='tel'
+					name='phone'
+					placeholder='Ваш телефон'
+					required
+					value={phoneBron}
+					onChange={(e) => setPhoneBron(e.target.value)}
+				/>
 				{state.fieldErrors?.phone && <p className={styles.error}>{state.fieldErrors.phone}</p>}
 			</div>
 
