@@ -19,11 +19,19 @@ export default function CorporateFormTwo({ city }: Props) {
 	const [isThankOpen, setIsThankOpen] = useState(false);
 	const [errors, setErrors] = useState<ActionResult['fieldErrors']>({});
 
+	const [nameTwo, setNameTwo] = useState('');
+	const [phoneTwo, setPhoneTwo] = useState('');
+	const [emailTwo, setEmailTwo] = useState('');
+	const [commentTwo, setCommentTwo] = useState('');
+	const [membersTwo, setMembersTwo] = useState('');
+
 	const handleSubmit = async (formData: FormData) => {
 		const res = await sendForm(formData);
 
 		if (!res.success) {
 			setErrors(res.fieldErrors || {});
+			setPdConsent(false);
+		setSmsConsent(false);
 			return;
 		}
 
@@ -31,6 +39,11 @@ export default function CorporateFormTwo({ city }: Props) {
 		setIsThankOpen(true);
 
 		formRef.current?.reset();
+		setNameTwo('');
+		setPhoneTwo('');
+		setEmailTwo('');
+		setCommentTwo('');
+		setMembersTwo('');
 		setPdConsent(false);
 		setSmsConsent(false);
 	};
@@ -46,22 +59,54 @@ export default function CorporateFormTwo({ city }: Props) {
 		<>
 			<form action={handleSubmit} ref={formRef} className={styles.form}>
 			<div className={styles.input}>
-				<input type='text' name='name' placeholder='Ваше имя' required />
+				<input
+					type='text'
+					name='name'
+					placeholder='Ваше имя'
+					required
+					value={nameTwo}
+					onChange={(e) => setNameTwo(e.target.value)}
+				/>
 				{errors?.name && <p className={styles.error}>{errors.name}</p>}
 			</div>
 
 			<div className={styles.input}>
-				<input type='tel' name='phone' placeholder='Ваш телефон' required />
+				<input
+					type='tel'
+					name='phone'
+					placeholder='Ваш телефон'
+					required
+					value={phoneTwo}
+					onChange={(e) => setPhoneTwo(e.target.value)}
+				/>
 				{errors?.phone && <p className={styles.error}>{errors.phone}</p>}
 			</div>
 
 			<div className={styles.input}>
-				<input type='email' name='email' placeholder='Ваш email' />
+				<input
+					type='email'
+					name='email'
+					placeholder='Ваш email'
+					value={emailTwo}
+					onChange={(e) => setEmailTwo(e.target.value)}
+				/>
 				{errors?.email && <p className={styles.error}>{errors.email}</p>}
 			</div>
 
-			<input type='text' name='comment' placeholder='Темы и пожелания по курсу' />
-			<input type='text' name='members' placeholder='Количество участников' />
+			<input
+				type='text'
+				name='comment'
+				placeholder='Темы и пожелания по курсу'
+				value={commentTwo}
+				onChange={(e) => setCommentTwo(e.target.value)}
+			/>
+			<input
+				type='text'
+				name='members'
+				placeholder='Количество участников'
+				value={membersTwo}
+				onChange={(e) => setMembersTwo(e.target.value)}
+			/>
 			<input type='hidden' name='nameForm' value='Форма страницы: Корпоративное обучение' />
 			<input type='hidden' name='city' value={city} />
 

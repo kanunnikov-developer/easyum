@@ -19,11 +19,18 @@ export default function CorporateFormOne({ city }: Props) {
 	const [isThankOpen, setIsThankOpen] = useState(false);
 	const [errors, setErrors] = useState<ActionResult['fieldErrors']>({});
 
+	const [courseOne, setCourseOne] = useState('');
+	const [phoneOne, setPhoneOne] = useState('');
+	const [emailOne, setEmailOne] = useState('');
+	const [commentOne, setCommentOne] = useState('');
+
 	const handleSubmit = async (formData: FormData) => {
 		const res = await sendForm(formData);
 
 		if (!res.success) {
 			setErrors(res.fieldErrors || {});
+			setPdConsentOne(false);
+			setSmsConsentOne(false);
 			return;
 		}
 
@@ -31,6 +38,10 @@ export default function CorporateFormOne({ city }: Props) {
 		setIsThankOpen(true);
 
 		formRef.current?.reset();
+		setCourseOne('');
+		setPhoneOne('');
+		setEmailOne('');
+		setCommentOne('');
 		setPdConsentOne(false);
 		setSmsConsentOne(false);
 	};
@@ -46,21 +57,47 @@ export default function CorporateFormOne({ city }: Props) {
 		<>
 			<form action={handleSubmit} ref={formRef} className={styles.form}>
 			<div className={styles.input}>
-				<input type='text' name='course' placeholder='Курс' required />
+				<input
+					type='text'
+					name='course'
+					placeholder='Курс'
+					required
+					value={courseOne}
+					onChange={(e) => setCourseOne(e.target.value)}
+				/>
 				{errors?.name && <p className={styles.error}>{errors.name}</p>}
 			</div>
 
 			<div className={styles.input}>
-				<input type='tel' name='phone' placeholder='Телефон представителя' required />
+				<input
+					type='tel'
+					name='phone'
+					placeholder='Телефон представителя'
+					required
+					value={phoneOne}
+					onChange={(e) => setPhoneOne(e.target.value)}
+				/>
 				{errors?.phone && <p className={styles.error}>{errors.phone}</p>}
 			</div>
 
 			<div className={styles.input}>
-				<input type='email' name='email' placeholder='Email представителя' />
+				<input
+					type='email'
+					name='email'
+					placeholder='Email представителя'
+					value={emailOne}
+					onChange={(e) => setEmailOne(e.target.value)}
+				/>
 				{errors?.email && <p className={styles.error}>{errors.email}</p>}
 			</div>
 
-			<input type='text' name='comment' placeholder='Комментарий' />
+			<input
+				type='text'
+				name='comment'
+				placeholder='Комментарий'
+				value={commentOne}
+				onChange={(e) => setCommentOne(e.target.value)}
+			/>
 			<input type='hidden' name='nameForm' value='Форма страницы: Корпоративное обучение' />
 			<input type='hidden' name='city' value={city} />
 

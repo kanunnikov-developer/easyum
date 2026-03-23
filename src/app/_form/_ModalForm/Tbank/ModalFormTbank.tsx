@@ -25,6 +25,10 @@ export default function ModalFormTbank({ city, course, tariff, price, onSuccess,
 	const [state, formAction, isPending] = useActionState(action, initialState);
 	const [months, setMonths] = useState(3); // начальное значение - 12 месяцев
 
+	const [nameTbank, setNameTbank] = useState('');
+	const [phoneTbank, setPhoneTbank] = useState('');
+	const [emailTbank, setEmailTbank] = useState('');
+
 	const min = 3;
 	const max = 24;
 
@@ -43,10 +47,14 @@ export default function ModalFormTbank({ city, course, tariff, price, onSuccess,
 
 	useEffect(() => {
 		if (state.success) {
+			setNameTbank('');
+			setPhoneTbank('');
+			setEmailTbank('');
+			setMonths(3);
 			onClose();
 			onSuccess();
 		}
-	}, [state.success, onClose]);
+	}, [state.success, onClose, onSuccess]);
 
 	useEffect(() => {
 		setPdConsent_tBank(false);
@@ -111,17 +119,38 @@ export default function ModalFormTbank({ city, course, tariff, price, onSuccess,
 			</div>
 
 			<div className={styles.input}>
-				<input type='text' name='name' placeholder='Ваше имя' required />
+				<input
+					type='text'
+					name='name'
+					placeholder='Ваше имя'
+					required
+					value={nameTbank}
+					onChange={(e) => setNameTbank(e.target.value)}
+				/>
 				{state.fieldErrors?.name && <p className={styles.error}>{state.fieldErrors.name}</p>}
 			</div>
 
 			<div className={styles.input}>
-				<input type='tel' name='phone' placeholder='Ваш телефон' required />
+				<input
+					type='tel'
+					name='phone'
+					placeholder='Ваш телефон'
+					required
+					value={phoneTbank}
+					onChange={(e) => setPhoneTbank(e.target.value)}
+				/>
 				{state.fieldErrors?.phone && <p className={styles.error}>{state.fieldErrors.phone}</p>}
 			</div>
 
 			<div className={styles.input}>
-				<input type='email' name='email' placeholder='Ваш Email' required />
+				<input
+					type='email'
+					name='email'
+					placeholder='Ваш Email'
+					required
+					value={emailTbank}
+					onChange={(e) => setEmailTbank(e.target.value)}
+				/>
 				{state.fieldErrors?.email && <p className={styles.error}>{state.fieldErrors.email}</p>}
 			</div>
 
