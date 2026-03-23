@@ -10,6 +10,11 @@
 	white-space: initial;
 }
 
+.img {
+	width: 511px;
+	height: 213px;
+}
+
 .brends__text h2 {
 	margin-bottom: 32px;
 }
@@ -23,8 +28,8 @@
 	}
 
 	.img {
-		width: 380px;
-		height: 200px;
+		width: 370px;
+		height: 160px;
 	}
 }
 
@@ -41,7 +46,7 @@
 	}
 
 	.img {
-		width: 380px;
-		height: 200px;
+		width: 370px;
+		height: 160px;
 	}
 }

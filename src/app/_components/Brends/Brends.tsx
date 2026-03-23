@@ -13,7 +13,7 @@ export default function Brends() {
 				</p>
 			</div>
 
-			<Image src='/main/brends.svg' width={511} height={213} alt='Бренды' className={styles.img} />
+			<img src='/main/brends.png' alt='Бренды' className={styles.img} />
 		</section>
 	);
 }
