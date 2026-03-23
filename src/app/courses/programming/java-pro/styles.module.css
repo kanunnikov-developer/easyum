@@ -86,6 +86,20 @@
 	font-size: 18px;
 }
 
+.java__footer_dsc {
+	margin-top: 80px;
+	font-size: 28px;
+	font-weight: 700;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.java__footer_dsc p {
+	width: 70%;
+}
+
 /* Секция Фото  */
 .photos {
 	margin-top: 150px;
@@ -201,6 +215,15 @@
 		width: 100%;
 		height: auto;
 		object-fit: contain;
+	}
+
+	.java__footer_dsc {
+		margin-top: 30px;
+		font-size: 22px;
+	}
+
+	.java__footer_dsc p {
+		width: 100%;
 	}
 
 	/* Секция Фото  */

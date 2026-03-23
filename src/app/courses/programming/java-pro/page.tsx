@@ -365,6 +365,12 @@ export default function Page() {
 							</div>
 						</div>
 					</div>
+					<div className={styles.java__footer_dsc}>
+						<p>
+							Миллиарды приложений, которыми мы пользуемся каждый день,{' '}
+							<span className='accent'>работают благодаря языку Java.</span>
+						</p>
+					</div>
 				</section>
 
 				<SwiperProjects title={`создадим \n 7 проектов`} accent='На курсе' items={projects_swiper} />
