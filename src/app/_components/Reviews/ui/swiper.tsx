@@ -37,7 +37,7 @@ export default function SwiperBlock() {
 				<SwiperSlide>
 					<div className={styles.reviews_card}>
 						<a href='https://www.youtube.com/watch?v=6zp5Vd_O8p0&t=5s' target='_blank'>
-							<img src='/main/reviews/php.svg' alt='Отзыв выпускника курса PHP Junior' />
+							<img src='/main/reviews/php.png' alt='Отзыв выпускника курса PHP Junior' />
 						</a>
 						<p className={styles.description}>{`Отзыв выпускника потока 2 \nКурс “PHP junior программист”`}</p>
 					</div>
@@ -46,7 +46,7 @@ export default function SwiperBlock() {
 				<SwiperSlide>
 					<div className={styles.reviews_card}>
 						<a href='https://www.youtube.com/watch?v=1L1qfmCRd7c' target='_blank'>
-							<img src='/main/reviews/front.svg' alt='Отзыв выпускника курса Front-end' />
+							<img src='/main/reviews/front.png' alt='Отзыв выпускника курса Front-end' />
 						</a>
 						<p className={styles.description}>{`Отзыв выпускника \nКурс “JavaScript Front-end разработчик”`}</p>
 					</div>
@@ -55,7 +55,7 @@ export default function SwiperBlock() {
 				<SwiperSlide>
 					<div className={styles.reviews_card}>
 						<a href='https://www.youtube.com/watch?v=R5yyAt-N68Q' target='_blank'>
-							<img src='/main/reviews/graph.svg' alt='Отзыв выпускника курса PHP Junior' />
+							<img src='/main/reviews/graph.png' alt='Отзыв выпускника курса PHP Junior' />
 						</a>
 						<p className={styles.description}>{`Отзыв выпускника \nКурс “Графический дизайнер”`}</p>
 					</div>
@@ -64,7 +64,7 @@ export default function SwiperBlock() {
 				<SwiperSlide>
 					<div className={styles.reviews_card}>
 						<a href='https://www.youtube.com/watch?v=TFVsHc3vXaQ' target='_blank'>
-							<img src='/main/reviews/javajunior.svg' alt='Отзывы выпускницы Курс “Java Junior веб-разработчик”' />
+							<img src='/main/reviews/javajunior.png' alt='Отзывы выпускницы Курс “Java Junior веб-разработчик”' />
 						</a>
 						<p className={styles.description}>{`Отзывы выпускницы \nКурс “Java Junior веб-разработчик”`}</p>
 					</div>
@@ -73,7 +73,7 @@ export default function SwiperBlock() {
 				<SwiperSlide>
 					<div className={styles.reviews_card}>
 						<a href='https://www.youtube.com/watch?v=5kxgx0dxMak' target='_blank'>
-							<img src='/main/reviews/testing.svg' alt='Отзыв выпускника Курс “Тестирование ПО”' />
+							<img src='/main/reviews/testing.png' alt='Отзыв выпускника Курс “Тестирование ПО”' />
 						</a>
 						<p className={styles.description}>{`Отзыв выпускника \nКурс “Тестирование ПО”`}</p>
 					</div>
@@ -82,7 +82,7 @@ export default function SwiperBlock() {
 				<SwiperSlide>
 					<div className={styles.reviews_card}>
 						<a href='https://www.youtube.com/watch?v=9yJJf6zoLfw' target='_blank'>
-							<img src='/main/reviews/front2.svg' alt='Отзыв выпускника Курс “JavaScript Front-end разработчик”' />
+							<img src='/main/reviews/front2.png' alt='Отзыв выпускника Курс “JavaScript Front-end разработчик”' />
 						</a>
 						<p className={styles.description}>{`Отзыв выпускника \nКурс “JavaScript Front-end разработчик”`}</p>
 					</div>

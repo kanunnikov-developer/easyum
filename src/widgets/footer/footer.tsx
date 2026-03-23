@@ -14,7 +14,7 @@ export default function Footer() {
 						<div className={styles.info}>
 							<div className={styles.social}>
 								<a href='https://vk.com/easyumru'>
-									<img src='/icons/vkWhite.svg' alt='Вконтакте' />
+									<img src='/icons/vkWhite.svg' alt='Вконтакте' className={styles.img}/>
 								</a>
 								<a href='https://t.me/easyumru'>
 									<img src='/icons/telegramWhite.svg' alt='Телеграм' />
