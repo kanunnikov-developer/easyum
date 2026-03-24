@@ -81,6 +81,11 @@ const instruments = [
 		title: 'CSS 3',
 		description: 'Язык стилей для оформления визуального вида веб-страниц',
 	},
+	{
+		img: '/courses/ui/instruments/ajax.svg',
+		title: 'XHR и AJAX',
+		description: 'Технологии для асинхронного обмена данными между браузером и сервером.',
+	},
 ];
 
 const learning = [

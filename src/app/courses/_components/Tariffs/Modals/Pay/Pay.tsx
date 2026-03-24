@@ -1,5 +1,5 @@
+import PaymentForm from '@/app/_form/_ModalForm/PaymentForm/PaymentForm';
 import styles from './styles.module.css';
-import RegisterForm from '@/app/_form/_ModalForm/Register/RegisterForm';
 
 interface Props {
 	onClose: () => void;
@@ -10,7 +10,7 @@ interface Props {
 	onSuccess: () => void;
 }
 
-export default function ModalRegister({ onClose, city, course, tariff, price, onSuccess }: Props) {
+export function ModalPay({ onClose, city, course, tariff, price, onSuccess }: Props) {
 	return (
 		<div className={styles.overlay} onClick={onClose}>
 			<div className={styles.modal} onClick={(e) => e.stopPropagation()}>
@@ -19,22 +19,14 @@ export default function ModalRegister({ onClose, city, course, tariff, price, on
 						<img src='/icons/exit.svg' alt='Закрыть' />
 					</button>
 				</div>
-				<div className={styles.modal_text}>
-					<h3>
-						Заявка на курс <br />"{course}"
-					</h3>
-					<p>Формат: {tariff}</p>
-				</div>
-				<div className={styles.form}>
-					<RegisterForm
-						city={city}
-						course={course}
-						tariff={tariff}
-						price={price}
-						onSuccess={onSuccess}
-						onClose={onClose}
-					/>
-				</div>
+				<PaymentForm
+					city={city}
+					course={course}
+					tariff={tariff}
+					price={price}
+					onSuccess={onSuccess}
+					onClose={onClose}
+				/>
 			</div>
 		</div>
 	);

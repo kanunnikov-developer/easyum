@@ -6,6 +6,7 @@ import Hero from './_components/Hero/Hero';
 import Reviews from './_components/Reviews/Reviews';
 import Statistics from './_components/Statistics/Statistics';
 import WhyEasyum from './_components/WhyEasyum/WhyEasyum';
+import PaymentForm from './_form/_ModalForm/PaymentForm/PaymentForm';
 import styles from './page.module.css';
 import cn from 'classnames';
 

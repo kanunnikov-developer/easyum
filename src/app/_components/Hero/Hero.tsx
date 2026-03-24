@@ -4,6 +4,7 @@ import Image from 'next/image';
 import getRegion from '@/lib/getRegion';
 import { Suspense } from 'react';
 import cn from 'classnames';
+import { sale } from '@/app/courses/startCourses.info';
 
 export default function Hero() {
 	return (
@@ -14,7 +15,16 @@ export default function Hero() {
 			<div className={styles.circle4}></div>
 			<div className={styles.circle5}></div>
 			<div className={styles.hero__text}>
-				<Suspense fallback={<h1 className='accent'>{`Курсы \n it-профессий \n в Москве`}</h1>}>
+				<Suspense
+					fallback={
+						<h1 className='accent'>
+							Курсы <br /> it-профессий <br /> в{' '}
+							<span className={styles.citySkeleton}>
+								<span className={styles.skeletonPulse} />
+							</span>
+						</h1>
+					}
+				>
 					<Wrapper />
 				</Suspense>
 				<p className={styles.hero__description}>Войди в it всего за 5-7 месяцев!</p>
@@ -29,7 +39,7 @@ export default function Hero() {
 						loading='eager'
 					/>
 				</div>
-				<p className={styles.promo}>{`Ждем весну с EasyUM! \n Скидка 20% до 8 марта! 🎁 `}</p>
+				<p className={styles.promo}>{sale.hero}</p>
 				<div className={styles.buttonBlock}>
 					<Link href='/courses' className={styles.button}>
 						Выбрать курс

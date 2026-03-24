@@ -255,7 +255,7 @@ export default function Page() {
 					duration={course.duration}
 				/>
 
-				<GetLesson course={course.title}/>
+				<GetLesson course={course.title} />
 
 				<Description
 					title={`Чем занимается \n`}
@@ -320,7 +320,7 @@ export default function Page() {
 								<p className={styles.ican_title}>Через 1 месяц</p>
 								<p className={styles.ican_description}>Создавать дизайн карточек товаров для маркетплейсов</p>
 							</div>
-							<span className={styles.span}>от 150₽ за фото</span>
+							<span className={styles.span}>от 550₽ за фото</span>
 						</div>
 						<div className={styles.ican_item}>
 							<div>
@@ -329,7 +329,7 @@ export default function Page() {
 									Создавать векторные иллюстрации и авторские шрифты в Adobe Illustrator
 								</p>
 							</div>
-							<span className={styles.span}>от 150₽ за фото</span>
+							<span className={styles.span}>от 1500₽ за фото</span>
 						</div>
 						<div className={styles.ican_item}>
 							<div>
@@ -374,7 +374,7 @@ export default function Page() {
 
 				<Learning items={learning} />
 
-				<GetLessonBlock course={course.title}/>
+				<GetLessonBlock course={course.title} />
 
 				<Programm mounth={course.duration} programs={programs} />
 

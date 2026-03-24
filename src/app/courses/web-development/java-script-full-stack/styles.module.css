@@ -17,14 +17,21 @@
 	gap: 50px;
 }
 
-.photos_item {
+.photos_item,
+.photos_item_bottom {
 	display: flex;
 	gap: 15px;
 	font-size: 18px;
 }
 
-.photos_item p {
+.photos_item p,
+.photos_item_bottom p {
 	max-width: 220px;
+}
+
+.photos_item_bottom p {
+	margin-top: 50px;
+	text-align: right;
 }
 
 .photos {
@@ -69,17 +76,12 @@
 
 	.photos_item p,
 	.photos_item_bottom p {
-		max-width: fit-content;
+		max-width: 310px;
 	}
 
-	.photos_image {
-		width: 100%;
-	}
-
-	.photos_img {
-		width: 100%;
-		height: auto;
-		object-fit: contain;
+	.photos_item_bottom p {
+		margin-top: 0px;
+		text-align: center;
 	}
 
 	.photos {

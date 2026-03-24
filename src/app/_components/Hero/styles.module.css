@@ -104,11 +104,40 @@
 	color: var(--white-color);
 }
 
-@media screen and (max-width: 430px) {
-	.hero {
-	margin-top: 80px;
+/* Скелетон только для названия города */
+.citySkeleton {
+	display: inline-block;
+	vertical-align: bottom; /* чтобы не было сдвига строк */
+	width: 250px; /* подбери ширину под самое длинное название города, например "Санкт-Петербурге" */
+	height: 0.9em; /* примерно высота одной строки текста */
+	border-radius: 6px;
+	background: #d7d8da; /* светло-серый, под твой дизайн */
+	overflow: hidden;
 	position: relative;
 }
+
+/* Красивая shimmer-анимация */
+.skeletonPulse {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%);
+	animation: shimmer 1.2s infinite linear;
+}
+
+@keyframes shimmer {
+	0% {
+		transform: translateX(-150%);
+	}
+	100% {
+		transform: translateX(300%);
+	}
+}
+
+@media screen and (max-width: 430px) {
+	.hero {
+		margin-top: 80px;
+		position: relative;
+	}
 	.hero__text {
 		padding-top: 20px;
 	}
