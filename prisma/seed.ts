@@ -53,7 +53,7 @@ export async function main() {
 	for (const region of regionData) {
 		await prisma.region.upsert({
 			where: { subdomain: region.subdomain },
-			update: {},
+			update: region,
 			create: region,
 		});
 	}
