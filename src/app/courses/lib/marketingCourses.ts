@@ -7,7 +7,7 @@ export interface CardCourses {
 export const marketingCourses: CardCourses[] = [
 	{
 		id: '19',
-		img: '/courses/marketing/smm.svg',
+		img: '/courses/marketing/smm.png',
 		link: '/courses/marketing/smm',
 	},
 	{
