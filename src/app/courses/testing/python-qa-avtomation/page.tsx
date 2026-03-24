@@ -43,7 +43,8 @@ const suitable = [
 	{
 		img: '/courses/ui/suitable/2.png',
 		title: 'Неопределившимся',
-		description: 'Вы хотите научиться программировать, но не знаете с какого языка начать. Java – самый надежный выбор',
+		description:
+			'Вы уже достигли в ручном тестировании высокого уровня и хотите стать автотестировщиком, повысить профессионализм и зарабатывать больше',
 	},
 	{
 		img: '/courses/ui/suitable/3.png',
@@ -178,7 +179,7 @@ export default function Page() {
 					duration={course.duration}
 				/>
 
-				<GetLesson course={course.title}/>
+				<GetLesson course={course.title} />
 
 				<Description
 					title={`Зачем обучаться \n`}
@@ -197,7 +198,7 @@ export default function Page() {
 
 				<Instruments instrument={instruments} />
 
-				<GetLessonBlock course={course.title}/>
+				<GetLessonBlock course={course.title} />
 
 				<Programm mounth={course.duration} programs={programs} />
 

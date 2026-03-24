@@ -341,7 +341,7 @@ export default function Page() {
 					duration={course.duration}
 				/>
 
-				<GetLesson course={course.title}/>
+				<GetLesson course={course.title} />
 
 				<Description
 					title={`Что делает \n`}
@@ -384,10 +384,9 @@ export default function Page() {
 								/>
 							</div>
 							<div className={styles.professions__text}>
-								<p className={styles.professions__title}>Мануальный тестировщик</p>
+								<p className={styles.professions__title}>Автоматизатор тестирования</p>
 								<p className={styles.professions__description}>
-									Вручную тестирует и фиксирует дефекты, оценивает стабильность и удобство приложения с точки зрения
-									пользователя
+									Комбинирует навыки тестирования и программирования для повышения скорости и продуктивности тестов
 								</p>
 							</div>
 						</div>
@@ -413,7 +412,7 @@ export default function Page() {
 
 				<Learning items={learning} />
 
-				<GetLessonBlock course={course.title}/>
+				<GetLessonBlock course={course.title} />
 
 				<Programm mounth={course.duration} programs={programs} />
 
