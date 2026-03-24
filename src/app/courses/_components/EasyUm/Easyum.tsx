@@ -5,7 +5,7 @@ export default function EasyUm() {
 	return (
 		<section className={styles.easyum}>
 			<h2>
-				Заянтия <span className='accent'>{`\n`}в EasyUm это:</span>
+				Занятия <span className='accent'>{`\n`}в EasyUm это:</span>
 			</h2>
 			<div className={styles.grid}>
 				<div className={styles.card}>

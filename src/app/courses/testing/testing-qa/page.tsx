@@ -48,7 +48,7 @@ const suitable = [
 	{
 		img: '/courses/ui/suitable/10.svg',
 		title: 'Неопределившимся',
-		description: 'Вы хотите научиться программировать, но не знаете с какого языка начать. Java – самый надежный выбор',
+		description: 'Вы хотите в IT, но не знаете, в какую профессию лучше податься. Тестирование – лучший вариант.',
 	},
 	{
 		img: '/courses/ui/suitable/11.svg',
@@ -267,7 +267,7 @@ export default function Page() {
 					duration={course.duration}
 				/>
 
-				<GetLesson course={course.title}/>
+				<GetLesson course={course.title} />
 
 				<Description
 					title={`Что делает \n`}
@@ -309,10 +309,10 @@ export default function Page() {
 									className={styles.img}
 								/>
 							</div>
-							<p>Не нужно учить язык программирования</p>
+							<p>Самая востребованная {`\n`} it-профессия</p>
 							<span>
-								Язык программирования – самая сильная головная боль для новичка в IT. Вам не придется его учить, ведь
-								для работы ручного тестировщика язык программирования не требуется.
+								Данную профессию освоит даже "мамочка в декрете". Чтоб обучиться на курсе и найти свою первую работу
+								Тестировщика достаточно просто базовых знаний компьютера.
 							</span>
 						</div>
 						<div className={styles.item}>
@@ -325,10 +325,10 @@ export default function Page() {
 									className={styles.img}
 								/>
 							</div>
-							<p>Не нужно учить язык программирования</p>
+							<p>Широкие возможности {`\n`} для развития</p>
 							<span>
-								Язык программирования – самая сильная головная боль для новичка в IT. Вам не придется его учить, ведь
-								для работы ручного тестировщика язык программирования не требуется.
+								Тестирование поможет быстро войти в IT и станет отправной точкой для будущих достижений. Вы можете стать
+								тимлидом, освоить автотестирование или пойти в разработчики.
 							</span>
 						</div>
 					</div>
@@ -377,7 +377,7 @@ export default function Page() {
 
 				<Learning items={learning} />
 
-				<GetLessonBlock course={course.title}/>
+				<GetLessonBlock course={course.title} />
 
 				<Programm mounth={course.duration} programs={programs} />
 

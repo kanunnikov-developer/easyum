@@ -10,7 +10,7 @@ export default function Duration({ mounth, programs }: Props) {
 	return (
 		<section className={styles.duration}>
 			<h2>
-				Почему Вам <span className='accent'>курс {mounth}</span>, а у других 1-2 года?
+				Почему ваш <span className='accent'>курс {mounth}</span>, а у других 1-2 года?
 			</h2>
 			<p className={styles.duration__desc}>
 				В отличие от школ с программой на 1-2 года, мы даем те знания и навыки, которые помогут трудоустроиться. Всё
