@@ -5,8 +5,9 @@ import styles from './styles.module.css';
 import cn from 'classnames';
 import { useState } from 'react';
 import { ModalTbank } from '../Modals/Tbank/ModalTbank';
-import { ModalRegister } from '../Modals/Register/ModalRegister';
 import PopupThank from '@/widgets/popupThank/popupThank';
+import { ModalPay } from '../Modals/Pay/Pay';
+import ModalRegister from '../Modals/Register/ModalRegister';
 
 interface Props {
 	city: string | undefined;
@@ -44,6 +45,7 @@ function tinkoff(price: number | undefined) {
 export default function Rate({ city, course, format, lists, price, img, sale, imgCourse }: Props) {
 	const [tbank, setTbank] = useState(false);
 	const [register, setRegister] = useState(false);
+	const [payment, setPayment] = useState(false);
 	const [isThankOpen, setIsThankOpen] = useState(false);
 
 	return (
@@ -79,7 +81,9 @@ export default function Rate({ city, course, format, lists, price, img, sale, im
 					<button className={styles.accent_button} onClick={() => setRegister(true)}>
 						Записаться
 					</button>
-					{/* <button className={styles.button}>Оплатить</button> */}
+					{/* <button className={styles.button} onClick={() => setPayment(true)}>
+						Оплатить
+					</button> */}
 				</div>
 			</div>
 			{tbank && (
@@ -105,7 +109,18 @@ export default function Rate({ city, course, format, lists, price, img, sale, im
 				/>
 			)}
 
-			{isThankOpen && <PopupThank onClose={() => setIsThankOpen(false)} isOpen={isThankOpen}/>}
+			{payment && (
+				<ModalPay
+					onClose={() => setPayment(false)}
+					city={city}
+					course={course}
+					tariff={format}
+					price={converter(price)}
+					onSuccess={() => setIsThankOpen(true)}
+				/>
+			)}
+
+			{isThankOpen && <PopupThank onClose={() => setIsThankOpen(false)} isOpen={isThankOpen} />}
 		</>
 	);
 }
