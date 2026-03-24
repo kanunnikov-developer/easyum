@@ -327,7 +327,7 @@ export default function Page() {
 				<EasyUm />
 
 				<Metodist
-					img='Troshin.svg'
+					img='troshin.svg'
 					course={course.title}
 					name={`Трошин Максим. Senior Python-разработчик. \n Опыт разработки 9+ лет.`}
 					description='Ведущий преподаватель и эксперт программы.'
