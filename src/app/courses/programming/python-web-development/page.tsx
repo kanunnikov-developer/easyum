@@ -31,7 +31,7 @@ const course = {
 	description_two: 'Соберете 3 проекта в портфолио и подготовитесь к реальной работе в IT-компании.',
 	img: 'programming/python-web-development/hero.svg',
 	date: dateStart[4].date,
-	duration: '5 месяцев',
+	duration: '4 месяца',
 	price: dateStart[4].price,
 	imgCourse: dateStart[4].imgCourse,
 };
@@ -238,7 +238,7 @@ export default function Page() {
 					duration={course.duration}
 				/>
 
-				<GetLesson course={course.title}/>
+				<GetLesson course={course.title} />
 
 				<Description
 					title={`Почему`}
@@ -321,7 +321,7 @@ export default function Page() {
 
 				<Learning items={learning} />
 
-				<GetLessonBlock course={course.title}/>
+				<GetLessonBlock course={course.title} />
 
 				<Programm mounth={course.duration} programs={programs} />
 

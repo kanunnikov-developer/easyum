@@ -97,8 +97,8 @@ export const allCourses: CardCourses[] = [
 	},
 	{
 		id: '19',
-		img: '/courses/marketing/smm.svg',
-		link: '/courses/smm',
+		img: '/courses/marketing/smm.png',
+		link: '/courses/marketing/smm',
 	},
 	{
 		id: '20',

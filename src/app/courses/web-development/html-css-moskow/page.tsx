@@ -31,7 +31,7 @@ const course = {
 		'Освоите HTML&CSS с нуля до уровня Junior. Сможете начать фрилансить через 2 месяца и продолжать развиваться в веб-разработке на курсе Front-end или Full-Stack.',
 	img: 'web/html-css-moskow/hero.svg',
 	date: dateStart[13].date,
-	duration: '3 месяца',
+	duration: '2 месяца',
 	price: dateStart[13].price,
 	imgCourse: dateStart[13].imgCourse,
 };
@@ -182,7 +182,7 @@ export default function Page() {
 					duration={course.duration}
 				/>
 
-				<GetLesson course={course.title}/>
+				<GetLesson course={course.title} />
 
 				<Description
 					title={`Чем занимается \n`}
@@ -217,7 +217,7 @@ export default function Page() {
 
 				<Learning items={learning} />
 
-				<GetLessonBlock course={course.title}/>
+				<GetLessonBlock course={course.title} />
 
 				<Programm mounth={course.duration} programs={programs} />
 

@@ -32,7 +32,7 @@ const course = {
 		'Познакомитесь с Python, SQL, Pandas, NumPu и машинным обучением. Создадите собственное приложение для отслеживания погоды.',
 	img: 'programming/python-data-science/hero.svg',
 	date: dateStart[2].date,
-	duration: '5 месяцев',
+	duration: '4 месяца',
 	price: dateStart[2].price,
 	imgCourse: dateStart[2].imgCourse,
 };
@@ -273,7 +273,7 @@ export default function Page() {
 					duration={course.duration}
 				/>
 
-				<GetLesson course={course.title}/>
+				<GetLesson course={course.title} />
 
 				<Description
 					title={`Что же такое`}
@@ -314,7 +314,7 @@ export default function Page() {
 
 				<Learning items={learning} />
 
-				<GetLessonBlock course={course.title}/>
+				<GetLessonBlock course={course.title} />
 
 				<Programm mounth={course.duration} programs={programs} />
 
