@@ -255,7 +255,7 @@ export default function Page() {
 					duration={course.duration}
 				/>
 
-				<GetLesson course={course.title}/>
+				<GetLesson course={course.title} />
 
 				<Description
 					title={`Чем занимается \n`}
@@ -290,7 +290,7 @@ export default function Page() {
 
 				<Learning items={learning} />
 
-				<GetLessonBlock course={course.title}/>
+				<GetLessonBlock course={course.title} />
 
 				<Programm mounth={course.duration} programs={programs} />
 

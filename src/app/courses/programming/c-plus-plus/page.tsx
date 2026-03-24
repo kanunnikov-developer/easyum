@@ -64,7 +64,7 @@ const suitable = [
 
 const instruments = [
 	{
-		img: '/courses/ui/instruments/С++.svg',
+		img: '/courses/ui/instruments/plus.svg',
 		title: 'С++',
 		description: 'Объектно-ориентированный язык программирования',
 	},
@@ -83,42 +83,51 @@ const instruments = [
 		title: 'STL',
 		description: 'Стандартная библиотека шаблонов для C++',
 	},
+	{
+		img: '/courses/ui/instruments/uml.svg',
+		title: 'UML',
+		description: 'Унифицированный язык моделирования',
+	},
 ];
 
 const learning = [
 	{
-		title: ' Писать на Java',
-		description: 'Изучите базовые понятия, синтаксис, ООП, сможете решать задачи с помощью алгоритмов',
+		title: 'Программировать на С++',
+		description:
+			'Изучите базовые понятия, синтаксис и архитектуру. Будете применять принципы ООП в разработке приложений',
 		img: '/courses/ui/learning/11.svg',
 		number: '01',
 	},
 	{
-		title: 'Back-end разработка',
-		description: 'Сможете создавать серверную часть сервисов и приложений',
+		title: 'Системному мышлению',
+		description:
+			'Разберетесь в структурах данных, библиотеке шаблонов STL и будете эффективно решать алгоритмические задачи',
 		img: '/courses/ui/learning/5.svg',
 		number: '02',
 	},
 	{
-		title: 'Архитектура',
-		description: 'Будете писать чистый и понятный другим код, который легко читать и редактировать',
+		title: 'Тестированию',
+		description: 'Будете создавать архитектуру веб-приложений, используя шаблоны проектирования',
 		img: '/courses/ui/learning/12.svg',
 		number: '03',
 	},
 	{
-		title: 'Создание приложений',
-		description: 'Напишете собственные приложения на Java и добавите их в портфолио Java-разработчика',
+		title: 'Создавать GUI',
+		description:
+			'Освоите сигналы и слоты фреймворка Qt, и создадите приложения с графическим интерфейсом на чистом коде',
 		img: '/courses/ui/learning/8.svg',
 		number: '04',
 	},
 	{
-		title: 'Создание баз данных',
-		description: 'Создадите базы данных для приложений, изучите SQL и MySQL',
+		title: 'Работа с данными',
+		description:
+			'Поймете, как работает память компьютера, сможете управлять ее ресурсами. Освоите SQL и создадите базы данных для приложений.',
 		img: '/courses/ui/learning/13.svg',
 		number: '05',
 	},
 	{
-		title: 'Основы DevOps',
-		description: 'Научитесь доставлять код в продакшн и применять контейнеризацию',
+		title: 'Основам DevOps',
+		description: 'Научитесь использовать инструмент Docker, доставлять код в продакшн и применять контейнеризацию',
 		img: '/courses/ui/learning/4.svg',
 		number: '06',
 	},
@@ -198,7 +207,7 @@ export default function Page() {
 					duration={course.duration}
 				/>
 
-				<GetLesson course={course.title}/>
+				<GetLesson course={course.title} />
 
 				<Description
 					title={`С++ разработчик`}
@@ -278,7 +287,7 @@ export default function Page() {
 
 				<Learning items={learning} />
 
-				<GetLessonBlock course={course.title}/>
+				<GetLessonBlock course={course.title} />
 
 				<Programm mounth={course.duration} programs={programs} />
 

@@ -10,6 +10,11 @@
 	row-gap: 50px;
 }
 
+/* Если элементов ровно 5, меняем на 5 колонок */
+.grid:has(> :nth-child(5)):not(:has(> :nth-child(6))) {
+	grid-template-columns: repeat(5, 1fr);
+}
+
 /* Первые 6 элементов размещаем как обычно */
 .grid > :nth-child(-n + 6) {
 	grid-column: auto;
@@ -69,6 +74,11 @@
 		display: grid;
 		grid-template-columns: repeat(1, 1fr);
 		row-gap: 30px;
+	}
+
+	/* Если элементов ровно 5, меняем на 5 колонок */
+	.grid:has(> :nth-child(5)):not(:has(> :nth-child(6))) {
+		grid-template-columns: repeat(1, 1fr);
 	}
 
 	/* Первые 6 элементов размещаем как обычно */
