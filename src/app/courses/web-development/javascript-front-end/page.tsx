@@ -33,6 +33,7 @@ const course = {
 	img: 'web/javascript-front-end/hero.svg',
 	date: dateStart[12].date,
 	duration: '5 месяцев',
+	duration_number: 5,
 	price: dateStart[12].price,
 	imgCourse: dateStart[12].imgCourse,
 };
@@ -381,6 +382,7 @@ export default function Page() {
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
+							mounth={course.duration_number}
 						/>
 					}
 				>
@@ -402,6 +404,7 @@ async function Wrapper() {
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}
+			mounth={course.duration_number}
 		/>
 	);
 }

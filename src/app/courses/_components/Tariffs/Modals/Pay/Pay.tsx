@@ -8,9 +8,10 @@ interface Props {
 	tariff: string;
 	price: number | undefined;
 	onSuccess: () => void;
+	mounth: number;
 }
 
-export function ModalPay({ onClose, city, course, tariff, price, onSuccess }: Props) {
+export function ModalPay({ onClose, city, course, tariff, price, onSuccess, mounth }: Props) {
 	return (
 		<div className={styles.overlay} onClick={onClose}>
 			<div className={styles.modal} onClick={(e) => e.stopPropagation()}>
@@ -21,6 +22,7 @@ export function ModalPay({ onClose, city, course, tariff, price, onSuccess }: Pr
 					price={price}
 					onSuccess={onSuccess}
 					onClose={onClose}
+					mounth={mounth}
 				/>
 			</div>
 		</div>

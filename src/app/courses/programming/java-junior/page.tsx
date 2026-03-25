@@ -25,6 +25,8 @@ import Tariffs from '../../_components/Tariffs/Tariffs';
 import { Suspense } from 'react';
 import getRegion from '@/lib/getRegion';
 import FAQ from '../../_components/FAQ/FAQ';
+import Discount from '@/app/_components/Discount/Discount';
+import DiscountTariff from '../../_components/Discount/Discount';
 
 const course = {
 	title: dateStart[0].course,
@@ -34,6 +36,7 @@ const course = {
 	img: 'programming/javajunior/hero.svg',
 	date: dateStart[0].date,
 	duration: '5,5 месяцев',
+	duration_number: 5.5,
 	price: dateStart[0].price,
 	imgCourse: dateStart[0].imgCourse,
 };
@@ -488,11 +491,14 @@ export default function Page() {
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
+							mounth={course.duration_number}
 						/>
 					}
 				>
 					<Wrapper />
 				</Suspense>
+
+				<DiscountTariff />
 
 				<FAQ />
 			</div>
@@ -509,6 +515,7 @@ async function Wrapper() {
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}
+			mounth={course.duration_number}
 		/>
 	);
 }

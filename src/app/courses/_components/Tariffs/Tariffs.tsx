@@ -13,9 +13,10 @@ interface Props {
 	price: Price | undefined;
 	sale: string;
 	imgCourse: string | undefined;
+	mounth: number;
 }
 
-export default function Tariffs({ city, price, course, sale, imgCourse }: Props) {
+export default function Tariffs({ city, price, course, sale, imgCourse, mounth }: Props) {
 	return (
 		<section id='tariffs' className={styles.tariffs}>
 			<h2>
@@ -36,6 +37,7 @@ export default function Tariffs({ city, price, course, sale, imgCourse }: Props)
 					img='1.svg'
 					sale={sale}
 					imgCourse={imgCourse}
+					mounth={mounth}
 				/>
 				<Rate
 					city={city}
@@ -51,6 +53,7 @@ export default function Tariffs({ city, price, course, sale, imgCourse }: Props)
 					img='2.svg'
 					sale={sale}
 					imgCourse={imgCourse}
+					mounth={mounth}
 				/>
 				<Rate
 					city={city}
@@ -66,6 +69,7 @@ export default function Tariffs({ city, price, course, sale, imgCourse }: Props)
 					img='1.svg'
 					sale={sale}
 					imgCourse={imgCourse}
+					mounth={mounth}
 				/>
 			</div>
 		</section>

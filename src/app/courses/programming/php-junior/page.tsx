@@ -33,6 +33,7 @@ const course = {
 	img: 'programming/php-junior/hero.svg',
 	date: dateStart[6].date,
 	duration: '4 месяца',
+	duration_number: 4,
 	price: dateStart[6].price,
 	imgCourse: dateStart[6].imgCourse,
 };
@@ -328,6 +329,7 @@ export default function Page() {
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
+							mounth={course.duration_number}
 						/>
 					}
 				>
@@ -349,6 +351,7 @@ async function Wrapper() {
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}
+			mounth={course.duration_number}
 		/>
 	);
 }

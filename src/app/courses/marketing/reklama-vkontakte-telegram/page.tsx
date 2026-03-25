@@ -32,6 +32,7 @@ const course = {
 	img: 'marketing/reklama-vkontakte-telegram/hero.svg',
 	date: dateStart[21].date,
 	duration: '1,5 месяца',
+	duration_number: 1.5,
 	price: dateStart[21].price,
 	imgCourse: dateStart[21].imgCourse,
 };
@@ -257,6 +258,7 @@ export default function Page() {
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
+							mounth={course.duration_number}
 						/>
 					}
 				>
@@ -278,6 +280,7 @@ async function Wrapper() {
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}
+			mounth={course.duration_number}
 		/>
 	);
 }

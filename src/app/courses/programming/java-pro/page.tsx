@@ -33,6 +33,7 @@ const course = {
 	img: 'programming/javapro/hero.svg',
 	date: dateStart[1].date,
 	duration: '9,5 месяцев',
+	duration_number: 9.5,
 	price: dateStart[1].price,
 	imgCourse: dateStart[1].imgCourse,
 };
@@ -417,6 +418,7 @@ export default function Page() {
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
+							mounth={course.duration_number}
 						/>
 					}
 				>
@@ -438,6 +440,7 @@ async function Wrapper() {
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}
+			mounth={course.duration_number}
 		/>
 	);
 }

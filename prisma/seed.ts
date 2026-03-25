@@ -26,7 +26,7 @@ const regionData: Prisma.RegionCreateInput[] = [
 		preposutional: 'Краснодаре',
 		address: 'г. Краснодар, Красная ул., 118. Территория коворкинга «Bloks»',
 		email: 'krasnodar@easyum.ru',
-		map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Aa4aacec9814255cc0c829ff31e82d10501b2a7ccf06efa03954399d63c9e049b&width=600&height=400&lang=ru_RU&scroll=true',
+		map: 'https://yandex.ru/maps/?um=constructor%3A21cb350153a74a9a929befdf20109837c6405ab5588561b18eeeb52bff241606&source=constructorLink',
 		metro: '',
 	},
 	{
@@ -35,7 +35,7 @@ const regionData: Prisma.RegionCreateInput[] = [
 		preposutional: 'Ростове-на-Дону',
 		address: 'г. Ростов-на-Дону, пр. Театральный 85, 4 этаж. Территория коворкинга «Рубин»',
 		email: 'rostov@easyum.ru',
-		map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Aa4aacec9814255cc0c829ff31e82d10501b2a7ccf06efa03954399d63c9e049b&width=600&height=400&lang=ru_RU&scroll=true',
+		map: 'https://yandex.ru/maps/?um=constructor%3A87fc5f6460a7cdf61290abe0a35c8a71459c09679ac7bb4f3ae0c80344b58a7c&source=constructorLink',
 		metro: '',
 	},
 	{
