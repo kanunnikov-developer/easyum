@@ -1,13 +1,14 @@
 import { Suspense } from 'react';
 import styles from './styles.module.css';
-import cn from 'classnames';
 import getRegion from '@/lib/getRegion';
 import CorporateFormTwo from '@/app/_form/CorporateForm/Two/CorporateFormTwo';
 import CorporateFormOne from '@/app/_form/CorporateForm/One/CorporateFormOne';
+import ScrolTop from '@/widgets/ScrolTop/ScrolTop';
 
 export default function Page() {
 	return (
 		<div className={styles.page}>
+			<ScrolTop />
 			<div className={styles.bg}></div>
 			<div className='container'>
 				<section className={styles.header}>

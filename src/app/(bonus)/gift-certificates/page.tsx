@@ -57,18 +57,18 @@ export default function Page() {
 							<h6 className={styles.number}>02</h6>
 							<div className={styles.text}>
 								<p>
-									<b>Оставьте заявку</b>
+									<b>Оплатить сертификат</b>
 								</p>
-								<p>С Вами свяжется менеджер - проконсультирует по выбору сертификата или курса</p>
+								<p>Мы отправим вам на почту ссылку для оплаты банковской картой</p>
 							</div>
 						</div>
 						<div className={styles.cardCertificate}>
 							<h6 className={styles.number}>03</h6>
 							<div className={styles.text}>
 								<p>
-									<b>Оставьте заявку</b>
+									<b>Подарите занятия</b>
 								</p>
-								<p>С Вами свяжется менеджер - проконсультирует по выбору сертификата или курса</p>
+								<p>Мы пришлем файл сертификата на почту или выдадим в офисе EasyUM</p>
 							</div>
 						</div>
 					</div>

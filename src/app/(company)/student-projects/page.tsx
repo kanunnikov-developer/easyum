@@ -4,6 +4,7 @@ import GridProjects from './ui/gridProjects/gridProjects';
 import { Suspense } from 'react';
 import getRegion from '@/lib/getRegion';
 import StudentsForm from '@/app/_form/StudentsForm/StudentsForm';
+import ScrolTop from '@/widgets/ScrolTop/ScrolTop';
 
 const cardOne = [
 	{
@@ -46,6 +47,7 @@ const cardTwo = [
 export default function Page() {
 	return (
 		<div className={styles.page}>
+			<ScrolTop />
 			<div className={styles.bg}></div>
 			<div className='container'>
 				<section className={styles.header}>

@@ -15,16 +15,13 @@
 	background: var(--white-color);
 	padding: 40px;
 	border-radius: 20px;
-	width: 700px;
+	width: 1100px;
+    max-width: 95vw;
 	animation: fadeIn 0.2s ease;
 }
 
 .exit {
-	position: absolute;
-	right: 20px;
-	top: 20px;
-	display: flex;
-	justify-content: flex-end;
+	display: none;
 }
 
 .button_img {

@@ -229,7 +229,7 @@ export default function Page() {
 					duration={course.duration}
 				/>
 
-				<GetLesson course={course.title}/>
+				<GetLesson course={course.title} />
 
 				<Description
 					title={`Чем занимается`}
@@ -240,20 +240,13 @@ export default function Page() {
 
 				<section className={styles.why_work}>
 					<h2>
-						<span className='accent'>Кем вы сможете работать</span>
-						{`\n`}после окончания курса
+						Почему iOS разработка –<span className='accent'>хороший выбор:</span>
 					</h2>
-					<p>
-						Пройдя курс по SMM-продвижению от EasyUM вы получите необходимые знания по 5-ти востребованным профессиям в
-						сфере digital-маркетинга. Вы сможете выбрать, в каком направлении углублять свои знания, или продолжите
-						развиваться как специалист широкого профиля.
-					</p>
 					<div className={styles.why_work__grid}>
 						<div className={styles.why_work__card}>
 							<div>
 								<p className={styles.why_work_description}>
-									Таргетолог — это человек, который настраивает и запускает рекламу в социальных сетях. Название
-									профессии происходит от английского слова target, «цель»
+									Язык программирования Swift разработала сама компания Apple, чтобы ускорить и упростить разработку
 								</p>
 							</div>
 
@@ -262,8 +255,8 @@ export default function Page() {
 						<div className={styles.why_work__card}>
 							<div>
 								<p className={styles.why_work_description}>
-									Маркетолог — это специалист, который создает стратегию продвижения продуктов и услуг, чтобы увеличить
-									продажи и общий доход компании
+									Легкая оптимизация – вы будете тратить мало времени на оптимизацию приложений из-за небольшого
+									разнообразия устройств Apple
 								</p>
 							</div>
 
@@ -272,8 +265,7 @@ export default function Page() {
 						<div className={styles.why_work__card}>
 							<div>
 								<p className={styles.why_work_description}>
-									PR-менеджер — это специалист по связям с общественностью. Выстраивает и контролирует отношения
-									компании с целевой аудиторией, партнерами и инвесторами.
+									Всё актуальное под рукой! Apple ежегодно публикует гайдлайны по изменениям в ОС и в разработке
 								</p>
 							</div>
 
@@ -316,7 +308,7 @@ export default function Page() {
 
 				<Learning items={learning} />
 
-				<GetLessonBlock course={course.title}/>
+				<GetLessonBlock course={course.title} />
 
 				<Programm mounth={course.duration} programs={programs} />
 

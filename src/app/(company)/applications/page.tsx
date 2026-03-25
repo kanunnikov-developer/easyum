@@ -4,6 +4,7 @@ import HowWorkBlock from '@/components/howWork/howWork';
 import { Suspense } from 'react';
 import getRegion from '@/lib/getRegion';
 import ApplicationForm from '@/app/_form/ApplicationForm/ApplicationForm';
+import ScrolTop from '@/widgets/ScrolTop/ScrolTop';
 
 const cardText = [
 	{
@@ -46,6 +47,7 @@ const HowWork = [
 export default function Page() {
 	return (
 		<div className={styles.page}>
+			<ScrolTop />
 			<div className={styles.bg}></div>
 			<div className='container'>
 				<section className={styles.header}>
