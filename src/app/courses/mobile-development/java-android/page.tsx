@@ -107,7 +107,7 @@ const instruments = [
 		description: 'Java-платформа для создания графического интерфейса приложений',
 	},
 	{
-		img: '/courses/ui/instruments/gradle.svg',
+		img: '/courses/ui/instruments/Gradle.svg',
 		title: 'Gradle',
 		description: 'Система для автоматической сборки приложений',
 	},
@@ -270,7 +270,7 @@ export default function Page() {
 					duration={course.duration}
 				/>
 
-				<GetLesson course={course.title}/>
+				<GetLesson course={course.title} />
 
 				<Description
 					title={`Почему стоит стать \n`}
@@ -369,7 +369,7 @@ export default function Page() {
 
 				<Learning items={learning} />
 
-				<GetLessonBlock course={course.title}/>
+				<GetLessonBlock course={course.title} />
 
 				<Programm mounth={course.duration} programs={programs} />
 

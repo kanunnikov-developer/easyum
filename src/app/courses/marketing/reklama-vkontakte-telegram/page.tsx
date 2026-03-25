@@ -137,7 +137,7 @@ export default function Page() {
 
 				<TeacherVideo />
 
-				<GetLesson course={course.title}/>
+				<GetLesson course={course.title} />
 
 				<Description
 					title={`Кто такой`}
@@ -148,7 +148,7 @@ export default function Page() {
 
 				<section className={styles.smm}>
 					<h2>
-						Чем занимается <span className='accent'>SMM-специалист?</span>
+						Чем занимается <span className='accent'>таргетолог?</span>
 					</h2>
 					<div className={styles.smm_grid}>
 						<div className={styles.smm_card}>
@@ -173,7 +173,7 @@ export default function Page() {
 									className={styles.smm_img}
 								/>
 							</div>
-							<p>Контролирует</p>
+							<p>Настраивает</p>
 						</div>
 						<div className={styles.smm_card}>
 							<div className={styles.smm_image}>
@@ -197,7 +197,7 @@ export default function Page() {
 									className={styles.smm_img}
 								/>
 							</div>
-							<p>Креативит</p>
+							<p>Улучшает</p>
 						</div>
 					</div>
 				</section>
@@ -219,7 +219,7 @@ export default function Page() {
 
 				<Instruments instrument={instruments} />
 
-				<GetLessonBlock course={course.title}/>
+				<GetLessonBlock course={course.title} />
 
 				<Programm mounth={course.duration} programs={programs} />
 

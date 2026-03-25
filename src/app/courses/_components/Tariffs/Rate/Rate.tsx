@@ -20,7 +20,7 @@ interface Props {
 	imgCourse: string | undefined;
 }
 
-function converter(price: number | undefined) {
+export function converter(price: number | undefined) {
 	if (!price) {
 		return '0';
 	}
@@ -81,9 +81,9 @@ export default function Rate({ city, course, format, lists, price, img, sale, im
 					<button className={styles.accent_button} onClick={() => setRegister(true)}>
 						Записаться
 					</button>
-					{/* <button className={styles.button} onClick={() => setPayment(true)}>
+					<button className={styles.button} onClick={() => setPayment(true)}>
 						Оплатить
-					</button> */}
+					</button>
 				</div>
 			</div>
 			{tbank && (
@@ -115,7 +115,7 @@ export default function Rate({ city, course, format, lists, price, img, sale, im
 					city={city}
 					course={course}
 					tariff={format}
-					price={converter(price)}
+					price={price}
 					onSuccess={() => setIsThankOpen(true)}
 				/>
 			)}

@@ -23,7 +23,7 @@ export default function TeacherSwiper({ teachers }: Props) {
 	return (
 		<section className={styles.section}>
 			<h2>
-				<span className='accent'>Преподовтели</span> курса:
+				<span className='accent'>Преподаватели</span> курса:
 			</h2>
 			<div className={styles.swiper}>
 				<div className={styles.wrapper}>

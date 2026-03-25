@@ -7,7 +7,6 @@ import styles from './styles.module.css'; // или tailwind, cn и т.д.
 import { useEffect } from 'react';
 
 export default function Breadcrumbs() {
-
 	const pathname = usePathname();
 
 	// Разбиваем путь на сегменты
@@ -95,8 +94,8 @@ export default function Breadcrumbs() {
 	];
 
 	useEffect(() => {
-  window.scrollTo({ top: 0, behavior: 'instant' });
-}, []);
+		window.scrollTo({ top: 0, behavior: 'instant' });
+	}, []);
 
 	return (
 		<nav aria-label='Хлебные крошки' className={styles.breadcrumbs}>

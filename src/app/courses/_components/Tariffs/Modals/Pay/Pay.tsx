@@ -6,7 +6,7 @@ interface Props {
 	city: string | undefined;
 	course: string;
 	tariff: string;
-	price: string | undefined;
+	price: number | undefined;
 	onSuccess: () => void;
 }
 
@@ -14,11 +14,6 @@ export function ModalPay({ onClose, city, course, tariff, price, onSuccess }: Pr
 	return (
 		<div className={styles.overlay} onClick={onClose}>
 			<div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-				<div className={styles.exit}>
-					<button onClick={onClose} className={styles.button_img}>
-						<img src='/icons/exit.svg' alt='Закрыть' />
-					</button>
-				</div>
 				<PaymentForm
 					city={city}
 					course={course}
