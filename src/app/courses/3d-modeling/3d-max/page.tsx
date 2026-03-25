@@ -31,6 +31,7 @@ const course = {
 	img: 'threeD/3d-max/hero.svg',
 	date: dateStart[24].date,
 	duration: '2,5 месяца',
+	duration_number: 2.5,
 	price: dateStart[24].price,
 	imgCourse: dateStart[24].imgCourse,
 };
@@ -355,6 +356,7 @@ export default function Page() {
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
+							mounth={course.duration_number}
 						/>
 					}
 				>
@@ -376,6 +378,7 @@ async function Wrapper() {
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}
+			mounth={course.duration_number}
 		/>
 	);
 }

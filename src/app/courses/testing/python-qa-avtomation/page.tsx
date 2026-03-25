@@ -30,6 +30,7 @@ const course = {
 	img: 'testing/python-qa-avtomation/hero.svg',
 	date: dateStart[10].date,
 	duration: '4 месяца',
+	duration_number: 4,
 	price: dateStart[10].price,
 	imgCourse: dateStart[10].imgCourse,
 };
@@ -236,6 +237,7 @@ export default function Page() {
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
+							mounth={course.duration_number}
 						/>
 					}
 				>
@@ -257,6 +259,7 @@ async function Wrapper() {
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}
+			mounth={course.duration_number}
 		/>
 	);
 }

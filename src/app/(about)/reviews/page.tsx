@@ -75,37 +75,37 @@ export default function Page() {
 				</h6>
 				<div className={styles.video__grid}>
 					<div className={styles.card_video}>
-						<a href='#'>
+						<a href='https://www.youtube.com/watch?v=6zp5Vd_O8p0' target='_blank'>
 							<img src={`/about/reviews/video/video1.svg`} alt='Видео отзыв' />
 						</a>
 						<span>{`Отзыв выпускника потока 2 \n Курс “PHP junior программист”`}</span>
 					</div>
 					<div className={styles.card_video}>
-						<a href='#'>
+						<a href='https://www.youtube.com/watch?v=1L1qfmCRd7c' target='_blank'>
 							<img src={`/about/reviews/video/video2.svg`} alt='Видео отзыв' />
 						</a>
 						<span>{`Отзыв выпускника \n Курс “Javascript Frontend-разработчик”`}</span>
 					</div>
 					<div className={styles.card_video}>
-						<a href='#'>
+						<a href='https://www.youtube.com/watch?v=R5yyAt-N68Q' target='_blank'>
 							<img src={`/about/reviews/video/video3.svg`} alt='Видео отзыв' />
 						</a>
 						<span>{`Отзыв выпускника \n Курс “Графический дизайн”`}</span>
 					</div>
 					<div className={styles.card_video}>
-						<a href='#'>
+						<a href='https://www.youtube.com/watch?v=TFVsHc3vXaQ' target='_blank'>
 							<img src={`/about/reviews/video/video4.svg`} alt='Видео отзыв' />
 						</a>
 						<span>{`Отзыв выпускницы \n Курс “Java Junior веб-разработчик”`}</span>
 					</div>
 					<div className={styles.card_video}>
-						<a href='#'>
+						<a href='https://www.youtube.com/watch?v=5kxgx0dxMak' target='_blank'>
 							<img src={`/about/reviews/video/video5.svg`} alt='Видео отзыв' />
 						</a>
 						<span>{`Отзыв выпускника \n Курс “Тестирование ПО”`}</span>
 					</div>
 					<div className={styles.card_video}>
-						<a href='#'>
+						<a href='https://www.youtube.com/watch?v=9yJJf6zoLfw' target='_blank'>
 							<img src={`/about/reviews/video/video6.svg`} alt='Видео отзыв' />
 						</a>
 						<span>{`Отзыв выпускника \n Курс “Javascript Frontend-разработчик”`}</span>

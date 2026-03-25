@@ -36,6 +36,7 @@ const course = {
 	img: 'testing/qa-pro/hero.svg',
 	date: dateStart[7].date,
 	duration: '7 месяцев',
+	duration_number: 7,
 	price: dateStart[7].price,
 	imgCourse: dateStart[7].imgCourse,
 };
@@ -456,6 +457,7 @@ export default function Page() {
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
+							mounth={course.duration_number}
 						/>
 					}
 				>
@@ -476,6 +478,7 @@ async function Wrapper() {
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}
+			mounth={course.duration_number}
 		/>
 	);
 }

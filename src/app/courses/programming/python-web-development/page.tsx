@@ -32,6 +32,7 @@ const course = {
 	img: 'programming/python-web-development/hero.svg',
 	date: dateStart[4].date,
 	duration: '4 месяца',
+	duration_number: 4,
 	price: dateStart[4].price,
 	imgCourse: dateStart[4].imgCourse,
 };
@@ -359,6 +360,7 @@ export default function Page() {
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
+							mounth={course.duration_number}
 						/>
 					}
 				>
@@ -380,6 +382,7 @@ async function Wrapper() {
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}
+			mounth={course.duration_number}
 		/>
 	);
 }

@@ -17,10 +17,12 @@ interface Props {
 	tariff: string;
 	price: number | undefined;
 	onSuccess: () => void;
+	mounth: number;
 }
 
-export default function PaymentForm({ onClose, city, course, tariff, price, onSuccess }: Props) {
+export default function PaymentForm({ onClose, city, course, tariff, price, onSuccess, mounth }: Props) {
 	const [selectedPlan, setSelectedPlan] = useState<'full_rf' | 'full_foreign' | 'installment_school' | 'installment_tbank'>('full_rf');
+	const [tbankMonths, setTbankMonths] = useState(12);
 	const [namePay, setNamePay] = useState('');
 	const [phonePay, setPhonePay] = useState('');
 	const [emailPay, setEmailPay] = useState('');
@@ -57,6 +59,22 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 	if (selectedPlan === 'full_foreign') paymentMethodString = 'Полная оплата (зарубежная карта)';
 	if (selectedPlan === 'installment_school') paymentMethodString = 'Рассрочка от школы (есть переплата)';
 	if (selectedPlan === 'installment_tbank') paymentMethodString = 'Рассрочка от ТБанк (без переплаты)';
+
+	let schoolInstallmentMonthlyPayment = 15990;
+	if (tariff.toLowerCase().includes('видео')) {
+		schoolInstallmentMonthlyPayment = 13490;
+	} else if (tariff.toLowerCase().includes('онлайн')) {
+		schoolInstallmentMonthlyPayment = 14990;
+	} else if (tariff.toLowerCase().includes('очн') || tariff.toLowerCase().includes('офлайн')) {
+		schoolInstallmentMonthlyPayment = 15990;
+	}
+	const schoolInstallmentTotal = schoolInstallmentMonthlyPayment * mounth;
+
+	const getMonthsLabel = (m: number) => {
+		if (m % 10 === 1 && m % 100 !== 11) return 'месяц';
+		if ([2, 3, 4].includes(m % 10) && ![12, 13, 14].includes(m % 100)) return 'месяца';
+		return 'месяцев';
+	};
 
 	return (
 		<form action={formAction} className={styles.container}>
@@ -115,6 +133,9 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 				<input type='hidden' name='tariff' value={tariff} />
 				<input type='hidden' name='price' value={price} />
 				<input type='hidden' name='paymentMethod' value={paymentMethodString} />
+				{selectedPlan === 'installment_tbank' && (
+					<input type='hidden' name='tbankMonths' value={tbankMonths} />
+				)}
 
 				<div className={styles.consentBlock}>
 					<div className={commonStyles.consent}>
@@ -167,9 +188,9 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 				<div className={styles.rightHeader}>
 					<h3>Выберете способ оплаты:</h3>
 					<button type='button' onClick={onClose} className={styles.closeButton}>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18 6L6 18M6 6L18 18" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
 					</button>
 				</div>
 
@@ -186,7 +207,7 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 						<div className={styles.planContent}>
 							<div className={styles.planTitle}>Полная оплата — Банковской картой РФ</div>
 							<div className={styles.planDesc}>
-								Моментальный доступ после оплаты
+								Моментальный доступ после оплаты <img src='/icons/payment/mir.svg' alt='mir'/>
 							</div>
 						</div>
 						<div className={styles.planPriceCol}>
@@ -207,7 +228,7 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 						<div className={styles.planContent}>
 							<div className={styles.planTitle}>Полная оплата (зарубежная карта)</div>
 							<div className={styles.planDesc}>
-								Visa/Mastercard если вы за границей <img src="/icons/visa-master.webp" alt="Visa/Master" style={{height: "16px", marginLeft:"4px", objectFit:"contain"}} onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+								Visa/Mastercard если вы за границей <img src='/icons/payment/visa.svg' alt='visa'/> <img src='/icons/payment/mastercard.svg' alt='mastercard'/>
 							</div>
 						</div>
 						<div className={styles.planPrice}>{price?.toLocaleString('ru')} ₽</div>
@@ -224,32 +245,59 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 						</div>
 						<div className={styles.planContent}>
 							<div className={styles.planTitle}>Рассрочка от школы (есть переплата)</div>
-							<div className={styles.planDesc}>Мы предоставляем рассрочку на 4 месяца</div>
+							<div className={styles.planDesc}>Мы предоставляем рассрочку на {mounth} {getMonthsLabel(mounth)}</div>
 						</div>
 						<div className={styles.planPriceCol}>
-							<div className={styles.planPriceStr}>15 990 ₽/мес</div>
-							<div className={styles.planSubPrice}>Итого: 95 441 ₽</div>
+							<div className={styles.planPriceStr}>{schoolInstallmentMonthlyPayment.toLocaleString('ru')} ₽/мес</div>
+							<div className={styles.planSubPrice}>Итого: {schoolInstallmentTotal.toLocaleString('ru')} ₽</div>
 						</div>
 					</label>
 
 					{/* Рассрочка от ТБанка */}
 					<label
-						className={`${styles.planCard} ${selectedPlan === 'installment_tbank' ? styles.selected : ''}`}
+						className={`${styles.planCard} ${styles.tbankCardMain} ${selectedPlan === 'installment_tbank' ? styles.selected : ''}`}
 						onClick={() => setSelectedPlan('installment_tbank')}
 					>
-						<div className={styles.radioWrapper}>
-							<input type='radio' name='plan' checked={selectedPlan === 'installment_tbank'} readOnly className={styles.radioInput} />
-							<span className={styles.radioCustom}></span>
-						</div>
-						<div className={styles.planContent}>
-							<div className={styles.planTitle}>Рассрочка от ТБанк (без переплаты)</div>
-							<div className={styles.planDesc}>
-								Выберите удобное количество месяцев
+						<div className={styles.tbankTopRow}>
+							<div className={styles.radioWrapper}>
+								<input type='radio' name='plan' checked={selectedPlan === 'installment_tbank'} readOnly className={styles.radioInput} />
+								<span className={styles.radioCustom}></span>
+							</div>
+							<div className={styles.planContent}>
+								<div className={styles.planTitle}>Рассрочка от ТБанк (без переплаты)</div>
+								<div className={styles.planDesc}>
+									Выберите удобное количество месяцев <img src='/icons/payment/tbank.svg' alt='tbank' className={styles.tbank}/>
+								</div>
+							</div>
+							<div className={styles.planPriceCol}>
+								<div className={styles.planPriceStr}>от {price ? Math.round(price / 24).toLocaleString('ru') : 0} ₽/мес</div>
 							</div>
 						</div>
-						<div className={styles.planPriceCol}>
-							<div className={styles.planPriceStr}>от 4 590 ₽/мес</div>
-						</div>
+
+						{selectedPlan === 'installment_tbank' && (
+							<div className={styles.tbankExpanded}>
+								<div className={styles.tbankExpandedHeader}>
+									<span className={styles.tbankExpandedTitle}>Рассрочка на <span className={styles.tbankExpandedBlue}>{tbankMonths} мес.</span></span>
+									<span className={styles.tbankExpandedPrice}>Платеж: <span className={styles.tbankExpandedBlue}>{price ? Math.round(price / tbankMonths).toLocaleString('ru') : 0} ₽</span>/мес</span>
+								</div>
+								<div className={styles.sliderWrapper}>
+									<input 
+										type="range" 
+										min="3" 
+										max="24" 
+										step="1" 
+										value={tbankMonths} 
+										onChange={(e) => setTbankMonths(Number(e.target.value))}
+										className={styles.slider}
+										style={{ backgroundSize: `${((tbankMonths - 3) * 100) / 21}% 100%` }}
+									/>
+								</div>
+								<div className={styles.sliderLabels}>
+									<span>3 месяца</span>
+									<span>24 месяца</span>
+								</div>
+							</div>
+						)}
 					</label>
 				</div>
 			</div>

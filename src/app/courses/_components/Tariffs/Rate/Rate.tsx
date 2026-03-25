@@ -18,6 +18,7 @@ interface Props {
 	img: string;
 	sale: string;
 	imgCourse: string | undefined;
+	mounth: number;
 }
 
 export function converter(price: number | undefined) {
@@ -42,7 +43,7 @@ function tinkoff(price: number | undefined) {
 	return formattedPlateg;
 }
 
-export default function Rate({ city, course, format, lists, price, img, sale, imgCourse }: Props) {
+export default function Rate({ city, course, format, lists, price, img, sale, imgCourse, mounth }: Props) {
 	const [tbank, setTbank] = useState(false);
 	const [register, setRegister] = useState(false);
 	const [payment, setPayment] = useState(false);
@@ -117,6 +118,7 @@ export default function Rate({ city, course, format, lists, price, img, sale, im
 					tariff={format}
 					price={price}
 					onSuccess={() => setIsThankOpen(true)}
+					mounth={mounth}
 				/>
 			)}
 

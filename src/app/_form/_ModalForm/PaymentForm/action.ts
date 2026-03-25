@@ -47,6 +47,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 	const rawTariff = formData.get('tariff');
 	const rawPrice = formData.get('price');
 	const rawPaymentMethod = formData.get('paymentMethod');
+	const rawTbankMonths = formData.get('tbankMonths');
 
 	const parsed = FormSchema.safeParse({
 		name: typeof rawName === 'string' ? rawName : '',
@@ -70,11 +71,11 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 		Имя: parsed.data.name,
 		Телефон: parsed.data.phone,
 		Email: rawEmail,
-		'Имя формы': rewNameForm,
 		Город: rawCity,
 		Тариф: rawTariff,
 		Цена: rawPrice + ' руб.',
 		'Способ оплаты': typeof rawPaymentMethod === 'string' && rawPaymentMethod !== '' ? rawPaymentMethod : 'Не указано',
+		...(rawTbankMonths ? { 'Срок рассрочки ТБанк': `${rawTbankMonths} мес.` } : {}),
 		'Согласие на обработку персональных данных': rawConsent == null ? 'Нет' : 'Да',
 		'Согласие на рассылку': rawSms == null ? 'Нет' : 'Да',
 	};

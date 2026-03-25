@@ -31,6 +31,7 @@ const course = {
 	img: 'marketing/reklama-ppc/hero.svg',
 	date: dateStart[20].date,
 	duration: '2 месяца',
+	duration_number: 2,
 	price: dateStart[20].price,
 	imgCourse: dateStart[20].imgCourse,
 };
@@ -252,6 +253,7 @@ export default function Page() {
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
+							mounth={course.duration_number}
 						/>
 					}
 				>
@@ -273,6 +275,7 @@ async function Wrapper() {
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}
+			mounth={course.duration_number}
 		/>
 	);
 }
