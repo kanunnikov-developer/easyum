@@ -8,6 +8,8 @@ import { action, State } from './action';
 const initialState: State = {
 	fieldErrors: { name: '', phone: '', email: '' },
 	success: false,
+	paymentUrl: undefined,
+	error: undefined,
 };
 
 interface Props {
@@ -21,7 +23,9 @@ interface Props {
 }
 
 export default function PaymentForm({ onClose, city, course, tariff, price, onSuccess, mounth }: Props) {
-	const [selectedPlan, setSelectedPlan] = useState<'full_rf' | 'full_foreign' | 'installment_school' | 'installment_tbank'>('full_rf');
+	const [selectedPlan, setSelectedPlan] = useState<
+		'full_rf' | 'full_foreign' | 'installment_school' | 'installment_tbank'
+	>('full_rf');
 	const [tbankMonths, setTbankMonths] = useState(12);
 	const [namePay, setNamePay] = useState('');
 	const [phonePay, setPhonePay] = useState('');
@@ -29,18 +33,28 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 
 	const [pdConsent_pay, setPdConsent_pay] = useState(false);
 	const [smsConsent_pay, setSmsConsent_pay] = useState(false);
-	
+
 	const [state, formAction, isPending] = useActionState(action, initialState);
 
 	useEffect(() => {
-		if (state.success) {
+		if (state.success && state.paymentUrl) {
+			// Небольшая задержка помогает в некоторых случаях (особенно в модальном окне)
+			const timer = setTimeout(() => {
+				window.location.href = state.paymentUrl!;
+			}, 100);
+
+			return () => clearTimeout(timer);
+		}
+
+		// Если просто успех (например, бронь или рассрочка от школы) — старое поведение
+		if (state.success && !state.paymentUrl) {
 			setNamePay('');
 			setPhonePay('');
 			setEmailPay('');
 			onClose();
 			onSuccess();
 		}
-	}, [state.success, onClose, onSuccess]);
+	}, [state.success, state.paymentUrl, onClose, onSuccess]);
 
 	useEffect(() => {
 		setPdConsent_pay(false);
@@ -89,53 +103,51 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 				</div>
 
 				<div className={styles.inputGroup}>
-				<div className={commonStyles.input}>
-					<input
-						type='text'
-						name='name'
-						placeholder='Ваше имя'
-						required
-						value={namePay}
-						onChange={(e) => setNamePay(e.target.value)}
-						className={styles.textInput}
-					/>
-					{state.fieldErrors?.name && <p className={commonStyles.error}>{state.fieldErrors.name}</p>}
+					<div className={commonStyles.input}>
+						<input
+							type='text'
+							name='name'
+							placeholder='Ваше имя'
+							required
+							value={namePay}
+							onChange={(e) => setNamePay(e.target.value)}
+							className={styles.textInput}
+						/>
+						{state.fieldErrors?.name && <p className={commonStyles.error}>{state.fieldErrors.name}</p>}
+					</div>
+
+					<div className={commonStyles.input}>
+						<input
+							type='tel'
+							name='phone'
+							placeholder='Ваш телефон'
+							required
+							value={phonePay}
+							onChange={(e) => setPhonePay(e.target.value)}
+							className={styles.textInput}
+						/>
+						{state.fieldErrors?.phone && <p className={commonStyles.error}>{state.fieldErrors.phone}</p>}
+					</div>
+
+					<div className={commonStyles.input}>
+						<input
+							type='email'
+							name='email'
+							placeholder='ВашеEmail'
+							value={emailPay}
+							onChange={(e) => setEmailPay(e.target.value)}
+							className={styles.textInput}
+						/>
+						{state.fieldErrors?.email && <p className={commonStyles.error}>{state.fieldErrors.email}</p>}
+					</div>
 				</div>
 
-				<div className={commonStyles.input}>
-					<input
-						type='tel'
-						name='phone'
-						placeholder='Ваш телефон'
-						required
-						value={phonePay}
-						onChange={(e) => setPhonePay(e.target.value)}
-						className={styles.textInput}
-					/>
-					{state.fieldErrors?.phone && <p className={commonStyles.error}>{state.fieldErrors.phone}</p>}
-				</div>
-
-				<div className={commonStyles.input}>
-					<input
-						type='email'
-						name='email'
-						placeholder='ВашеEmail'
-						value={emailPay}
-						onChange={(e) => setEmailPay(e.target.value)}
-						className={styles.textInput}
-					/>
-					{state.fieldErrors?.email && <p className={commonStyles.error}>{state.fieldErrors.email}</p>}
-				</div>
-				</div>
-
+				<input type='hidden' name='course' value={course} />
 				<input type='hidden' name='city' value={city} />
-				<input type='hidden' name='nameForm' value={`Оплата: ${course}`} />
 				<input type='hidden' name='tariff' value={tariff} />
 				<input type='hidden' name='price' value={price} />
-				<input type='hidden' name='paymentMethod' value={paymentMethodString} />
-				{selectedPlan === 'installment_tbank' && (
-					<input type='hidden' name='tbankMonths' value={tbankMonths} />
-				)}
+				<input type='hidden' name='methodPay' value={paymentMethodString} />
+				{selectedPlan === 'installment_tbank' && <input type='hidden' name='tbankMonths' value={tbankMonths} />}
 
 				<div className={styles.consentBlock}>
 					<div className={commonStyles.consent}>
@@ -188,9 +200,15 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 				<div className={styles.rightHeader}>
 					<h3>Выберете способ оплаты:</h3>
 					<button type='button' onClick={onClose} className={styles.closeButton}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 6L6 18M6 6L18 18" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+						<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+							<path
+								d='M18 6L6 18M6 6L18 18'
+								stroke='#3b82f6'
+								strokeWidth='2'
+								strokeLinecap='round'
+								strokeLinejoin='round'
+							/>
+						</svg>
 					</button>
 				</div>
 
@@ -201,13 +219,19 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 						onClick={() => setSelectedPlan('full_rf')}
 					>
 						<div className={styles.radioWrapper}>
-							<input type='radio' name='plan' checked={selectedPlan === 'full_rf'} readOnly className={styles.radioInput} />
+							<input
+								type='radio'
+								name='plan'
+								checked={selectedPlan === 'full_rf'}
+								readOnly
+								className={styles.radioInput}
+							/>
 							<span className={styles.radioCustom}></span>
 						</div>
 						<div className={styles.planContent}>
 							<div className={styles.planTitle}>Полная оплата — Банковской картой РФ</div>
 							<div className={styles.planDesc}>
-								Моментальный доступ после оплаты <img src='/icons/payment/mir.svg' alt='mir'/>
+								Моментальный доступ после оплаты <img src='/icons/payment/mir.svg' alt='mir' />
 							</div>
 						</div>
 						<div className={styles.planPriceCol}>
@@ -222,13 +246,20 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 						onClick={() => setSelectedPlan('full_foreign')}
 					>
 						<div className={styles.radioWrapper}>
-							<input type='radio' name='plan' checked={selectedPlan === 'full_foreign'} readOnly className={styles.radioInput} />
+							<input
+								type='radio'
+								name='plan'
+								checked={selectedPlan === 'full_foreign'}
+								readOnly
+								className={styles.radioInput}
+							/>
 							<span className={styles.radioCustom}></span>
 						</div>
 						<div className={styles.planContent}>
 							<div className={styles.planTitle}>Полная оплата (зарубежная карта)</div>
 							<div className={styles.planDesc}>
-								Visa/Mastercard если вы за границей <img src='/icons/payment/visa.svg' alt='visa'/> <img src='/icons/payment/mastercard.svg' alt='mastercard'/>
+								Visa/Mastercard если вы за границей <img src='/icons/payment/visa.svg' alt='visa' />{' '}
+								<img src='/icons/payment/mastercard.svg' alt='mastercard' />
 							</div>
 						</div>
 						<div className={styles.planPrice}>{price?.toLocaleString('ru')} ₽</div>
@@ -240,12 +271,20 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 						onClick={() => setSelectedPlan('installment_school')}
 					>
 						<div className={styles.radioWrapper}>
-							<input type='radio' name='plan' checked={selectedPlan === 'installment_school'} readOnly className={styles.radioInput} />
+							<input
+								type='radio'
+								name='plan'
+								checked={selectedPlan === 'installment_school'}
+								readOnly
+								className={styles.radioInput}
+							/>
 							<span className={styles.radioCustom}></span>
 						</div>
 						<div className={styles.planContent}>
 							<div className={styles.planTitle}>Рассрочка от школы (есть переплата)</div>
-							<div className={styles.planDesc}>Мы предоставляем рассрочку на {mounth} {getMonthsLabel(mounth)}</div>
+							<div className={styles.planDesc}>
+								Мы предоставляем рассрочку на {mounth} {getMonthsLabel(mounth)}
+							</div>
 						</div>
 						<div className={styles.planPriceCol}>
 							<div className={styles.planPriceStr}>{schoolInstallmentMonthlyPayment.toLocaleString('ru')} ₽/мес</div>
@@ -260,33 +299,50 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 					>
 						<div className={styles.tbankTopRow}>
 							<div className={styles.radioWrapper}>
-								<input type='radio' name='plan' checked={selectedPlan === 'installment_tbank'} readOnly className={styles.radioInput} />
+								<input
+									type='radio'
+									name='plan'
+									checked={selectedPlan === 'installment_tbank'}
+									readOnly
+									className={styles.radioInput}
+								/>
 								<span className={styles.radioCustom}></span>
 							</div>
 							<div className={styles.planContent}>
 								<div className={styles.planTitle}>Рассрочка от ТБанк (без переплаты)</div>
 								<div className={styles.planDesc}>
-									Выберите удобное количество месяцев <img src='/icons/payment/tbank.svg' alt='tbank' className={styles.tbank}/>
+									Выберите удобное количество месяцев{' '}
+									<img src='/icons/payment/tbank.svg' alt='tbank' className={styles.tbank} />
 								</div>
 							</div>
 							<div className={styles.planPriceCol}>
-								<div className={styles.planPriceStr}>от {price ? Math.round(price / 24).toLocaleString('ru') : 0} ₽/мес</div>
+								<div className={styles.planPriceStr}>
+									от {price ? Math.round(price / 24).toLocaleString('ru') : 0} ₽/мес
+								</div>
 							</div>
 						</div>
 
 						{selectedPlan === 'installment_tbank' && (
 							<div className={styles.tbankExpanded}>
 								<div className={styles.tbankExpandedHeader}>
-									<span className={styles.tbankExpandedTitle}>Рассрочка на <span className={styles.tbankExpandedBlue}>{tbankMonths} мес.</span></span>
-									<span className={styles.tbankExpandedPrice}>Платеж: <span className={styles.tbankExpandedBlue}>{price ? Math.round(price / tbankMonths).toLocaleString('ru') : 0} ₽</span>/мес</span>
+									<span className={styles.tbankExpandedTitle}>
+										Рассрочка на <span className={styles.tbankExpandedBlue}>{tbankMonths} мес.</span>
+									</span>
+									<span className={styles.tbankExpandedPrice}>
+										Платеж:{' '}
+										<span className={styles.tbankExpandedBlue}>
+											{price ? Math.round(price / tbankMonths).toLocaleString('ru') : 0} ₽
+										</span>
+										/мес
+									</span>
 								</div>
 								<div className={styles.sliderWrapper}>
-									<input 
-										type="range" 
-										min="3" 
-										max="24" 
-										step="1" 
-										value={tbankMonths} 
+									<input
+										type='range'
+										min='3'
+										max='24'
+										step='1'
+										value={tbankMonths}
 										onChange={(e) => setTbankMonths(Number(e.target.value))}
 										className={styles.slider}
 										style={{ backgroundSize: `${((tbankMonths - 3) * 100) / 21}% 100%` }}
