@@ -3,6 +3,7 @@
 import { z } from 'zod';
 import nodemailer from 'nodemailer';
 import { generateToken } from './model/generateToken';
+import crypto from 'crypto';
 
 export type State = {
 	fieldErrors?: { name?: string; phone?: string; email?: string };
@@ -51,7 +52,10 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 	const tariff = formData.get('tariff');
 	const price = formData.get('price');
 	const methodPay = formData.get('methodPay');
-	const TbankMonths = formData.get('tbankMonths');
+
+	const schoolInstallmentMonthlyPayment = formData.get('schoolInstallmentMonthlyPayment');
+
+	// const TbankMonths = formData.get('tbankMonths');
 
 	// Согласие на обработку данных
 	const conset = formData.get('pd_consent');
@@ -108,10 +112,9 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 			const tinkoffData = JSON.parse(text);
 
 			if (!tinkoffData.Success || tinkoffData.ErrorCode !== '0') {
-				console.error('Tinkoff error:', tinkoffData);
 				return {
 					success: false,
-					error: tinkoffData.Message || tinkoffData.Details || 'Ошибка инициации платежа в Тинькофф',
+					error: 'Ошибка инициации платежа в Тинькофф',
 				};
 			}
 
@@ -155,7 +158,6 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 			return {
 				success: true,
 				paymentUrl: paymentUrl,
-				// fieldErrors можно оставить пустыми
 			};
 		} catch (err: any) {
 			console.error('Tinkoff Init error:', err);
@@ -165,6 +167,168 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 			};
 		}
 	}
+
+	if (methodPay === 'Рассрочка от школы (есть переплата)') {
+		const amountRub = Number(schoolInstallmentMonthlyPayment);
+		console.log(amountRub)
+		if (!amountRub || amountRub < 10) {
+			return { success: false, error: 'Неверная сумма платежа' };
+		}
+
+		// Номер заказа
+		const orderId = `order_${Date.now()}_${Math.floor(Math.random() * 100000)}`;
+
+		// Нагрузка перед отправкой
+		const initPayload = {
+			TerminalKey: process.env.TINKOFF_TERMINAL_KEY!,
+			Amount: Math.round(amountRub * 100),
+			OrderId: orderId,
+			Description: `Оплата 1 месяца курса: "${course}". Тариф: "${tariff}".`,
+			SuccessURL: process.env.SUCCESS_URL,
+		};
+
+		const token = generateToken(initPayload);
+
+		const requestBody = { ...initPayload, Token: token };
+
+		try {
+			const response = await fetch(process.env.TINKOFF_URL_DEPLOY!, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(requestBody),
+			});
+
+			const text = await response.text();
+			const tinkoffData = JSON.parse(text);
+
+			if (!tinkoffData.Success || tinkoffData.ErrorCode !== '0') {
+				return {
+					success: false,
+					error: 'Ошибка инициации платежа в Тинькофф',
+				};
+			}
+
+			// === Если дошли сюда — платёж успешно инициирован ===
+
+			const paymentUrl = tinkoffData.PaymentURL;
+
+			// Формируем данные для письма
+			const emailData = {
+				Имя: parsed.data.name,
+				Телефон: parsed.data.phone,
+				Email: email,
+				Город: city,
+				Курс: course,
+				Тариф: tariff,
+				Цена: `${price} руб.`,
+				'Способ оплаты': methodPay,
+				'Ссылка на оплату': paymentUrl,
+				'Номер заказа': orderId,
+				'Согласие на обработку ПД': conset == null ? 'Нет' : 'Да',
+				'Согласие на рассылку': smsConset == null ? 'Нет' : 'Да',
+			};
+
+			const formattedText = Object.entries(emailData)
+				.map(([key, value]) => `${key}: ${value || 'Не указано'}`)
+				.join('\n');
+
+			// Отправляем письмо (в отдельном try/catch, чтобы не ломать оплату)
+			try {
+				await transporter.sendMail({
+					from: `Рассрочка от школы <${process.env.SMTP_USER}>`,
+					to: process.env.YOUR_EMAIL,
+					subject: `Клиент открыл оплату: ${course} — ${tariff}`,
+					text: formattedText,
+				});
+			} catch (mailErr: any) {
+				console.error('Ошибка отправки письма:', mailErr.message || mailErr);
+			}
+
+			// Возвращаем успех с ссылкой на оплату
+			return {
+				success: true,
+				paymentUrl: paymentUrl,
+			};
+		} catch (err: any) {
+			console.error('Tinkoff Init error:', err);
+			return {
+				success: false,
+				error: 'Не удалось связаться с Тинькофф. Попробуйте позже.',
+			};
+		}
+	}
+
+	// if (methodPay === 'Полная оплата (зарубежная карта)') {
+	// 	const amount = Number(price);
+
+	// 	if (!amount || amount <= 0) {
+	// 		return { success: false, error: 'Неверная сумма платежа' };
+	// 	}
+
+	// 	const merchantLogin = process.env.ROBOKASSA_LOGIN!;
+	// 	const password1 = process.env.ROBOKASSA_PASSWORD1!;
+
+	// 	// Уникальный номер заказа
+	// 	const orderId = `order_${Date.now()}_${Math.floor(Math.random() * 100000)}`;
+
+	// 	const description = `Полная оплата курса: "${course}". Тариф: "${tariff}".`;
+
+	// 	// Сумма должна быть строкой с точкой
+	// 	const outSum = amount.toFixed(2);
+
+	// 	// Подпись строго по документации
+	// 	const signature = crypto
+	// 		.createHash('md5')
+	// 		.update(`${merchantLogin}:${outSum}:${orderId}:${password1}`)
+	// 		.digest('hex');
+
+	// 	// Формируем ссылку
+	// 	const paymentUrl =
+	// 		process.env.ROBOKASSA_URL_DEPLOY! +
+	// 		`MerchantLogin=${merchantLogin}` +
+	// 		`&OutSum=${outSum}` +
+	// 		`&InvId=${orderId}` +
+	// 		`&Description=${encodeURIComponent(description)}` +
+	// 		`&SignatureValue=${signature}` +
+	// 		`&Culture=ru`;
+
+	// 	// Формируем данные для письма
+	// 	const emailData = {
+	// 		Имя: parsed.data.name,
+	// 		Телефон: parsed.data.phone,
+	// 		Email: email,
+	// 		Город: city,
+	// 		Курс: course,
+	// 		Тариф: tariff,
+	// 		Цена: `${price} руб.`,
+	// 		'Способ оплаты': methodPay,
+	// 		'Ссылка на оплату': paymentUrl,
+	// 		'Номер заказа': orderId,
+	// 		'Согласие на обработку ПД': conset == null ? 'Нет' : 'Да',
+	// 		'Согласие на рассылку': smsConset == null ? 'Нет' : 'Да',
+	// 	};
+
+	// 	const formattedText = Object.entries(emailData)
+	// 		.map(([key, value]) => `${key}: ${value || 'Не указано'}`)
+	// 		.join('\n');
+
+	// 	// Отправляем письмо (в отдельном try/catch, чтобы не ломать оплату)
+	// 	try {
+	// 		await transporter.sendMail({
+	// 			from: `Оплата курса <${process.env.SMTP_USER}>`,
+	// 			to: process.env.YOUR_EMAIL,
+	// 			subject: `Клиент открыл оплату: ${course} — ${tariff}`,
+	// 			text: formattedText,
+	// 		});
+	// 	} catch (mailErr: any) {
+	// 		console.error('Ошибка отправки письма:', mailErr.message || mailErr);
+	// 	}
+
+	// 	return {
+	// 		success: true,
+	// 		paymentUrl,
+	// 	};
+	// }
 
 	return {
 		success: true,

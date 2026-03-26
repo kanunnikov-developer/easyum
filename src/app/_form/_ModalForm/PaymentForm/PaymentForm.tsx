@@ -91,6 +91,7 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 	};
 
 	return (
+		<>
 		<form action={formAction} className={styles.container}>
 			<div className={styles.leftColumn}>
 				<div className={styles.headerBlock}>
@@ -241,7 +242,7 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 					</label>
 
 					{/* Полная оплата зарубежная */}
-					<label
+					{/* <label
 						className={`${styles.planCard} ${selectedPlan === 'full_foreign' ? styles.selected : ''}`}
 						onClick={() => setSelectedPlan('full_foreign')}
 					>
@@ -263,7 +264,7 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 							</div>
 						</div>
 						<div className={styles.planPrice}>{price?.toLocaleString('ru')} ₽</div>
-					</label>
+					</label> */}
 
 					{/* Рассрочка от школы */}
 					<label
@@ -288,12 +289,17 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 						</div>
 						<div className={styles.planPriceCol}>
 							<div className={styles.planPriceStr}>{schoolInstallmentMonthlyPayment.toLocaleString('ru')} ₽/мес</div>
+							<input type='hidden' name='schoolInstallmentMonthlyPayment' value={schoolInstallmentMonthlyPayment} />
 							<div className={styles.planSubPrice}>Итого: {schoolInstallmentTotal.toLocaleString('ru')} ₽</div>
 						</div>
 					</label>
 
+					<button className={styles.submitButtonMobile} disabled={!pdConsent_pay || isPending}>
+					{isPending ? 'Отправка...' : 'Оплатить'}
+				</button>
+
 					{/* Рассрочка от ТБанка */}
-					<label
+					{/* <label
 						className={`${styles.planCard} ${styles.tbankCardMain} ${selectedPlan === 'installment_tbank' ? styles.selected : ''}`}
 						onClick={() => setSelectedPlan('installment_tbank')}
 					>
@@ -354,9 +360,11 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 								</div>
 							</div>
 						)}
-					</label>
+					</label> */}
 				</div>
 			</div>
 		</form>
+		{state.error && <div className={styles.errorServer}><p>{state.error}</p><a href="https://t.me/+79262290485" target="_blank" className={styles.buttonServerSupport}>Напишите в поддержку</a></div>}
+		</>
 	);
 }

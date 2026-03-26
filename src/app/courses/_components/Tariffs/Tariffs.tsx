@@ -66,7 +66,7 @@ export default function Tariffs({ city, price, course, sale, imgCourse, mounth }
 						'Чат с преподавателем',
 					]}
 					price={price?.ochno}
-					img='1.svg'
+					img='3.svg'
 					sale={sale}
 					imgCourse={imgCourse}
 					mounth={mounth}

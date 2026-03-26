@@ -231,18 +231,8 @@
     margin-top: 4px;
 }
 
-@media (max-width: 900px) {
-	.container {
-		flex-direction: column;
-        gap: 40px;
-	}
-	.leftColumn {
-		max-width: 100%;
-	}
-}
-
 /* TBank Card Additions */
-.tbankCardMain {
+/* .tbankCardMain {
 	flex-direction: column;
 	align-items: stretch;
 }
@@ -345,4 +335,129 @@
 	justify-content: space-between;
 	font-size: 12px;
 	color: #9ca3af;
+} */
+
+.errorServer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 10px;
+	padding: 15px 20px;
+	background: #fff9f9;
+	color: var(--red-color);
+	border: 1px solid var(--red-color);
+	border-radius: 15px;
+	font-size: 15px;
+}
+
+.buttonServerSupport{
+	background-color: var(--accent-color);
+	border: 1px solid var(--accent-color);
+	color: var(--white-color);
+	padding: 10px 20px;
+	border-radius: 10px;
+	text-decoration: none;
+	transition: all 0.2s ease;
+	}
+
+	.buttonServerSupport:hover{
+		background: none;
+		color: var(--accent-color);
+	}
+
+	.submitButtonMobile{
+		display: none;
+	}
+
+	@media (max-width: 430px) {
+	.container {
+		flex-direction: column;
+		gap: 0px;
+	}
+
+	.headerBlock {
+		margin-bottom: 20px;
+	}
+
+	.inputGroup {
+		gap: 10px;
+	}
+
+	.closeButton {
+		display: none;
+	}
+
+	.rightHeader {
+	margin-bottom: 20px;
+}
+
+	.plans {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.planCard {
+		padding: 15px;
+		border-radius: 15px;
+	}
+
+	.radioWrapper {
+		margin-right: 12px;
+	}
+
+	.planTitle {
+		font-size: 15px;
+		margin-bottom: 0px;
+	}
+	
+	.planDesc {
+		display: none;
+	}
+
+	.planPrice {
+		font-size: 14px;
+	}
+
+	.planPriceStr {
+			font-size: 14px;
+	}
+	.planSubPrice {
+			font-size: 10px;
+	}
+	.badgePopular {
+			display: none;
+	}
+
+	.submitButton{
+		display: none;
+	}
+
+	.submitButtonMobile{
+		display: block;
+		margin-top: 10px;
+	}
+
+	.submitButtonMobile {
+		background-color: var(--accent-color);
+		border: 1px solid var(--accent-color);
+		color: var(--white-color);
+		padding: 19px 40px;
+		border-radius: 16px;
+		font-family: inherit;
+		font-size: 16px;
+		font-weight: 400;
+		cursor: pointer;
+		transition: background-color 0.2s;
+		width: 100%;
+	}
+	.submitButtonMobile:hover:not(:disabled) {
+		background: none;
+		border: 1px solid var(--accent-color);
+		color: var(--accent-color);
+	}
+	.submitButtonMobile:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
 }
