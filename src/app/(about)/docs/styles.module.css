@@ -12,13 +12,14 @@
 }
 
 .content h6 {
+	font-size: 20px;
 	font-weight: 600;
 }
 
-.content p {
+.p {
 	margin-top: 10px;
 	font-size: 14px;
-	color: #999999;
+	color: var(--text-color);
 }
 
 .oferta,
@@ -43,14 +44,15 @@
 /* ===== Правая часть ===== */
 
 .right {
+	font-size: 16px;
 	padding: 50px;
-	min-height: 100vh;
+	height: 700px;
 	background: var(--white-color);
 	width: calc(100% - 350px);
 	border-radius: 15px;
 	border-top-left-radius: 0px;
 	position: relative;
-	overflow: hidden;
+	overflow-y: auto;
 }
 
 /* Обёртка для анимации */
@@ -65,6 +67,7 @@
 	left: 0;
 	width: 100%;
 	opacity: 0;
+	display: none; /* Hide from layout when not active */
 	transform: translateY(15px);
 	transition:
 		opacity 0.3s ease,
@@ -73,9 +76,36 @@
 
 /* Активный блок */
 .active {
+	display: block; /* Show in layout when active */
 	position: relative;
 	opacity: 1;
 	transform: translateY(0);
+}
+
+.header {
+	text-align: center;
+}
+
+.header__title {
+	font-size: 24px;
+	margin-bottom: 5px;
+	font-weight: 700;
+}
+
+.date {
+	margin-top: 15px;
+	text-align: right;
+}
+
+.sectionDoc_title {
+	margin-top: 20px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.sectionDoc_decsription {
+	margin-top: 20px;
 }
 
 @media screen and (max-width: 430px) {

@@ -128,7 +128,7 @@
 .planCard {
 	display: flex;
 	align-items: center;
-	padding: 20px;
+	padding: 25px 20px;
 	border: 1px solid #e5e7eb;
 	border-radius: 20px;
 	cursor: pointer;
@@ -186,13 +186,13 @@
 }
 
 .planTitle {
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: 700;
 	margin-bottom: 5px;
   color: var(--text-color);
 }
 .planDesc {
-	font-size: 14px;
+	font-size: 15px;
 	color: #747474;
 	display: flex;
 	align-items: center;
@@ -202,7 +202,7 @@
 	margin-top: 2px;}
 .planPrice {
 	font-weight: 700;
-	font-size: 16px;
+	font-size: 18px;
 	white-space: nowrap;
   color: var(--text-color);
 }
@@ -214,16 +214,16 @@
 }
 .planPriceStr {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 18px;
     color: var(--text-color);;
 }
 .planSubPrice {
-    font-size: 12px;
+    font-size: 14px;
     color: #747474;
     margin-top: 5px;
 }
 .badgePopular {
-    font-size: 10px;
+    font-size: 12px;
     background: var(--accent-color);
     color: white;
     padding: 3px 10px 5px 10px;
