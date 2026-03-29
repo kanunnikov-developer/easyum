@@ -26,6 +26,7 @@ import { Suspense } from 'react';
 import Tariffs from '../../_components/Tariffs/Tariffs';
 import getRegion from '@/lib/getRegion';
 import FAQ from '../../_components/FAQ/FAQ';
+import Circle from '@/app/_components/Circle/Circle';
 
 const course = {
 	title: dateStart[7].course,
@@ -332,6 +333,7 @@ export default function Page() {
 		<div className='container'>
 			<div className={styles.page}>
 				<Breadcrumbs />
+				<Circle />
 
 				<Hero
 					title={course.title}

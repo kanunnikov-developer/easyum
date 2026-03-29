@@ -15,12 +15,19 @@ interface Props {
 export default function ButtonGroup({ city, course }: Props) {
 	const [isOpenTelegram, setIsOpenTelegram] = useState(false);
 	const [isOpenWhatsApp, setIsOpenWhatsApp] = useState(false);
+	const [isOpenMax, setIsOpenMax] = useState(false);
 	const [isThankOpen, setIsThankOpen] = useState(false);
 
 
 	return (
 		<>
 			<div className={styles.getLesson__buttons}>
+				<button className={cn(styles.button, styles.button__max)} onClick={() => setIsOpenMax(true)}>
+					<div className={styles.button__image}>
+						<Image src='/courses/ui/getLesson/max.png' alt='icon Max' width={25} height={25} />
+					</div>
+					Max
+				</button>
 				<button className={cn(styles.button, styles.button__telegram)} onClick={() => setIsOpenTelegram(true)}>
 					<div className={styles.button__image}>
 						<Image src='/courses/ui/getLesson/telegram.svg' alt='icon Telegram' width={27} height={27} />
@@ -36,6 +43,7 @@ export default function ButtonGroup({ city, course }: Props) {
 			</div>
 			{isOpenTelegram && <Modal onClose={() => setIsOpenTelegram(false)} form={'telegram'} city={city} onSuccess={() => setIsThankOpen(true)} course={course}/>}
 			{isOpenWhatsApp && <Modal onClose={() => setIsOpenWhatsApp(false)} form={'whatsapp'} city={city} onSuccess={() => setIsThankOpen(true)} course={course}/>}
+			{isOpenMax && <Modal onClose={() => setIsOpenMax(false)} form={'max'} city={city} onSuccess={() => setIsThankOpen(true)} course={course}/>}
 			{isThankOpen && <PopupThank onClose={() => setIsThankOpen(false)} isOpen={isThankOpen}/>}
 		</>
 	);
@@ -50,7 +58,7 @@ function Modal({
 }: {
 	onClose: () => void;
 	onSuccess: () => void;
-	form: 'telegram' | 'whatsapp';
+	form: 'telegram' | 'whatsapp' | 'max';
 	city: string | undefined;
 	course: string;
 }) {
@@ -64,16 +72,20 @@ function Modal({
 						</h2>
 						<p>
 							Вы получите запись первого урока курса совершенно бесплатно. Видео будет отправлено Вам в{' '}
-							{form === 'telegram' ? 'Telegram' : 'WhatsApp'} в течение 5 минут!
+							{form === 'telegram' && 'Telegram'} {form === 'whatsapp' && 'WhatsApp'} {form === 'max' && 'Max'} в течение 5 минут!
 						</p>
 					</div>
 					<div className={styles.modal__form}>
 						<p>Заполните форму и мы направим видео</p>
 						<div className={styles.form}>
-							{form === 'telegram' ? (
+							{form === 'telegram' && (
 								<ModalForm city={city} messanger='Telegram' onClose={onClose} onSuccess={onSuccess} course={course}/>
-							) : (
+							)}
+							{form === 'whatsapp' && (
 								<ModalForm city={city} messanger='WhatsApp' onClose={onClose} onSuccess={onSuccess} course={course}/>
+							)}
+							{form === 'max' && (
+								<ModalForm city={city} messanger='Max' onClose={onClose} onSuccess={onSuccess} course={course}/>
 							)}
 						</div>
 					</div>

@@ -4,6 +4,7 @@ import styles from '../../styles.module.css';
 
 import { useActionState, useEffect, useState } from 'react';
 import { action, State } from './action';
+import cn from 'classnames'
 
 const initialState: State = {
 	fieldErrors: { name: '', phone: '', email: '' },
@@ -76,7 +77,7 @@ export default function ModalForm({ city, messanger, onClose, onSuccess, course 
 				{state.fieldErrors?.phone && <p className={styles.error}>{state.fieldErrors.phone}</p>}
 			</div>
 
-			{messanger === 'telegram' && (
+			{messanger === 'Telegram' && (
 				<div className={styles.input}>
 					<input
 						type='text'
@@ -134,8 +135,11 @@ export default function ModalForm({ city, messanger, onClose, onSuccess, course 
 				</label>
 			</div>
 
-			<button className={styles.submitButton} disabled={!pdConsent || isPending}>
-				{isPending ? 'Отправка...' : 'Отправить'}
+			<button className={cn(styles.submitButton, { 
+				[styles.submitButton__max]: messanger === 'Max', 
+				[styles.submitButton__telegram]: messanger === 'Telegram', 
+				[styles.submitButton__whatsapp]: messanger === 'WhatsApp' })} disabled={!pdConsent || isPending}>
+				{isPending ? 'Отправка...' : 'Получить видео'}
 			</button>
 		</form>
 		</>

@@ -27,6 +27,7 @@ import getRegion from '@/lib/getRegion';
 import FAQ from '../../_components/FAQ/FAQ';
 import Discount from '@/app/_components/Discount/Discount';
 import DiscountTariff from '../../_components/Discount/Discount';
+import Circle from '@/app/_components/Circle/Circle';
 
 const course = {
 	title: dateStart[0].course,
@@ -238,6 +239,7 @@ export default function Page() {
 		<div className='container'>
 			<div className={styles.page}>
 				<Breadcrumbs />
+				<Circle />
 
 				<Hero
 					title={course.title}
