@@ -80,19 +80,68 @@
 	justify-content: center;
 }
 
+@media screen and (min-width: 431px) and (max-width: 900px) {
+	.header {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	.header__left {
+		gap: 20px;
+	}
+
+	.header__button_group {
+		display: none;
+	}
+
+	.burger {
+		display: block;
+	}
+
+	.header__right > nav {
+		display: none;
+	}
+
+	.header__right {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+	}
+
+	.mainNumber {
+		font-size: 18px;
+	}
+
+	.divLogo {
+		width: 200px;
+		height: 54px;
+	}
+
+	.logo {
+		width: 200px;
+		height: 54px;
+	}
+}
+
 @media screen and (max-width: 430px) {
 	.header {
 		padding-top: 10px;
 		padding-bottom: 10px;
 		border-bottom: 1px solid var(--light-accent-color);
-		display: block;
+		display: flex;
 		align-items: center;
 		justify-content: space-between;
 	}
 
 	.header__button_group,
-	.header__right {
+	.header__right > nav,
+	.number {
 		display: none;
+	}
+
+	.header__right {
+		display: flex;
+		align-items: center;
 	}
 
 	.divLogo {

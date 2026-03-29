@@ -28,10 +28,6 @@ export default function Header() {
 							</a>
 						</div>
 
-						<div className={styles.burger}>
-							<MobileButton />
-						</div>
-
 						<div className={styles.header__button_group}>
 							<Suspense fallback={<button className={styles.button}>Москва</button>}>
 								<Wrapper />
@@ -57,6 +53,9 @@ export default function Header() {
 									<Image src='/icons/headerTelegram.svg' alt='WhatsApp Icon' width={18} height={18} />
 								</a>
 							</div>
+						</div>
+						<div className={styles.burger}>
+							<MobileButton />
 						</div>
 					</div>
 				</div>
