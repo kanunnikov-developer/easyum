@@ -170,7 +170,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 
 	if (methodPay === 'Рассрочка от школы (есть переплата)') {
 		const amountRub = Number(schoolInstallmentMonthlyPayment);
-		console.log(amountRub)
+		console.log(amountRub);
 		if (!amountRub || amountRub < 10) {
 			return { success: false, error: 'Неверная сумма платежа' };
 		}
@@ -258,77 +258,83 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 		}
 	}
 
-	// if (methodPay === 'Полная оплата (зарубежная карта)') {
-	// 	const amount = Number(price);
+	if (methodPay === 'Полная оплата (зарубежная карта)') {
+		const amount = Number(price);
 
-	// 	if (!amount || amount <= 0) {
-	// 		return { success: false, error: 'Неверная сумма платежа' };
-	// 	}
+		if (!amount || amount <= 0) {
+			return { success: false, error: 'Неверная сумма платежа' };
+		}
 
-	// 	const merchantLogin = process.env.ROBOKASSA_LOGIN!;
-	// 	const password1 = process.env.ROBOKASSA_PASSWORD1!;
+		const merchantLogin = process.env.ROBOKASSA_LOGIN!;
+		const password1 = process.env.ROBOKASSA_PASSWORD1!;
 
-	// 	// Уникальный номер заказа
-	// 	const orderId = `order_${Date.now()}_${Math.floor(Math.random() * 100000)}`;
+		// Уникальный номер заказа (Robokassa требует положительное целое число для InvId)
+		const orderIdNumeric = Math.floor(Date.now() / 1000);
 
-	// 	const description = `Полная оплата курса: "${course}". Тариф: "${tariff}".`;
+		const description = `Полная оплата курса: "${course}". Тариф: "${tariff}".`;
 
-	// 	// Сумма должна быть строкой с точкой
-	// 	const outSum = amount.toFixed(2);
+		// Сумма должна быть строкой с точкой
+		const outSum = amount.toFixed(2);
 
-	// 	// Подпись строго по документации
-	// 	const signature = crypto
-	// 		.createHash('md5')
-	// 		.update(`${merchantLogin}:${outSum}:${orderId}:${password1}`)
-	// 		.digest('hex');
+		// Подпись строго по документации: MerchantLogin:OutSum:InvId:Пароль#1
+		const signature = crypto
+			.createHash('md5')
+			.update(`${merchantLogin}:${outSum}:${orderIdNumeric}:${password1}`)
+			.digest('hex');
 
-	// 	// Формируем ссылку
-	// 	const paymentUrl =
-	// 		process.env.ROBOKASSA_URL_DEPLOY! +
-	// 		`MerchantLogin=${merchantLogin}` +
-	// 		`&OutSum=${outSum}` +
-	// 		`&InvId=${orderId}` +
-	// 		`&Description=${encodeURIComponent(description)}` +
-	// 		`&SignatureValue=${signature}` +
-	// 		`&Culture=ru`;
+		// Формируем параметры запроса
+		const params = new URLSearchParams({
+			MerchantLogin: merchantLogin,
+			OutSum: outSum,
+			InvId: orderIdNumeric.toString(),
+			Description: description,
+			SignatureValue: signature,
+			Culture: 'ru',
+		});
 
-	// 	// Формируем данные для письма
-	// 	const emailData = {
-	// 		Имя: parsed.data.name,
-	// 		Телефон: parsed.data.phone,
-	// 		Email: email,
-	// 		Город: city,
-	// 		Курс: course,
-	// 		Тариф: tariff,
-	// 		Цена: `${price} руб.`,
-	// 		'Способ оплаты': methodPay,
-	// 		'Ссылка на оплату': paymentUrl,
-	// 		'Номер заказа': orderId,
-	// 		'Согласие на обработку ПД': conset == null ? 'Нет' : 'Да',
-	// 		'Согласие на рассылку': smsConset == null ? 'Нет' : 'Да',
-	// 	};
+		// Формируем ссылку (добавляем '?' если он отсутствует в базовом URL)
+		const baseUrl = process.env.ROBOKASSA_URL_DEPLOY!;
+		const paymentUrl = baseUrl.includes('?') 
+			? `${baseUrl}&${params.toString()}` 
+			: `${baseUrl}?${params.toString()}`;
 
-	// 	const formattedText = Object.entries(emailData)
-	// 		.map(([key, value]) => `${key}: ${value || 'Не указано'}`)
-	// 		.join('\n');
+		// Формируем данные для письма
+		const emailData = {
+			Имя: parsed.data.name,
+			Телефон: parsed.data.phone,
+			Email: email,
+			Город: city,
+			Курс: course,
+			Тариф: tariff,
+			Цена: `${price} руб.`,
+			'Способ оплаты': methodPay,
+			'Ссылка на оплату': paymentUrl,
+			'Номер заказа': orderIdNumeric.toString(),
+			'Согласие на обработку ПД': conset == null ? 'Нет' : 'Да',
+			'Согласие на рассылку': smsConset == null ? 'Нет' : 'Да',
+		};
 
-	// 	// Отправляем письмо (в отдельном try/catch, чтобы не ломать оплату)
-	// 	try {
-	// 		await transporter.sendMail({
-	// 			from: `Оплата курса <${process.env.SMTP_USER}>`,
-	// 			to: process.env.YOUR_EMAIL,
-	// 			subject: `Клиент открыл оплату: ${course} — ${tariff}`,
-	// 			text: formattedText,
-	// 		});
-	// 	} catch (mailErr: any) {
-	// 		console.error('Ошибка отправки письма:', mailErr.message || mailErr);
-	// 	}
+		const formattedText = Object.entries(emailData)
+			.map(([key, value]) => `${key}: ${value || 'Не указано'}`)
+			.join('\n');
 
-	// 	return {
-	// 		success: true,
-	// 		paymentUrl,
-	// 	};
-	// }
+		// Отправляем письмо (в отдельном try/catch, чтобы не ломать оплату)
+		try {
+			await transporter.sendMail({
+				from: `Оплата курса <${process.env.SMTP_USER}>`,
+				to: process.env.YOUR_EMAIL,
+				subject: `Клиент открыл оплату: ${course} — ${tariff}`,
+				text: formattedText,
+			});
+		} catch (mailErr: any) {
+			console.error('Ошибка отправки письма:', mailErr.message || mailErr);
+		}
+
+		return {
+			success: true,
+			paymentUrl,
+		};
+	}
 
 	return {
 		success: true,

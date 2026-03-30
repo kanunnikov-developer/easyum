@@ -92,214 +92,214 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 
 	return (
 		<>
-		<form action={formAction} className={styles.container}>
-			<div className={styles.leftColumn}>
-				<div className={styles.headerBlock}>
-					<h2 className={styles.courseTitle}>
-						<span className='accent'>Курс:</span> &ldquo;{course}&rdquo;
-					</h2>
-					<p className={styles.tariffText}>
-						<span className='accent'>Тариф:</span> {tariff}
-					</p>
-				</div>
-
-				<div className={styles.inputGroup}>
-					<div className={commonStyles.input}>
-						<input
-							type='text'
-							name='name'
-							placeholder='Ваше имя'
-							required
-							value={namePay}
-							onChange={(e) => setNamePay(e.target.value)}
-							className={styles.textInput}
-						/>
-						{state.fieldErrors?.name && <p className={commonStyles.error}>{state.fieldErrors.name}</p>}
+			<form action={formAction} className={styles.container}>
+				<div className={styles.leftColumn}>
+					<div className={styles.headerBlock}>
+						<h2 className={styles.courseTitle}>
+							<span className='accent'>Курс:</span> &ldquo;{course}&rdquo;
+						</h2>
+						<p className={styles.tariffText}>
+							<span className='accent'>Тариф:</span> {tariff}
+						</p>
 					</div>
 
-					<div className={commonStyles.input}>
-						<input
-							type='tel'
-							name='phone'
-							placeholder='Ваш телефон'
-							required
-							value={phonePay}
-							onChange={(e) => setPhonePay(e.target.value)}
-							className={styles.textInput}
-						/>
-						{state.fieldErrors?.phone && <p className={commonStyles.error}>{state.fieldErrors.phone}</p>}
-					</div>
-
-					<div className={commonStyles.input}>
-						<input
-							type='email'
-							name='email'
-							placeholder='ВашеEmail'
-							value={emailPay}
-							onChange={(e) => setEmailPay(e.target.value)}
-							className={styles.textInput}
-						/>
-						{state.fieldErrors?.email && <p className={commonStyles.error}>{state.fieldErrors.email}</p>}
-					</div>
-				</div>
-
-				<input type='hidden' name='course' value={course} />
-				<input type='hidden' name='city' value={city} />
-				<input type='hidden' name='tariff' value={tariff} />
-				<input type='hidden' name='price' value={price} />
-				<input type='hidden' name='methodPay' value={paymentMethodString} />
-				{selectedPlan === 'installment_tbank' && <input type='hidden' name='tbankMonths' value={tbankMonths} />}
-
-				<div className={styles.consentBlock}>
-					<div className={commonStyles.consent}>
-						<input
-							type='checkbox'
-							id='pd-consent-pay'
-							name='pd_consent'
-							className={commonStyles.customCheckboxInput}
-							required
-							checked={pdConsent_pay}
-							onChange={handlePdChange}
-						/>
-						<label htmlFor='pd-consent-pay' className={commonStyles.customCheckboxLabel}>
-							<div>
-								Я даю согласие на обработку моих персональных данных (ФИО, телефон, email) в соответствии с{' '}
-								<a
-									href='/politika-obrabotki-personalnyh-dannyh'
-									target='_blank'
-									rel='noopener noreferrer'
-									className={commonStyles.policyLink}
-								>
-									Политикой обработки персональных данных
-								</a>
-							</div>
-						</label>
-					</div>
-
-					<div className={commonStyles.sms}>
-						<input
-							type='checkbox'
-							id='sms-consent-pay'
-							name='sms_consent'
-							className={commonStyles.customCheckboxInput}
-							checked={smsConsent_pay}
-							onChange={handleSmsChange}
-						/>
-						<label htmlFor='sms-consent-pay' className={commonStyles.customCheckboxLabel}>
-							Согласен(а) на получение информационных и рекламных сообщений (SMS, сообщения в мессенджерах, email) по
-							указанному номеру телефона и адресу электронной почты
-						</label>
-					</div>
-				</div>
-
-				<button className={styles.submitButton} disabled={!pdConsent_pay || isPending}>
-					{isPending ? 'Отправка...' : 'Оплатить'}
-				</button>
-			</div>
-
-			<div className={styles.rightColumn}>
-				<div className={styles.rightHeader}>
-					<h3>Выберете способ оплаты:</h3>
-					<button type='button' onClick={onClose} className={styles.closeButton}>
-						<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-							<path
-								d='M18 6L6 18M6 6L18 18'
-								stroke='#3b82f6'
-								strokeWidth='2'
-								strokeLinecap='round'
-								strokeLinejoin='round'
+					<div className={styles.inputGroup}>
+						<div className={commonStyles.input}>
+							<input
+								type='text'
+								name='name'
+								placeholder='Ваше имя'
+								required
+								value={namePay}
+								onChange={(e) => setNamePay(e.target.value)}
+								className={styles.textInput}
 							/>
-						</svg>
+							{state.fieldErrors?.name && <p className={commonStyles.error}>{state.fieldErrors.name}</p>}
+						</div>
+
+						<div className={commonStyles.input}>
+							<input
+								type='tel'
+								name='phone'
+								placeholder='Ваш телефон'
+								required
+								value={phonePay}
+								onChange={(e) => setPhonePay(e.target.value)}
+								className={styles.textInput}
+							/>
+							{state.fieldErrors?.phone && <p className={commonStyles.error}>{state.fieldErrors.phone}</p>}
+						</div>
+
+						<div className={commonStyles.input}>
+							<input
+								type='email'
+								name='email'
+								placeholder='ВашеEmail'
+								value={emailPay}
+								onChange={(e) => setEmailPay(e.target.value)}
+								className={styles.textInput}
+							/>
+							{state.fieldErrors?.email && <p className={commonStyles.error}>{state.fieldErrors.email}</p>}
+						</div>
+					</div>
+
+					<input type='hidden' name='course' value={course} />
+					<input type='hidden' name='city' value={city} />
+					<input type='hidden' name='tariff' value={tariff} />
+					<input type='hidden' name='price' value={price} />
+					<input type='hidden' name='methodPay' value={paymentMethodString} />
+					{selectedPlan === 'installment_tbank' && <input type='hidden' name='tbankMonths' value={tbankMonths} />}
+
+					<div className={styles.consentBlock}>
+						<div className={commonStyles.consent}>
+							<input
+								type='checkbox'
+								id='pd-consent-pay'
+								name='pd_consent'
+								className={commonStyles.customCheckboxInput}
+								required
+								checked={pdConsent_pay}
+								onChange={handlePdChange}
+							/>
+							<label htmlFor='pd-consent-pay' className={commonStyles.customCheckboxLabel}>
+								<div>
+									Я даю согласие на обработку моих персональных данных (ФИО, телефон, email) в соответствии с{' '}
+									<a
+										href='/politika-obrabotki-personalnyh-dannyh'
+										target='_blank'
+										rel='noopener noreferrer'
+										className={commonStyles.policyLink}
+									>
+										Политикой обработки персональных данных
+									</a>
+								</div>
+							</label>
+						</div>
+
+						<div className={commonStyles.sms}>
+							<input
+								type='checkbox'
+								id='sms-consent-pay'
+								name='sms_consent'
+								className={commonStyles.customCheckboxInput}
+								checked={smsConsent_pay}
+								onChange={handleSmsChange}
+							/>
+							<label htmlFor='sms-consent-pay' className={commonStyles.customCheckboxLabel}>
+								Согласен(а) на получение информационных и рекламных сообщений (SMS, сообщения в мессенджерах, email) по
+								указанному номеру телефона и адресу электронной почты
+							</label>
+						</div>
+					</div>
+
+					<button className={styles.submitButton} disabled={!pdConsent_pay || isPending}>
+						{isPending ? 'Отправка...' : 'Оплатить'}
 					</button>
 				</div>
 
-				<div className={styles.plans}>
-					{/* Полная оплата РФ */}
-					<label
-						className={`${styles.planCard} ${selectedPlan === 'full_rf' ? styles.selected : ''}`}
-						onClick={() => setSelectedPlan('full_rf')}
-					>
-						<div className={styles.radioWrapper}>
-							<input
-								type='radio'
-								name='plan'
-								checked={selectedPlan === 'full_rf'}
-								readOnly
-								className={styles.radioInput}
-							/>
-							<span className={styles.radioCustom}></span>
-						</div>
-						<div className={styles.planContent}>
-							<div className={styles.planTitle}>Полная оплата — Банковской картой РФ</div>
-							<div className={styles.planDesc}>
-								Моментальный доступ после оплаты <img src='/icons/payment/mir.svg' alt='mir' />
+				<div className={styles.rightColumn}>
+					<div className={styles.rightHeader}>
+						<h3>Выберете способ оплаты:</h3>
+						<button type='button' onClick={onClose} className={styles.closeButton}>
+							<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+								<path
+									d='M18 6L6 18M6 6L18 18'
+									stroke='#3b82f6'
+									strokeWidth='2'
+									strokeLinecap='round'
+									strokeLinejoin='round'
+								/>
+							</svg>
+						</button>
+					</div>
+
+					<div className={styles.plans}>
+						{/* Полная оплата РФ */}
+						<label
+							className={`${styles.planCard} ${selectedPlan === 'full_rf' ? styles.selected : ''}`}
+							onClick={() => setSelectedPlan('full_rf')}
+						>
+							<div className={styles.radioWrapper}>
+								<input
+									type='radio'
+									name='plan'
+									checked={selectedPlan === 'full_rf'}
+									readOnly
+									className={styles.radioInput}
+								/>
+								<span className={styles.radioCustom}></span>
 							</div>
-						</div>
-						<div className={styles.planPriceCol}>
+							<div className={styles.planContent}>
+								<div className={styles.planTitle}>Полная оплата — Банковской картой РФ</div>
+								<div className={styles.planDesc}>
+									Моментальный доступ после оплаты <img src='/icons/payment/mir.svg' alt='mir' />
+								</div>
+							</div>
+							<div className={styles.planPriceCol}>
+								<div className={styles.planPrice}>{price?.toLocaleString('ru')} ₽</div>
+								<div className={styles.badgePopular}>выбирают чаще</div>
+							</div>
+						</label>
+
+						{/* Полная оплата зарубежная */}
+						<label
+							className={`${styles.planCard} ${selectedPlan === 'full_foreign' ? styles.selected : ''}`}
+							onClick={() => setSelectedPlan('full_foreign')}
+						>
+							<div className={styles.radioWrapper}>
+								<input
+									type='radio'
+									name='plan'
+									checked={selectedPlan === 'full_foreign'}
+									readOnly
+									className={styles.radioInput}
+								/>
+								<span className={styles.radioCustom}></span>
+							</div>
+							<div className={styles.planContent}>
+								<div className={styles.planTitle}>Полная оплата (зарубежная карта)</div>
+								<div className={styles.planDesc}>
+									Visa/Mastercard если вы за границей <img src='/icons/payment/visa.svg' alt='visa' />{' '}
+									<img src='/icons/payment/mastercard.svg' alt='mastercard' />
+								</div>
+							</div>
 							<div className={styles.planPrice}>{price?.toLocaleString('ru')} ₽</div>
-							<div className={styles.badgePopular}>выбирают чаще</div>
-						</div>
-					</label>
+						</label>
 
-					{/* Полная оплата зарубежная */}
-					{/* <label
-						className={`${styles.planCard} ${selectedPlan === 'full_foreign' ? styles.selected : ''}`}
-						onClick={() => setSelectedPlan('full_foreign')}
-					>
-						<div className={styles.radioWrapper}>
-							<input
-								type='radio'
-								name='plan'
-								checked={selectedPlan === 'full_foreign'}
-								readOnly
-								className={styles.radioInput}
-							/>
-							<span className={styles.radioCustom}></span>
-						</div>
-						<div className={styles.planContent}>
-							<div className={styles.planTitle}>Полная оплата (зарубежная карта)</div>
-							<div className={styles.planDesc}>
-								Visa/Mastercard если вы за границей <img src='/icons/payment/visa.svg' alt='visa' />{' '}
-								<img src='/icons/payment/mastercard.svg' alt='mastercard' />
+						{/* Рассрочка от школы */}
+						<label
+							className={`${styles.planCard} ${selectedPlan === 'installment_school' ? styles.selected : ''}`}
+							onClick={() => setSelectedPlan('installment_school')}
+						>
+							<div className={styles.radioWrapper}>
+								<input
+									type='radio'
+									name='plan'
+									checked={selectedPlan === 'installment_school'}
+									readOnly
+									className={styles.radioInput}
+								/>
+								<span className={styles.radioCustom}></span>
 							</div>
-						</div>
-						<div className={styles.planPrice}>{price?.toLocaleString('ru')} ₽</div>
-					</label> */}
-
-					{/* Рассрочка от школы */}
-					<label
-						className={`${styles.planCard} ${selectedPlan === 'installment_school' ? styles.selected : ''}`}
-						onClick={() => setSelectedPlan('installment_school')}
-					>
-						<div className={styles.radioWrapper}>
-							<input
-								type='radio'
-								name='plan'
-								checked={selectedPlan === 'installment_school'}
-								readOnly
-								className={styles.radioInput}
-							/>
-							<span className={styles.radioCustom}></span>
-						</div>
-						<div className={styles.planContent}>
-							<div className={styles.planTitle}>Рассрочка от школы (есть переплата)</div>
-							<div className={styles.planDesc}>
-								Мы предоставляем рассрочку на {mounth} {getMonthsLabel(mounth)}
+							<div className={styles.planContent}>
+								<div className={styles.planTitle}>Рассрочка от школы (есть переплата)</div>
+								<div className={styles.planDesc}>
+									Мы предоставляем рассрочку на {mounth} {getMonthsLabel(mounth)}
+								</div>
 							</div>
-						</div>
-						<div className={styles.planPriceCol}>
-							<div className={styles.planPriceStr}>{schoolInstallmentMonthlyPayment.toLocaleString('ru')} ₽/мес</div>
-							<input type='hidden' name='schoolInstallmentMonthlyPayment' value={schoolInstallmentMonthlyPayment} />
-							<div className={styles.planSubPrice}>Итого: {schoolInstallmentTotal.toLocaleString('ru')} ₽</div>
-						</div>
-					</label>
+							<div className={styles.planPriceCol}>
+								<div className={styles.planPriceStr}>{schoolInstallmentMonthlyPayment.toLocaleString('ru')} ₽/мес</div>
+								<input type='hidden' name='schoolInstallmentMonthlyPayment' value={schoolInstallmentMonthlyPayment} />
+								<div className={styles.planSubPrice}>Итого: {schoolInstallmentTotal.toLocaleString('ru')} ₽</div>
+							</div>
+						</label>
 
-					<button className={styles.submitButtonMobile} disabled={!pdConsent_pay || isPending}>
-					{isPending ? 'Отправка...' : 'Оплатить'}
-				</button>
+						<button className={styles.submitButtonMobile} disabled={!pdConsent_pay || isPending}>
+							{isPending ? 'Отправка...' : 'Оплатить'}
+						</button>
 
-					{/* Рассрочка от ТБанка */}
-					{/* <label
+						{/* Рассрочка от ТБанка */}
+						{/* <label
 						className={`${styles.planCard} ${styles.tbankCardMain} ${selectedPlan === 'installment_tbank' ? styles.selected : ''}`}
 						onClick={() => setSelectedPlan('installment_tbank')}
 					>
@@ -361,10 +361,17 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 							</div>
 						)}
 					</label> */}
+					</div>
 				</div>
-			</div>
-		</form>
-		{state.error && <div className={styles.errorServer}><p>{state.error}</p><a href="https://t.me/+79262290485" target="_blank" className={styles.buttonServerSupport}>Напишите в поддержку</a></div>}
+			</form>
+			{state.error && (
+				<div className={styles.errorServer}>
+					<p>{state.error}</p>
+					<a href='https://t.me/+79262290485' target='_blank' className={styles.buttonServerSupport}>
+						Напишите в поддержку
+					</a>
+				</div>
+			)}
 		</>
 	);
 }
