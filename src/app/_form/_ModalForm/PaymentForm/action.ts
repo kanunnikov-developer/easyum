@@ -99,7 +99,22 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 
 		const token = generateToken(initPayload);
 
-		const requestBody = { ...initPayload, Token: token };
+		const receipt = {
+        Taxation: "usn_income",
+				Email: email,
+				Phone: phone,
+        Items: [
+            {
+                Name: `Курс "${course}" — ${tariff}`,   // название товара/услуги
+                Price: Math.round(amountRub * 100),     // цена в копейках
+                Quantity: 1,
+                Amount: Math.round(amountRub * 100),    // = Price * Quantity
+                Tax: "none",                           // или "vat10", "vat0", "none" и т.д.
+            }
+        ],
+    };
+
+		const requestBody = { ...initPayload, Token: token, Receipt: receipt };
 
 		try {
 			const response = await fetch(process.env.TINKOFF_URL_DEPLOY!, {
@@ -189,7 +204,23 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 
 		const token = generateToken(initPayload);
 
-		const requestBody = { ...initPayload, Token: token };
+		// === Формируем чек (Receipt) ===
+    const receipt = {
+        Taxation: "usn_income",
+				Email: email,
+				Phone: phone,
+        Items: [
+            {
+                Name: `Курс "${course}" — ${tariff}`,   // название товара/услуги
+                Price: Math.round(amountRub * 100),     // цена в копейках
+                Quantity: 1,
+                Amount: Math.round(amountRub * 100),    // = Price * Quantity
+                Tax: "none",                           // или "vat10", "vat0", "none" и т.д.
+            }
+        ],
+    };
+
+		const requestBody = { ...initPayload, Token: token, Receipt: receipt };
 
 		try {
 			const response = await fetch(process.env.TINKOFF_URL_DEPLOY!, {
