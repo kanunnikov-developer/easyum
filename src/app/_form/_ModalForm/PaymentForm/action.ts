@@ -102,7 +102,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 		const requestBody = { ...initPayload, Token: token };
 
 		try {
-			const response = await fetch(process.env.TINKOFF_URL_TEST!, {
+			const response = await fetch(process.env.TINKOFF_URL_DEPLOY!, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(requestBody),
@@ -192,7 +192,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 		const requestBody = { ...initPayload, Token: token };
 
 		try {
-			const response = await fetch(process.env.TINKOFF_URL_TEST!, {
+			const response = await fetch(process.env.TINKOFF_URL_DEPLOY!, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(requestBody),
