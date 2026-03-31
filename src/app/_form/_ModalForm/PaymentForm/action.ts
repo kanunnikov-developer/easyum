@@ -105,11 +105,13 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 				Phone: phone,
         Items: [
             {
-                Name: `Курс "${course}" — ${tariff}`,   // название товара/услуги
+                Name: `Полная оплата курса: "${course}". Тариф: "${tariff}".`,   // название товара/услуги
                 Price: Math.round(amountRub * 100),     // цена в копейках
                 Quantity: 1,
                 Amount: Math.round(amountRub * 100),    // = Price * Quantity
-                Tax: "none",                           // или "vat10", "vat0", "none" и т.д.
+                Tax: "none", 
+								PaymentMethod: "full_prepayment",	
+								PaymentObject: "service",
             }
         ],
     };
@@ -211,7 +213,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 				Phone: phone,
         Items: [
             {
-                Name: `Курс "${course}" — ${tariff}`,   // название товара/услуги
+                Name: `Оплата 1 месяца курса: "${course}". Тариф: "${tariff}".`,   // название товара/услуги
                 Price: Math.round(amountRub * 100),     // цена в копейках
                 Quantity: 1,
                 Amount: Math.round(amountRub * 100),    // = Price * Quantity
