@@ -30,11 +30,16 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 	const [namePay, setNamePay] = useState('');
 	const [phonePay, setPhonePay] = useState('');
 	const [emailPay, setEmailPay] = useState('');
+	const [url_pay, setUrl_pay] = useState('');
 
 	const [pdConsent_pay, setPdConsent_pay] = useState(false);
 	const [smsConsent_pay, setSmsConsent_pay] = useState(false);
 
 	const [state, formAction, isPending] = useActionState(action, initialState);
+
+	useEffect(() => {
+		setUrl_pay(window.location.href);
+	}, []);
 
 	useEffect(() => {
 		if (state.success && state.paymentUrl) {
@@ -147,6 +152,7 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 					<input type='hidden' name='city' value={city} />
 					<input type='hidden' name='tariff' value={tariff} />
 					<input type='hidden' name='price' value={price} />
+					<input type='hidden' name='url' value={url_pay} />
 					<input type='hidden' name='methodPay' value={paymentMethodString} />
 					{selectedPlan === 'installment_tbank' && <input type='hidden' name='tbankMonths' value={tbankMonths} />}
 

@@ -44,6 +44,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 	const rawNameForm = formData.get('nameForm');
 	const rawCity = formData.get('city');
 	const rawCourse = formData.get('course');
+	const rawUrl = formData.get('url');
 
 	const parsed = FormSchema.safeParse({
 		name: typeof rawName === 'string' ? rawName : '',
@@ -69,6 +70,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 		Город: rawCity,
 		'Согласие на обработку персональных данных': rawConsent == null ? 'Нет' : 'Да',
 		'Согласие на рассылку': rawSms == null ? 'Нет' : 'Да',
+		'Страница отправки формы': rawUrl,
 	};
 
 	const formattedText = Object.entries(data)

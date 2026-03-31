@@ -2,7 +2,7 @@
 
 import styles from '../../styles.module.css';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { sendForm, ActionResult } from './action';
 import PopupThank from '@/widgets/popupThank/popupThank';
 import { SubmitButton } from '../../MainForm/SbmitButton';
@@ -23,6 +23,7 @@ export default function CorporateFormOne({ city }: Props) {
 	const [phoneOne, setPhoneOne] = useState('');
 	const [emailOne, setEmailOne] = useState('');
 	const [commentOne, setCommentOne] = useState('');
+	const [url_one, setUrl_one] = useState('');
 
 	const handleSubmit = async (formData: FormData) => {
 		const res = await sendForm(formData);
@@ -45,6 +46,10 @@ export default function CorporateFormOne({ city }: Props) {
 		setPdConsentOne(false);
 		setSmsConsentOne(false);
 	};
+
+	useEffect(() => {
+			setUrl_one(window.location.href);
+		}, []);
 
 	const handlePdChangeOne = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPdConsentOne(e.target.checked);
@@ -100,6 +105,7 @@ export default function CorporateFormOne({ city }: Props) {
 			/>
 			<input type='hidden' name='nameForm' value='Форма страницы: Корпоративное обучение' />
 			<input type='hidden' name='city' value={city} />
+			<input type='hidden' name='url' value={url_one} />
 
 			<div className={styles.consent}>
 				<input

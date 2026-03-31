@@ -1,7 +1,7 @@
 'use client';
 
 import styles from '../styles.module.css';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { sendForm, ActionResult } from './action';
 import PopupThank from '@/widgets/popupThank/popupThank';
 import { SubmitButton } from './SbmitButton';
@@ -17,6 +17,7 @@ export default function MainForm({ city }: Props) {
 	const [phone, setPhone] = useState('');
 	const [email, setEmail] = useState('');
 	const [comment, setComment] = useState('');
+	const [url_main, setUrl_main] = useState('');
 
 	const [pdConsent, setPdConsent] = useState(false);
 	const [smsConsent, setSmsConsent] = useState(false);
@@ -48,6 +49,10 @@ export default function MainForm({ city }: Props) {
 		setPdConsent(false);
 		setSmsConsent(false);
 	};
+
+	useEffect(() => {
+			setUrl_main(window.location.href);
+		}, []);
 
 	const handlePdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPdConsent(e.target.checked);
@@ -102,6 +107,7 @@ export default function MainForm({ city }: Props) {
 					onChange={(e) => setComment(e.target.value)}
 				/>
 				<input type='hidden' name='city' value={city} />
+				<input type='hidden' name='url' value={url_main} />
 
 				<div className={styles.consent}>
 					<input

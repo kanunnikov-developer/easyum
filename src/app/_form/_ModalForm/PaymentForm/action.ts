@@ -52,6 +52,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 	const tariff = formData.get('tariff');
 	const price = formData.get('price');
 	const methodPay = formData.get('methodPay');
+	const url = formData.get('url');
 
 	const schoolInstallmentMonthlyPayment = formData.get('schoolInstallmentMonthlyPayment');
 
@@ -153,6 +154,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 				'Номер заказа': orderId,
 				'Согласие на обработку ПД': conset == null ? 'Нет' : 'Да',
 				'Согласие на рассылку': smsConset == null ? 'Нет' : 'Да',
+				'Страница отправки формы': url,
 			};
 
 			const formattedText = Object.entries(emailData)

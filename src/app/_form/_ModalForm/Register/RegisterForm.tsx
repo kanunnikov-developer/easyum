@@ -23,10 +23,15 @@ export default function RegisterForm({ city, course, tariff, price, onSuccess, o
 	const [nameRegister, setNameRegister] = useState('');
 	const [phoneRegister, setPhoneRegister] = useState('');
 	const [emailRegister, setEmailRegister] = useState('');
+	const [url_register, setUrl_register] = useState('');
 
 	const [pdConsent_register, setPdConsent_register] = useState(false);
 	const [smsConsent_register, setSmsConsent_register] = useState(false);
 	const [state, formAction, isPending] = useActionState(action, initialState);
+
+	useEffect(() => {
+		setUrl_register(window.location.href);
+	}, []);
 
 	useEffect(() => {
 		if (state.success) {
@@ -91,6 +96,7 @@ export default function RegisterForm({ city, course, tariff, price, onSuccess, o
 			<input type='hidden' name='nameForm' value={`Заявка на курс: ${course}`} />
 			<input type='hidden' name='tariff' value={tariff} />
 			<input type='hidden' name='price' value={price} />
+			<input type='hidden' name='url' value={url_register} />
 
 			<div className={styles.consent}>
 				<input

@@ -46,6 +46,7 @@ export async function sendForm(formData: FormData): Promise<ActionResult> {
 	const rawSms = formData.get('sms_consent');
 	const rawNameForm = formData.get('nameForm');
 	const rawCity = formData.get('city');
+	const rawUrl = formData.get('url');
 
 	const parsed = FormSchema.safeParse({
 		name: typeof rawName === 'string' ? rawName : '',
@@ -73,6 +74,7 @@ export async function sendForm(formData: FormData): Promise<ActionResult> {
 		'Ссылка на ресурс': typeof rawLink === 'string' ? rawLink : '',
 		'Согласие на обработку ПД': rawConsent === 'on' ? 'Да' : 'Нет',
 		'Согласие на получение СМС': rawSms === 'on' ? 'Да' : 'Нет',
+		'Страница отправки формы': rawUrl,
 	};
 
 	const formattedText = Object.entries(data)

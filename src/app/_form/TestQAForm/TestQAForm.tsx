@@ -18,6 +18,7 @@ export default function TestQAForm({ city }: Props) {
 	const [pdConsent, setPdConsent] = useState(false);
 	const [smsConsent, setSmsConsent] = useState(false);
 	const [state, formAction] = useActionState(action, initialState);
+	const [url_test, setUrl_test] = useState('');
 
 	const handlePdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPdConsent(e.target.checked);
@@ -25,6 +26,10 @@ export default function TestQAForm({ city }: Props) {
 	const handleSmsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSmsConsent(e.target.checked);
 	};
+
+	useEffect(() => {
+		setUrl_test(window.location.href);
+	}, []);
 
 	useEffect(() => {
 		setPdConsent(false);
@@ -49,6 +54,7 @@ export default function TestQAForm({ city }: Props) {
 
 			<input type='hidden' name='nameForm' value='Форма Тест QA' />
 			<input type='hidden' name='city' value={city} />
+			<input type='hidden' name='url' value={url_test} />
 
 			<div className={styles.consent}>
 				<input
