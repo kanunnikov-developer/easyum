@@ -27,4 +27,29 @@ export const cities = [
 		name: 'Самара',
 		href: `${link}samara.${site}`,
 	},
+	{
+		id: 5,
+		name: 'Саратов',
+		href: `${link}saratov.${site}`,
+	},
+	{
+		id: 6,
+		name: 'Воронеж',
+		href: `${link}vrn.${site}`,
+	},
+	{
+		id: 7,
+		name: 'Ижевск',
+		href: `${link}izhevsk.${site}`,
+	},
+	{
+		id: 8,
+		name: 'Нижний Новгород',
+		href: `${link}nn.${site}`,
+	},
+	{
+		id: 9,
+		name: 'Екатеринбург',
+		href: `${link}ekaterinburg.${site}`,
+	},
 ];
