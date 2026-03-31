@@ -17,21 +17,46 @@ export default function ModalDesctop({ isOpen, onClose }: Props) {
 				<div className={styles.gridCity}>
 					<div className={styles.column}>
 						<div className={styles.sumbolCity}>
-							<p>К</p>
+							<p>В</p>
 							<div className={styles.cities}>
-								<a href={cities[2].href + `${pathname}`}>Краснодар</a>
+								<a href={cities[6].href + `${pathname}`}>Воронеж</a>
+							</div>
+						</div>
+						<div className={styles.sumbolCity}>
+							<p>Е</p>
+							<div className={styles.cities}>
+								<a href={cities[9].href + `${pathname}`}>Екатеринбург</a>
+							</div>
+						</div>
+						<div className={styles.sumbolCity}>
+							<p>И</p>
+							<div className={styles.cities}>
+								<a href={cities[7].href + `${pathname}`}>Ижевск</a>
 							</div>
 						</div>
 					</div>
 					<div className={styles.column}>
 						<div className={styles.sumbolCity}>
-							<p>M</p>
+							<p>К</p>
+							<div className={styles.cities}>
+								<a href={cities[2].href + `${pathname}`}>Краснодар</a>
+							</div>
+						</div>
+						<div className={styles.sumbolCity}>
+							<p>М</p>
 							<div className={styles.cities}>
 								<a href={cities[0].href + `${pathname}`}>Москва</a>
 							</div>
 						</div>
+						
 					</div>
 					<div className={styles.column}>
+						<div className={styles.sumbolCity}>
+							<p>Н</p>
+							<div className={styles.cities}>
+								<a href={cities[8].href + `${pathname}`}>Нижний Новгород</a>
+							</div>
+						</div>
 						<div className={styles.sumbolCity}>
 							<p>Р</p>
 							<div className={styles.cities}>

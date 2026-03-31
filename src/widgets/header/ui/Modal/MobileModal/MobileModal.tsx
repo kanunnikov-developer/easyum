@@ -70,6 +70,24 @@ export default function MobileModal({ isOpen, onClose }: MobileModalProps) {
 								<Link href={cities[3].href + `${pathname}`} className={styles.link}>
 									Санкт-Петербург
 								</Link>
+								<Link href={cities[4].href + `${pathname}`} className={styles.link}>
+									Самара
+								</Link>
+								<Link href={cities[5].href + `${pathname}`} className={styles.link}>
+									Саратов
+								</Link>
+								<Link href={cities[6].href + `${pathname}`} className={styles.link}>
+									Воронеж
+								</Link>
+								<Link href={cities[7].href + `${pathname}`} className={styles.link}>
+									Ижевск
+								</Link>
+								<Link href={cities[8].href + `${pathname}`} className={styles.link}>
+									Нижний Новгород
+								</Link>
+								<Link href={cities[9].href + `${pathname}`} className={styles.link}>
+									Екатеринбург
+								</Link>
 							</div>
 						</AccordionItem>
 
