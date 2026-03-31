@@ -64,6 +64,11 @@
 	line-height: 65px;
 }
 
+.smallnn {
+	font-size: 55px;
+	line-height: 61px;
+}
+
 .image {
 	position: absolute;
 	top: 0;
@@ -147,6 +152,11 @@
 		line-height: 55px;
 	}
 
+	.smallnn {
+	font-size: 46px;
+	line-height: 1.05;
+}
+
 	.hero__text h1 {
 		font-size: 54px;
 		line-height: 60px;
@@ -197,6 +207,11 @@
 	.small {
 		font-size: 46px;
 		line-height: 46px;
+	}
+
+	.smallnn {
+		font-size: 46px;
+		line-height: 1.05;
 	}
 
 	.hero__description {

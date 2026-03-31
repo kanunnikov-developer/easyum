@@ -56,6 +56,7 @@ async function Wrapper() {
 		<h1
 			className={cn('accent', {
 				[styles.small]: region?.subdomain === 'spb',
+				[styles.smallnn]: region?.subdomain === 'nn',
 			})}
 		>
 			{`Курсы \n it-профессий \n`} в {region?.preposutional}
