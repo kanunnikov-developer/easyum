@@ -43,6 +43,9 @@ export default function ModalDesctop({ isOpen, onClose }: Props) {
 						<div className={styles.sumbolCity}>
 							<p>С</p>
 							<div className={styles.cities}>
+								<a href={cities[4].href + `${pathname}`}>Самара</a>
+							</div>
+							<div className={styles.cities}>
 								<a href={cities[3].href + `${pathname}`}>Санкт-Петербург</a>
 							</div>
 						</div>

@@ -47,6 +47,15 @@ const regionData: Prisma.RegionCreateInput[] = [
 		map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Ab961072daf544a527b09de18dcb889bf7c590a80e19a4b4b5d0dc5d5ab0adb33&width=600&height=400&lang=ru_RU&scroll=true',
 		metro: '',
 	},
+	{
+		subdomain: 'samara',
+		city: 'Самара',
+		preposutional: 'Самаре',
+		address: 'г. Самара, ул. Скляренко, 32. Коворкинг "Fun(c)".',
+		email: 'samara@easyum.ru',
+		map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A40d62eb207e498cd1bd0c8731a2de83956c8705a252632b905e1ca1e8442ab7f&width=600&height=400&lang=ru_RU&scroll=true',
+		metro: '',
+	},
 ];
 
 export async function main() {
