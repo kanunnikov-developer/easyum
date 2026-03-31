@@ -42,6 +42,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 	const rawSms = formData.get('sms_consent');
 	const rewNameForm = formData.get('nameForm');
 	const rawCity = formData.get('city');
+	const rawUrl = formData.get('url');
 
 	const parsed = FormSchema.safeParse({
 		name: typeof rawName === 'string' ? rawName : '',
@@ -66,6 +67,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 		Город: rawCity,
 		'Согласие на обработку персональных данных': rawConsent == null ? 'Нет' : 'Да',
 		'Согласие на рассылку': rawSms == null ? 'Нет' : 'Да',
+		'Страница отправки формы': rawUrl,
 	};
 
 	const formattedText = Object.entries(data)
@@ -85,6 +87,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 			fieldErrors: { name: '', phone: '' },
 		};
 	} catch (err: any) {
+		console.log(err)
 		console.error('Ошибка отправки через Beget SMTP:', err.message || err);
 		return {
 			success: false,

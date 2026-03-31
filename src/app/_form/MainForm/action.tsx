@@ -43,6 +43,7 @@ export async function sendForm(formData: FormData): Promise<ActionResult> {
 	const rawCity = formData.get('city');
 	const rawPdConsent = formData.get('pd_consent');
 	const rawSmsConsent = formData.get('sms_consent');
+	const rawUrl = formData.get('url');
 
 	const parsed = FormSchema.safeParse({
 		name: typeof rawName === 'string' ? rawName : '',
@@ -70,6 +71,7 @@ export async function sendForm(formData: FormData): Promise<ActionResult> {
 		Комментарий: typeof rawComment === 'string' ? rawComment : '',
 		'Согласие на обработку ПД': rawPdConsent === 'on' ? 'Да' : 'Нет',
 		'Согласие на получение СМС': rawSmsConsent === 'on' ? 'Да' : 'Нет',
+		'Страница отправки формы': rawUrl,
 	}
 
 	const formattedText = Object.entries(data)

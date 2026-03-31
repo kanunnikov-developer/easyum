@@ -20,6 +20,7 @@ export default function BronForm({ city, onClose, onSuccess }: Props) {
 	const [pdConsent_bron, setPdConsent_bron] = useState(false);
 	const [smsConsent_bron, setSmsConsent_bron] = useState(false);
 	const [state, formAction, isPending] = useActionState(action, initialState);
+	const [url_bron, setUrl_bron] = useState('');
 
 	const [nameBron, setNameBron] = useState('');
 	const [phoneBron, setPhoneBron] = useState('');
@@ -30,6 +31,10 @@ export default function BronForm({ city, onClose, onSuccess }: Props) {
 	const handleSmsChange_bron = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSmsConsent_bron(e.target.checked);
 	};
+
+	useEffect(() => {
+		setUrl_bron(window.location.href);
+	}, []);
 
 	useEffect(() => {
 		if (state.success) {
@@ -72,6 +77,7 @@ export default function BronForm({ city, onClose, onSuccess }: Props) {
 			</div>
 
 			<input type='hidden' name='city' value={city} />
+			<input type='hidden' name='url' value={url_bron} />
 			<input type='hidden' name='nameForm' value='Бронирование скидки 20% с главной страницы' />
 
 			<div className={styles.consent}>

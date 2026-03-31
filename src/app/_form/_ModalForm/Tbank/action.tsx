@@ -50,6 +50,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 	const rawPrice = formData.get('price');
 	const rawMounth = formData.get('months');
 	const rawPlateg = formData.get('plateg');
+	const rawUrl = formData.get('url');
 
 	const parsed = FormSchema.safeParse({
 		name: typeof rawName === 'string' ? rawName : '',
@@ -82,6 +83,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 		'Платеж в месяц': rawPlateg + ' в мес',
 		'Согласие на обработку персональных данных': rawConsent == null ? 'Нет' : 'Да',
 		'Согласие на рассылку': rawSms == null ? 'Нет' : 'Да',
+		'Страница отправки формы': rawUrl,
 	};
 
 	const formattedText = Object.entries(data)

@@ -2,7 +2,7 @@
 
 import styles from '../styles.module.css';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { sendForm, ActionResult } from './action';
 import PopupThank from '@/widgets/popupThank/popupThank';
 import { SubmitButton } from '../MainForm/SbmitButton';
@@ -23,6 +23,7 @@ export default function ApplicationForm({ city }: Props) {
 	const [phone, setPhone] = useState('');
 	const [email, setEmail] = useState('');
 	const [comment, setComment] = useState('');
+	const [url_app, setUrl_app] = useState('');
 
 	const handleSubmit = async (formData: FormData) => {
 		const res = await sendForm(formData);
@@ -52,6 +53,10 @@ export default function ApplicationForm({ city }: Props) {
 	const handleSmsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSmsConsent(e.target.checked);
 	};
+
+	useEffect(() => {
+			setUrl_app(window.location.href);
+		}, []);
 
 	return (
 		<>
@@ -100,6 +105,7 @@ export default function ApplicationForm({ city }: Props) {
 			/>
 			<input type='hidden' name='nameForm' value='Форма страницы: Заявки на выпускников' />
 			<input type='hidden' name='city' value={city} />
+			<input type='hidden' name='url' value={url_app} />
 
 			<div className={styles.consent}>
 				<input

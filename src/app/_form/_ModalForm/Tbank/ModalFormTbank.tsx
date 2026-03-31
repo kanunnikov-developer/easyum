@@ -28,6 +28,7 @@ export default function ModalFormTbank({ city, course, tariff, price, onSuccess,
 	const [nameTbank, setNameTbank] = useState('');
 	const [phoneTbank, setPhoneTbank] = useState('');
 	const [emailTbank, setEmailTbank] = useState('');
+	const [url_tbank, setUrl_tbank] = useState('');
 
 	const min = 3;
 	const max = 24;
@@ -44,6 +45,10 @@ export default function ModalFormTbank({ city, course, tariff, price, onSuccess,
 	const handleMonthsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setMonths(parseInt(e.target.value));
 	};
+
+	useEffect(() => {
+		setUrl_tbank(window.location.href);
+	}, []);
 
 	useEffect(() => {
 		if (state.success) {
@@ -159,6 +164,7 @@ export default function ModalFormTbank({ city, course, tariff, price, onSuccess,
 			<input type='hidden' name='course' value={course} />
 			<input type='hidden' name='tariff' value={tariff} />
 			<input type='hidden' name='price' value={price} />
+			<input type='hidden' name='url' value={url_tbank} />
 			<input type='hidden' name='plateg' value={tinkoff(price, months)} />
 
 			<div className={styles.consent}>

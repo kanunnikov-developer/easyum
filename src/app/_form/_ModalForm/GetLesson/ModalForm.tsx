@@ -23,6 +23,7 @@ export default function ModalForm({ city, messanger, onClose, onSuccess, course 
 	const [pdConsent, setPdConsent] = useState(false);
 	const [smsConsent, setSmsConsent] = useState(false);
 	const [state, formAction, isPending] = useActionState(action, initialState);
+	const [url_lesson, setUrl_lesson] = useState('');
 
 	const [nameLesson, setNameLesson] = useState('');
 	const [phoneLesson, setPhoneLesson] = useState('');
@@ -34,6 +35,10 @@ export default function ModalForm({ city, messanger, onClose, onSuccess, course 
 	const handleSmsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSmsConsent(e.target.checked);
 	};
+
+	useEffect(() => {
+		setUrl_lesson(window.location.href);
+	}, []);
 
 	useEffect(() => {
 		if (state.success) {
@@ -94,6 +99,7 @@ export default function ModalForm({ city, messanger, onClose, onSuccess, course 
 			<input type='hidden' name='nameForm' value={`Запрос видео в ${messanger}`} />
 			<input type='hidden' name='city' value={city} />
 			<input type='hidden' name='course' value={course} />
+			<input type='hidden' name='url' value={url_lesson} />
 
 			<div className={styles.consent}>
 				<input

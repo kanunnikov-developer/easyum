@@ -2,7 +2,7 @@
 
 import styles from '../styles.module.css';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { sendForm, ActionResult } from './action';
 import PopupThank from '@/widgets/popupThank/popupThank';
 import { SubmitButton } from '../MainForm/SbmitButton';
@@ -23,6 +23,7 @@ export default function CertificateForm({ city }: Props) {
 	const [phone, setPhone] = useState('');
 	const [email, setEmail] = useState('');
 	const [comment, setComment] = useState('');
+	const [url_cert, setUrl_cert] = useState('');
 
 	const handleSubmit = async (formData: FormData) => {
 		const res = await sendForm(formData);
@@ -45,6 +46,10 @@ export default function CertificateForm({ city }: Props) {
 		setPdConsent(false);
 		setSmsConsent(false);
 	};
+
+	useEffect(() => {
+			setUrl_cert(window.location.href);
+		}, []);
 
 	const handlePdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPdConsent(e.target.checked);
@@ -140,6 +145,7 @@ export default function CertificateForm({ city }: Props) {
 					указанному номеру телефона и адресу электронной почты
 				</label>
 			</div>
+			<input type='hidden' name='url' value={url_cert} />
 
 				<SubmitButton disabled={!pdConsent} />
 			</form>

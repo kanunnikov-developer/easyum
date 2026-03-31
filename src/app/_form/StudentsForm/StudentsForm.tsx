@@ -2,7 +2,7 @@
 
 import styles from '../styles.module.css';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { sendForm, ActionResult } from './action';
 import PopupThank from '@/widgets/popupThank/popupThank';
 import { SubmitButton } from '../MainForm/SbmitButton';
@@ -18,6 +18,7 @@ export default function StudentsForm({ city }: Props) {
 	const [smsConsent, setSmsConsent] = useState(false);
 	const [isThankOpen, setIsThankOpen] = useState(false);
 	const [errors, setErrors] = useState<ActionResult['fieldErrors']>({});
+	const [url_students, setUrl_students] = useState('');
 
 	const handleSubmit = async (formData: FormData) => {
 		const res = await sendForm(formData);
@@ -34,6 +35,10 @@ export default function StudentsForm({ city }: Props) {
 		setPdConsent(false);
 		setSmsConsent(false);
 	};
+
+	useEffect(() => {
+		setUrl_students(window.location.href);
+	}, []);
 
 	const handlePdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPdConsent(e.target.checked);
@@ -64,6 +69,7 @@ export default function StudentsForm({ city }: Props) {
 			<input type='text' name='link' placeholder='Ссылка на ресурс' />
 			<input type='hidden' name='nameForm' value='Форма страницы: Проекты от студентов' />
 			<input type='hidden' name='city' value={city} />
+			<input type='hidden' name='url' value={url_students} />
 
 			<div className={styles.consent}>
 				<input

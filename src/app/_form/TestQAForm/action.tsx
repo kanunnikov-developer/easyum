@@ -33,6 +33,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 	const rawSms = formData.get('sms_consent');
 	const rewNameForm = formData.get('nameForm');
 	const rawCity = formData.get('city');
+	const rawUrl = formData.get('url');
 
 	const parsed = FormSchema.safeParse({
 		name: typeof rawName === 'string' ? rawName : '',
@@ -60,6 +61,7 @@ export async function action(prevState: State, formData: FormData): Promise<Stat
 		'Согласие на рассылку': rawSms == null ? 'Нет' : 'Да',
 		'Имя формы': rewNameForm,
 		Город: rawCity,
+		'Страница отправки формы': rawUrl,
 	};
 
 	console.log(data);

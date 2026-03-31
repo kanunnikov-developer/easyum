@@ -2,7 +2,7 @@
 
 import styles from '../../styles.module.css';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { sendForm, ActionResult } from './action';
 import PopupThank from '@/widgets/popupThank/popupThank';
 import { SubmitButton } from '../../MainForm/SbmitButton';
@@ -24,6 +24,7 @@ export default function CorporateFormTwo({ city }: Props) {
 	const [emailTwo, setEmailTwo] = useState('');
 	const [commentTwo, setCommentTwo] = useState('');
 	const [membersTwo, setMembersTwo] = useState('');
+	const [url_two, setUrl_two] = useState('');
 
 	const handleSubmit = async (formData: FormData) => {
 		const res = await sendForm(formData);
@@ -47,6 +48,10 @@ export default function CorporateFormTwo({ city }: Props) {
 		setPdConsent(false);
 		setSmsConsent(false);
 	};
+
+	useEffect(() => {
+			setUrl_two(window.location.href);
+		}, []);
 
 	const handlePdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPdConsent(e.target.checked);
