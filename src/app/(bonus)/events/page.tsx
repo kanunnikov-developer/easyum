@@ -11,7 +11,7 @@ const eventsText = [
 		name: 'Максим Трошин',
 		date: '5 сентября в 19:30',
 		chat: '/',
-		link: '#',
+		link: '/events/python',
 	},
 	{
 		img: 'photo2.svg',
@@ -19,7 +19,7 @@ const eventsText = [
 		name: 'Рожков Арсений',
 		date: '5 сентября в 19:30',
 		chat: '/',
-		link: '#',
+		link: '/events/c_plus_plus',
 	},
 	{
 		img: 'photo3.svg',
@@ -27,7 +27,7 @@ const eventsText = [
 		name: 'Ольга Козякова',
 		date: '7 сентября в 13:00',
 		chat: '/',
-		link: '#',
+		link: '/events/2023-design-2',
 	},
 	{
 		img: 'photo4.svg',
@@ -35,7 +35,7 @@ const eventsText = [
 		name: 'Рожков Арсений',
 		date: '11 сентября в 19:30',
 		chat: '/',
-		link: '#',
+		link: '/events/probnoye-html-css-frontend-fullstack-2',
 	},
 	{
 		img: 'photo5.svg',
@@ -43,7 +43,7 @@ const eventsText = [
 		name: 'Ярослав Гарастюк',
 		date: '12 сентября в 19:30',
 		chat: '/',
-		link: '#',
+		link: '/events/testirovanie-po-qa-2',
 	},
 	{
 		img: 'photo6.svg',
@@ -51,7 +51,7 @@ const eventsText = [
 		name: 'Кристина Сутупова',
 		date: '13 сентября в 19:30',
 		chat: '/',
-		link: '#',
+		link: '/events/internet-marketing-smm',
 	},
 ];
 

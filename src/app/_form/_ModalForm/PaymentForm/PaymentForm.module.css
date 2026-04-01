@@ -370,6 +370,14 @@
 	}
 
 	@media (max-width: 430px) {
+	.smsBlock{
+		display: none;
+	}
+
+	.pdBlock{
+		font-size: 9px !important;
+	}
+
 	.container {
 		flex-direction: column;
 		gap: 0px;
@@ -377,6 +385,11 @@
 
 	.headerBlock {
 		margin-bottom: 20px;
+	}
+
+	.courseTitle {
+		font-size: 24px;
+		margin-bottom: 10px;
 	}
 
 	.inputGroup {
@@ -388,7 +401,10 @@
 	}
 
 	.rightHeader {
-	margin-bottom: 20px;
+	margin-bottom: 16px;
+}
+	.rightHeader h3 {
+	font-size: 16px;
 }
 
 	.plans {
@@ -407,7 +423,7 @@
 	}
 
 	.planTitle {
-		font-size: 15px;
+		font-size: 12px;
 		margin-bottom: 0px;
 	}
 	
@@ -417,6 +433,7 @@
 
 	.planPrice {
 		font-size: 14px;
+		margin-left: 10px;
 	}
 
 	.planPriceStr {

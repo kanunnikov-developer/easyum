@@ -157,18 +157,18 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 					{selectedPlan === 'installment_tbank' && <input type='hidden' name='tbankMonths' value={tbankMonths} />}
 
 					<div className={styles.consentBlock}>
-						<div className={commonStyles.consent}>
-							<input
-								type='checkbox'
-								id='pd-consent-pay'
-								name='pd_consent'
-								className={commonStyles.customCheckboxInput}
-								required
-								checked={pdConsent_pay}
-								onChange={handlePdChange}
-							/>
+							<div className={commonStyles.consent}>
+								<input
+									type='checkbox'
+									id='pd-consent-pay'
+									name='pd_consent'
+									className={commonStyles.customCheckboxInput}
+									required
+									checked={pdConsent_pay}
+									onChange={handlePdChange}
+								/>
 							<label htmlFor='pd-consent-pay' className={commonStyles.customCheckboxLabel}>
-								<div>
+								<div className={styles.pdBlock}>
 									Я даю согласие на обработку моих персональных данных (ФИО, телефон, email) в соответствии с{' '}
 									<a
 										href='/politika-obrabotki-personalnyh-dannyh'
@@ -182,7 +182,10 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 							</label>
 						</div>
 
-						<div className={commonStyles.sms}>
+						
+
+						<div className={styles.smsBlock}>
+							<div className={commonStyles.sms}>
 							<input
 								type='checkbox'
 								id='sms-consent-pay'
@@ -196,6 +199,8 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 								указанному номеру телефона и адресу электронной почты
 							</label>
 						</div>
+						</div>
+						
 					</div>
 
 					<button className={styles.submitButton} disabled={!pdConsent_pay || isPending}>
