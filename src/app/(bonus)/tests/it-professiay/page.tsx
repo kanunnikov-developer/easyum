@@ -3,6 +3,55 @@ import styles from '../english-level/styles.module.css';
 import TestForm from './ui/TestForm';
 import SwiperBlock from '../english-level/ui/swiper/swipre';
 import cn from 'classnames';
+import getRegion from '@/lib/getRegion';
+import { Metadata } from 'next';
+import { headers } from 'next/headers';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Какая IT-профессия мне подходит? Тест от школы|EasyUM в ${city}`,
+		description: `Современная digital-школа EasyUM разработали для Вас тест, с помощью которого Вы сможете понять какая it-профессия максимально подходит для Вас, исходя из Ваших качеств характера, желаний и умений в ${city}! `,
+		keywords: [
+			'Тесты Какая IT-профессия мне подходит',
+			'Онлайн тест Какая IT-профессия мне подходит',
+			'Какая IT-профессия мне подходит тест',
+		],
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Какая IT-профессия мне подходит? Тест от школы|EasyUM в ${city}`,
+			description: `Современная digital-школа EasyUM разработали для Вас тест, с помощью которого Вы сможете понять какая it-профессия максимально подходит для Вас, исходя из Ваших качеств характера, желаний и умений в ${city}!`,
+			url: '/tests/it-professiay',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Тест Какая IT-профессия мне подходит в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/tests/it-professiay`,
+		},
+	};
+}
 
 export default function Page() {
 	return (

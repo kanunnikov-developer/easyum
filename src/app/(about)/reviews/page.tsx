@@ -2,6 +2,50 @@ import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs';
 import styles from './styles.module.css';
 import cn from 'classnames';
 import SwiperBlock from './ui/swiper/swipre';
+import getRegion from '@/lib/getRegion';
+import { Metadata } from 'next';
+import { headers } from 'next/headers';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Отзывы о курсах EasyUM в ${city}`,
+		description: `Реальные отзывы учеников, окончивших курсы в школе программирования EasyUM по направлениям дизайн, программирование, маркетинг, тестирование, разработка игр и пр. в ${city}`,
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Отзывы о курсах EasyUM в ${city}`,
+			description: `Реальные отзывы учеников, окончивших курсы в школе программирования EasyUM по направлениям дизайн, программирование, маркетинг, тестирование, разработка игр и пр. в ${city}`,
+			url: '/reviews',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Отзывы о курсах EasyUM в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/reviews`,
+		},
+	};
+}
 
 const ReviewsText = [
 	{

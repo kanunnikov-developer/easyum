@@ -7,6 +7,54 @@ import Image from 'next/image';
 import getRegion from '@/lib/getRegion';
 import cn from 'classnames';
 import TestQAForm from '@/app/_form/TestQAForm/TestQAForm';
+import { Metadata } from 'next';
+import { headers } from 'next/headers';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Тест для получения сертификата по курсу Тестирование ПО в ${city}`,
+		description: `Финальный тест, который проходят слушатели курса для того чтоб получить сертификат академии EasyUM`,
+		keywords: [
+			'Тесты получения сертификата по курсу Тестирование ПО',
+			'Онлайн тест получения сертификата по курсу Тестирование ПО',
+			'получения сертификата по курсу Тестирование ПО тест',
+		],
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Тест для получения сертификата по курсу Тестирование ПО в ${city}`,
+			description: `Финальный тест, который проходят слушатели курса для того чтоб получить сертификат академии EasyUM`,
+			url: '/tests/testqa',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Тест для получения сертификата по курсу Тестирование ПО в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/tests/testqa`,
+		},
+	};
+}
 
 export default function Page() {
 	return (

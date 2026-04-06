@@ -23,6 +23,51 @@ import Tariffs from '../../_components/Tariffs/Tariffs';
 import { Suspense } from 'react';
 import FAQ from '../../_components/FAQ/FAQ';
 import Circle from '@/app/_components/Circle/Circle';
+import { headers } from 'next/headers';
+import { Metadata } from 'next';
+import { calculatePrices } from '@/lib/priceCalculator';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Курс UX/UI дизайна | Обучение на UX/UI дизайнера с нуля онлайн в ${city}`,
+		description: `Запишитесь на курсы UI/UX дизайна и получите навыки, необходимые для успешной карьеры в UX. Онлайн обучение и курсы в ${city} для начинающих и профессионалов.`,
+		keywords: ['Курс UX/UI дизайна онлайн', 'Курс UX/UI дизайна для начинающих'],
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Курс UX/UI дизайна | Обучение на UX/UI дизайнера с нуля онлайн в ${city}`,
+			description: `Запишитесь на курсы UI/UX дизайна и получите навыки, необходимые для успешной карьеры в UX. Онлайн обучение и курсы в ${city} для начинающих и профессионалов.`,
+			url: '/courses/design/web-design-ui-ux',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Курс UX/UI дизайна в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/courses/design/web-design-ui-ux`,
+		},
+	};
+}
 
 const course = {
 	title: dateStart[15].course,
@@ -201,7 +246,7 @@ export default function Page() {
 					duration={course.duration}
 				/>
 
-				<GetLesson course={course.title}/>
+				<GetLesson course={course.title} />
 
 				<Description
 					title={`Кто такой`}
@@ -234,7 +279,7 @@ export default function Page() {
 
 				<Instruments instrument={instruments} />
 
-				<GetLessonBlock course={course.title}/>
+				<GetLessonBlock course={course.title} />
 
 				<Programm mounth={course.duration} programs={programs} />
 
@@ -268,7 +313,7 @@ export default function Page() {
 					fallback={
 						<Tariffs
 							city='Москва'
-							price={course.price}
+							prices={calculatePrices(course.duration_number, 'it')}
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
@@ -287,10 +332,11 @@ export default function Page() {
 
 async function Wrapper() {
 	const region = await getRegion();
+	const prices = calculatePrices(course.duration_number, region?.subdomain);
 	return (
 		<Tariffs
 			city={region?.city}
-			price={course.price}
+			prices={prices}
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}

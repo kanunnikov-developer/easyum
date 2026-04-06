@@ -1,6 +1,7 @@
 .defaultLayout {
 	margin-bottom: 200px;
 }
+
 .tabsList {
 	display: flex;
 	flex-wrap: wrap;
@@ -92,5 +93,9 @@
 
 	.card img {
 		border-radius: 10px;
+	}
+
+	.programming {
+		font-size: 36px;
 	}
 }

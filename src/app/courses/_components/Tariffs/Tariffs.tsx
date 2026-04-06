@@ -1,22 +1,27 @@
 import Rate from './Rate/Rate';
 import styles from './styles.module.css';
 
-interface Price {
-	online: number;
-	video: number;
-	ochno: number;
+interface PriceData {
+	full: number;
+	installmentMonthly: number;
+}
+
+interface Prices {
+	ochno: PriceData;
+	online: PriceData;
+	video: PriceData;
 }
 
 interface Props {
 	city: string | undefined;
 	course: string;
-	price: Price | undefined;
+	prices: Prices;
 	sale: string;
 	imgCourse: string | undefined;
 	mounth: number;
 }
 
-export default function Tariffs({ city, price, course, sale, imgCourse, mounth }: Props) {
+export default function Tariffs({ city, prices, course, sale, imgCourse, mounth }: Props) {
 	return (
 		<section id='tariffs' className={styles.tariffs}>
 			<h2>
@@ -33,7 +38,8 @@ export default function Tariffs({ city, price, course, sale, imgCourse, mounth }
 						'Запись всех занятий навсегда',
 						'Чат с преподавателем',
 					]}
-					price={price?.online}
+					price={prices.online.full}
+					installmentMonthly={prices.online.installmentMonthly}
 					img='1.svg'
 					sale={sale}
 					imgCourse={imgCourse}
@@ -49,7 +55,8 @@ export default function Tariffs({ city, price, course, sale, imgCourse, mounth }
 						'Чат с преподавателем',
 						'Запись всех занятий навсегда',
 					]}
-					price={price?.video}
+					price={prices.video.full}
+					installmentMonthly={prices.video.installmentMonthly}
 					img='2.svg'
 					sale={sale}
 					imgCourse={imgCourse}
@@ -65,7 +72,8 @@ export default function Tariffs({ city, price, course, sale, imgCourse, mounth }
 						'Запись всех занятий навсегда',
 						'Чат с преподавателем',
 					]}
-					price={price?.ochno}
+					price={prices.ochno.full}
+					installmentMonthly={prices.ochno.installmentMonthly}
 					img='3.svg'
 					sale={sale}
 					imgCourse={imgCourse}

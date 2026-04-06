@@ -14,7 +14,8 @@ interface Props {
 	course: string;
 	format: string;
 	lists: string[];
-	price: number | undefined;
+	price: number | undefined; // полная цена
+	installmentMonthly: number; // ежемесячный платёж при рассрочке от школы
 	img: string;
 	sale: string;
 	imgCourse: string | undefined;
@@ -43,7 +44,18 @@ function tinkoff(price: number | undefined) {
 	return formattedPlateg;
 }
 
-export default function Rate({ city, course, format, lists, price, img, sale, imgCourse, mounth }: Props) {
+export default function Rate({
+	city,
+	course,
+	format,
+	lists,
+	price,
+	installmentMonthly,
+	img,
+	sale,
+	imgCourse,
+	mounth,
+}: Props) {
 	const [tbank, setTbank] = useState(false);
 	const [register, setRegister] = useState(false);
 	const [payment, setPayment] = useState(false);
@@ -117,6 +129,7 @@ export default function Rate({ city, course, format, lists, price, img, sale, im
 					course={course}
 					tariff={format}
 					price={price}
+					installmentMonthly={installmentMonthly}
 					onSuccess={() => setIsThankOpen(true)}
 					mounth={mounth}
 				/>

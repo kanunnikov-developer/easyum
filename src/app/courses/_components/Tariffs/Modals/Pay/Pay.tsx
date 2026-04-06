@@ -7,11 +7,12 @@ interface Props {
 	course: string;
 	tariff: string;
 	price: number | undefined;
+	installmentMonthly: number;
 	onSuccess: () => void;
 	mounth: number;
 }
 
-export function ModalPay({ onClose, city, course, tariff, price, onSuccess, mounth }: Props) {
+export function ModalPay({ onClose, city, course, tariff, price, installmentMonthly, onSuccess, mounth }: Props) {
 	return (
 		<div className={styles.overlay} onClick={onClose}>
 			<div className={styles.modal} onClick={(e) => e.stopPropagation()}>
@@ -20,6 +21,7 @@ export function ModalPay({ onClose, city, course, tariff, price, onSuccess, moun
 					course={course}
 					tariff={tariff}
 					price={price}
+					installmentMonthly={installmentMonthly}
 					onSuccess={onSuccess}
 					onClose={onClose}
 					mounth={mounth}

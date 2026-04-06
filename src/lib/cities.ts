@@ -1,11 +1,11 @@
 const link = 'https://';
-const site = 'girakequuce.beget.app';
+const site = 'easyum.ru';
 
 export const cities = [
 	{
 		id: 0,
 		name: 'Москва',
-		href: `${link}msc.${site}`,
+		href: `${link}it.${site}`,
 	},
 	{
 		id: 1,

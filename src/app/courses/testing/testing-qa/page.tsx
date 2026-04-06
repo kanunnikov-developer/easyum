@@ -27,6 +27,51 @@ import Tariffs from '../../_components/Tariffs/Tariffs';
 import getRegion from '@/lib/getRegion';
 import FAQ from '../../_components/FAQ/FAQ';
 import Circle from '@/app/_components/Circle/Circle';
+import { Metadata } from 'next';
+import { headers } from 'next/headers';
+import { calculatePrices } from '@/lib/priceCalculator';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Курс «Тестировщик ПО» - обучение QA тестировщика с нуля онлайн в ${city}`,
+		description: `Запишитесь на курс «Тестировщик ПО с нуля за 3 месяца». Дистанционное и очное обучение, практические задания и поддержка опытных специалистов. Начните карьеру QA тестировщика сегодня в ${city}!`,
+		keywords: ['Курсы Тестировщик ПО', 'Курсы Тестировщик ПО для начинающих'],
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Курс «Тестировщик ПО» - обучение QA тестировщика с нуля онлайн в ${city}`,
+			description: `Запишитесь на курс «Тестировщик ПО с нуля за 3 месяца». Дистанционное и очное обучение, практические задания и поддержка опытных специалистов. Начните карьеру QA тестировщика сегодня в ${city}!`,
+			url: '/courses/testing/testing-qa',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Курс Тестировщик ПО с нуля в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/courses/testing/testing-qa`,
+		},
+	};
+}
 
 const course = {
 	title: dateStart[8].course,
@@ -420,7 +465,7 @@ export default function Page() {
 					fallback={
 						<Tariffs
 							city='Москва'
-							price={course.price}
+							prices={calculatePrices(course.duration_number, 'it')}
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
@@ -439,10 +484,11 @@ export default function Page() {
 
 async function Wrapper() {
 	const region = await getRegion();
+	const prices = calculatePrices(course.duration_number, region?.subdomain);
 	return (
 		<Tariffs
 			city={region?.city}
-			price={course.price}
+			prices={prices}
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}

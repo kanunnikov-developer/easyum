@@ -33,8 +33,8 @@ export default function Footer() {
 
 							<div className={styles.politico}>
 								<p className={styles.year}>2017-2026 Все права защищены</p>
-								<Link href='#'>Политика конфиденциальности</Link>
-								<Link href='#'>Публичный договор (оферта)</Link>
+								<Link href='/docs'>Политика конфиденциальности</Link>
+								<Link href='/docs'>Публичный договор (оферта)</Link>
 							</div>
 						</div>
 						<div className={styles.popular}>
@@ -71,7 +71,7 @@ export default function Footer() {
 								<Link href='/payment'>Оплата и возврат</Link>
 								<Link href='/docs'>Юридические документы</Link>
 								<Link href='/contact'>Контакты</Link>
-								<Link href='#'>Блог</Link>
+								{/* <Link href='#'>Блог</Link> */}
 							</div>
 						</div>
 						<div className={styles.bonus}>

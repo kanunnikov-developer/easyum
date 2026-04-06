@@ -3,6 +3,49 @@ import styles from './styles.module.css';
 import cn from 'classnames';
 import getRegion from '@/lib/getRegion';
 import { Suspense } from 'react';
+import { Metadata } from 'next';
+import { headers } from 'next/headers';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Контакты Школы программирования в ${city}`,
+		description: `Очная Школа Программирования EasyUM доступна в 77 городах для очного формата обучения`,
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Контакты Школы программирования в ${city}`,
+			description: `Очная Школа Программирования EasyUM доступна в 77 городах для очного формата обучения`,
+			url: '/contact',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Контакты Школы программирования в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/contact`,
+		},
+	};
+}
 
 export default function Page() {
 	return (

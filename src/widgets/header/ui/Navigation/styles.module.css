@@ -51,7 +51,6 @@
 
 /* Пункты внутри dropdown */
 .dropdown li {
-	padding: 8px 16px;
 	transition: all 0.2s ease;
 }
 
@@ -61,6 +60,7 @@
 	font-size: 14px;
 	display: block;
 	transition: all 0.2s ease;
+	padding: 8px 16px;
 }
 
 .dropdown li a:hover {

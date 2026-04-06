@@ -2,10 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import styles from './styles.module.css';
 import { usePathname } from 'next/navigation';
-import { cities } from '@/lib/cities';
 
 export default function MobileFooter({ address }: { address: string | undefined }) {
 	const [openAccordion, setOpenAccordion] = useState<string | null>('Курсы');

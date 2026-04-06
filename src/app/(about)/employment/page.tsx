@@ -1,6 +1,50 @@
 import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs';
 import styles from './styles.module.css';
 import cn from 'classnames';
+import getRegion from '@/lib/getRegion';
+import { headers } from 'next/headers';
+import { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Помощь в Трудоустройстве от школе программирования EasyUM в ${city}`,
+		description: `Гарантии трудоустройства с EasyUM: подготовим Вам резюме, соберем портфолио, проведем тренинг по трудоустройству и разберем часто-задаваемые вопросы в ${city}`,
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Помощь в Трудоустройстве от школе программирования EasyUM в ${city}`,
+			description: `Гарантии трудоустройства с EasyUM: подготовим Вам резюме, соберем портфолио, проведем тренинг по трудоустройству и разберем часто-задаваемые вопросы в ${city}`,
+			url: '/employment',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Помощь в Трудоустройстве в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/employment`,
+		},
+	};
+}
 
 const textBlock = [
 	{

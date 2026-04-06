@@ -27,6 +27,51 @@ import Tariffs from '../../_components/Tariffs/Tariffs';
 import getRegion from '@/lib/getRegion';
 import FAQ from '../../_components/FAQ/FAQ';
 import Circle from '@/app/_components/Circle/Circle';
+import { Metadata } from 'next';
+import { headers } from 'next/headers';
+import { calculatePrices } from '@/lib/priceCalculator';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Курс Тестировщик ПО (PRO Версия) с нуля 7 мес. в ${city}. Обучение в EasyUM на инженера по тестированию (QA engineer) онлайн или очно в 77 городах России`,
+		description: `Курс Тестировщик ПО (PRO Версия) с нуля 7 мес. от EasyUM: стань QA-инженером программного обеспечения с нуля. Очное или онлайн обучение на тестировщика (QA engineer) в ${city} и еще в 76 регионах России. Сертификат и помощь в трудоустройстве.`,
+		keywords: ['Курсы Тестировщик ПО (PRO Версия)', 'Курсы Тестировщик ПО (PRO Версия) для начинающих'],
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Курс Тестировщик ПО (PRO Версия) с нуля 7 мес. в ${city}. Обучение в EasyUM на инженера по тестированию (QA engineer) онлайн или очно в 77 городах России`,
+			description: `Курс Тестировщик ПО (PRO Версия) с нуля 7 мес. от EasyUM: стань QA-инженером программного обеспечения с нуля. Очное или онлайн обучение на тестировщика (QA engineer) в ${city} и еще в 76 регионах России. Сертификат и помощь в трудоустройстве.`,
+			url: '/courses/testing/qa-pro',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Курс Тестировщик ПО (PRO Версия) с нуля в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/courses/testing/qa-pro`,
+		},
+	};
+}
 
 const course = {
 	title: dateStart[7].course,
@@ -455,7 +500,7 @@ export default function Page() {
 					fallback={
 						<Tariffs
 							city='Москва'
-							price={course.price}
+							prices={calculatePrices(course.duration_number, 'it')}
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
@@ -473,10 +518,11 @@ export default function Page() {
 
 async function Wrapper() {
 	const region = await getRegion();
+	const prices = calculatePrices(course.duration_number, region?.subdomain);
 	return (
 		<Tariffs
 			city={region?.city}
-			price={course.price}
+			prices={prices}
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}
