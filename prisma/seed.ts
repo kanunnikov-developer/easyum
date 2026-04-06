@@ -104,12 +104,6 @@ const regionData: Prisma.RegionCreateInput[] = [
 ];
 
 export async function main() {
-	// Сначала обновляем msc на it ----------- Удалить после первого использования
-	await prisma.region.updateMany({
-		where: { subdomain: 'msc' },
-		data: { subdomain: 'it' }
-	});
-
 	for (const region of regionData) {
 		await prisma.region.upsert({	
 			where: { subdomain: region.subdomain },
