@@ -25,6 +25,51 @@ import Tariffs from '../../_components/Tariffs/Tariffs';
 import getRegion from '@/lib/getRegion';
 import FAQ from '../../_components/FAQ/FAQ';
 import Circle from '@/app/_components/Circle/Circle';
+import { headers } from 'next/headers';
+import { Metadata } from 'next';
+import { calculatePrices } from '@/lib/priceCalculator';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Курс «Графический дизайн» с нуля за 4 месяца | онлайн обучение профессии графического дизайнера в ${city}`,
+		description: `Запишитесь на курсы графического дизайна с нуля, станьте профессионалом за 4 месяца! Обучение профессии "графический дизайнер" в ${city} и дистанционно.`,
+		keywords: ['Курсы Графический дизайн', 'Курсы Графический дизайн для начинающих'],
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Курс «Графический дизайн» с нуля за 4 месяца | онлайн обучение профессии графического дизайнера в ${city}`,
+			description: `Запишитесь на курсы графического дизайна с нуля, станьте профессионалом за 4 месяца! Обучение профессии "графический дизайнер" в ${city} и дистанционно.`,
+			url: '/courses/design/graphic-designer',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Курс «Графический дизайн» с нуля в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/courses/design/graphic-designer`,
+		},
+	};
+}
 
 const course = {
 	title: dateStart[16].course,
@@ -411,7 +456,7 @@ export default function Page() {
 					fallback={
 						<Tariffs
 							city='Москва'
-							price={course.price}
+							prices={calculatePrices(course.duration_number, 'it')}
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
@@ -430,10 +475,11 @@ export default function Page() {
 
 async function Wrapper() {
 	const region = await getRegion();
+	const prices = calculatePrices(course.duration_number, region?.subdomain);
 	return (
 		<Tariffs
 			city={region?.city}
-			price={course.price}
+			prices={prices}
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}

@@ -13,7 +13,7 @@ interface Props {
 export default function DefaultLayout({ title, span, coursesCard, activeTab }: Props) {
 	return (
 		<div className={styles.defaultLayout}>
-			<h1>
+			<h1 className={cn(title === 'по программированию' && styles.programming)}>
 				<span className='accent'>{span}</span> {title}
 			</h1>
 			<div className={styles.tabsList}>

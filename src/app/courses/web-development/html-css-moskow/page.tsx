@@ -24,6 +24,51 @@ import Tariffs from '../../_components/Tariffs/Tariffs';
 import { Suspense } from 'react';
 import FAQ from '../../_components/FAQ/FAQ';
 import Circle from '@/app/_components/Circle/Circle';
+import { Metadata } from 'next';
+import { headers } from 'next/headers';
+import { calculatePrices } from '@/lib/priceCalculator';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Курс «Верстка на HTML и CSS» | Обучение верстке сайтов с нуля онлайн в ${city}`,
+		description: `Запишитесь на курс по верстке сайтов на HTML и CSS для начинающих. Полное обучение верстке сайтов с нуля за 2 месяца. Онлайн-уроки, практические задания и поддержка наставников в ${city}!`,
+		keywords: ['Курсы Верстка на HTML и CSS', 'Курсы Верстка на HTML и CSS для начинающих'],
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Курс «Верстка на HTML и CSS» | Обучение верстке сайтов с нуля онлайн в ${city}`,
+			description: `Запишитесь на курс по верстке сайтов на HTML и CSS для начинающих. Полное обучение верстке сайтов с нуля за 2 месяца. Онлайн-уроки, практические задания и поддержка наставников в ${city}!`,
+			url: '/courses/web-development/html-css-moskow',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Курс Верстка на HTML и CSS с нуля в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/courses/web-development/html-css-moskow`,
+		},
+	};
+}
 
 const course = {
 	title: dateStart[13].course,
@@ -259,7 +304,7 @@ export default function Page() {
 					fallback={
 						<Tariffs
 							city='Москва'
-							price={course.price}
+							prices={calculatePrices(course.duration_number, 'it')}
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
@@ -278,10 +323,11 @@ export default function Page() {
 
 async function Wrapper() {
 	const region = await getRegion();
+	const prices = calculatePrices(course.duration_number, region?.subdomain);
 	return (
 		<Tariffs
 			city={region?.city}
-			price={course.price}
+			prices={prices}
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}

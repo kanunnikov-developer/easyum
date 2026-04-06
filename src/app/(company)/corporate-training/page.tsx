@@ -4,6 +4,49 @@ import getRegion from '@/lib/getRegion';
 import CorporateFormTwo from '@/app/_form/CorporateForm/Two/CorporateFormTwo';
 import CorporateFormOne from '@/app/_form/CorporateForm/One/CorporateFormOne';
 import ScrolTop from '@/widgets/ScrolTop/ScrolTop';
+import { headers } from 'next/headers';
+import { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Корпоративное обучение сотрудников компании в ${city} — EasyUM`,
+		description: `Проводим корпоративное обучение для повышения квалификации Ваших сотрудников. Обучение проводим по нашим и индивидуальным программам. Онлайн в общей группе, или очно в 77 городах России.`,
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Корпоративное обучение сотрудников компании в ${city} — EasyUM`,
+			description: `Проводим корпоративное обучение для повышения квалификации Ваших сотрудников. Обучение проводим по нашим и индивидуальным программам. Онлайн в общей группе, или очно в 77 городах России.`,
+			url: '/corporate-training',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Корпоративное обучение сотрудников в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/corporate-training`,
+		},
+	};
+}
 
 export default function Page() {
 	return (

@@ -6,6 +6,7 @@ import Footer from '@/widgets/footer/footer';
 import DiscountTimerBar from '@/widgets/discountBar/DiscountBar';
 import getRegion from '@/lib/getRegion';
 import { Suspense } from 'react';
+import FloatingContactWidget from '@/widgets/floatingContactWidget/FloatingContactWidget';
 
 const GolosText = Golos_Text({
 	variable: '--golos-text',
@@ -14,23 +15,18 @@ const GolosText = Golos_Text({
 	fallback: ['Arial', 'Helvetica', 'sans-serif'],
 });
 
-// ← Вот здесь меняем
 export const metadata: Metadata = {
-	title: 'В разработке — не индексировать',
-	description: 'Сайт в разработке',
 	robots: {
-		index: false, // главное — запрет индексации
-		follow: false, // не следовать по ссылкам
+		index: true,
+		follow: true,
 		googleBot: {
-			index: false,
-			follow: false,
+			index: true,
+			follow: true,
 			'max-video-preview': -1,
-			'max-image-preview': 'none',
+			'max-image-preview': 'large',
 			'max-snippet': -1,
 		},
 	},
-	// можно ещё добавить (опционально)
-	// alternates: { canonical: 'https://your-domain.com' }, // если нужно
 };
 
 export default function RootLayout({
@@ -44,6 +40,7 @@ export default function RootLayout({
 				<Header />
 				{children}
 				<Footer />
+				<FloatingContactWidget />
 
 				<Suspense>
 					<Wrapper />

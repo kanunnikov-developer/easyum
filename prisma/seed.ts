@@ -12,7 +12,7 @@ const prisma = new PrismaClient({
 
 const regionData: Prisma.RegionCreateInput[] = [
 	{
-		subdomain: 'msc',
+		subdomain: 'it',
 		city: 'Москва',
 		preposutional: 'Москве',
 		address: 'г. Москва, ул. Большая Новодмитровская 23, территория коворкинга «Flacon SPACE»',
@@ -104,8 +104,14 @@ const regionData: Prisma.RegionCreateInput[] = [
 ];
 
 export async function main() {
+	// Сначала обновляем msc на it ----------- Удалить после первого использования
+	await prisma.region.updateMany({
+		where: { subdomain: 'msc' },
+		data: { subdomain: 'it' }
+	});
+
 	for (const region of regionData) {
-		await prisma.region.upsert({
+		await prisma.region.upsert({	
 			where: { subdomain: region.subdomain },
 			update: region,
 			create: region,

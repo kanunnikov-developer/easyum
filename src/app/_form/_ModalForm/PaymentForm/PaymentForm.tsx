@@ -18,11 +18,21 @@ interface Props {
 	course: string;
 	tariff: string;
 	price: number | undefined;
+	installmentMonthly: number;
 	onSuccess: () => void;
 	mounth: number;
 }
 
-export default function PaymentForm({ onClose, city, course, tariff, price, onSuccess, mounth }: Props) {
+export default function PaymentForm({
+	onClose,
+	city,
+	course,
+	tariff,
+	price,
+	onSuccess,
+	installmentMonthly,
+	mounth,
+}: Props) {
 	const [selectedPlan, setSelectedPlan] = useState<
 		'full_rf' | 'full_foreign' | 'installment_school' | 'installment_tbank'
 	>('full_rf');
@@ -79,14 +89,7 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 	if (selectedPlan === 'installment_school') paymentMethodString = 'Рассрочка от школы (есть переплата)';
 	if (selectedPlan === 'installment_tbank') paymentMethodString = 'Рассрочка от ТБанк (без переплаты)';
 
-	let schoolInstallmentMonthlyPayment = 15990;
-	if (tariff.toLowerCase().includes('видео')) {
-		schoolInstallmentMonthlyPayment = 13490;
-	} else if (tariff.toLowerCase().includes('онлайн')) {
-		schoolInstallmentMonthlyPayment = 14990;
-	} else if (tariff.toLowerCase().includes('очн') || tariff.toLowerCase().includes('офлайн')) {
-		schoolInstallmentMonthlyPayment = 15990;
-	}
+	const schoolInstallmentMonthlyPayment = installmentMonthly;
 	const schoolInstallmentTotal = schoolInstallmentMonthlyPayment * mounth;
 
 	const getMonthsLabel = (m: number) => {
@@ -157,16 +160,16 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 					{selectedPlan === 'installment_tbank' && <input type='hidden' name='tbankMonths' value={tbankMonths} />}
 
 					<div className={styles.consentBlock}>
-							<div className={commonStyles.consent}>
-								<input
-									type='checkbox'
-									id='pd-consent-pay'
-									name='pd_consent'
-									className={commonStyles.customCheckboxInput}
-									required
-									checked={pdConsent_pay}
-									onChange={handlePdChange}
-								/>
+						<div className={commonStyles.consent}>
+							<input
+								type='checkbox'
+								id='pd-consent-pay'
+								name='pd_consent'
+								className={commonStyles.customCheckboxInput}
+								required
+								checked={pdConsent_pay}
+								onChange={handlePdChange}
+							/>
 							<label htmlFor='pd-consent-pay' className={commonStyles.customCheckboxLabel}>
 								<div className={styles.pdBlock}>
 									Я даю согласие на обработку моих персональных данных (ФИО, телефон, email) в соответствии с{' '}
@@ -182,25 +185,22 @@ export default function PaymentForm({ onClose, city, course, tariff, price, onSu
 							</label>
 						</div>
 
-						
-
 						<div className={styles.smsBlock}>
 							<div className={commonStyles.sms}>
-							<input
-								type='checkbox'
-								id='sms-consent-pay'
-								name='sms_consent'
-								className={commonStyles.customCheckboxInput}
-								checked={smsConsent_pay}
-								onChange={handleSmsChange}
-							/>
-							<label htmlFor='sms-consent-pay' className={commonStyles.customCheckboxLabel}>
-								Согласен(а) на получение информационных и рекламных сообщений (SMS, сообщения в мессенджерах, email) по
-								указанному номеру телефона и адресу электронной почты
-							</label>
+								<input
+									type='checkbox'
+									id='sms-consent-pay'
+									name='sms_consent'
+									className={commonStyles.customCheckboxInput}
+									checked={smsConsent_pay}
+									onChange={handleSmsChange}
+								/>
+								<label htmlFor='sms-consent-pay' className={commonStyles.customCheckboxLabel}>
+									Согласен(а) на получение информационных и рекламных сообщений (SMS, сообщения в мессенджерах, email)
+									по указанному номеру телефона и адресу электронной почты
+								</label>
+							</div>
 						</div>
-						</div>
-						
 					</div>
 
 					<button className={styles.submitButton} disabled={!pdConsent_pay || isPending}>

@@ -24,6 +24,51 @@ import Tariffs from '../../_components/Tariffs/Tariffs';
 import { Suspense } from 'react';
 import FAQ from '../../_components/FAQ/FAQ';
 import Circle from '@/app/_components/Circle/Circle';
+import { Metadata } from 'next';
+import { headers } from 'next/headers';
+import { calculatePrices } from '@/lib/priceCalculator';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Курс «Таргетолог Таргетированная реклама ВКонтакте, Telegram и MyTarget» 1,5 мес. от EasyUM d ${city}`,
+		description: `Запишитесь на курсы таргетолога с нуля в ${city}. Обучение таргетированной рекламе, трудоустройство и доступные цены. Начните карьеру в рекламе уже сегодня!`,
+		keywords: ['Курсы Таргетолог онлайн', 'Курсы Таргетолог для начинающих'],
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Курс «Таргетолог Таргетированная реклама ВКонтакте, Telegram и MyTarget» 1,5 мес. от EasyUM d ${city}`,
+			description: `Запишитесь на курсы таргетолога с нуля в ${city}. Обучение таргетированной рекламе, трудоустройство и доступные цены. Начните карьеру в рекламе уже сегодня!`,
+			url: '/courses/marketing/reklama-vkontakte-telegram',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Курс по таргетигу в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/courses/marketing/reklama-vkontakte-telegram`,
+		},
+	};
+}
 
 const course = {
 	title: dateStart[21].course,
@@ -256,7 +301,7 @@ export default function Page() {
 					fallback={
 						<Tariffs
 							city='Москва'
-							price={course.price}
+							prices={calculatePrices(course.duration_number, 'it')}
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
@@ -275,10 +320,11 @@ export default function Page() {
 
 async function Wrapper() {
 	const region = await getRegion();
+	const prices = calculatePrices(course.duration_number, region?.subdomain);
 	return (
 		<Tariffs
 			city={region?.city}
-			price={course.price}
+			prices={prices}
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}

@@ -1,9 +1,10 @@
 // proxy.ts
 import { NextResponse, type NextRequest } from 'next/server';
+import prisma from '@/lib/prisma';
 
-const DEFAULT_SUBDOMAIN = 'msc';
+const DEFAULT_SUBDOMAIN = 'it';
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
 	const hostHeader = request.headers.get('host');
 	const host = hostHeader?.split(':')[0]?.toLowerCase() ?? '';
 	const parts = host.split('.').filter(Boolean);
@@ -15,6 +16,19 @@ export function proxy(request: NextRequest) {
 		url.hostname = `${DEFAULT_SUBDOMAIN}.${domain}`;
 		return NextResponse.redirect(url);
 	}
+
+	const region = await prisma.region.findUnique({
+    where: { subdomain },
+  });
+
+  if (!region) {
+    const url = new URL(request.url);
+    const mainDomain = parts.slice(1).join('.');
+
+    url.hostname = `${DEFAULT_SUBDOMAIN}.${mainDomain}`;
+
+    return NextResponse.redirect(url, { status: 307 });
+  }
 
 	const response = NextResponse.next();
 	response.headers.set('x-subdomain', subdomain);

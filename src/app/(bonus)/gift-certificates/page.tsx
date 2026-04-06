@@ -2,6 +2,49 @@ import getRegion from '@/lib/getRegion';
 import styles from './styles.module.css';
 import CertificateForm from '@/app/_form/CertificateForm/CertificateForm';
 import { Suspense } from 'react';
+import { headers } from 'next/headers';
+import { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Подарочный сертификат на курс от EasyUM в ${city}`,
+		description: `Подарите близкому человеку Сертификат на обучение в EasyUM. Отличный подарок, который поможет войти в айти и найти работу своей мечты уже через 5-7 месяцев в ${city}! `,
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Подарочный сертификат на курс от EasyUM в ${city}`,
+			description: `Подарите близкому человеку Сертификат на обучение в EasyUM. Отличный подарок, который поможет войти в айти и найти работу своей мечты уже через 5-7 месяцев в ${city}!`,
+			url: '/gift-certificates',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Подарочный сертификат в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/gift-certificates`,
+		},
+	};
+}
 
 export default function Page() {
 	return (

@@ -1,30 +1,74 @@
+import getRegion from '@/lib/getRegion';
 import styles from './styles.module.css';
+import { Metadata } from 'next';
+import { headers } from 'next/headers';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Пробный урок курса «Python (Питон) разработчик» в школе программирования EasyUM в ${city}`,
+		description: `Пробный урок по Python (Питон) разработке в школе программирования EasyUM. Очное обучение в ${city} Python для анализа данных.`,
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Пробный урок курса «Python (Питон) разработчик» в школе программирования EasyUM в ${city}`,
+			description: `Пробный урок по Python (Питон) разработке в школе программирования EasyUM. Очное обучение в ${city} Python для анализа данных.`,
+			url: '/events/python',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Пробный урок курса «Python (Питон) разработчик» в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/events/python`,
+		},
+	};
+}
 
 export default function Page() {
-	return(
+	return (
 		<section className={styles.page}>
 			<div className={styles.bg}></div>
 			<div className={'container'}>
 				<section className={styles.hero}>
 					<div className={styles.header}>
 						<div className={styles.header_left}>
-							<h1>Бесплатный <br /> пробный урок</h1>
+							<h1>
+								Бесплатный <br /> пробный урок
+							</h1>
 							<p>Будут рассмотрены курсы:</p>
 							<div className={styles.courses}>
-								<a href="/courses/programming/python-data-science" className={styles.courses__item}>
+								<a href='/courses/programming/python-data-science' className={styles.courses__item}>
 									Python <br /> (веб-разработчик)
 								</a>
-								<a href="/courses/programming/python-data-science" className={styles.courses__item}>
+								<a href='/courses/programming/python-data-science' className={styles.courses__item}>
 									Python Data Science <br /> (для анализа)
 								</a>
 							</div>
 						</div>
 						<div className={styles.header_right}>
 							<div className={styles.photo_wrapper}>
-								<img src={`/bonus/events/photo1.svg`} alt='Преподаватель' className={styles.header_img}/>
-								<div className={styles.location_tag}>
-									 Москва / онлайн
-								</div>
+								<img src={`/bonus/events/photo1.svg`} alt='Преподаватель' className={styles.header_img} />
+								<div className={styles.location_tag}>Москва / онлайн</div>
 							</div>
 						</div>
 					</div>
@@ -39,13 +83,22 @@ export default function Page() {
 				</section>
 
 				<section className={styles.description}>
-					<p>Python – молодой, но очень востребованный язык программирования. Освоив этот язык, вы сможете заниматься как веб-разработкой, так и созданием серьезных программ для работы с большими данными.</p>
+					<p>
+						Python – молодой, но очень востребованный язык программирования. Освоив этот язык, вы сможете заниматься как
+						веб-разработкой, так и созданием серьезных программ для работы с большими данными.
+					</p>
 					<br />
-					<p>Если у вас накопилось много вопросов касаемо разработки на Python, необязательно часами искать ответы в интернете. Приходите на бесплатное пробное занятие по Python разработке и услышите главную информацию об этом языке, профессиях и перспективах из уст практикующего программиста на Python.</p>
+					<p>
+						Если у вас накопилось много вопросов касаемо разработки на Python, необязательно часами искать ответы в
+						интернете. Приходите на бесплатное пробное занятие по Python разработке и услышите главную информацию об
+						этом языке, профессиях и перспективах из уст практикующего программиста на Python.
+					</p>
 				</section>
 
 				<section className={styles.learning}>
-					<h3><span className='accent'>Что будет</span> на уроке?</h3>
+					<h3>
+						<span className='accent'>Что будет</span> на уроке?
+					</h3>
 					<div className={styles.learning_content}>
 						<div className={styles.learning_column}>
 							<h4>Обсудим:</h4>
@@ -72,12 +125,12 @@ export default function Page() {
 						</div>
 					</div>
 					<div className={styles.telegram_container}>
-						<a href="https://t.me/+mYTj4Sdff3U2ODM6" target='_blank' className={styles.telegram_button}>
+						<a href='https://t.me/+mYTj4Sdff3U2ODM6' target='_blank' className={styles.telegram_button}>
 							Вступить в чат Telegram <img src='/bonus/events/icons/telegram.svg' alt='Telegram' />
 						</a>
 					</div>
 				</section>
 			</div>
 		</section>
-	)
+	);
 }

@@ -24,6 +24,51 @@ import Tariffs from '../../_components/Tariffs/Tariffs';
 import { Suspense } from 'react';
 import FAQ from '../../_components/FAQ/FAQ';
 import Circle from '@/app/_components/Circle/Circle';
+import { headers } from 'next/headers';
+import { Metadata } from 'next';
+import { calculatePrices } from '@/lib/priceCalculator';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Курс «iOS Разработчик» | Обучение мобильной разработке приложений на iOS в ${city}`,
+		description: `Запишитесь на курсы iOS и станьте профессиональным разработчиком за 4 месяца в ${city}! Обучение с нуля, онлайн-формат, практические задания и поддержка наставников.`,
+		keywords: ['Курсы iOS Разработчик', 'Курсы iOS Разработчик для начинающих'],
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Курс «iOS Разработчик» | Обучение мобильной разработке приложений на iOS в ${city}`,
+			description: `Запишитесь на курсы iOS и станьте профессиональным разработчиком за 4 месяца в ${city}! Обучение с нуля, онлайн-формат, практические задания и поддержка наставников.`,
+			url: '/courses/mobile-development/mobiledev-ios',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Курс iOS Разработчик в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/courses/mobile-development/mobiledev-ios`,
+		},
+	};
+}
 
 const course = {
 	title: dateStart[23].course,
@@ -344,7 +389,7 @@ export default function Page() {
 					fallback={
 						<Tariffs
 							city='Москва'
-							price={course.price}
+							prices={calculatePrices(course.duration_number, 'it')}
 							course={course.title}
 							sale={sale.tariffs}
 							imgCourse={course.imgCourse}
@@ -363,10 +408,11 @@ export default function Page() {
 
 async function Wrapper() {
 	const region = await getRegion();
+	const prices = calculatePrices(course.duration_number, region?.subdomain);
 	return (
 		<Tariffs
 			city={region?.city}
-			price={course.price}
+			prices={prices}
 			course={course.title}
 			sale={sale.tariffs}
 			imgCourse={course.imgCourse}

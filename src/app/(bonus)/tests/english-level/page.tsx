@@ -3,6 +3,51 @@ import styles from './styles.module.css';
 import TestForm from './ui/TestForm';
 import SwiperBlock from './ui/swiper/swipre';
 import cn from 'classnames';
+import { Metadata } from 'next';
+import getRegion from '@/lib/getRegion';
+import { headers } from 'next/headers';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Тест на знание английского языка от digital-школы |EasyUM в ${city}`,
+		description: `Современная школа EasyUM города Москвы предлагает ✔ пройти тест на знание английского языка для будущих программистов и IT-специалистов. Определите Ваши слабые места и общий уровень знаний английского в ${city}! `,
+		keywords: ['Тесты на знание английского языка', 'Онлайн тест определить уровень языка', 'Английский язык тест'],
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Тест на знание английского языка от digital-школы |EasyUM в ${city}`,
+			description: `Современная школа EasyUM города Москвы предлагает ✔ пройти тест на знание английского языка для будущих программистов и IT-специалистов. Определите Ваши слабые места и общий уровень знаний английского в ${city}!`,
+			url: '/tests/english-level',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Тест на знание английского языка в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/tests/english-level`,
+		},
+	};
+}
 
 export default function Page() {
 	return (

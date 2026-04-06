@@ -3,6 +3,50 @@ import styles from './styles.module.css';
 import cn from 'classnames';
 import Link from 'next/link';
 import PhotosComponent from '@/components/photos/photosComponent';
+import getRegion from '@/lib/getRegion';
+import { Metadata } from 'next';
+import { headers } from 'next/headers';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Пробные уроки и бесплатные вебинары на базе it-школы в ${city}`,
+		description: `Школа программирования EasyUM в ${city} приглашает на мастер-классы, семинары, пробные уроки по курсам, которые проводятся на базе нашей школы бесплатно. Записывайтесь и приходите!`,
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Пробные уроки и бесплатные вебинары на базе it-школы EasyUM в ${city}`,
+			description: `Школа программирования EasyUM в ${city} приглашает на мастер-классы, семинары, пробные уроки по курсам, которые проводятся на базе нашей школы бесплатно. Записывайтесь и приходите!`,
+			url: '/events',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Пробные уроки и бесплатные вебинары EasyUM в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/events`,
+		},
+	};
+}
 
 const eventsText = [
 	{

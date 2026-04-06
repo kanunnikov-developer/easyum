@@ -1,27 +1,71 @@
+import getRegion from '@/lib/getRegion';
 import styles from './styles.module.css';
+import { Metadata } from 'next';
+import { headers } from 'next/headers';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Пробный урок курса «SMM менеджер (Продвижение в социальных сетях)» в школе программирования EasyUM в ${city}`,
+		description: `Пробный урок курса СММ Менеджер. Очное и онлайн обучение продвижению в социальных сетях. Вконтакте, Инста, телеграмм. Все в программе курса в ${city}`,
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Пробный урок курса «SMM менеджер (Продвижение в социальных сетях)» в школе программирования EasyUM в ${city}`,
+			description: `Пробный урок курса СММ Менеджер. Очное и онлайн обучение продвижению в социальных сетях. Вконтакте, Инста, телеграмм. Все в программе курса в ${city}`,
+			url: '/events/internet-marketing-smm',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Пробный урок курса «SMM менеджер (Продвижение в социальных сетях)» EasyUM в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/events/internet-marketing-smm`,
+		},
+	};
+}
 
 export default function Page() {
-	return(
+	return (
 		<section className={styles.page}>
 			<div className={styles.bg}></div>
 			<div className={'container'}>
 				<section className={styles.hero}>
 					<div className={styles.header}>
 						<div className={styles.header_left}>
-							<h1>Бесплатный <br /> пробный урок</h1>
+							<h1>
+								Бесплатный <br /> пробный урок
+							</h1>
 							<p>Будут рассмотрены курсы:</p>
 							<div className={styles.courses}>
-								<a href="/courses/marketing/smm" className={styles.courses__item}>
+								<a href='/courses/marketing/smm' className={styles.courses__item}>
 									SMM Менеджер
 								</a>
 							</div>
 						</div>
 						<div className={styles.header_right}>
 							<div className={styles.photo_wrapper}>
-								<img src={`/bonus/events/photo6.svg`} alt='Преподаватель' className={styles.header_img}/>
-								<div className={styles.location_tag}>
-									 Москва / онлайн
-								</div>
+								<img src={`/bonus/events/photo6.svg`} alt='Преподаватель' className={styles.header_img} />
+								<div className={styles.location_tag}>Москва / онлайн</div>
 							</div>
 						</div>
 					</div>
@@ -38,13 +82,21 @@ export default function Page() {
 				<section className={styles.description}>
 					<p>SMM менеджер - специалист отвечающий за продвижение в социальных сетях.</p>
 					<br />
-					<p>На пробном уроке узнаете задачи, инструменты и базовые навыки специалиста. Рассмотрите популярные каналы продвижения в интернете и современные методы раскрутки.</p>
+					<p>
+						На пробном уроке узнаете задачи, инструменты и базовые навыки специалиста. Рассмотрите популярные каналы
+						продвижения в интернете и современные методы раскрутки.
+					</p>
 					<br />
-					<p>Ведет занятие практикующий интернет-маркетолог и смм специалист с опытом более 8 лет. Если у вас есть вопросы, обязательно задавайте, ведь только опытный специалист сможет дать достоверный ответ.</p>
+					<p>
+						Ведет занятие практикующий интернет-маркетолог и смм специалист с опытом более 8 лет. Если у вас есть
+						вопросы, обязательно задавайте, ведь только опытный специалист сможет дать достоверный ответ.
+					</p>
 				</section>
 
 				<section className={styles.learning}>
-					<h3><span className='accent'>Что будет</span> на уроке?</h3>
+					<h3>
+						<span className='accent'>Что будет</span> на уроке?
+					</h3>
 					<div className={styles.learning_content}>
 						<div className={styles.learning_column}>
 							<h4>Обсудим:</h4>
@@ -71,12 +123,12 @@ export default function Page() {
 						</div>
 					</div>
 					<div className={styles.telegram_container}>
-						<a href="https://t.me/+X5vP3Ukp7Pg0Y2Yy" target='_blank' className={styles.telegram_button}>
+						<a href='https://t.me/+X5vP3Ukp7Pg0Y2Yy' target='_blank' className={styles.telegram_button}>
 							Вступить в чат Telegram <img src='/bonus/events/icons/telegram.svg' alt='Telegram' />
 						</a>
 					</div>
 				</section>
 			</div>
 		</section>
-	)
+	);
 }

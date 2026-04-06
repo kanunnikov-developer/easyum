@@ -1,7 +1,7 @@
 import { headers } from 'next/headers';
 import prisma from './prisma';
 
-const DEFAULT_SUBDOMAIN = 'msc';
+const DEFAULT_SUBDOMAIN = 'it';
 
 export type Region = {
 	id: string;

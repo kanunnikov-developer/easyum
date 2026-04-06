@@ -1,6 +1,50 @@
 import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs';
 import styles from './styles.module.css';
 import cn from 'classnames';
+import getRegion from '@/lib/getRegion';
+import { Metadata } from 'next';
+import { headers } from 'next/headers';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Россия';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Скидки и акции школы программирования EasyUM до 50% в ${city}`,
+		description: `В школе EasyUM действуют скидки: 50% на повторный курс, 30% на покупку второго курса в течении 3х дней, 10% себе или другу в любой момент как скидка выпускника. Успей воспользоваться в ${city}! `,
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Скидки и акции школы программирования EasyUM до 50% в ${city}`,
+			description: `В школе EasyUM действуют скидки: 50% на повторный курс, 30% на покупку второго курса в течении 3х дней, 10% себе или другу в любой момент как скидка выпускника. Успей воспользоваться в ${city}!`,
+			url: '/discounts',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Скидки и акции в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/discounts`,
+		},
+	};
+}
 
 export default function Page() {
 	return (
