@@ -34,7 +34,7 @@ export default function PaymentForm({
 	mounth,
 }: Props) {
 	const [selectedPlan, setSelectedPlan] = useState<
-		'full_rf' | 'full_foreign' | 'installment_school' | 'installment_tbank'
+		'full_rf' | 'full_foreign' | 'installment_school' | 'installment_school_foreign' | 'installment_tbank'
 	>('full_rf');
 	const [tbankMonths, setTbankMonths] = useState(12);
 	const [namePay, setNamePay] = useState('');
@@ -87,7 +87,7 @@ export default function PaymentForm({
 	if (selectedPlan === 'full_rf') paymentMethodString = 'Полная оплата — Банковской картой РФ';
 	if (selectedPlan === 'full_foreign') paymentMethodString = 'Полная оплата (зарубежная карта)';
 	if (selectedPlan === 'installment_school') paymentMethodString = 'Рассрочка от школы (есть переплата)';
-	if (selectedPlan === 'installment_tbank') paymentMethodString = 'Рассрочка от ТБанк (без переплаты)';
+	if (selectedPlan === 'installment_school_foreign') paymentMethodString = 'Рассрочка от школы (зарубежная карта)';
 
 	const schoolInstallmentMonthlyPayment = installmentMonthly;
 	const schoolInstallmentTotal = schoolInstallmentMonthlyPayment * mounth;
@@ -294,6 +294,38 @@ export default function PaymentForm({
 							</div>
 							<div className={styles.planContent}>
 								<div className={styles.planTitle}>Рассрочка от школы (есть переплата)</div>
+								<div className={styles.planDesc}>
+									Мы предоставляем рассрочку на {mounth} {getMonthsLabel(mounth)}
+								</div>
+							</div>
+							<div className={styles.planPriceCol}>
+								<div className={styles.planPriceStr}>{schoolInstallmentMonthlyPayment.toLocaleString('ru')} ₽/мес</div>
+								<input type='hidden' name='schoolInstallmentMonthlyPayment' value={schoolInstallmentMonthlyPayment} />
+								<div className={styles.planSubPrice}>Итого: {schoolInstallmentTotal.toLocaleString('ru')} ₽</div>
+							</div>
+						</label>
+
+						<button className={styles.submitButtonMobile} disabled={!pdConsent_pay || isPending}>
+							{isPending ? 'Отправка...' : 'Оплатить'}
+						</button>
+
+						{/* Рассрочка от школы (зарубежная карта) */}
+						<label
+							className={`${styles.planCard} ${selectedPlan === 'installment_school_foreign' ? styles.selected : ''}`}
+							onClick={() => setSelectedPlan('installment_school_foreign')}
+						>
+							<div className={styles.radioWrapper}>
+								<input
+									type='radio'
+									name='plan'
+									checked={selectedPlan === 'installment_school_foreign'}
+									readOnly
+									className={styles.radioInput}
+								/>
+								<span className={styles.radioCustom}></span>
+							</div>
+							<div className={styles.planContent}>
+								<div className={styles.planTitle}>Рассрочка от школы (зарубежная карта)</div>
 								<div className={styles.planDesc}>
 									Мы предоставляем рассрочку на {mounth} {getMonthsLabel(mounth)}
 								</div>
