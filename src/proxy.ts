@@ -22,12 +22,7 @@ export async function proxy(request: NextRequest) {
   });
 
   if (!region) {
-    const url = new URL(request.url);
-    const mainDomain = parts.slice(1).join('.');
-
-    url.hostname = `${DEFAULT_SUBDOMAIN}.${mainDomain}`;
-
-    return NextResponse.redirect(url, { status: 307 });
+    return NextResponse.redirect('https://it.easyum.ru', { status: 307 });
   }
 
 	const response = NextResponse.next();

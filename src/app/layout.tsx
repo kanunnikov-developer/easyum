@@ -7,6 +7,8 @@ import DiscountTimerBar from '@/widgets/discountBar/DiscountBar';
 import getRegion from '@/lib/getRegion';
 import { Suspense } from 'react';
 import FloatingContactWidget from '@/widgets/floatingContactWidget/FloatingContactWidget';
+import YandexMetrika from '@/components/YandexMetrika';
+import { headers } from 'next/headers';
 
 const GolosText = Golos_Text({
 	variable: '--golos-text',
@@ -42,6 +44,10 @@ export default function RootLayout({
 				<Footer />
 				<FloatingContactWidget />
 
+				<Suspense fallback={null}>
+          <MetrikaWrapper />
+        </Suspense>
+
 				<Suspense>
 					<Wrapper />
 				</Suspense>
@@ -53,4 +59,13 @@ export default function RootLayout({
 async function Wrapper() {
 	const region = await getRegion();
 	return <DiscountTimerBar city={region?.city} />;
+}
+
+// Новый компонент-обёртка для динамических данных
+async function MetrikaWrapper() {
+  const headersList = await headers();           // теперь внутри Suspense
+  const host = headersList.get('host') || '';
+  const subdomain = host.split('.')[0]?.toLowerCase() || 'it';
+
+  return <YandexMetrika subdomain={subdomain} />;
 }
