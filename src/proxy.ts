@@ -30,9 +30,7 @@ export async function proxy(request: NextRequest) {
 
   if (pathname === '/blog' || pathname.startsWith('/blog/')) {
     if (subdomain !== 'it') {
-      const newUrl = new URL(request.url);
-      newUrl.hostname = `it.${parts.slice(-2).join('.') || 'easyum.ru'}`;
-      return NextResponse.redirect(newUrl, { status: 307 });
+      return NextResponse.redirect('https://it.easyum.ru/blog', { status: 307 });
     }
   }
 
