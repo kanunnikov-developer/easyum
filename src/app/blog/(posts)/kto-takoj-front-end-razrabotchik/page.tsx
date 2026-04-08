@@ -1,6 +1,7 @@
 import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs'
 import styles from './styles.module.css'
 import Image from 'next/image'
+import ViewCounter from '../../components/ViewCounter/ViewCounter'
 
 export default function Page() {
 	return(
@@ -10,9 +11,12 @@ export default function Page() {
 				<section className={styles.post}>
 					<div className={styles.header}>
 						<div className={styles.left}>
-							<div className={styles.date}>
-								<img src='/blog/calendar-icon.svg' />
-								<p>8 апреля 2026</p>
+							<div className={styles.info}>
+								<div className={styles.date}>
+									<img src='/blog/calendar-icon.svg' />
+									<p>8 апреля 2026</p>
+								</div>
+								<ViewCounter slug="kto-takoj-front-end-razrabotchik" initialViews={0} />
 							</div>
 							<h1 className={styles.title}>Кто такой Front-end разработчик</h1>
 							<div className={styles.tabs}>

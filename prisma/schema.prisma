@@ -27,3 +27,12 @@ model Region {
 
   @@map("regions")
 }
+
+model PostView {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  views       Int      @default(0)
+  lastUpdated DateTime @default(now()) @updatedAt
+
+  @@map("post_views")
+}

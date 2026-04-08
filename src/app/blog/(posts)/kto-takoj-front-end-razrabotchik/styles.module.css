@@ -18,8 +18,14 @@
 	flex: 1;
 }
 
-.date {
+.info{
+	display: flex;
+	align-items: center;
+	gap: 16px;
 	margin-bottom: 24px;
+}
+
+.date {
 	display: flex;
 	align-items: center;
 	gap: 10px;
@@ -101,8 +107,10 @@
 		font-size: 32px;
 		line-height: 100%;
 	}
+	.info{
+		margin-bottom: 15px;
+	}
 	.date{
-		margin-bottom: 24px;
 		font-size: 14px;
 	}
 	.tabs{
