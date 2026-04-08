@@ -103,6 +103,10 @@ const regionData: Prisma.RegionCreateInput[] = [
 	},
 ];
 
+const initialViews = [
+    { slug: "kto-takoj-front-end-razrabotchik", views: 0 },
+];
+
 export async function main() {
 	for (const region of regionData) {
 		await prisma.region.upsert({	
@@ -111,17 +115,14 @@ export async function main() {
 			create: region,
 		});
 	}
-}
 
-const initialViews = [
-    { slug: "kto-takoj-front-end-razrabotchik", views: 0 },
-  ];
-
-  for (const v of initialViews) {
+	for (const v of initialViews) {
     await prisma.postView.upsert({
       where: { slug: v.slug },
       update: v,
       create: v,
     });
   }
+}
+  
 main();
