@@ -1,19 +1,20 @@
 import Image from 'next/image'
 import styles from './styles.module.css'
+import { Post } from '@/app/blog/model'
 
-export default function PostCard() {
+export default function PostCard({ post }: { post: Post }) {
 	return(
 		<div className={styles.post}>
 			<div className={styles.image}>
-				<Image src="/blog/admin-ajax.png" alt="" width={397} height={223} className={styles.img}/>
+				<Image src={post.image} alt="Картинка поста" width={397} height={223} className={styles.img}/>
 			</div>
 			<div className={styles.content}>
 				<div className={styles.date}>
 					<img src='/blog/calendar-icon.svg' />
-					<p>8 апреля 2026</p>
+					<p>{post.date}</p>
 				</div>
-				<h3 className={styles.title}>КТО ТАКОЙ FRONT-END РАЗРАБОТЧИК</h3>
-				<p className={styles.description}>Front-end разработчик – программист, который создает внешнюю часть сайта или веб-приложения. Он разрабатывает то, с чем вы взаимодействуете...</p>
+				<h3 className={styles.title}>{post.title}</h3>
+				<p className={styles.description}>{post.description}</p>
 			</div>
 			<div className={styles.button}>
 				<a href="/blog/kto-takoj-front-end-razrabotchik" className={styles.link}>Читать статью</a>

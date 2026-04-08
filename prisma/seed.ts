@@ -112,4 +112,16 @@ export async function main() {
 		});
 	}
 }
+
+const initialViews = [
+    { slug: "kto-takoj-front-end-razrabotchik", views: 0 },
+  ];
+
+  for (const v of initialViews) {
+    await prisma.postView.upsert({
+      where: { slug: v.slug },
+      update: v,
+      create: v,
+    });
+  }
 main();
