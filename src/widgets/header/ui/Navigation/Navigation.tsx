@@ -25,6 +25,9 @@ export default function Navigation() {
 							<Link href='/docs'>Юридические документы</Link>
 						</li>
 						<li>
+							<Link href='/blog'>Блог</Link>
+						</li>
+						<li>
 							<Link href='/contact'>Контакты</Link>
 						</li>
 					</ul>

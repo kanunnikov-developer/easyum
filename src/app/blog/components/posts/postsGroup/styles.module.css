@@ -1,0 +1,14 @@
+.post_list{
+	margin-top: 50px;
+}
+.post_list_wrapper{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 40px;
+}
+
+@media (max-width: 430px) {
+	.post_list_wrapper{
+		grid-template-columns: repeat(1, 1fr);
+	}
+}

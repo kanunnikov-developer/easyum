@@ -71,7 +71,7 @@ export default function Footer() {
 								<Link href='/payment'>Оплата и возврат</Link>
 								<Link href='/docs'>Юридические документы</Link>
 								<Link href='/contact'>Контакты</Link>
-								{/* <Link href='#'>Блог</Link> */}
+								<Link href='/blog'>Блог</Link>
 							</div>
 						</div>
 						<div className={styles.bonus}>

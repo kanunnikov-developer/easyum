@@ -158,6 +158,11 @@ const nextConfig: NextConfig = {
         destination: '/courses/other/pm-kurs',
         permanent: true,
       },
+      {
+        source: '/2021/07/13/kto-takoj-front-end-razrabotchik',
+        destination: '/blog/kto-takoj-front-end-razrabotchik',
+        permanent: true,
+      },
     ];
   },
 

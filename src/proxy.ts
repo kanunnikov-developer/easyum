@@ -10,6 +10,9 @@ export async function proxy(request: NextRequest) {
 	const parts = host.split('.').filter(Boolean);
 	const subdomain = parts[0] || '';
 
+	const url2 = new URL(request.url);
+  const pathname = url2.pathname;
+
 	if (!subdomain || subdomain === 'www' || subdomain === 'localhost') {
 		const url = new URL(request.url);
 		const domain = parts.slice(-2).join('.') || 'localhost:3000';
@@ -23,6 +26,14 @@ export async function proxy(request: NextRequest) {
 
   if (!region) {
     return NextResponse.redirect('https://it.easyum.ru', { status: 307 });
+  }
+
+  if (pathname === '/blog' || pathname.startsWith('/blog/')) {
+    if (subdomain !== 'it') {
+      const newUrl = new URL(request.url);
+      newUrl.hostname = `it.${parts.slice(-2).join('.') || 'easyum.ru'}`;
+      return NextResponse.redirect(newUrl, { status: 307 });
+    }
   }
 
 	const response = NextResponse.next();

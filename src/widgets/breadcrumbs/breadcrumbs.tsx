@@ -75,6 +75,9 @@ export default function Breadcrumbs() {
 
 			'pm-kurs': 'IT Project Manager',
 			'manager-marketplace': 'Менеджер маркетплейсов',
+
+			blog: 'Блог',
+			'kto-takoj-front-end-razrabotchik': 'Кто такой Front-end разработчик'
 		};
 
 		// Если сегмент — динамический id, можно показать "Курс Java" или что-то
