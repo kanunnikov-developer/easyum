@@ -77,7 +77,10 @@ export default function Breadcrumbs() {
 			'manager-marketplace': 'Менеджер маркетплейсов',
 
 			blog: 'Блог',
-			'kto-takoj-front-end-razrabotchik': 'Кто такой Front-end разработчик'
+			'kto-takoj-front-end-razrabotchik': 'Кто такой Front-end разработчик',
+			'testing-po-v-2026-godu': 'Тестировщик ПО быстрый входа в IT в 2026 году',
+			'kakoj-yazyk-programmirovaniya-uchit-pervym': 'Какой язык программирования учить в 2026 году',
+			'kak-voity-v-it-s-nula-2026': 'Как войти в IT с нуля в 2026 году',
 		};
 
 		// Если сегмент — динамический id, можно показать "Курс Java" или что-то

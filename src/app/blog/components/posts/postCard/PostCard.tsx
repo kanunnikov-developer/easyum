@@ -5,7 +5,8 @@ import { Post } from '@/app/blog/model'
 export default function PostCard({ post }: { post: Post }) {
 	return(
 		<div className={styles.post}>
-			<div className={styles.image}>
+			<div>
+				<div className={styles.image}>
 				<Image src={post.image} alt="Картинка поста" width={397} height={223} className={styles.img}/>
 			</div>
 			<div className={styles.content}>
@@ -16,8 +17,10 @@ export default function PostCard({ post }: { post: Post }) {
 				<h3 className={styles.title}>{post.title}</h3>
 				<p className={styles.description}>{post.description}</p>
 			</div>
+			</div>
+			
 			<div className={styles.button}>
-				<a href="/blog/kto-takoj-front-end-razrabotchik" className={styles.link}>Читать статью</a>
+				<a href={post.href} className={styles.link}>Читать статью</a>
 			</div>
 		</div>
 	)

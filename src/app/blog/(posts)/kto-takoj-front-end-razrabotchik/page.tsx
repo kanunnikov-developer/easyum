@@ -1,6 +1,5 @@
 import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs'
-import styles from './styles.module.css'
-import Image from 'next/image'
+import styles from '../styles.module.css'
 import ViewCounter from '../../components/ViewCounter/ViewCounter'
 
 export default function Page() {
@@ -25,7 +24,7 @@ export default function Page() {
 						</div>
 						<div className={styles.right}>
 							<div className={styles.image}>
-								<Image src="/blog/admin-ajax.png" alt="" width={397} height={223} className={styles.img}/>
+								<img src="/blog/kto-takoj-front-end-razrabotchik.svg" alt="Картинка кто такой Front-end разработчик" className={styles.img}/>
 							</div>
 						</div>
 					</div>
