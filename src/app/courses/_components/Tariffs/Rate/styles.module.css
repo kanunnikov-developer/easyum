@@ -46,6 +46,7 @@
 	cursor: pointer;
 	margin-top: 10px;
 	padding: 5px 15px;
+	color: var(--text-color);
 	display: flex;
 	align-items: center;
 	justify-content: center;

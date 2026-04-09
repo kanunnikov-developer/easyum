@@ -60,6 +60,9 @@ export default function MobileFooter({ address }: { address: string | undefined 
 								<Link href='/docs' className={styles.link}>
 									Юридические документы
 								</Link>
+								<Link href='/blog' className={styles.link}>
+									Блог
+								</Link>
 								<Link href='/contact' className={styles.link}>
 									Контакты
 								</Link>

@@ -19,12 +19,33 @@ export default function MobileModal({ isOpen, onClose }: MobileModalProps) {
 
 	useEffect(() => {
 		if (isOpen) {
+			// Сохраняем текущую позицию скролла
+			const scrollY = window.scrollY;
+
+			document.documentElement.style.overflow = 'hidden';
 			document.body.style.overflow = 'hidden';
+			document.body.style.position = 'fixed';
+			document.body.style.top = `-${scrollY}px`;
+			document.body.style.width = '100%'; // предотвращаем сдвиг из-за исчезновения скроллбара
 		} else {
+			// Возвращаем всё назад
+			const scrollY = parseInt(document.body.style.top || '0', 10) * -1;
+
+			document.documentElement.style.overflow = '';
 			document.body.style.overflow = '';
+			document.body.style.position = '';
+			document.body.style.top = '';
+			document.body.style.width = '';
+
+			// Восстанавливаем позицию скролла
+			window.scrollTo(0, scrollY);
 		}
 		return () => {
+			document.documentElement.style.overflow = '';
 			document.body.style.overflow = '';
+			document.body.style.position = '';
+			document.body.style.top = '';
+			document.body.style.width = '';
 		};
 	}, [isOpen]);
 
@@ -93,19 +114,19 @@ export default function MobileModal({ isOpen, onClose }: MobileModalProps) {
 
 						<AccordionItem title='Курсы' isOpen={openAccordion === 'Курсы'} onToggle={() => toggleAccordion('Курсы')}>
 							<div className={styles.submenu}>
-								<Link href='/courses/web-development/html-css-moskow' className={styles.link}>
+								<Link href='/courses/web-development/html-css-moskow' className={styles.link} onClick={onClose}>
 									HTML&CSS Верстка сайтов
 								</Link>
-								<Link href='/courses/testing/qa-avtomation' className={styles.link}>
+								<Link href='/courses/testing/qa-avtomation' className={styles.link} onClick={onClose}>
 									QA Тестирование (Java)
 								</Link>
-								<Link href='/courses/design/web-design-ui-ux' className={styles.link}>
+								<Link href='/courses/design/web-design-ui-ux' className={styles.link} onClick={onClose}>
 									UX/UI Веб Дизайн
 								</Link>
-								<Link href='/courses/marketing/internet-marketing' className={styles.link}>
+								<Link href='/courses/marketing/internet-marketing' className={styles.link} onClick={onClose}>
 									Интернет-маркетинг
 								</Link>
-								<Link href='/courses/mobile-development/mobiledev-ios' className={styles.link}>
+								<Link href='/courses/mobile-development/mobiledev-ios' className={styles.link} onClick={onClose}>
 									IOS Разработчик
 								</Link>
 
@@ -133,6 +154,9 @@ export default function MobileModal({ isOpen, onClose }: MobileModalProps) {
 								</Link>
 								<Link href='/docs' className={styles.link} onClick={onClose}>
 									Юридические документы
+								</Link>
+								<Link href='/blog' className={styles.link} onClick={onClose}>
+									Блог
 								</Link>
 								<Link href='/contact' className={styles.link} onClick={onClose}>
 									Контакты
