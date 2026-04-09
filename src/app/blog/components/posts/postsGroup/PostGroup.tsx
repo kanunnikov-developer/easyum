@@ -1,8 +1,12 @@
-import { posts } from '@/app/blog/model'
+import { Post } from '@/app/blog/model'
 import PostCard from '../postCard/PostCard'
 import styles from './styles.module.css'
 
-export default function PostGroup() {
+interface PostGroupProps {
+	posts: Post[]
+}
+
+export default function PostGroup({ posts }: PostGroupProps) {
 	return(
 		<section className={styles.post_list}>
 			<div className={styles.post_list_wrapper}>
