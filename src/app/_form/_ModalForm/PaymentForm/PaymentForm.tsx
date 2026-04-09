@@ -102,13 +102,27 @@ export default function PaymentForm({
 		<>
 			<form action={formAction} className={styles.container}>
 				<div className={styles.leftColumn}>
+					
 					<div className={styles.headerBlock}>
-						<h2 className={styles.courseTitle}>
-							<span className='accent'>Курс:</span> &ldquo;{course}&rdquo;
-						</h2>
-						<p className={styles.tariffText}>
-							<span className='accent'>Тариф:</span> {tariff}
-						</p>
+						<div>
+							<h2 className={styles.courseTitle}>
+								<span className='accent'>Курс:</span> &ldquo;{course}&rdquo;
+							</h2>
+							<p className={styles.tariffText}>
+								<span className='accent'>Тариф:</span> {tariff}
+							</p>
+						</div>
+						<button type='button' onClick={onClose} className={styles.closeButton_mobile}>
+							<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+								<path
+									d='M18 6L6 18M6 6L18 18'
+									stroke='#3b82f6'
+									strokeWidth='2'
+									strokeLinecap='round'
+									strokeLinejoin='round'
+								/>
+							</svg>
+						</button>
 					</div>
 
 					<div className={styles.inputGroup}>
@@ -196,8 +210,10 @@ export default function PaymentForm({
 									onChange={handleSmsChange}
 								/>
 								<label htmlFor='sms-consent-pay' className={commonStyles.customCheckboxLabel}>
-									Согласен(а) на получение информационных и рекламных сообщений (SMS, сообщения в мессенджерах, email)
-									по указанному номеру телефона и адресу электронной почты
+									<div className={styles.pdBlock}>
+										Согласен(а) на получение информационных и рекламных сообщений (SMS, сообщения в мессенджерах, email)
+										по указанному номеру телефона и адресу электронной почты
+									</div>
 								</label>
 							</div>
 						</div>
@@ -304,10 +320,6 @@ export default function PaymentForm({
 								<div className={styles.planSubPrice}>Итого: {schoolInstallmentTotal.toLocaleString('ru')} ₽</div>
 							</div>
 						</label>
-
-						<button className={styles.submitButtonMobile} disabled={!pdConsent_pay || isPending}>
-							{isPending ? 'Отправка...' : 'Оплатить'}
-						</button>
 
 						{/* Рассрочка от школы (зарубежная карта) */}
 						<label

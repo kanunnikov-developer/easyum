@@ -19,6 +19,14 @@
 
 .headerBlock {
 	margin-bottom: 30px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.closeButton_mobile{
+	display: none;
 }
 
 .courseTitle {
@@ -370,9 +378,6 @@
 	}
 
 	@media (max-width: 430px) {
-	.smsBlock{
-		display: none;
-	}
 
 	.pdBlock{
 		font-size: 9px !important;
@@ -386,6 +391,22 @@
 	.headerBlock {
 		margin-bottom: 20px;
 	}
+
+	.closeButton_mobile {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.closeButton_mobile svg {
+    transition: transform 0.2s ease;
+}
+.closeButton_mobile:hover svg {
+    transform: rotate(90deg);
+}
 
 	.courseTitle {
 		font-size: 24px;

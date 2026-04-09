@@ -2,8 +2,8 @@
 
 export const YANDEX_METRIKA_IDS: Record<string, string> = {
   'it': '50281960',           
-  // 'rostov': '',
-  // 'krasnodar': '',
+  'rostov': '90542670',
+  'krasnodar': '90542682',
   // 'spb': '',
   // 'samara': '',
   // 'saratov': '',

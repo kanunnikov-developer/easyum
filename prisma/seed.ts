@@ -119,7 +119,7 @@ export async function main() {
 	for (const v of initialViews) {
     await prisma.postView.upsert({
       where: { slug: v.slug },
-      update: v,
+      update: {},
       create: v,
     });
   }
