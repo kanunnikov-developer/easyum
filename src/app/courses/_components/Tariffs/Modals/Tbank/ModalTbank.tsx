@@ -1,3 +1,6 @@
+'use client';
+
+import { useScrollLock } from '@/lib/hooks/useScrollLock';
 import ModalFormTbank from '@/app/_form/_ModalForm/Tbank/ModalFormTbank';
 import styles from './styles.module.css';
 import Image from 'next/image';
@@ -13,6 +16,7 @@ interface Props {
 }
 
 export function ModalTbank({ onClose, city, course, tariff, price, imgCourse, onSuccess }: Props) {
+	useScrollLock(true);
 	return (
 		<div className={styles.overlay} onClick={onClose}>
 			<div className={styles.modal} onClick={(e) => e.stopPropagation()}>

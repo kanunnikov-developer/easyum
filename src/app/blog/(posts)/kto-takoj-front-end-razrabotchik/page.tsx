@@ -1,6 +1,7 @@
 import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs'
 import styles from '../styles.module.css'
 import ViewCounter from '../../components/ViewCounter/ViewCounter'
+import LessonPost from '../../components/lesson/lessonPost'
 
 export default function Page() {
 	return(
@@ -29,6 +30,7 @@ export default function Page() {
 						</div>
 					</div>
 					<div className={styles.content}>
+						<div className={styles.content_left}>
 						<h3 className={styles.subtitle}><span className='accent'>Кто такой Front-end разработчик</span></h3>
 						<p className={styles.text}>Front-end разработчик – программист, который создает внешнюю часть сайта или веб-приложения. Он разрабатывает то, с чем вы взаимодействуете, когда выбираете товары в интернет-магазине или изучаете английские слова вpмобильном приложении.</p>
 						<p className={styles.text}>Задача фронтенд-разработчика – сделать такую внешнюю часть (интерфейс), чтобы гостю было комфортно пользоваться сайтом или приложением.</p>
@@ -76,6 +78,10 @@ export default function Page() {
 						<p className={styles.text}>Самый быстрый и надежный способ – пойти на очные курсы. Вместе с небольшой группой новичков и практикующим преподавателем учиться проще.</p>
 						<p className={styles.text}>Также можно получить базовые навыки фронтенд в университете, но после обычно приходится доучиваться.</p>
 						<p className={styles.text}>Некоторые выбирают самостоятельное обучение профессии по видеоурокам на YouTube и других платформах. Такой способ тоже неплох, но займет больше времени, чем курсы плюс не гарантирует результат</p>
+						</div>
+						<div className={styles.content_right}>
+							<LessonPost lesson='Front-end'/>
+						</div>
 					</div>
 				</section>
 			</div>
