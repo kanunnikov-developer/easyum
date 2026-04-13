@@ -1,3 +1,6 @@
+'use client';
+
+import { useScrollLock } from '@/lib/hooks/useScrollLock';
 import BronForm from '@/app/_form/_ModalForm/BronForm/BronForm';
 import styles from './styles.module.css';
 import { sale } from '@/app/courses/startCourses.info';
@@ -9,6 +12,7 @@ interface Props {
 }
 
 export default function Modal({ onClose, city, onSuccess }: Props) {
+	useScrollLock(true);
 	return (	
 		<div className={styles.overlay} onClick={onClose}>
 			<div className={styles.modal} onClick={(e) => e.stopPropagation()}>

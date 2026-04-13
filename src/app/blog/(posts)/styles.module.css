@@ -66,8 +66,26 @@
 	transition: all 0.3s ease;
 }
 
-.content{
-	margin-top: 50px;
+.content {
+  position: relative;
+  margin-top: 50px;
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;        
+}
+
+.content_left {
+  flex: 1 1 auto;
+  min-width: 0;                 
+}
+
+.content_right {
+ width: 400px;
+ flex-shrink: 0;
+ position: sticky;
+ top: 110px;                  
+ align-self: flex-start;      
+ z-index: 1;        
 }
 
 .subtitle{
@@ -231,4 +249,21 @@
 	line-height: 150%;
 	margin-bottom: 15px;
 }
+
+.content {
+	flex-direction: column;
+  gap: 15px;   
+}
+
+.content_left {
+  flex: 1 1 auto;
+  min-width: 0;                 
+}
+
+.content_right {
+ width: 100%;
+ position: relative;
+ top: 0px;                     
+}
+
 }

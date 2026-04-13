@@ -1,7 +1,8 @@
 // components/Modal/MobileModal/MobileModal.tsx
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useScrollLock } from '@/lib/hooks/useScrollLock';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './styles.module.css';
@@ -17,37 +18,7 @@ export default function MobileModal({ isOpen, onClose }: MobileModalProps) {
 	const [openAccordion, setOpenAccordion] = useState<string | null>('Курсы');
 	const pathname = usePathname(); // текущий путь // по умолчанию открыт "Курсы"
 
-	useEffect(() => {
-		if (isOpen) {
-			// Сохраняем текущую позицию скролла
-			const scrollY = window.scrollY;
-
-			document.documentElement.style.overflow = 'hidden';
-			document.body.style.overflow = 'hidden';
-			document.body.style.position = 'fixed';
-			document.body.style.top = `-${scrollY}px`;
-			document.body.style.width = '100%'; // предотвращаем сдвиг из-за исчезновения скроллбара
-		} else {
-			// Возвращаем всё назад
-			const scrollY = parseInt(document.body.style.top || '0', 10) * -1;
-
-			document.documentElement.style.overflow = '';
-			document.body.style.overflow = '';
-			document.body.style.position = '';
-			document.body.style.top = '';
-			document.body.style.width = '';
-
-			// Восстанавливаем позицию скролла
-			window.scrollTo(0, scrollY);
-		}
-		return () => {
-			document.documentElement.style.overflow = '';
-			document.body.style.overflow = '';
-			document.body.style.position = '';
-			document.body.style.top = '';
-			document.body.style.width = '';
-		};
-	}, [isOpen]);
+	useScrollLock(isOpen);
 
 	if (!isOpen) return null;
 

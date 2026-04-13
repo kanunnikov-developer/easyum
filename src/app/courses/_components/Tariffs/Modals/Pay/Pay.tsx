@@ -1,3 +1,6 @@
+'use client';
+
+import { useScrollLock } from '@/lib/hooks/useScrollLock';
 import PaymentForm from '@/app/_form/_ModalForm/PaymentForm/PaymentForm';
 import styles from './styles.module.css';
 
@@ -13,6 +16,7 @@ interface Props {
 }
 
 export function ModalPay({ onClose, city, course, tariff, price, installmentMonthly, onSuccess, mounth }: Props) {
+	useScrollLock(true);
 	return (
 		<div className={styles.overlay} onClick={onClose}>
 			<div className={styles.modal} onClick={(e) => e.stopPropagation()}>

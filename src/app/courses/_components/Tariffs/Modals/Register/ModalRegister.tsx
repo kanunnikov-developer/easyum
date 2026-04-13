@@ -1,3 +1,6 @@
+'use client';
+
+import { useScrollLock } from '@/lib/hooks/useScrollLock';
 import styles from './styles.module.css';
 import RegisterForm from '@/app/_form/_ModalForm/Register/RegisterForm';
 
@@ -11,6 +14,7 @@ interface Props {
 }
 
 export default function ModalRegister({ onClose, city, course, tariff, price, onSuccess }: Props) {
+	useScrollLock(true);
 	return (
 		<div className={styles.overlay} onClick={onClose}>
 			<div className={styles.modal} onClick={(e) => e.stopPropagation()}>

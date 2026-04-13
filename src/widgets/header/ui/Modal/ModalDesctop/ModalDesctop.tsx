@@ -1,3 +1,6 @@
+'use client';
+
+import { useScrollLock } from '@/lib/hooks/useScrollLock';
 import { cities } from '@/lib/cities';
 import styles from './styles.module.css';
 import { usePathname } from 'next/navigation';
@@ -9,6 +12,7 @@ interface Props {
 
 export default function ModalDesctop({ isOpen, onClose }: Props) {
 	const pathname = usePathname(); // текущий путь
+	useScrollLock(isOpen);
 	if (!isOpen) return null;
 	return (
 		<div className={styles.overlay} onClick={onClose}>
