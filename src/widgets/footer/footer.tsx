@@ -17,15 +17,21 @@ export default function Footer() {
 						<div className={styles.info}>
 							<div className={styles.social}>
 								<a href='https://vk.com/easyumru' target='_blank'>
-									<img src='/icons/vkWhite.svg' alt='Вконтакте' className={styles.img} />
+									<img src='/icons/vk_white.svg' alt='Вконтакте' />
 								</a>
 								<a href='https://t.me/easyumru' target='_blank'>
-									<img src='/icons/telegramWhite.svg' alt='Телеграм' />
+									<img src='/icons/telegram_white.svg' alt='Телеграм' />
+								</a>
+								<a href='https://wa.me/+79163101105' target='_blank'>
+									<img src='/icons/whatsapp_white.svg' alt='Whatsapp' />
+								</a>
+								<a href='https://max.ru/u/f9LHodD0cOIpx7XKrzCEXWMbty7_d7Rnr0Etp7xK0aBhFHO-kiRFqXbgL3s' target='_blank'>
+									<img src='/icons/max-white.svg' alt='Max' />
 								</a>
 							</div>
 							<div className={styles.contact}>
-								<a href='tel:+79669990685'>+7 (966) 999-06-85</a>
 								<p>Контакный центр</p>
+								<a href='tel:+79669990685'>+7 (966) 999-06-85</a>
 							</div>
 							<Suspense fallback={<p className={styles.adress}>Загружаем данные...</p>}>
 								<WrapperAdress />

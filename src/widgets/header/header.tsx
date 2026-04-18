@@ -46,12 +46,20 @@ export default function Header() {
 							</a>
 							<div className={styles.dop__number}>
 								<a href='tel:+79163101105'>+7 (916) 310-11-05</a>
-								<a href='https://wa.me/+79163101105' target='_blank'>
-									<Image src='/icons/headerWhatsApp.svg' alt='WhatsApp Icon' width={20} height={20} />
+								{/* <a href='https://wa.me/+79163101105' target='_blank'>
+									<Image src='/icons/header/headerWhatsApp.svg' alt='WhatsApp Icon' width={20} height={20} />
 								</a>
 								<a href='https://t.me/+79262290485' target='_blank'>
-									<Image src='/icons/headerTelegram.svg' alt='WhatsApp Icon' width={18} height={18} />
-								</a>
+									<Image src='/icons/header/headerTelegram.svg' alt='WhatsApp Icon' width={18} height={18} />
+								</a> */}
+								<div className={styles.social__links}>
+									<a href='https://t.me/+79262290485' target='_blank'>
+										<img src='/icons/header/telegram_accent.svg' alt='Телеграм' />
+									</a>
+									<a href='https://wa.me/+79163101105' target='_blank'>
+										<img src='/icons/header/whatsapp_accent.svg' alt='Whatsapp' />
+									</a>
+								</div>
 							</div>
 						</div>
 						<div className={styles.burger}>
