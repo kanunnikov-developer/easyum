@@ -2,6 +2,58 @@ import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs'
 import styles from '../styles.module.css'
 import ViewCounter from '../../components/ViewCounter/ViewCounter'
 import LessonPost from '../../components/lesson/lessonPost'
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Какой язык программирования учить первым в 2026 году: рейтинг для новичков',
+  description: 'Подробный разбор лучших языков программирования для начинающих в 2026 году. Сравнение Python, JavaScript, Java и других языков: где проще начать и где выше зарплата.',
+  keywords: [
+    'какой язык программирования учить',
+    'первый язык программирования',
+    'языки программирования 2026',
+    'Python для начинающих',
+    'JavaScript для начинающих',
+    'Java для начинающих',
+    'программирование с нуля',
+    'карьера в IT',
+    'обучение программированию',
+  ],
+  authors: [{ name: 'EasyUM' }],
+  creator: 'EasyUM',
+
+  openGraph: {
+    title: 'Какой язык программирования учить первым в 2026 году',
+    description: 'Рейтинг языков программирования для новичков. Узнайте, с чего начать карьеру в IT в 2026 году.',
+    url: 'https://it.easyum.ru/blog/kakoj-yazyk-programmirovaniya-uchit-pervym',
+    type: 'article',
+    images: [
+      {
+        url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Какой язык программирования учить первым',
+      },
+    ],
+    locale: 'ru_RU',
+    siteName: 'EasyUM',
+  },
+
+  alternates: {
+    canonical: 'https://it.easyum.ru/blog/kakoj-yazyk-programmirovaniya-uchit-pervym',
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 export default function Page() {
 	return(

@@ -2,6 +2,60 @@ import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs'
 import styles from '../styles.module.css'
 import ViewCounter from '../../components/ViewCounter/ViewCounter'
 import LessonPost from '../../components/lesson/lessonPost'
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Кто такой Front-end разработчик в 2026 году: зарплаты, навыки и карьера',
+  description: 'Подробный разбор профессии Front-end разработчика в 2026 году. Узнайте, что делает фронтенд-разработчик, какие навыки нужны, сколько зарабатывают и как начать карьеру в IT.',
+  keywords: [
+    'Front-end разработчик',
+    'frontend разработчик',
+    'кто такой фронтенд',
+    'frontend зарплата',
+    'frontend обучение',
+    'карьера frontend',
+    'frontend 2026',
+    'JavaScript',
+    'HTML CSS',
+    'React',
+    'программирование для начинающих',
+  ],
+  authors: [{ name: 'EasyUM' }],
+  creator: 'EasyUM',
+
+  openGraph: {
+    title: 'Кто такой Front-end разработчик в 2026 году',
+    description: 'Вся правда о профессии фронтенд-разработчика: задачи, инструменты, зарплаты и карьерный путь в 2026 году.',
+    url: 'https://it.easyum.ru/blog/kto-takoj-front-end-razrabotchik',
+    type: 'article',
+    images: [
+      {
+        url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Кто такой Front-end разработчик',
+      },
+    ],
+    locale: 'ru_RU',
+    siteName: 'EasyUM',
+  },
+
+  alternates: {
+    canonical: 'https://it.easyum.ru/blog/kto-takoj-front-end-razrabotchik',
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 export default function Page() {
 	return(
