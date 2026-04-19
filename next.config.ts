@@ -25,6 +25,46 @@ const nextConfig: NextConfig = {
 	async redirects() {
     return [
       {
+        source: '/course/programming',
+        destination: '/courses/programming',
+        permanent: true,
+      },
+      {
+        source: '/course/testing',
+        destination: '/courses/testing',
+        permanent: true,
+      },
+      {
+        source: '/course/web-development',
+        destination: '/courses/web-development',
+        permanent: true,
+      },
+      {
+        source: '/course/design',
+        destination: '/courses/design',
+        permanent: true,
+      },
+      {
+        source: '/course/marketing',
+        destination: '/courses/marketing',
+        permanent: true,
+      },
+      {
+        source: '/course/mobile-development',
+        destination: '/courses/mobile-development',
+        permanent: true,
+      },
+      {
+        source: '/course/3d-modeling',
+        destination: '/courses/3d-modeling',
+        permanent: true,
+      },
+      {
+        source: '/course/other',
+        destination: '/courses/other',
+        permanent: true,
+      },
+      {
         source: '/courses/java-junior',
         destination: '/courses/programming/java-junior',
         permanent: true,
