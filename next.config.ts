@@ -1,8 +1,9 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  htmlLimitedBots: /.*/,
 	reactCompiler: true,
-	cacheComponents: true,
+	// cacheComponents: true,
 
 	experimental: {
 		inlineCss: true,

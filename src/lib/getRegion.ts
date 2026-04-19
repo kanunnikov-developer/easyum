@@ -31,7 +31,7 @@ async function getSubdomain() {
 }
 
 async function region(subdomain: string) {
-	'use cache';
+	// 'use cache';
 
 	let region = await prisma.region.findUnique({
 		where: { subdomain },
