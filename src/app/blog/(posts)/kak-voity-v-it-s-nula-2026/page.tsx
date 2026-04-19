@@ -2,6 +2,59 @@ import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs'
 import styles from '../styles.module.css'
 import ViewCounter from '../../components/ViewCounter/ViewCounter'
 import LessonPost from '../../components/lesson/lessonPost'
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Как войти в IT с нуля в 2026 году: пошаговый план для тех, кто боится кода',
+  description: 'Пошаговый план для входа в IT с нуля в 2026 году. Узнайте, как начать карьеру в IT без опыта и страха перед кодом, какие профессии выбрать и как успешно пройти собеседование.',
+  keywords: [
+    'войти в IT с нуля',
+    'карьера в IT',
+    'IT для начинающих',
+    'обучение IT',
+    'программирование для начинающих',
+    'IT после 30/40',
+    'сменить профессию в IT',
+    'IT без опыта',
+    'как стать программистом',
+    'IT 2026',
+  ],
+  authors: [{ name: 'EasyUM' }],
+  creator: 'EasyUM',
+
+  openGraph: {
+    title: 'Как войти в IT с нуля в 2026 году: пошаговый план',
+    description: 'Пошаговый план для входа в IT с нуля в 2026 году. Узнайте, как начать карьеру в IT без опыта и страха перед кодом.',
+    url: 'https://it.easyum.ru/blog/kak-voity-v-it-s-nula-2026',
+    type: 'article',
+    images: [
+      {
+        url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Как войти в IT с нуля в 2026 году',
+      },
+    ],
+    locale: 'ru_RU',
+    siteName: 'EasyUM',
+  },
+
+  alternates: {
+    canonical: 'https://it.easyum.ru/blog/kak-voity-v-it-s-nula-2026',
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 export default function Page() {
 	return(

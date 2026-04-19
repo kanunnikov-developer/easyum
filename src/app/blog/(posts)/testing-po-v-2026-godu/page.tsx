@@ -2,6 +2,58 @@ import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs'
 import styles from '../styles.module.css'
 import ViewCounter from '../../components/ViewCounter/ViewCounter'
 import LessonPost from '../../components/lesson/lessonPost'
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Тестировщик ПО: самая простая профессия для быстрого входа в IT в 2026 году',
+  description: 'Подробный разбор профессии тестировщика ПО в 2026 году. Узнайте, кто такой тестировщик, какие навыки нужны, сколько зарабатывают и как начать карьеру в IT с нуля.',
+  keywords: [
+    'тестировщик ПО',
+    'тестировщик с нуля',
+    'карьера тестировщика',
+    'QA engineer',
+    'обучение тестированию',
+    'войти в IT',
+    'IT для начинающих',
+    'программирование для начинающих',
+    'тестирование 2026',
+  ],
+  authors: [{ name: 'EasyUM' }],
+  creator: 'EasyUM',
+
+  openGraph: {
+    title: 'Тестировщик ПО: самая простая профессия для быстрого входа в IT в 2026 году',
+    description: 'Вся правда о профессии тестировщика ПО в 2026 году: задачи, зарплаты и карьерный путь для новичков.',
+    url: 'https://it.easyum.ru/blog/testing-po-v-2026-godu',
+    type: 'article',
+    images: [
+      {
+        url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Тестировщик ПО',
+      },
+    ],
+    locale: 'ru_RU',
+    siteName: 'EasyUM',
+  },
+
+  alternates: {
+    canonical: 'https://it.easyum.ru/blog/testing-po-v-2026-godu',
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 export default function Page() {
 	return(
