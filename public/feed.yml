@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2026-04-19 17:30">
+<shop>
+<name>Easyum</name>
+<url>https://it.easyum.ru</url>
+<email>msc@easyum.ru</email>
+<picture>https://it.easyum.ru/logo100.png</picture>
+<description>Школа программирования и востребованных IT-профессий</description>
+
+<currencies>
+<currency id="RUR" rate="1"/>
+</currencies>
+
+<categories>
+<category id="1">Программирование</category>
+<category id="2">Тестирование</category>
+<category id="3">Веб-разработка</category>
+<category id="4">Дизайн</category>
+<category id="5">Маркетинг</category>
+<category id="6">Мобильная разработка</category>
+<category id="7">3Д моделирование</category>
+<category id="8">Другие курсы</category>
+</categories>
+
+<offers>
+<offer id="java-junior">
+<name>Java Junior Веб-разработчик</name>
+<url>https://it.easyum.ru/courses/programming/java-junior</url>
+<categoryId>1</categoryId>
+<price>62161</price>
+<currencyId>RUR</currencyId>
+
+<param name="Продолжительность" unit="месяц">6</param>
+<param name="Оплата в рассрочку" unit="месяц">6</param>
+<param name="Есть видеоуроки">true</param>
+<param name="Есть вебинары">true</param>
+<param name="Есть домашние работы">true</param>
+<param name="Результат обучения">Сертификат</param>
+<param name="План" order="1" unit="Основы языка Java. Изучение алгоритмов" hours="24">
+<![CDATA[ А также осваиваем использование таблиц стилей CSS и учимся украшать страницы — Код из готового проекта для правки — 20 заданий в тренажере — Подборка дополнительных материалов ]]>
+</param>
+<param name="План" order="2" unit="ООП в Java. Классы, Интерфейсы, Анонимные классы, Внутренние и Абстрактные классы" hours="28">
+<![CDATA[ Осваиваем JavaScript, учимся верстать с помощью фреймворка Bootstrap, создаем страницы с анимацией и работаем с файлами разных типов — DOM-модель — AJAX, jQuery, обновляемая страница — Основы Vue.js и ES6 — Проект — свой сайт на Bootstrap — 15 заданий в тренажере — Подборка дополнительных внешних инструментов ]]>
+</param>
+<param name="План" order="3" unit="Стандартные технологии Java SE (Коллекции, Многопоточность, Exception, Логирование, Maven). Версия контроля - Git." hours="70">
+<![CDATA[ Изучаем основы языка, подключаем необходимые библиотеки, пишем веб-сервис с интерактивными элементами — ООП в Python, классы, формы, создание веб-сервиса — Работа с файлами разных типов, JSON, XML — Сервер на Python — Работа с API, подключение к сайту — Тренировка на готовом коде — Проект — веб-приложение с анимацией на Bootstrap — 16 заданий в тренажере — Подборка дополнительных материалов ]]>
+</param>
+
+<description><![CDATA[Освойте Java с нуля и научитесь создавать сложные веб-приложения на Spring и Hibernate.]]></description>
+</offer>
+
+
+
+</offers>
+</shop>
+</yml_catalog>
