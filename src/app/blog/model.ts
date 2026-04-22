@@ -45,4 +45,13 @@ export const posts: Post[] = [
 		href: '/blog/kak-voity-v-it-s-nula-2026',
 		category: 'Карьера',
 	},
+	{
+		id: 5,
+		title: 'С какого языка стоит начать обучение программированию?',
+		image: '/blog/schegonachat.svg',
+		date: '22 апреля 2026',
+		description: 'Прежде всего, стоит сказать о том, что работа с кодом – отличная тренировка для ума. Программирование тренирует мозг, положительно влияет на Ваш творческий потенциал, на умение мыслить согласно законам логики…',
+		href: '/blog/s-kakogo-yazyka-stoit-nachat-obuchenie-programmirovaniyu',
+		category: 'Программирование',
+	},
 ]

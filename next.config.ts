@@ -65,6 +65,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/3d-modeling',
+        destination: '/courses/3d-modeling',
+        permanent: true,
+      },
+      {
         source: '/course/other',
         destination: '/courses/other',
         permanent: true,
@@ -207,6 +212,11 @@ const nextConfig: NextConfig = {
       {
         source: '/2021/07/13/kto-takoj-front-end-razrabotchik',
         destination: '/blog/kto-takoj-front-end-razrabotchik',
+        permanent: true,
+      },
+      {
+        source: '/2019/01/22/s-kakogo-yazyka-stoit-nachat-obuchenie-programmirovaniyu',
+        destination: '/blog/s-kakogo-yazyka-stoit-nachat-obuchenie-programmirovaniyu',
         permanent: true,
       },
     ];

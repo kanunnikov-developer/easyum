@@ -106,8 +106,9 @@ const regionData: Prisma.RegionCreateInput[] = [
 const initialViews = [
     { slug: "kto-takoj-front-end-razrabotchik", views: 0 },
     { slug: "testing-po-v-2026-godu", views: 0 },
-		{ slug: "kakoj-yazyk-programmirovaniya-uchit-pervym", views: 0 },
-		{ slug: "kak-voity-v-it-s-nula-2026", views: 0 },
+	{ slug: "kakoj-yazyk-programmirovaniya-uchit-pervym", views: 0 },
+	{ slug: "kak-voity-v-it-s-nula-2026", views: 0 },
+	{ slug: "s-kakogo-yazyka-stoit-nachat-obuchenie-programmirovaniyu", views: 0 },
 ];
 
 export async function main() {
