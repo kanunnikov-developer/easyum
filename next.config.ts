@@ -264,6 +264,11 @@ const nextConfig: NextConfig = {
         destination: '/blog/ujti-v-ajti-5-sovetov-kak-vyzhat-maksimum-iz-kursov-programmirovaniya',
         statusCode: 301,
       },
+      {
+        source: '/2018/10/17/top-6-sovetov-kak-stat-krutym-veb-dizajnerom',
+        destination: '/blog/top-6-sovetov-kak-stat-krutym-veb-dizajnerom',
+        statusCode: 301,
+      },
     ];
   },
 

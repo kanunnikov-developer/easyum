@@ -26,6 +26,11 @@ const pages = [
   { path: '/reviews', changefreq: 'monthly' as const, priority: 0.8 },
   { path: '/success-stories', changefreq: 'monthly' as const, priority: 0.8 },
   { path: '/discounts', changefreq: 'monthly' as const, priority: 0.8 },
+  { path: '/gift-certificates', changefreq: 'monthly' as const, priority: 0.8 },
+  { path: '/oferta', changefreq: 'monthly' as const, priority: 0.8 },
+  { path: '/politika-konfidencialnosti', changefreq: 'monthly' as const, priority: 0.8 },
+
+  // (events)
   { path: '/events', changefreq: 'monthly' as const, priority: 0.8 },
   { path: '/events/2023-design-2', changefreq: 'monthly' as const, priority: 0.8 },
   { path: '/events/c_plus_plus', changefreq: 'monthly' as const, priority: 0.8 },
@@ -33,7 +38,6 @@ const pages = [
   { path: '/events/probnoye-html-css-frontend-fullstack-2', changefreq: 'monthly' as const, priority: 0.8 },
   { path: '/events/python', changefreq: 'monthly' as const, priority: 0.8 },
   { path: '/events/testirovanie-po-qa-2', changefreq: 'monthly' as const, priority: 0.8 },
-  { path: '/gift-certificates', changefreq: 'monthly' as const, priority: 0.8 },
 
   // (company)
   { path: '/applications', changefreq: 'monthly' as const, priority: 0.8 },
@@ -46,6 +50,10 @@ const pages = [
   { path: '/blog/kakoj-yazyk-programmirovaniya-uchit-pervym', changefreq: 'monthly' as const, priority: 0.8 },
   { path: '/blog/kto-takoj-front-end-razrabotchik', changefreq: 'monthly' as const, priority: 0.8 },
   { path: '/blog/testing-po-v-2026-godu', changefreq: 'monthly' as const, priority: 0.8 },
+  { path: '/blog/open-easyum', changefreq: 'monthly' as const, priority: 0.8 },
+  { path: '/blog/s-kakogo-yazyka-stoit-nachat-obuchenie-programmirovaniyu', changefreq: 'monthly' as const, priority: 0.8 },
+  { path: '/blog/top-6-sovetov-kak-stat-krutym-veb-dizajnerom', changefreq: 'monthly' as const, priority: 0.8 },
+  { path: '/blog/ujti-v-ajti-5-sovetov-kak-vyzhat-maksimum-iz-kursov-programmirovaniya', changefreq: 'monthly' as const, priority: 0.8 },
 
   // courses
   { path: '/courses', changefreq: 'monthly' as const, priority: 0.8 },

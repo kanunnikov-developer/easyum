@@ -72,4 +72,13 @@ export const posts: Post[] = [
 		href: '/blog/ujti-v-ajti-5-sovetov-kak-vyzhat-maksimum-iz-kursov-programmirovaniya',
 		category: 'Программирование',
 	},
+	{
+		id: 8,
+		title: 'Как стать веб-дизайнером? Обучение дизайну от школы',
+		image: '/blog/top-6-sovetov-kak-stat-krutym-veb-dizajnerom.svg',
+		date: '29 апреля 2026',
+		description: 'Перед тем выбрать профессию веб-дизайнера многих новичков мучают вопросы подобного содержания. В силу отсутствия опыта ответы на эти вопросы начинающему веб-дизайнеру найти сложно',
+		href: '/blog/top-6-sovetov-kak-stat-krutym-veb-dizajnerom',
+		category: 'Дизайн',
+	},
 ]

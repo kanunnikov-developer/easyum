@@ -86,6 +86,7 @@ export default function Breadcrumbs() {
 			's-kakogo-yazyka-stoit-nachat-obuchenie-programmirovaniyu': 'С какого языка стоит начать обучение программированию',
 			'open-easyum': 'Официальное открытие EasyUM',
 			'ujti-v-ajti-5-sovetov-kak-vyzhat-maksimum-iz-kursov-programmirovaniya': 'Как научиться программировать?',
+			'top-6-sovetov-kak-stat-krutym-veb-dizajnerom': 'Как стать веб-дизайнером?'
 		};
 
 		// Если сегмент — динамический id, можно показать "Курс Java" или что-то

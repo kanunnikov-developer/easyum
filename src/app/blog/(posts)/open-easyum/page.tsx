@@ -111,7 +111,7 @@ export default function Page() {
 						
 						</div>
 						<div className={styles.content_right}>
-							<LessonPost lesson='UI/UX Дизайнер'/>
+							<LessonPost lesson='UI/UX Дизайну'/>
 						</div>
 					</div>
 				</section>
