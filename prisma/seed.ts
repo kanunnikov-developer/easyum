@@ -109,6 +109,8 @@ const initialViews = [
 	{ slug: "kakoj-yazyk-programmirovaniya-uchit-pervym", views: 0 },
 	{ slug: "kak-voity-v-it-s-nula-2026", views: 0 },
 	{ slug: "s-kakogo-yazyka-stoit-nachat-obuchenie-programmirovaniyu", views: 0 },
+	{ slug: "open-easyum", views: 0 },
+	{ slug: "ujti-v-ajti-5-sovetov-kak-vyzhat-maksimum-iz-kursov-programmirovaniya", views: 0 },
 ];
 
 export async function main() {

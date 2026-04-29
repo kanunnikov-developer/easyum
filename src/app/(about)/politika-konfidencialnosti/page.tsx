@@ -1,12 +1,56 @@
 import Breadcrumbs from '@/widgets/breadcrumbs/breadcrumbs';
 import cn from 'classnames';
-import styles from '@/app/(about)/docs/styles.module.css';
+import styles from './styles.module.css';
+import getRegion from '@/lib/getRegion';
+import { Metadata } from 'next';
+import { headers } from 'next/headers';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const region = await getRegion();
+
+	const city = region?.preposutional || 'Москве';
+	const subdomain = region?.subdomain || 'it';
+	const currentHost = (await headers()).get('host') || `${subdomain}.easyum.ru`;
+
+	const fullUrl = `https://${currentHost}`;
+
+	return {
+		title: `Политика конфиденциальности в школе программирования EasyUM в ${city}`,
+		description: `Политика конфиденциальности в школе программирования EasyUM в ${city}`,
+		authors: [{ name: 'EasyUM' }],
+		creator: 'EasyUM',
+
+		metadataBase: new URL(fullUrl),
+
+		// Open Graph (то, что ты просил)
+		openGraph: {
+			title: `Политика конфиденциальности в школе программирования EasyUM в ${city}`,
+			description: `Политика конфиденциальности в школе программирования EasyUM в ${city}`,
+			url: '/politika-konfidencialnosti',
+			type: 'website',
+			images: [
+				{
+					url: 'https://static.tildacdn.com/tild3837-6534-4135-a432-613535343033/photo.jpg',
+					width: 1200,
+					height: 630,
+					alt: `Политика конфиденциальности в школе программирования в ${city} — EasyUM`,
+				},
+			],
+			locale: 'ru_RU',
+			siteName: 'EasyUM',
+		},
+
+		alternates: {
+			canonical: `/politika-konfidencialnosti`,
+		},
+	};
+}
 
 export default function Page() {
 	return (
 		<div className={cn('container', styles.page)}>
 			<Breadcrumbs />
-			<h1>
+			<h1 className={styles.title}>
 				<span className='accent'>Политика конфиденциальности</span>
 			</h1>
 			<div className={styles.docs}>

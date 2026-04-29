@@ -54,4 +54,22 @@ export const posts: Post[] = [
 		href: '/blog/s-kakogo-yazyka-stoit-nachat-obuchenie-programmirovaniyu',
 		category: 'Программирование',
 	},
+	{
+		id: 6,
+		title: 'Официальное открытие EasyUM',
+		image: '/blog/open-easyum.svg',
+		date: '15 июля 2018',
+		description: 'Рады сообщить о начале работы нового образовательного центра EasyUM! Мы рады приветствовать вас в нашем сообществе и надеемся на плодотворное сотрудничество.',
+		href: '/blog/open-easyum',
+		category: 'Наша школа',
+	},
+	{
+		id: 7,
+		title: 'Как научиться программировать?',
+		image: '/blog/5-sovetov-kak-vyzhat-maksimum.svg',
+		date: '29 апреля 2026',
+		description: 'Если Вы уже решились «уйти в айти» и даже записались на курсы программирования, то мы рекомендуем Вашему вниманию статью-гайд о том, как выжать максимум из обучения IT и не спустить время и деньги «на ветер».',
+		href: '/blog/ujti-v-ajti-5-sovetov-kak-vyzhat-maksimum-iz-kursov-programmirovaniya',
+		category: 'Программирование',
+	},
 ]

@@ -76,6 +76,7 @@ export default function Breadcrumbs() {
 			'pm-kurs': 'IT Project Manager',
 			'manager-marketplace': 'Менеджер маркетплейсов',
 			'politika-konfidencialnosti': 'Политика конфиденциальности',
+			'oferta': 'Публичная оферта',
 
 			blog: 'Блог',
 			'kto-takoj-front-end-razrabotchik': 'Кто такой Front-end разработчик',
@@ -83,6 +84,8 @@ export default function Breadcrumbs() {
 			'kakoj-yazyk-programmirovaniya-uchit-pervym': 'Какой язык программирования учить в 2026 году',
 			'kak-voity-v-it-s-nula-2026': 'Как войти в IT с нуля в 2026 году',
 			's-kakogo-yazyka-stoit-nachat-obuchenie-programmirovaniyu': 'С какого языка стоит начать обучение программированию',
+			'open-easyum': 'Официальное открытие EasyUM',
+			'ujti-v-ajti-5-sovetov-kak-vyzhat-maksimum-iz-kursov-programmirovaniya': 'Как научиться программировать?',
 		};
 
 		// Если сегмент — динамический id, можно показать "Курс Java" или что-то

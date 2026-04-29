@@ -58,9 +58,9 @@ export default function Page() {
 		<div className={cn('container', styles.page)}>
 			<div className={styles.header}>
 				<Breadcrumbs />
-				<h2>
-					<span className='span'>Тест: </span>Какой язык программирования выбрать?
-				</h2>
+				<h1 className={styles.title}>
+					<span className='accent'>Тест: </span>Какой язык программирования выбрать?
+				</h1>
 				<div className={styles.form}>
 					<TestForm />
 				</div>

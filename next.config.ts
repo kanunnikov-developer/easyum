@@ -254,6 +254,16 @@ const nextConfig: NextConfig = {
         destination: '/blog/s-kakogo-yazyka-stoit-nachat-obuchenie-programmirovaniyu',
         statusCode: 301,
       },
+      {
+        source: '/2018/07/15/open-easyum',
+        destination: '/blog/open-easyum',
+        statusCode: 301,
+      },
+      {
+        source: '/2018/09/04/ujti-v-ajti-5-sovetov-kak-vyzhat-maksimum-iz-kursov-programmirovaniya',
+        destination: '/blog/ujti-v-ajti-5-sovetov-kak-vyzhat-maksimum-iz-kursov-programmirovaniya',
+        statusCode: 301,
+      },
     ];
   },
 
