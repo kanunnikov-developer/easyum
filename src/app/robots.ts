@@ -2,11 +2,24 @@ import { headers } from 'next/headers';
 import type { MetadataRoute } from 'next';
 
 const SITE_DOMAIN = 'easyum.ru';
-const validSubdomains = ['it', 'rostov', 'krasnodar', 'spb', 'samara', 'saratov', 'vrn', 'izhevsk', 'nn', 'ekaterinburg'];
+const validSubdomains = [
+  'it', 
+  'rostov', 
+  'krasnodar', 
+  'spb', 
+  'samara', 
+  'saratov', 
+  'vrn', 
+  'izhevsk', 
+  'nn', 
+  'ekaterinburg'
+];
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
   const headersList = await headers();
   const host = headersList.get('host') || '';
+  
+  // Определяем поддомен из заголовков или хоста
   const subdomain =
     headersList.get('x-subdomain') ||
     host.split('.')[0] ||
@@ -15,15 +28,22 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
   const isValid = validSubdomains.includes(subdomain);
   const baseUrl = `https://${subdomain}.${SITE_DOMAIN}`;
 
-  // Формируем правила для валидных поддоменов
-  const validRules = {
+  // Правила для рабочих поддоменов
+  const validRules: MetadataRoute.Robots['rules'] = {
     userAgent: '*',
-    allow: ['/', '/_next/static/css/'], // Разрешаем корень и CSS
-    disallow: '/_next/',               // Запрещаем остальные чанки
+    allow: [
+      '/', 
+      '/_next/static/css/' // Разрешаем CSS для корректного рендеринга
+    ],
+    disallow: [
+      '/_next/',     // Блокируем технические JS-чанки Next.js
+      '/*.svg',      // Блокируем все SVG (иконки, декорации)
+      '/*.png',      // Блокируем все PNG (техническая графика)
+    ],
   };
 
-  // Правила для невалидных поддоменов (запрет всего)
-  const invalidRules = {
+  // Правила для неизвестных поддоменов (полный запрет индексации)
+  const invalidRules: MetadataRoute.Robots['rules'] = {
     userAgent: '*',
     disallow: '/',
   };
