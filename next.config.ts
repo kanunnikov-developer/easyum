@@ -30,8 +30,18 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/programming',
+        destination: '/courses/programming',
+        permanent: true,
+      },
+      {
         source: '/course/programming',
         destination: '/courses/programming',
+        permanent: true,
+      },
+      {
+        source: '/testing',
+        destination: '/courses/testing',
         permanent: true,
       },
       {
@@ -40,8 +50,18 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/web-development',
+        destination: '/courses/web-development',
+        permanent: true,
+      },
+      {
         source: '/course/web-development',
         destination: '/courses/web-development',
+        permanent: true,
+      },
+      {
+        source: '/design',
+        destination: '/courses/design',
         permanent: true,
       },
       {
@@ -50,8 +70,18 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/marketing',
+        destination: '/courses/marketing',
+        permanent: true,
+      },
+      {
         source: '/course/marketing',
         destination: '/courses/marketing',
+        permanent: true,
+      },
+      {
+        source: '/mobile-development',
+        destination: '/courses/mobile-development',
         permanent: true,
       },
       {
@@ -67,6 +97,11 @@ const nextConfig: NextConfig = {
       {
         source: '/3d-modeling',
         destination: '/courses/3d-modeling',
+        permanent: true,
+      },
+      {
+        source: '/other',
+        destination: '/courses/other',
         permanent: true,
       },
       {
@@ -120,7 +155,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 			{
-        source: '/courses/qa-automation',
+        source: '/courses/qa-avtomation',
         destination: '/courses/testing/qa-automation',
         permanent: true,
       },
