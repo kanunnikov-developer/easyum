@@ -25,12 +25,12 @@ export async function proxy(request: NextRequest) {
   });
 
   if (!region) {
-    return NextResponse.redirect('https://it.easyum.ru', { status: 307 });
+    return NextResponse.redirect('https://it.easyum.ru', { status: 301 });
   }
 
   if (pathname === '/blog' || pathname.startsWith('/blog/')) {
     if (subdomain !== 'it') {
-      return NextResponse.redirect('https://it.easyum.ru/blog', { status: 307 });
+      return NextResponse.redirect('https://it.easyum.ru/blog', { status: 301 });
     }
   }
 

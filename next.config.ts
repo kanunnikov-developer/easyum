@@ -313,6 +313,11 @@ const nextConfig: NextConfig = {
         statusCode: 301,
       },
       {
+        source: '/2018/11/26/10-instrumentov-dlya-tex-kto-izuchaet-html-s-nulya',
+        destination: '/blog/kto-takoj-front-end-razrabotchik',
+        statusCode: 301,
+      },
+      {
         source: '/2018/11/26/10-instrumentov-dlya-tex-kto-izuchaet-htmlcss-s-nulya',
         destination: '/blog/kto-takoj-front-end-razrabotchik',
         statusCode: 301,
