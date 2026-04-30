@@ -156,7 +156,7 @@ const nextConfig: NextConfig = {
       },
 			{
         source: '/courses/qa-avtomation',
-        destination: '/courses/testing/qa-automation',
+        destination: '/courses/testing/qa-avtomation',
         statusCode: 301,
       },
 			{
