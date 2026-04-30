@@ -273,7 +273,7 @@ const nextConfig: NextConfig = {
       // URL которые надо доделать
 
       {
-        source: '/2021/05/25/web-design-sekreti-effectivnogo-obysheniya/',
+        source: '/2021/05/25/web-design-sekreti-effectivnogo-obysheniya',
         destination: '/blog/top-6-sovetov-kak-stat-krutym-veb-dizajnerom',
         statusCode: 301,
       },

@@ -51,5 +51,6 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
   return {
     rules: isValid ? validRules : invalidRules,
     sitemap: isValid ? `${baseUrl}/sitemap.xml` : undefined,
+    sitemap-old: isValid ? `${baseUrl}/sitemap-old.xml` : undefined,
   };
 }
