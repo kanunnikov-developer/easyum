@@ -54,9 +54,9 @@ export default function Page() {
 		<div className={cn('container', styles.page)}>
 			<div className={styles.header}>
 				<Breadcrumbs />
-				<h2>
-					<span className='span-accent'>Тест: </span>Определить уровень английского языка
-				</h2>
+				<h1 className={styles.title}>
+					<span className='accent'>Тест: </span>Определить уровень английского языка
+				</h1>
 				<div className={styles.form}>
 					<TestForm />
 				</div>

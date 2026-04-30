@@ -113,7 +113,7 @@ export default function LessonPost({ lesson }: Props) {
 						/>
 						<span>
 							Я даю согласие на обработку моих персональных данных в соответствии с{' '}
-							<a href="/politika-obrabotki-personalnyh-dannyh" target="_blank" style={{textDecoration: 'underline'}}>
+							<a href="/politika-konfidencialnosti" target="_blank" style={{textDecoration: 'underline'}}>
 								Политикой конфиденциальности
 							</a>
 						</span>

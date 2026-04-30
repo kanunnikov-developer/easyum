@@ -112,7 +112,7 @@ export default function RegisterForm({ city, course, tariff, price, onSuccess, o
 					<div>
 						Я даю согласие на обработку моих персональных данных (ФИО, телефон, email) в соответствии с{' '}
 						<a
-							href='/politika-obrabotki-personalnyh-dannyh'
+							href='/politika-konfidencialnosti'
 							target='_blank'
 							rel='noopener noreferrer'
 							className={styles.policyLink}

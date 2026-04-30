@@ -61,9 +61,9 @@ export default function Page() {
 		<div className={cn('container', styles.page)}>
 			<div className={styles.header}>
 				<Breadcrumbs />
-				<h2>
-					<span className='span-accent'>Итоговый тест </span> на получение сертификата "Тестирование ПО"
-				</h2>
+				<h1 className={styles.title}>
+					<span className='accent'>Итоговый тест </span> на получение сертификата "Тестирование ПО"
+				</h1>
 				<div className={styles.form}>
 					<TestForm />
 				</div>
