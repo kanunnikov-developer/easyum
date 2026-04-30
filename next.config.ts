@@ -269,6 +269,179 @@ const nextConfig: NextConfig = {
         destination: '/blog/top-6-sovetov-kak-stat-krutym-veb-dizajnerom',
         statusCode: 301,
       },
+
+      // URL которые надо доделать
+
+      {
+        source: '/2021/05/25/web-design-sekreti-effectivnogo-obysheniya/',
+        destination: '/blog/top-6-sovetov-kak-stat-krutym-veb-dizajnerom',
+        statusCode: 301,
+      },
+      {
+        source: '/events/java-junior-android-6-12-2022',
+        destination: '/events/testirovanie-po-qa-2',
+        statusCode: 301,
+      },
+      {
+        source: '/events/java-middle',
+        destination: '/events/testirovanie-po-qa-2',
+        statusCode: 301,
+      },
+      {
+        source: '/events/internet-marketing',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/events/ios',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/events/3dmax',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/events/it-project-manager',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/2018/11/23/plyusy-i-minusy-raboty-programmistom',
+        destination: '/blog/kak-voity-v-it-s-nula-2026',
+        statusCode: 301,
+      },
+      {
+        source: '/2018/11/26/10-instrumentov-dlya-tex-kto-izuchaet-htmlcss-s-nulya',
+        destination: '/blog/kto-takoj-front-end-razrabotchik',
+        statusCode: 301,
+      },
+      {
+        source: '/2018/11/28/java-junior-28-11-2018-1',
+        destination: '/blog/ujti-v-ajti-5-sovetov-kak-vyzhat-maksimum-iz-kursov-programmirovaniya',
+        statusCode: 301,
+      },
+      {
+        source: '/2018/12/04/9-vrednyx-sovetov-kak-stat-xudshim-proektnym-menedzherom',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/2018/12/08/kak-stat-programmistom-s-nulya',
+        destination: '/blog/kak-voity-v-it-s-nula-2026',
+        statusCode: 301,
+      },
+      {
+        source: '/2019/01/21/java-junior-android-qa',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/2019/01/31/testing-qa-31-01',
+        destination: '/blog/testing-po-v-2026-godu',
+        statusCode: 301,
+      },
+      {
+        source: '/2019/02/11/javascript-junior-11-02',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/2019/02/22/java-junior-22-02',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/2019/03/19/python-developer-19-03-19',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/2019/03/26/game-developer-26-03-19',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/2019/03/30/testing-20-03-19',
+        destination: '/blog/testing-po-v-2026-godu',
+        statusCode: 301,
+      },
+      {
+        source: '/2019/04/15/smm-15-04',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/2021/02/12/samiy-popularniy-kurs-otkrivayem-sekret-sholi-programirovaniya-easyum',
+        destination: '/blog/kakoj-yazyk-programmirovaniya-uchit-pervym',
+        statusCode: 301,
+      },
+      {
+        source: '/2021/02/12/testing-20-03-19-2',
+        destination: '/blog/testing-po-v-2026-godu',
+        statusCode: 301,
+      },
+      {
+        source: '/2021/07/09/chto-dolzhen-umet-nachinayushhij-testirovshhik-chtoby-ne-oblazhatsya',
+        destination: '/blog/testing-po-v-2026-godu',
+        statusCode: 301,
+      },
+      {
+        source: '/2021/07/11/it-rabota-v-amerike-7-ploshhadok-dlya-poiska-vakansij',
+        destination: '/blog/ujti-v-ajti-5-sovetov-kak-vyzhat-maksimum-iz-kursov-programmirovaniya',
+        statusCode: 301,
+      },
+      {
+        source: '/2021/07/23/na-kogo-podpisatsya-smm-menedzheru',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/2025/03/16/graficheskiy-ili-web-dizain',
+        destination: '/blog/top-6-sovetov-kak-stat-krutym-veb-dizajnerom',
+        statusCode: 301,
+      },
+      {
+        source: '/page38831010.html',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/courses/python-machine-learning',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/courses/dizajner-intererov',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/page102302316.html',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/page109520616.html',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/page109766296.html',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/page119051006.html',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/page119051666.html',
+        destination: '/',
+        statusCode: 301,
+      },
     ];
   },
 
