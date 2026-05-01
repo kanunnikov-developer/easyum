@@ -32,9 +32,11 @@ const pages: Page[] = [
   { path: '/contact', changefreq: 'monthly', priority: 0.8 },
 
   // пример: только для Краснодара
-  { path: '/documents', changefreq: 'monthly', priority: 0.8, onlyFor: ['krasnodar'] },
+  //{ path: '/documents', changefreq: 'monthly', priority: 0.8, onlyFor: ['krasnodar'] },
+  { path: '/documents', changefreq: 'monthly', priority: 0.8 },
 
   // пример: исключить для Москвы (it)
+  //{ path: '/docs', changefreq: 'monthly', priority: 0.8, excludeFor: ['it'] },
   { path: '/docs', changefreq: 'monthly', priority: 0.8, excludeFor: ['it'] },
 
   { path: '/employment', changefreq: 'monthly', priority: 0.8 },
