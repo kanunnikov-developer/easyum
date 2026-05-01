@@ -2,6 +2,14 @@
 import { MetadataRoute } from 'next';
 import { headers } from 'next/headers';
 
+type Page = {
+  path: string;
+  changefreq: 'monthly';
+  priority: number;
+  onlyFor?: string[]; // 👈 список поддоменов
+  excludeFor?: string[]; // 👈 или наоборот исключения
+};
+
 const SITE_DOMAIN = 'easyum.ru';
 
 const cities = [
@@ -19,7 +27,7 @@ const cities = [
 
 const pages = [
   { path: '', changefreq: 'monthly' as const, priority: 1.0 },
-  { path: '/contact', changefreq: 'monthly' as const, priority: 0.8 },
+  { path: '/contact', changefreq: 'monthly' as const, priority: 0.8, onlyFor: ['krasnodar']},
   { path: '/docs', changefreq: 'monthly' as const, priority: 0.8 },
   { path: '/employment', changefreq: 'monthly' as const, priority: 0.8 },
   { path: '/payment', changefreq: 'monthly' as const, priority: 0.8 },
